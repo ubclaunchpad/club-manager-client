@@ -20,7 +20,7 @@ You will also see any lint errors in the console.
 
 ### `yarn lint`
 
-Runs TSLint to ensure that your code is conforming to standards.
+Runs ESLint to ensure that your code is conforming to standards.
 
 ### `yarn test`
 
