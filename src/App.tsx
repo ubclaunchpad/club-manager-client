@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.scss';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import LoginPage from './views/loginPage';
+import Login from './views/Login';
+import Dashboard from './views/Dashboard';
 
 const App: React.FunctionComponent = () => {
     return (
@@ -24,8 +25,8 @@ const App: React.FunctionComponent = () => {
                     {/* A <Switch> looks through its children <Route>s and
                         renders the first one that matches the current URL. */}
                     <Switch>
-                        <Route path="/dashboard" />
-                        <Route path="/login" component={LoginPage} />
+                        <Route path="/dashboard" component={Dashboard} />
+                        <Route path="/login" component={Login} />
                     </Switch>
                 </div>
             </Router>
