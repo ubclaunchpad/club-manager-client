@@ -1,13 +1,19 @@
 import React from 'react';
 
-type Props = { isActive: boolean; onClick: () => void };
+interface IModalProps {
+    isActive: boolean;
+    onClick: () => void;
+}
 
-class Modal extends React.Component<Props> {
-    render() {
-        const isActive = this.props.isActive;
+class Modal extends React.Component<IModalProps> {
+    constructor(props: IModalProps) {
+        super(props);
+    }
+
+    render(): React.ReactNode {
         return (
             <div>
-                <div className={`modal ${isActive ? 'is-active' : null}`}>
+                <div className={`modal ${this.props.isActive ? 'is-active' : ''}`}>
                     <div className="modal-background"></div>
                     <div className="modal-card">
                         <header className="modal-card-head">
