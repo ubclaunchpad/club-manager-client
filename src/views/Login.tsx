@@ -1,5 +1,5 @@
 import React from 'react';
-import LoginButton from '../components/loginButton';
+import LoginButton from '../components/LoginButton';
 
 const Login: React.FunctionComponent = () => {
     return <LoginButton />;

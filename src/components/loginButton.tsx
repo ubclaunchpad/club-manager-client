@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 class LoginButton extends Component {
-    render() {
+    render(): React.ReactNode {
         return <button>Login</button>;
     }
 }
