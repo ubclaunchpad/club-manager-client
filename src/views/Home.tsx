@@ -4,14 +4,16 @@ import './Home.scss';
 
 const Home: React.FunctionComponent = () => {
     return (
-        <ul>
-            <li>
-                <Link to="/login">Login</Link>
-            </li>
-            <li>
-                <Link to="/dashboard">Dashboard</Link>
-            </li>
-        </ul>
+        <div className="home">
+            <ul>
+                <li>
+                    <Link to="/login">Login</Link>
+                </li>
+                <li>
+                    <Link to="/dashboard">Dashboard</Link>
+                </li>
+            </ul>
+        </div>
     );
 }
 
