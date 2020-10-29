@@ -15,6 +15,6 @@ const Home: React.FunctionComponent = () => {
             </ul>
         </div>
     );
-}
+};
 
 export default Home;
