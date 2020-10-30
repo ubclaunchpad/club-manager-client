@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import DashboardCard from './DashboardCard';
 
-import rejectedCard from '../Images/Rejected Box.png';
-import scheduledCard from '../Images/Scheduled Box.png';
-import acceptedCard from '../Images/Accepted Box.png';
+import ScheduledCard from '../images/ScheduledCard.png';
+import AcceptedCard from '../images/AcceptedCard.png';
+import RejectedCard from '../images/RejectedCard.png';
 
 class DashboardHeader extends Component {
     render(): React.ReactNode {
@@ -11,13 +11,13 @@ class DashboardHeader extends Component {
             <div>
                 <div className="columns">
                     <div className="column is-one-third">
-                        <DashboardCard cardImage={scheduledCard} cardURL={'scheduleURL'} />
+                        <DashboardCard cardImage={ScheduledCard} cardURL="scheduleURL" />
                     </div>
                     <div className="column is-one-third">
-                        <DashboardCard cardImage={acceptedCard} cardURL={'acceptedURL'} />
+                        <DashboardCard cardImage={AcceptedCard} cardURL="acceptedURL" />
                     </div>
                     <div className="column is-one-third">
-                        <DashboardCard cardImage={rejectedCard} cardURL={'rejectedURL'} />
+                        <DashboardCard cardImage={RejectedCard} cardURL="rejectedURL" />
                     </div>
                 </div>
             </div>

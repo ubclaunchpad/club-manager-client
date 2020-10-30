@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
 
-class DashboardCard extends Component<{ cardImage: any; cardURL: string }> {
+class DashboardCard extends Component<{ cardImage: string; cardURL: string }> {
     handleClick = (): void => {
-        console.log(this.props.cardImage);
         console.log('Card URL is: ' + this.props.cardURL);
     };
 
     render(): React.ReactNode {
         return (
             <div>
-                <figure className="image" onClick={this.handleClick}>
-                    <img src={this.props.cardImage} alt="" />
-                </figure>
+                <img src={this.props.cardImage} alt="" onClick={this.handleClick} />
             </div>
         );
     }

@@ -3,10 +3,12 @@ import DashboardHeader from '../components/DashboardHeader';
 
 const Dashboard: React.FunctionComponent = () => {
     return (
-        <h1>
-            Dashboard
-            <DashboardHeader />
-        </h1>
+        <React.Fragment>
+            <h1>
+                Dashboard
+                <DashboardHeader />
+            </h1>
+        </React.Fragment>
     );
 };
 
