@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Home.scss';
+import '../App.scss';
 
 const Home: React.FunctionComponent = () => {
     return (
-        <div className="home">
+        <div className="container view">
             <ul>
                 <li>
                     <Link to="/login">Login</Link>

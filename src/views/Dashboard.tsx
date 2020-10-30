@@ -1,9 +1,9 @@
 import React from 'react';
-import './Dashboard.scss';
+import '../App.scss';
 
 const Dashboard: React.FunctionComponent = () => {
     return (
-        <div className="container2">
+        <div className="container view">
             <h1>Dashboard</h1>
         </div>
     );
