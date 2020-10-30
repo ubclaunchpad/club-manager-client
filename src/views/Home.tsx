@@ -4,7 +4,7 @@ import '../App.scss';
 
 const Home: React.FunctionComponent = () => {
     return (
-        <div className="container view">
+        <div className="view">
             <ul>
                 <li>
                     <Link to="/login">Login</Link>
