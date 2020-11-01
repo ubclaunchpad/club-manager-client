@@ -1,11 +1,12 @@
 import React from 'react';
-import '../App.scss';
+import DashboardHeader from '../components/DashboardHeader';
 
 const Dashboard: React.FunctionComponent = () => {
     return (
-        <div className="container view">
+        <React.Fragment>
             <h1>Dashboard</h1>
-        </div>
+            <DashboardHeader />
+        </React.Fragment>
     );
 };
 
