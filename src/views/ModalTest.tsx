@@ -1,5 +1,5 @@
 import React from 'react';
-import Modal from '../components/Modal';
+import ApplicantManagementModal from '../components/modals/ApplicantManagementModal';
 
 class ModalTest extends React.Component {
     state = { isActive: false };
@@ -11,7 +11,13 @@ class ModalTest extends React.Component {
     render(): React.ReactNode {
         return (
             <div>
-                <Modal onClick={this.toggleIsActive} isActive={this.state.isActive} />
+                <ApplicantManagementModal
+                    type="Reject"
+                    name="Lorem ipsum"
+                    position="Designer"
+                    closeModal={this.toggleIsActive}
+                    isActive={this.state.isActive}
+                />
                 <button className="button " onClick={this.toggleIsActive}>
                     Open Modal
                 </button>
