@@ -1,15 +1,37 @@
 import React from 'react';
-import './Modals.css';
-import ModalApplicantCard from './ModalApplicantCard';
+import './Modals.scss';
+import ModalApplicantCard from './ApplicantManagementModalCard';
 
-interface IScheduleModalProps {
+interface IApplicantManagementModalProps {
     isActive: boolean;
     closeModal: () => void;
     name: string;
     position: string;
+    type: string;
 }
 
-class ScheduleModal extends React.Component<IScheduleModalProps> {
+class ApplicantManagementModal extends React.Component<IApplicantManagementModalProps> {
+    private description: string;
+    private title: string;
+
+    constructor(props: IApplicantManagementModalProps) {
+        super(props);
+        switch (this.props.type) {
+            case 'Schedule':
+                this.description = 'This will send a Calendly email to the applicant:';
+                this.title = 'Schedule for Interview';
+                break;
+            case 'Reject':
+                this.title = 'Reject Applicant:';
+                this.description = 'This will send a rejection email to the applicant:';
+                break;
+            default:
+                this.description = 'This will send an offer to the applicant:';
+                this.title = 'Accept Applicant';
+                break;
+        }
+    }
+
     render(): React.ReactNode {
         return (
             <div>
@@ -23,8 +45,8 @@ class ScheduleModal extends React.Component<IScheduleModalProps> {
                                 onClick={this.props.closeModal}
                             />
                             <header>
-                                <h1 className="is-size-3 has-text-weight-bold">Schedule for Interview</h1>
-                                <p className="is-size-5 mt-4">This will send a Calendly email to the applicant:</p>
+                                <h1 className="is-size-3 has-text-weight-bold">{this.title}</h1>
+                                <p className="is-size-5 mt-4">{this.description}</p>
                             </header>
                             <ModalApplicantCard name={this.props.name} position={this.props.position} />
                             <section className="pb-1">
@@ -43,4 +65,4 @@ class ScheduleModal extends React.Component<IScheduleModalProps> {
     }
 }
 
-export default ScheduleModal;
+export default ApplicantManagementModal;

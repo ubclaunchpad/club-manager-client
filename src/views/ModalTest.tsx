@@ -1,5 +1,5 @@
 import React from 'react';
-import ScheduleModal from '../components/ScheduleModal';
+import ApplicantManagementModal from '../components/modals/ApplicantManagementModal';
 
 class ModalTest extends React.Component {
     state = { isActive: false };
@@ -11,9 +11,10 @@ class ModalTest extends React.Component {
     render(): React.ReactNode {
         return (
             <div>
-                <ScheduleModal
+                <ApplicantManagementModal
+                    type="Reject"
                     name="Lorem ipsum"
-                    position="Developer"
+                    position="Designer"
                     closeModal={this.toggleIsActive}
                     isActive={this.state.isActive}
                 />
