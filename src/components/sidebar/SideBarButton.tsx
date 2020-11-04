@@ -8,7 +8,9 @@ class SideBarButton extends Component<{ buttonIcon: string; buttonURL: string }>
     render(): React.ReactNode {
         return (
             <li>
-                <img src={this.props.buttonIcon} alt="" onClick={this.handleClick} />
+                <a href={this.props.buttonURL}>
+                    <img src={this.props.buttonIcon} alt="" onClick={this.handleClick} />
+                </a>
             </li>
         );
     }
