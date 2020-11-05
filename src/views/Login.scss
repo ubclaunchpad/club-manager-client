@@ -1,0 +1,102 @@
+.left-background {
+    width: 45%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    float: left;
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+}
+
+.sign-in {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: auto;
+    color: white;
+
+    .banner {
+        position: absolute;
+        left: 20px;
+        top: 20px;
+
+        .icon {
+            border-radius: 5px;
+            background-color: white;
+        }
+    }
+
+    .sign-in-form {
+        width: 50%;
+        margin: auto;
+        input {
+            margin: auto;
+            width: 100%;
+            height: 6vh;
+        }
+    }
+
+    .label {
+        color: white;
+    }
+
+    .button {
+        width: 100%;
+        height: 6vh;
+        color: white;
+    }
+    .button:hover {
+        cursor: pointer;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .pink {
+        background: #ecb8b8;
+    }
+    .teal {
+        background: #a6b7ca;
+    }
+
+    .link {
+        color: white;
+    }
+
+    .link:hover {
+        text-decoration: underline;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .or-line {
+        overflow: hidden;
+        text-align: center;
+
+        h1:before,
+        h1:after {
+            background-color: #ffffff;
+            content: '';
+            display: inline-block;
+            height: 1px;
+            position: relative;
+            vertical-align: middle;
+            width: 50%;
+        }
+
+        h1:before {
+            right: 0.5em;
+            margin-left: -50%;
+        }
+
+        h1:after {
+            left: 0.5em;
+            margin-right: -50%;
+        }
+    }
+}
