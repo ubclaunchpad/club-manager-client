@@ -21,7 +21,7 @@ const Login: React.FunctionComponent = () => {
                     </div>
                     <button className="button teal is-size-6">Login with Google</button>
                     <p className="mt-4 is-size-6 has-text-centered">
-                        Don't have an account?{' '}
+                        Don`t have an account?{' '}
                         <NavLink to="/" className="link has-text-weight-medium">
                             Create Your account
                         </NavLink>

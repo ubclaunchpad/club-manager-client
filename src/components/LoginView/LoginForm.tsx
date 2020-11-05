@@ -1,7 +1,7 @@
 import React from 'react';
 
 class LoginForm extends React.Component {
-    render() {
+    render(): React.ReactNode {
         return (
             <form>
                 <div className="field py-3">
