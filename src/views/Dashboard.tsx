@@ -4,10 +4,10 @@ import SideBar from '../components/sidebar/SideBar';
 
 const Dashboard: React.FunctionComponent = () => {
     return (
-        <div className="container view">
+        <div className="section view">
             <React.Fragment>
                 <div className="columns">
-                    <div className="column is-one-quarter">
+                    <div className="column is-2">
                         <SideBar />
                     </div>
                     <div className="column">
