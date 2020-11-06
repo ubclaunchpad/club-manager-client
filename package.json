@@ -16,6 +16,7 @@
         "@types/react-router-dom": "^5.1.6",
         "bulma": "^0.9.1",
         "node-sass": "^4.14.1",
+        "prettier-stylelint": "^0.4.2",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
         "react-router-dom": "^5.2.0",
@@ -25,6 +26,7 @@
     "scripts": {
         "start": "react-scripts start",
         "lint": "eslint src/**/*.ts{,x}",
+        "lint-style": "stylelint **/*.scss",
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
@@ -49,6 +51,10 @@
         "@typescript-eslint/parser": "^4.5.0",
         "eslint-config-prettier": "^6.13.0",
         "eslint-plugin-prettier": "^3.1.4",
-        "prettier": "^2.1.2"
+        "prettier": "^2.1.2",
+        "stylelint": "^13.7.2",
+        "stylelint-config-prettier": "^8.0.2",
+        "stylelint-config-sass-guidelines": "^7.1.0",
+        "stylelint-prettier": "^1.1.2"
     }
 }
