@@ -1,5 +1,6 @@
 import React from 'react';
 import LaunchPadIcon from '../../images/LaunchPadIcon.png';
+import './LaunchPadBanner.scss';
 
 class LaunchPadBanner extends React.Component {
     render(): React.ReactNode {
