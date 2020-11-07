@@ -8,5 +8,7 @@
 
     .section {
         padding: 10px 0px !important;
+        overflow-y: scroll;
+        height: 475px;
     }
 }

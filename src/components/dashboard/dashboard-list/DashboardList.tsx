@@ -17,6 +17,14 @@ class DashboardList extends Component<unknown, unknown> {
         { name: 'Fizz Buzz', role: 'Developer Applicant' },
         { name: 'Foo Bar', role: 'Designer Applicant' },
         { name: 'Foo Baz', role: 'Developer Applicant' },
+        { name: 'Foo Bar', role: 'Designer Applicant' },
+        { name: 'Foo Baz', role: 'Developer Applicant' },
+        { name: 'Foo Bar', role: 'Designer Applicant' },
+        { name: 'Foo Baz', role: 'Developer Applicant' },
+        { name: 'Foo Bar', role: 'Designer Applicant' },
+        { name: 'Foo Baz', role: 'Developer Applicant' },
+        { name: 'Foo Bar', role: 'Designer Applicant' },
+        { name: 'Foo Baz', role: 'Developer Applicant' },
     ];
 
     render(): ReactNode {
