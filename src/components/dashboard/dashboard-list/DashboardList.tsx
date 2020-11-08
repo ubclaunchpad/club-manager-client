@@ -32,9 +32,15 @@ class DashboardList extends Component<unknown, unknown> {
             <div className="section dashboard-list">
                 <h1>Unsorted Applicants</h1>
                 <div className="buttons">
-                    <DashboardListFilter {...{ title: 'All', count: 150, isActive: true }} />
-                    <DashboardListFilter {...{ title: 'Developers', count: 127, isActive: false }} />
-                    <DashboardListFilter {...{ title: 'Designers', count: 23, isActive: false }} />
+                    <span>
+                        <DashboardListFilter {...{ title: 'All', count: 150, isActive: true }} />{' '}
+                    </span>
+                    <span>
+                        <DashboardListFilter {...{ title: 'Developers', count: 127, isActive: false }} />
+                    </span>
+                    <span>
+                        <DashboardListFilter {...{ title: 'Designers', count: 23, isActive: false }} />
+                    </span>
                 </div>
                 <div className="field">
                     <p className="control has-icons-left">
