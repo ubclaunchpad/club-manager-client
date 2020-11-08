@@ -1,0 +1,51 @@
+input {
+    width: 100%;
+}
+
+.label {
+    color: white;
+}
+
+.button {
+    width: 100%;
+    color: white;
+}
+
+.button:hover {
+    cursor: pointer;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.login-button {
+    background: #ecb8b8;
+}
+
+.google-login-button {
+    background: #a6b7ca;
+}
+
+.or-line {
+    overflow: hidden;
+    text-align: center;
+
+    h1:before,
+    h1:after {
+        background-color: #ffffff;
+        content: '';
+        display: inline-block;
+        height: 1px;
+        position: relative;
+        vertical-align: middle;
+        width: 50%;
+    }
+
+    h1:before {
+        right: 0.5em;
+        margin-left: -50%;
+    }
+
+    h1:after {
+        left: 0.5em;
+        margin-right: -50%;
+    }
+}
