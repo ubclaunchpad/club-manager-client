@@ -1,0 +1,19 @@
+.dashboard-list {
+    color: #ffffff;
+
+    h1 {
+        font-size: 24px;
+        font-weight: 500;
+    }
+
+    .section {
+        padding: 10px 0px !important;
+        overflow-y: scroll;
+        height: 350px;
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: row;
+    }
+}
