@@ -5,13 +5,11 @@ import DashboardList from '../components/dashboard/dashboard-list/DashboardList'
 
 import './Dashboard.scss';
 
-
 const Dashboard: React.FunctionComponent = () => {
     return (
         <div className="section view">
             <h1>Dashboard</h1>
-            <DashboardHeader />
-            <DashboardList />
+
             <React.Fragment>
                 <div className="columns">
                     <div className="column is-2">
@@ -20,6 +18,7 @@ const Dashboard: React.FunctionComponent = () => {
                     <div className="column">
                         <h1>Dashboard</h1>
                         <DashboardHeader />
+                        <DashboardList />
                     </div>
                 </div>
             </React.Fragment>

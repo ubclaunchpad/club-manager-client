@@ -31,9 +31,11 @@ class DashboardList extends Component<unknown, unknown> {
         return (
             <div className="section dashboard-list">
                 <h1>Unsorted Applicants</h1>
-                <DashboardListFilter {...{ title: 'All', count: 150, isActive: true }} />
-                <DashboardListFilter {...{ title: 'Developers', count: 127, isActive: false }} />
-                <DashboardListFilter {...{ title: 'Designers', count: 23, isActive: false }} />
+                <div className="buttons">
+                    <DashboardListFilter {...{ title: 'All', count: 150, isActive: true }} />
+                    <DashboardListFilter {...{ title: 'Developers', count: 127, isActive: false }} />
+                    <DashboardListFilter {...{ title: 'Designers', count: 23, isActive: false }} />
+                </div>
                 <div className="field">
                     <p className="control has-icons-left">
                         <input className="input" type="text" placeholder="Search applicants" />
@@ -42,6 +44,7 @@ class DashboardList extends Component<unknown, unknown> {
                         </span>
                     </p>
                 </div>
+
                 <div className="section">{this.renderDashboardListCards(this.testRenderList)}</div>
             </div>
         );
