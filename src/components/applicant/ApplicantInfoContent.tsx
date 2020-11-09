@@ -1,13 +1,17 @@
-import React, { Component } from 'react';
+import React, { FunctionComponent } from 'react';
 
 import './ApplicantInfo.scss';
 
-class ApplicantInfoContent extends Component {
-    render(): React.ReactNode {
+interface IApplicantInfoContentProps {
+    applicantTextDescription: string;
+    applicantTextContent: string;
+}
+
+const ApplicantInfoContent: FunctionComponent<IApplicantInfoContentProps> = (props: IApplicantInfoContentProps) => {
         return (
             <React.Fragment>
                 <div className="container">
-                    <div className="container applicant-header">
+                    <div className="applicant-header">
                         <div className="columns is-variable is-5">
                             <div className="column">
                                 <div className="box applicant-header">
@@ -50,10 +54,10 @@ class ApplicantInfoContent extends Component {
                         </div>
                     </div>
 
-                    <div className="container applicant-content">
+                    <div className="applicant-content">
                         <div className="box">
-                            <p><strong>Why are you interested in joining Launch Pad? (~200 words)</strong></p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel fringilla est ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in ornare quam viverra orci sagittis eu volutpat odio facilisis mauris sit amet massa vitae tortor condimentum lacinia quis vel eros donec ac odio tempor orci dapibus ultrices in iaculis nunc sed augue lacus, viverra vitae congue eu, consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus (THIS IS PRECISELY 200 WORDS)</p>
+                            <p><strong>{props.applicantTextDescription}</strong></p>
+                            <p>{props.applicantTextContent}</p>
                         </div>
 
                         <div className="box">
@@ -74,7 +78,6 @@ class ApplicantInfoContent extends Component {
                 </div>
             </React.Fragment>
         );
-    }
 }
 
 export default ApplicantInfoContent;
