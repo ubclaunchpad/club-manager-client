@@ -1,8 +1,15 @@
-import React from "react";
+import React from 'react';
 import './ApplicantInfo.scss';
 
 class ApplicantInfoHeader extends React.Component<{
-    email: string; year: number; major: string; exposure: string; resume: string; github: string; website: string;}>{
+    email: string;
+    year: number;
+    major: string;
+    exposure: string;
+    resume: string;
+    github: string;
+    website: string;
+}> {
     render(): React.ReactNode {
         return (
             <div className="applicant-header mb-5">
