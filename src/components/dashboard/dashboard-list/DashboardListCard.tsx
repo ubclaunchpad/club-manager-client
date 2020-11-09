@@ -7,7 +7,7 @@ interface IDashboardListCardProps {
     role: string;
 }
 
-const DashboardListFilter: React.FunctionComponent<IDashboardListCardProps> = (props: IDashboardListCardProps) => {
+const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (props: IDashboardListCardProps) => {
     return (
         <div className="container is-fluid dashboard-list-card">
             <div className="level">
@@ -42,4 +42,4 @@ const DashboardListFilter: React.FunctionComponent<IDashboardListCardProps> = (p
     );
 };
 
-export default DashboardListFilter;
+export default DashboardListCard;
