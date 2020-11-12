@@ -1,6 +1,8 @@
 {
-    "name": "boilerplate",
+    "name": "club-manager-client",
     "version": "0.1.0",
+    "description": "React-based client for the Club Manager web application",
+    "homepage": "https://github.com/ubclaunchpad/club-manager-client",
     "private": true,
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.1",
@@ -56,6 +58,7 @@
         "stylelint": "^13.7.2",
         "stylelint-config-prettier": "^8.0.2",
         "stylelint-config-sass-guidelines": "^7.1.0",
+        "stylelint-order": "^4.1.0",
         "stylelint-prettier": "^1.1.2"
     }
 }
