@@ -1,0 +1,15 @@
+{
+    "extends": [
+        "stylelint-config-sass-guidelines",
+        "stylelint-prettier/recommended"
+    ],
+    "rules": {
+        "prettier/prettier": true,
+        "selector-max-id": 1,
+        "selector-no-qualifying-type": [ 
+            true,
+            {"ignore": ["attribute", "class", "id"]}
+        ]
+    },
+    "ignoreFiles": "./dist/**"
+}
