@@ -1,6 +1,6 @@
 .box.applicant-header {
     padding-bottom: 0.6rem;
-  padding-top: 0.6rem;
+    padding-top: 0.6rem;
 }
 
 .box.applicant-header p {
@@ -9,8 +9,9 @@
 
 .container {
     .applicant-content {
-        overflow-y: scroll;
-        height: 400px;
+        overflow-y: auto;
+        height: auto;
+        max-height: 600px;
     }
 }
 

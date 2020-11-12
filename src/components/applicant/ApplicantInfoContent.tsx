@@ -1,47 +1,37 @@
-import React, { FunctionComponent } from 'react';
+import React, { Component } from 'react';
 
 import './ApplicantInfo.scss';
-import ApplicantInfoHeader from './ApplicantInfoHeader';
 import ApplicantViewerContentComponent from './ApplicantViewerContentComponent';
 
 interface IApplicantInfoContentProps {
-    email: string;
-    year: number;
-    major: string;
-    exposure: string;
-    resume: string;
-    github: string;
-    website: string;
-    interest: string;
-    mainPlatform: string;
-    allPlatforms: string;
-    project: string;
-    projectLink: string;
+    headings: string[];
+    descriptions: string[];
 }
 
-const ApplicantInfoContent: FunctionComponent<IApplicantInfoContentProps> = (props: IApplicantInfoContentProps) => {
-    return (
-        <React.Fragment>
-            <div className="container">
-                <ApplicantInfoHeader
-                    email={props.email}
-                    year={props.year}
-                    major={props.major}
-                    exposure={props.exposure}
-                    resume={props.resume}
-                    github={props.github}
-                    website={props.website}
-                />
-                <ApplicantViewerContentComponent
-                    interest={props.interest}
-                    mainPlatform={props.mainPlatform}
-                    allPlatforms={props.allPlatforms}
-                    project={props.project}
-                    projectLink={props.projectLink}
-                />
-            </div>
-        </React.Fragment>
-    );
+class ApplicantInfoContent extends Component<IApplicantInfoContentProps> {
+    private contents: any[];
+
+    constructor(props: IApplicantInfoContentProps) {
+        super(props);
+        this.contents = this.props.headings.map((val, idx) => ({ heading: val, description: this.props.descriptions[idx] }))
+    }
+
+    render() {
+        return (
+            <React.Fragment>
+                <div className="container">
+                    <div className="applicant-content">
+                        {this.contents.map((elem, index) => (
+                            <ApplicantViewerContentComponent
+                                {...elem}
+                                key={index}
+                            />
+                        ))}
+                    </div>
+                </div>
+            </React.Fragment>
+        );
+    }
 };
 
 export default ApplicantInfoContent;
