@@ -5,7 +5,9 @@ interface IApplicantViewerContentComponentProps {
     description: string;
 }
 
-const ApplicantViewerContentComponent: FunctionComponent<IApplicantViewerContentComponentProps> = (props: IApplicantViewerContentComponentProps) => {
+const ApplicantViewerContentComponent: FunctionComponent<IApplicantViewerContentComponentProps> = (
+    props: IApplicantViewerContentComponentProps,
+) => {
     return (
         <div className="box">
             <p>
@@ -14,6 +16,6 @@ const ApplicantViewerContentComponent: FunctionComponent<IApplicantViewerContent
             <p>{props.description}</p>
         </div>
     );
-}
+};
 
 export default ApplicantViewerContentComponent;
