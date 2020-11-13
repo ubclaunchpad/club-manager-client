@@ -3,28 +3,28 @@
 }
 
 .left-section {
-    height: 100vh;
-    display: flex;
     align-items: center;
+    display: flex;
+    height: 100vh;
 }
 
 .right-section {
-    position: relative;
+    color: #fff;
     height: 100vh;
-    color: white;
+    position: relative;
     .sign-in {
-        width: 50%;
         margin: auto;
         position: relative;
         top: 50%;
         transform: translateY(-50%);
+        width: 50%;
         .link {
-            color: white;
+            color: #fff;
         }
 
         .link:hover {
-            text-decoration: underline;
             box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            text-decoration: underline;
         }
     }
 }
