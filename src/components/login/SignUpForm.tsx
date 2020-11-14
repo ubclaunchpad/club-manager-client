@@ -33,7 +33,7 @@ class SignUpForm extends React.Component<ISignUpFormProps> {
                     <h1 className="is-size-6 ">OR</h1>
                 </div>
                 <button className="button google-login-button is-size-6">Register with Google</button>
-                <p className="mt-4 is-size-6 has-text-centered top-right">
+                <p className="mt-4 is-size-6 has-text-centered position-link-registration">
                     Already have an account?{' '}
                     <span className="link has-text-weight-medium" onClick={this.props.onClick}>
                         Sign In
