@@ -16,7 +16,7 @@ class Login extends React.Component {
         }
     };
 
-    renderForm() {
+    renderForm(): React.ReactNode {
         if (this.state.mode === 'Login') {
             return <LoginForm onClick={this.changeMode} />;
         } else {
@@ -24,7 +24,7 @@ class Login extends React.Component {
         }
     }
 
-    render() {
+    render(): React.ReactNode {
         return (
             <div className="view ">
                 <div className="columns is-vcentered is-desktop">
