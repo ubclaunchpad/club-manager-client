@@ -12,19 +12,25 @@
     position: relative;
     height: 100vh;
     color: white;
-    .sign-in {
+    .form {
         width: 50%;
         margin: auto;
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
-        .link {
-            color: white;
-        }
+        display: flex;
+        align-items: center;
+        height: 100vh;
+    }
+    .top-right {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+    }
+    .link {
+        color: white;
+    }
 
-        .link:hover {
-            text-decoration: underline;
-            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        }
+    .link:hover {
+        cursor: pointer;
+        text-decoration: underline;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
 }
