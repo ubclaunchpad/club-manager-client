@@ -23,7 +23,9 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Install dependencies
       run: yarn install    
-    - name: Run the linter
+    - name: Run the TypeScript linter
       run: yarn run lint
+    - name: Run the SASS linter
+      run: yarn run lint-style
     - name: Run the builder
       run: yarn run build

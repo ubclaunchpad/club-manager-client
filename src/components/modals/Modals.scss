@@ -11,13 +11,13 @@
     }
 
     .decision-button {
-        border: none;
-        font-size: 17px;
-        color: #fffffe;
-        padding: 10px 16px;
-        margin: 15px;
+        border: 0;
         border-radius: 8px;
+        color: #fffffe;
         cursor: pointer;
+        font-size: 17px;
+        margin: 15px;
+        padding: 10px 16px;
     }
 
     .decision-button:hover {
