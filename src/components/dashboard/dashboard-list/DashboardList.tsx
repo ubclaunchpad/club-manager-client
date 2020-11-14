@@ -3,29 +3,22 @@ import React, { Component, Fragment, ReactNode } from 'react';
 import DashboardListCard from './DashboardListCard';
 import DashboardListFilter from './DashboardListFilter';
 
+import axios from 'axios';
+
 import './DashboardList.scss';
 
-class DashboardList extends Component<unknown, unknown> {
+type DashboardListState = {
+    applicantList: any[];
+};
+
+class DashboardList extends Component<unknown, DashboardListState> {
     // To test the UI - delete when values are fetched from the server
-    testRenderList: any[] = [
-        { name: 'John Doe', role: 'Developer Applicant' },
-        { name: 'Selene Dion', role: 'Developer Applicant' },
-        { name: 'Happy Holland', role: 'Designer Applicant' },
-        { name: 'Lionel Ronaldo', role: 'Developer Applicant' },
-        { name: 'Tom Downey', role: 'Designer Applicant Applicant' },
-        { name: 'Donald Biden', role: 'Developer Applicant' },
-        { name: 'Fizz Buzz', role: 'Developer Applicant' },
-        { name: 'Dude Dude Bar', role: 'Designer Applicant' },
-        { name: 'Yeet Feet', role: 'Developer Applicant' },
-        { name: 'Paul Doll', role: 'Designer Applicant' },
-        { name: 'Shiloh Dynasty', role: 'Developer Applicant' },
-        { name: 'Mozart Beethoven', role: 'Designer Applicant' },
-        { name: 'Harin Wu', role: 'Developer Applicant' },
-        { name: 'Loot Toot', role: 'Designer Applicant' },
-        { name: 'Cringe Fest', role: 'Developer Applicant' },
-        { name: 'Lo Fi', role: 'Designer Applicant' },
-        { name: 'Hip Hop', role: 'Developer Applicant' },
-    ];
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            applicantList: [],
+        };
+    }
 
     render(): ReactNode {
         return (
@@ -50,8 +43,13 @@ class DashboardList extends Component<unknown, unknown> {
                         </span>
                     </p>
                 </div>
-
-                <div className="section">{this.renderDashboardListCards(this.testRenderList)}</div>
+                <div className="section">
+                    <Fragment>
+                        {this.state.applicantList.map((element, index) => (
+                            <DashboardListCard {...element} key={index} />
+                        ))}
+                    </Fragment>
+                </div>
             </div>
         );
     }
@@ -64,6 +62,31 @@ class DashboardList extends Component<unknown, unknown> {
                 ))}
             </Fragment>
         );
+    }
+
+    getApplicants() {
+        const applicants: any[] = [];
+        axios
+            .get('http://localhost:4000/applicant', { timeout: 2000 })
+            .then((result: any) => {
+                result.data.forEach((applicant: any) => {
+                    applicants.push({
+                        name: `${applicant.firstName} ${applicant.lastName}`,
+                        role: applicant.role,
+                    });
+                });
+                this.setState({
+                    applicantList: applicants,
+                });
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
+    componentDidMount() {
+        this.getApplicants();
+        setInterval(() => this.getApplicants(), 60000);
     }
 }
 
