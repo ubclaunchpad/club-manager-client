@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import DashboardListCard from '../components/dashboard/dashboard-list/DashboardListCard';
 import ApplicantInfoContent from '../components/applicant/ApplicantInfoContent';
 import SideBar from '../components/sidebar/SideBar';
@@ -40,6 +41,16 @@ const ApplicantInfo: React.FunctionComponent = () => {
                     </div>
                     <div className="column">
                         <div className="container">
+                            <div className="applicant-navbar">
+                                <div className="columns">
+                                    <div className="column is-3">
+                                        <button>
+                                            <i className="fas fa-arrow-left"></i>
+                                            <Link to="/dashboard">Applicant Information</Link>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                             <DashboardListCard name={applicantList[count].name} role={applicantList[count].role} />
                             <ApplicantInfoHeader
                                 email={'johndoe@gmail.com'}
