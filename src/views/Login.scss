@@ -12,19 +12,25 @@
     color: #fff;
     height: 100vh;
     position: relative;
-    .sign-in {
+    .form {
+        align-items: center;
+        display: flex;
+        height: 100vh;
         margin: auto;
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
         width: 50%;
-        .link {
-            color: #fff;
-        }
+    }
+    .position-link-registration {
+        position: fixed;
+        right: 10px;
+        top: 10px;
+    }
+    .link {
+        color: #fff;
+    }
 
-        .link:hover {
-            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            text-decoration: underline;
-        }
+    .link:hover {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        cursor: pointer;
+        text-decoration: underline;
     }
 }
