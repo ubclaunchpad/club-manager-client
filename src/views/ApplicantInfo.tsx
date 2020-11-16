@@ -45,8 +45,10 @@ const ApplicantInfo: React.FunctionComponent = () => {
                                 <div className="columns">
                                     <div className="column is-3">
                                         <button>
-                                            <i className="fas fa-arrow-left"></i>
-                                            <Link to="/dashboard">Applicant Information</Link>
+                                            <Link to="/dashboard">
+                                                <i className="fas fa-arrow-left"></i>
+                                                Applicant Information
+                                            </Link>
                                         </button>
                                     </div>
                                 </div>
