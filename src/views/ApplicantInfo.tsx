@@ -42,16 +42,12 @@ const ApplicantInfo: React.FunctionComponent = () => {
                     <div className="column">
                         <div className="container">
                             <div className="applicant-navbar">
-                                <div className="columns">
-                                    <div className="column is-3">
-                                        <button>
-                                            <Link to="/dashboard">
-                                                <i className="fas fa-arrow-left"></i>
-                                                Applicant Information
-                                            </Link>
-                                        </button>
-                                    </div>
-                                </div>
+                                <button>
+                                    <Link to="/dashboard">
+                                        <i className="fas fa-arrow-left"></i>
+                                    </Link>
+                                    <b>Applicant Information</b>
+                                </button>
                             </div>
                             <DashboardListCard name={applicantList[count].name} role={applicantList[count].role} />
                             <ApplicantInfoHeader
