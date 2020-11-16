@@ -1,21 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../App.scss';
+import './Home.scss';
+import HomeBanner from '../components/home/HomeBanner';
 
 const Home: React.FunctionComponent = () => {
     return (
-        <div className="view">
-            <ul>
-                <li>
-                    <Link to="/login">Login</Link>
-                </li>
-                <li>
-                    <Link to="/dashboard">Dashboard</Link>
-                </li>
-                <li>
-                    <Link to="/applicantinfo">ApplicantInfo</Link>
-                </li>
-            </ul>
+        <div className="view home-view">
+            <HomeBanner />
+            <div className="container">
+                <Link to="/dashboard">Dashboard</Link>
+                <br />
+                <Link to="/applicantinfo">ApplicantInfo</Link>
+            </div>
         </div>
     );
 };
