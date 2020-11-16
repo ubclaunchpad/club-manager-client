@@ -1,23 +1,22 @@
 import React from 'react';
 import './Login.scss';
-import LoginBackgroudImg from '../images/LoginBackgroudImg.png';
 import LaunchPadBanner from '../components/login/LaunchPadBanner';
 import LoginForm from '../components/login/LoginForm';
 import SignUpForm from '../components/login/SignUpForm';
 
 class Login extends React.Component {
-    state = { mode: 'Login' };
+    state = { isLogin: true };
 
     changeMode = (): void => {
-        if (this.state.mode === 'Login') {
-            this.setState({ mode: 'Register' });
-        } else {
-            this.setState({ mode: 'Login' });
-        }
+        const currState = this.state.isLogin;
+
+        this.setState({
+            isLogin: !currState,
+        });
     };
 
     renderForm(): React.ReactNode {
-        if (this.state.mode === 'Login') {
+        if (this.state.isLogin) {
             return <LoginForm onClick={this.changeMode} />;
         } else {
             return <SignUpForm onClick={this.changeMode} />;
@@ -26,14 +25,12 @@ class Login extends React.Component {
 
     render(): React.ReactNode {
         return (
-            <div className="view ">
-                <div className="columns is-vcentered is-desktop">
-                    <div className="column is-5 left-section  is-hidden-touch" style={{ background: 'white' }}>
-                        <img src={LoginBackgroudImg} alt="Background" />
-                    </div>
-                    <div className="column right-section ">
+            <div className="view login-view">
+                <div className="columns is-desktop">
+                    <div className="column is-5 left-section is-hidden-touch login-image"></div>
+                    <div className="column is-7 right-section flex">
                         <LaunchPadBanner />
-                        <div className="form">{this.renderForm()}</div>
+                        {this.renderForm()}
                     </div>
                 </div>
             </div>

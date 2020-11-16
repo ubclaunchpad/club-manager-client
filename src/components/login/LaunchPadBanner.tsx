@@ -13,8 +13,10 @@ class LaunchPadBanner extends React.Component {
                         </figure>
                     </div>
                     <div className="media-content">
-                        <p className="is-size-6">UBC Launch Pad</p>
-                        <p className="is-size-6 has-text-weight-light">Student Club</p>
+                        <p>
+                            <b>UBC Launch Pad</b>
+                        </p>
+                        <p>Student Club</p>
                     </div>
                 </div>
             </div>

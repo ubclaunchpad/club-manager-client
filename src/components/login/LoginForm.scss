@@ -1,36 +1,48 @@
-input {
-    width: 100%;
-}
+.login-container {
+    font-family: 'Montserrat', sans-serif;
+    margin: 30%;
 
-.label {
-    color: white;
-}
+    h1 {
+        font-size: 2.5em;
+        font-weight: 800;
+    }
 
-.button {
-    width: 100%;
-    color: white;
-}
+    input {
+        width: 100%;
+    }
 
-.button:hover {
-    cursor: pointer;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
+    label {
+        color: #fff;
+    }
 
-.login-button {
-    background: #ecb8b8;
-}
+    .button {
+        color: #fff;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 800;
+        width: 100%;
+    }
 
-.google-login-button {
-    background: #a6b7ca;
+    .button:hover {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        cursor: pointer;
+    }
+
+    .login-button {
+        background: #ecb8b8;
+    }
+
+    .login-button-google {
+        background: #a6b7ca;
+    }
 }
 
 .or-line {
     overflow: hidden;
     text-align: center;
 
-    h1:before,
-    h1:after {
-        background-color: #ffffff;
+    h1::before,
+    h1::after {
+        background-color: #fff;
         content: '';
         display: inline-block;
         height: 1px;
@@ -39,12 +51,12 @@ input {
         width: 50%;
     }
 
-    h1:before {
-        right: 0.5em;
+    h1::before {
         margin-left: -50%;
+        right: 0.5em;
     }
 
-    h1:after {
+    h1::after {
         left: 0.5em;
         margin-right: -50%;
     }
