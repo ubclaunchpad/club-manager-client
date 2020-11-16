@@ -1,4 +1,4 @@
-import React, { Component, Fragment, ReactNode } from 'react';
+import React, { Component, ReactNode } from 'react';
 import './LoginForm.scss';
 
 interface ILoginFormProps {
