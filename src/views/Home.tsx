@@ -12,9 +12,6 @@ const Home: React.FunctionComponent = () => {
                 <li>
                     <Link to="/dashboard">Dashboard</Link>
                 </li>
-                <li>
-                    <Link to="/applicantinfo">ApplicantInfo</Link>
-                </li>
             </ul>
         </div>
     );

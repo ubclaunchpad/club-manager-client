@@ -1,44 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import DashboardListCard from '../components/dashboard/dashboard-list/DashboardListCard';
-import ApplicantInfoContent from '../components/applicant/ApplicantInfoContent';
-import SideBar from '../components/sidebar/SideBar';
-import ApplicantInfoHeader from '../components/applicant/ApplicantInfoHeader';
+import DashboardListCard from '../dashboard/dashboard-list/DashboardListCard';
+import ApplicantInfoContent from './ApplicantInfoContent';
+import ApplicantInfoHeader from './ApplicantInfoHeader';
 
 interface IApplicantInfoProps {
     name: string;
     role: string;
 }
 
-const ApplicantInfo: React.FunctionComponent = () => {
-    // sample applicantInfo list to test the prev/next applicant feature
-    const applicantList: IApplicantInfoProps[] = [
-        { name: 'John Doe', role: 'Developer Applicant' },
-        { name: 'Selene Dion', role: 'Developer Applicant' },
-        { name: 'Happy Holland', role: 'Designer Applicant' },
-        { name: 'Lionel Ronaldo', role: 'Developer Applicant' },
-        { name: 'Tom Downey', role: 'Designer Applicant' },
-        { name: 'Donald Biden', role: 'Developer Applicant' },
-        { name: 'Fizz Buzz', role: 'Developer Applicant' },
-        { name: 'Dude Dude Bar', role: 'Designer Applicant' },
-        { name: 'Yeet Feet', role: 'Developer Applicant' },
-        { name: 'Paul Doll', role: 'Designer Applicant' },
-        { name: 'Shiloh Dynasty', role: 'Developer Applicant' },
-        { name: 'Mozart Beethoven', role: 'Designer Applicant' },
-        { name: 'Harin Wu', role: 'Developer Applicant' },
-        { name: 'Loot Toot', role: 'Designer Applicant' },
-        { name: 'Cringe Fest', role: 'Developer Applicant' },
-        { name: 'Lo Fi', role: 'Designer Applicant' },
-        { name: 'Hip Hop', role: 'Developer Applicant' },
-    ];
-    const [count, setCount] = React.useState(0);
-    return (
-        <div className="section view">
+class ApplicantInfo extends React.Component<{
+    applicantList: IApplicantInfoProps[];
+    applicant: { name: string; role: string };
+    count: number;
+    setCount: any;
+}> {
+    render(): React.ReactNode {
+        return (
             <React.Fragment>
                 <div className="columns">
-                    <div className="column is-2">
-                        <SideBar />
-                    </div>
                     <div className="column">
                         <div className="container">
                             <div className="applicant-navbar">
@@ -49,7 +29,11 @@ const ApplicantInfo: React.FunctionComponent = () => {
                                     <b>Applicant Information</b>
                                 </button>
                             </div>
-                            <DashboardListCard name={applicantList[count].name} role={applicantList[count].role} />
+                            <DashboardListCard
+                                name={this.props.applicant.name}
+                                role={this.props.applicant.role}
+                                count={this.props.count}
+                            />
                             <ApplicantInfoHeader
                                 email={'johndoe@gmail.com'}
                                 year={2}
@@ -79,15 +63,15 @@ const ApplicantInfo: React.FunctionComponent = () => {
                             <div className="applicant-navbar">
                                 <div className="columns">
                                     <div className="column is-3">
-                                        {count > 0 && (
-                                            <button onClick={() => setCount(count - 1)}>
+                                        {this.props.count > 0 && (
+                                            <button onClick={() => this.props.setCount(this.props.count - 1)}>
                                                 <i className="fas fa-arrow-left"></i>Previous Applicant
                                             </button>
                                         )}
                                     </div>
                                     <div className="column is-3 is-offset-8">
-                                        {count < applicantList.length - 1 && (
-                                            <button onClick={() => setCount(count + 1)}>
+                                        {this.props.count < this.props.applicantList.length - 1 && (
+                                            <button onClick={() => this.props.setCount(this.props.count + 1)}>
                                                 Next Applicant<i className="fas fa-arrow-right"></i>
                                             </button>
                                         )}
@@ -98,8 +82,8 @@ const ApplicantInfo: React.FunctionComponent = () => {
                     </div>
                 </div>
             </React.Fragment>
-        </div>
-    );
-};
+        );
+    }
+}
 
 export default ApplicantInfo;

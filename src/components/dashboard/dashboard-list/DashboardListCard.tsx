@@ -5,6 +5,7 @@ import './DashboardListCard.scss';
 interface IDashboardListCardProps {
     name: string;
     role: string;
+    count: number;
 }
 
 const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (props: IDashboardListCardProps) => {
@@ -19,6 +20,7 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
                     </div>
                     <div className="level-item">
                         <div className="container">
+                            <p className="dashboard-list-card-name">{props.count}</p>
                             <p className="dashboard-list-card-name">{props.name}</p>
                             <p className="dashboard-list-card-role">{props.role}</p>
                         </div>
