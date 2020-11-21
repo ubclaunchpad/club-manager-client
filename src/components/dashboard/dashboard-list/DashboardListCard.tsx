@@ -5,6 +5,7 @@ import './DashboardListCard.scss';
 interface IDashboardListCardProps {
     name: string;
     role: string;
+    toggleShowModal: () => void;
 }
 
 const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (props: IDashboardListCardProps) => {
@@ -26,13 +27,13 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
                 </div>
                 <div className="level-right">
                     <div className="level-item">
-                        <button className="button button-schedule">
+                        <button className="button button-schedule" onClick={props.toggleShowModal}>
                             <i className="far fa-calendar-alt"></i>
                         </button>
-                        <button className="button button-accept">
+                        <button className="button button-accept" onClick={props.toggleShowModal}>
                             <i className="fas fa-check"></i>
                         </button>
-                        <button className="button button-reject">
+                        <button className="button button-reject" onClick={props.toggleShowModal}>
                             <i className="fas fa-times"></i>
                         </button>
                     </div>

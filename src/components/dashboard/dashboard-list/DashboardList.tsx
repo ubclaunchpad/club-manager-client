@@ -2,13 +2,16 @@ import React, { Component, Fragment, ReactNode } from 'react';
 
 import DashboardListCard from './DashboardListCard';
 import DashboardListFilter from './DashboardListFilter';
+import ApplicantManagementModal from '../../modals/ApplicantManagementModal';
 
 import axios from 'axios';
 
 import './DashboardList.scss';
 
+// this is ur struct
 type DashboardListState = {
     applicantList: any[];
+    showModal: boolean;
 };
 
 class DashboardList extends Component<unknown, DashboardListState> {
@@ -17,8 +20,13 @@ class DashboardList extends Component<unknown, DashboardListState> {
         super(props);
         this.state = {
             applicantList: [],
+            showModal: false,
         };
     }
+
+    toggleShowModal = (): void => {
+        this.setState({ showModal: !this.state.showModal });
+    };
 
     render(): ReactNode {
         return (
@@ -35,6 +43,18 @@ class DashboardList extends Component<unknown, DashboardListState> {
                         <DashboardListFilter {...{ title: 'Designers', count: 23, isActive: false }} />
                     </span>
                 </div>
+                <div>
+                    <ApplicantManagementModal
+                        type="Reject"
+                        name="Lorem ipsum"
+                        position="Designer"
+                        closeModal={this.toggleShowModal}
+                        isActive={this.state.showModal}
+                    />
+                    <button className="button " onClick={this.toggleShowModal}>
+                        Open Modal
+                    </button>
+                </div>
                 <div className="field">
                     <p className="control has-icons-left">
                         <input className="input" type="text" placeholder="Search applicants" />
@@ -46,7 +66,7 @@ class DashboardList extends Component<unknown, DashboardListState> {
                 <div className="section">
                     <Fragment>
                         {this.state.applicantList.map((element, index) => (
-                            <DashboardListCard {...element} key={index} />
+                            <DashboardListCard {...element} key={index} toggleShowModal={this.toggleShowModal} />
                         ))}
                     </Fragment>
                 </div>

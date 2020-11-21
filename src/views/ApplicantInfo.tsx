@@ -40,7 +40,11 @@ const ApplicantInfo: React.FunctionComponent = () => {
                     </div>
                     <div className="column">
                         <div className="container">
-                            <DashboardListCard name={applicantList[count].name} role={applicantList[count].role} />
+                            <DashboardListCard
+                                name={applicantList[count].name}
+                                role={applicantList[count].role}
+                                toggleShowModal={() => console.log('hi')}
+                            />
                             <ApplicantInfoHeader
                                 email={'johndoe@gmail.com'}
                                 year={2}
