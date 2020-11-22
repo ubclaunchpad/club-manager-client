@@ -8,7 +8,6 @@ import axios from 'axios';
 
 import './DashboardList.scss';
 
-// this is ur struct
 type DashboardListState = {
     applicantList: any[];
     showModal: boolean;
@@ -43,6 +42,14 @@ class DashboardList extends Component<unknown, DashboardListState> {
                         <DashboardListFilter {...{ title: 'Designers', count: 23, isActive: false }} />
                     </span>
                 </div>
+                <div className="field">
+                    <p className="control has-icons-left">
+                        <input className="input" type="text" placeholder="Search applicants" />
+                        <span className="icon is-small is-left">
+                            <i className="fas fa-search"></i>
+                        </span>
+                    </p>
+                </div>
                 <div>
                     <ApplicantManagementModal
                         type="Reject"
@@ -51,17 +58,6 @@ class DashboardList extends Component<unknown, DashboardListState> {
                         closeModal={this.toggleShowModal}
                         isActive={this.state.showModal}
                     />
-                    <button className="button " onClick={this.toggleShowModal}>
-                        Open Modal
-                    </button>
-                </div>
-                <div className="field">
-                    <p className="control has-icons-left">
-                        <input className="input" type="text" placeholder="Search applicants" />
-                        <span className="icon is-small is-left">
-                            <i className="fas fa-search"></i>
-                        </span>
-                    </p>
                 </div>
                 <div className="section">
                     <Fragment>
@@ -102,6 +98,14 @@ class DashboardList extends Component<unknown, DashboardListState> {
             .catch((err) => {
                 console.log(err);
             });
+    }
+
+    getApplicantName() {
+        console.log('hi');
+    }
+
+    getApplicantPosition() {
+        console.log('ur position');
     }
 
     componentDidMount() {
