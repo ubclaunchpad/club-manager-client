@@ -11,11 +11,11 @@ interface IApplicantManagementModalProps {
 }
 
 class ApplicantManagementModal extends React.Component<IApplicantManagementModalProps> {
-    private description: string;
-    private title: string;
+    private description = '';
+    private title = '';
 
-    constructor(props: IApplicantManagementModalProps) {
-        super(props);
+    setType() {
+        console.log('heehagaregrw' + this.props.type);
         switch (this.props.type) {
             case 'Schedule':
                 this.description = 'This will send a Calendly email to the applicant:';
@@ -25,7 +25,7 @@ class ApplicantManagementModal extends React.Component<IApplicantManagementModal
                 this.title = 'Reject Applicant:';
                 this.description = 'This will send a rejection email to the applicant:';
                 break;
-            default:
+            case 'Accept':
                 this.description = 'This will send an offer to the applicant:';
                 this.title = 'Accept Applicant';
                 break;
@@ -36,6 +36,7 @@ class ApplicantManagementModal extends React.Component<IApplicantManagementModal
         return (
             <div>
                 <div className={`modal ${this.props.isActive ? 'is-active' : ''}`}>
+                    {this.setType()}
                     <div className="modal-background"></div>
                     <div className="modal-card">
                         <section className="modal-card-body py-5">

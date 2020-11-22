@@ -11,6 +11,9 @@ import './DashboardList.scss';
 type DashboardListState = {
     applicantList: any[];
     showModal: boolean;
+    name: string;
+    position: string;
+    type: string;
 };
 
 class DashboardList extends Component<unknown, DashboardListState> {
@@ -20,11 +23,21 @@ class DashboardList extends Component<unknown, DashboardListState> {
         this.state = {
             applicantList: [],
             showModal: false,
+            name: '',
+            position: '',
+            type: '',
         };
     }
 
-    toggleShowModal = (): void => {
-        this.setState({ showModal: !this.state.showModal });
+    showModal = (name: string, pos: string, type: string): void => {
+        console.log(name);
+        console.log(pos);
+        console.log(type);
+        this.setState({ showModal: true, name: name, position: pos, type: type });
+    };
+
+    closeModal = () => {
+        this.setState({ showModal: false });
     };
 
     render(): ReactNode {
@@ -50,21 +63,27 @@ class DashboardList extends Component<unknown, DashboardListState> {
                         </span>
                     </p>
                 </div>
-                <div>
-                    <ApplicantManagementModal
-                        type="Reject"
-                        name="Lorem ipsum"
-                        position="Designer"
-                        closeModal={this.toggleShowModal}
-                        isActive={this.state.showModal}
-                    />
-                </div>
                 <div className="section">
                     <Fragment>
                         {this.state.applicantList.map((element, index) => (
-                            <DashboardListCard {...element} key={index} toggleShowModal={this.toggleShowModal} />
+                            <DashboardListCard
+                                {...element}
+                                key={index}
+                                showModal={(type: string) => {
+                                    this.showModal(element.name, element.role, type);
+                                }}
+                            />
                         ))}
                     </Fragment>
+                </div>
+                <div>
+                    <ApplicantManagementModal
+                        type={this.state.type}
+                        name={this.state.name}
+                        position={this.state.position}
+                        closeModal={() => this.closeModal()}
+                        isActive={this.state.showModal}
+                    />
                 </div>
             </div>
         );
@@ -98,14 +117,6 @@ class DashboardList extends Component<unknown, DashboardListState> {
             .catch((err) => {
                 console.log(err);
             });
-    }
-
-    getApplicantName() {
-        console.log('hi');
-    }
-
-    getApplicantPosition() {
-        console.log('ur position');
     }
 
     componentDidMount() {
