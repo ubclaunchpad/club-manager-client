@@ -14,8 +14,7 @@ class ApplicantManagementModal extends React.Component<IApplicantManagementModal
     private description = '';
     private title = '';
 
-    setType() {
-        console.log('heehagaregrw' + this.props.type);
+    setModal = (): void => {
         switch (this.props.type) {
             case 'Schedule':
                 this.description = 'This will send a Calendly email to the applicant:';
@@ -30,13 +29,13 @@ class ApplicantManagementModal extends React.Component<IApplicantManagementModal
                 this.title = 'Accept Applicant';
                 break;
         }
-    }
+    };
 
     render(): React.ReactNode {
         return (
             <div>
                 <div className={`modal ${this.props.isActive ? 'is-active' : ''}`}>
-                    {this.setType()}
+                    {this.setModal()}
                     <div className="modal-background"></div>
                     <div className="modal-card">
                         <section className="modal-card-body py-5">

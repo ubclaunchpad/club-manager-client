@@ -5,7 +5,7 @@ import './DashboardListCard.scss';
 interface IDashboardListCardProps {
     name: string;
     role: string;
-    showModal: (type: string) => void;
+    setModalAndType: (type: string) => void;
 }
 
 const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (props: IDashboardListCardProps) => {
@@ -27,13 +27,13 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
                 </div>
                 <div className="level-right">
                     <div className="level-item">
-                        <button className="button button-schedule" onClick={() => props.showModal('Schedule')}>
+                        <button className="button button-schedule" onClick={() => props.setModalAndType('Schedule')}>
                             <i className="far fa-calendar-alt"></i>
                         </button>
-                        <button className="button button-accept" onClick={() => props.showModal('Accept')}>
+                        <button className="button button-accept" onClick={() => props.setModalAndType('Accept')}>
                             <i className="fas fa-check"></i>
                         </button>
-                        <button className="button button-reject" onClick={() => props.showModal('Reject')}>
+                        <button className="button button-reject" onClick={() => props.setModalAndType('Reject')}>
                             <i className="fas fa-times"></i>
                         </button>
                     </div>
