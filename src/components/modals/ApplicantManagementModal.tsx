@@ -6,7 +6,7 @@ interface IApplicantManagementModalProps {
     isActive: boolean;
     closeModal: () => void;
     name: string;
-    position: string;
+    role: string;
     type: string;
 }
 
@@ -48,7 +48,7 @@ class ApplicantManagementModal extends React.Component<IApplicantManagementModal
                                 <h1 className="is-size-3 has-text-weight-bold">{this.title}</h1>
                                 <p className="is-size-5 mt-4">{this.description}</p>
                             </header>
-                            <ModalApplicantCard name={this.props.name} position={this.props.position} />
+                            <ModalApplicantCard name={this.props.name} role={this.props.role} />
                             <section className="pb-1">
                                 <p className="is-size-5">This action cannot be undone. Are you sure?</p>
 

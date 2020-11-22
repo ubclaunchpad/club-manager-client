@@ -12,7 +12,7 @@ type DashboardListState = {
     applicantList: any[];
     showModal: boolean;
     name: string;
-    position: string;
+    role: string;
     type: string;
 };
 
@@ -24,13 +24,13 @@ class DashboardList extends Component<unknown, DashboardListState> {
             applicantList: [],
             showModal: false,
             name: '',
-            position: '',
+            role: '',
             type: '',
         };
     }
 
-    showModal = (name: string, pos: string, type: string): void => {
-        this.setState({ showModal: true, name: name, position: pos, type: type });
+    showModal = (name: string, role: string, type: string): void => {
+        this.setState({ showModal: true, name: name, role: role, type: type });
     };
 
     closeModal = () => {
@@ -77,7 +77,7 @@ class DashboardList extends Component<unknown, DashboardListState> {
                     <ApplicantManagementModal
                         type={this.state.type}
                         name={this.state.name}
-                        position={this.state.position}
+                        role={this.state.role}
                         closeModal={() => this.closeModal()}
                         isActive={this.state.showModal}
                     />

@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface IModalApplicantCardProps {
     name: string;
-    position: string;
+    role: string;
 }
 
 class ModalApplicantCard extends React.Component<IModalApplicantCardProps> {
@@ -13,7 +13,7 @@ class ModalApplicantCard extends React.Component<IModalApplicantCardProps> {
 
     constructor(props: IModalApplicantCardProps) {
         super(props);
-        this.icon = this.props.position === 'Designer' ? faPaintBrush : faCode;
+        this.icon = this.props.role === 'Designer' ? faPaintBrush : faCode;
     }
 
     render(): React.ReactNode {
@@ -25,7 +25,7 @@ class ModalApplicantCard extends React.Component<IModalApplicantCardProps> {
                     </div>
                     <div className="column">
                         <p className="is-size-5 has-text-weight-medium">{this.props.name}</p>
-                        <p className="is-size-6 has-text-weight-light">{this.props.position}</p>
+                        <p className="is-size-6 has-text-weight-light">{this.props.role}</p>
                     </div>
                 </div>
             </div>
