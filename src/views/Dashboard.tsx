@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import DashboardHeader from '../components/DashboardHeader';
 import SideBar from '../components/sidebar/SideBar';
 import DashboardList from '../components/dashboard/dashboard-list/DashboardList';
@@ -6,34 +6,45 @@ import DashboardList from '../components/dashboard/dashboard-list/DashboardList'
 import './Dashboard.scss';
 import ApplicantInfo from '../components/applicant/ApplicantInfo';
 
-class Dashboard extends React.Component {
-    state = {
-        mode: 'Dashboard',
-        count: 0,
-        applicantList: [
-            { name: 'John Doe', role: 'Developer Applicant' },
-            { name: 'Selene Dion', role: 'Developer Applicant' },
-            { name: 'Happy Holland', role: 'Designer Applicant' },
-            { name: 'Lionel Ronaldo', role: 'Developer Applicant' },
-            { name: 'Tom Downey', role: 'Designer Applicant' },
-            { name: 'Donald Biden', role: 'Developer Applicant' },
-            { name: 'Fizz Buzz', role: 'Developer Applicant' },
-            { name: 'Dude Dude Bar', role: 'Designer Applicant' },
-            { name: 'Yeet Feet', role: 'Developer Applicant' },
-            { name: 'Paul Doll', role: 'Designer Applicant' },
-            { name: 'Shiloh Dynasty', role: 'Developer Applicant' },
-            { name: 'Mozart Beethoven', role: 'Designer Applicant' },
-            { name: 'Harin Wu', role: 'Developer Applicant' },
-            { name: 'Loot Toot', role: 'Designer Applicant' },
-            { name: 'Cringe Fest', role: 'Developer Applicant' },
-            { name: 'Lo Fi', role: 'Designer Applicant' },
-            { name: 'Hip Hop', role: 'Developer Applicant' },
-        ],
-    };
+type DashboardState = {
+    mode: string;
+    count: number;
+    applicantList: any[];
+};
+
+class Dashboard extends Component<unknown, DashboardState> {
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            mode: 'ApplicantInfo',
+            count: 0,
+            applicantList: [
+                { name: 'John Doe', role: 'Developer Applicant' },
+                { name: 'Selene Dion', role: 'Developer Applicant' },
+                { name: 'Happy Holland', role: 'Designer Applicant' },
+                { name: 'Lionel Ronaldo', role: 'Developer Applicant' },
+                { name: 'Tom Downey', role: 'Designer Applicant' },
+                { name: 'Donald Biden', role: 'Developer Applicant' },
+                { name: 'Fizz Buzz', role: 'Developer Applicant' },
+                { name: 'Dude Dude Bar', role: 'Designer Applicant' },
+                { name: 'Yeet Feet', role: 'Developer Applicant' },
+                { name: 'Paul Doll', role: 'Designer Applicant' },
+                { name: 'Shiloh Dynasty', role: 'Developer Applicant' },
+                { name: 'Mozart Beethoven', role: 'Designer Applicant' },
+                { name: 'Harin Wu', role: 'Developer Applicant' },
+                { name: 'Loot Toot', role: 'Designer Applicant' },
+                { name: 'Cringe Fest', role: 'Developer Applicant' },
+                { name: 'Lo Fi', role: 'Designer Applicant' },
+                { name: 'Hip Hop', role: 'Developer Applicant' },
+            ],
+        };
+
+        this.setCount = this.setCount.bind(this);
+    }
 
     setCount = (newCount: number): void => {
         this.setState(() => ({
-            count: [newCount],
+            count: newCount,
         }));
     };
 
