@@ -33,7 +33,7 @@ class DashboardList extends Component<unknown, DashboardListState> {
         this.setState({ showModal: true, name: name, role: role, type: type });
     };
 
-    closeModal = () => {
+    closeModal = (): void => {
         this.setState({ showModal: false });
     };
 
@@ -67,6 +67,7 @@ class DashboardList extends Component<unknown, DashboardListState> {
                                 {...element}
                                 key={index}
                                 setModalAndType={(type: string) => {
+                                    console.log(element.role);
                                     this.showModal(element.name, element.role, type);
                                 }}
                             />

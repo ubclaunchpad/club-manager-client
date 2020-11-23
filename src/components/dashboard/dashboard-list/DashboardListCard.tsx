@@ -1,6 +1,8 @@
 import React from 'react';
 
 import './DashboardListCard.scss';
+import { faCode, faPaintBrush } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface IDashboardListCardProps {
     name: string;
@@ -15,7 +17,10 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
                 <div className="level-left">
                     <div className="level-item">
                         <span className="icon">
-                            <i className="fas fa-code"></i>
+                            <FontAwesomeIcon
+                                icon={props.role === 'Designer' ? faPaintBrush : faCode}
+                                color={'#444444'}
+                            />
                         </span>
                     </div>
                     <div className="level-item">
