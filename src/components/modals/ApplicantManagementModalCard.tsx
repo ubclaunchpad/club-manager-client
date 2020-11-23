@@ -1,6 +1,6 @@
 import React from 'react';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-import { faCode, faPaintBrush } from '@fortawesome/free-solid-svg-icons';
+import { faCode, faPaintBrush, faUserTie } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface IModalApplicantCardProps {
@@ -10,7 +10,7 @@ interface IModalApplicantCardProps {
 
 class ModalApplicantCard extends React.Component<IModalApplicantCardProps> {
     setIcon = (): IconDefinition => {
-        let icon = faPaintBrush;
+        let icon = faUserTie;
 
         switch (this.props.role) {
             case 'Designer':
@@ -19,6 +19,8 @@ class ModalApplicantCard extends React.Component<IModalApplicantCardProps> {
             case 'Developer':
                 icon = faCode;
                 break;
+            default:
+                icon = faUserTie;
         }
 
         return icon;
