@@ -16,7 +16,7 @@ class Dashboard extends Component<unknown, DashboardState> {
     constructor(props: any) {
         super(props);
         this.state = {
-            mode: 'ApplicantInfo',
+            mode: 'Dashboard',
             count: 0,
             applicantList: [
                 { name: 'John Doe', role: 'Developer Applicant' },
