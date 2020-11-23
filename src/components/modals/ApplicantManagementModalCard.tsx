@@ -19,8 +19,6 @@ class ModalApplicantCard extends React.Component<IModalApplicantCardProps> {
             case 'Developer':
                 icon = faCode;
                 break;
-            default:
-                icon = faUserTie;
         }
 
         return icon;
