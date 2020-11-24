@@ -12,9 +12,9 @@ class ApplicantInfo extends React.Component<{
     applicantList: IApplicantInfoProps[];
     applicant: { name: string; role: string };
     count: number;
-    setCount: any;
-    viewDashboard: any;
-    viewApplicant: any;
+    setCount: (newCount: number) => void;
+    viewDashboard: () => void;
+    viewApplicant: (newCount: number) => void;
 }> {
     render(): React.ReactNode {
         return (
@@ -23,7 +23,7 @@ class ApplicantInfo extends React.Component<{
                     <div className="column">
                         <div className="container">
                             <div className="applicant-navbar">
-                                <button onClick={() => this.props.viewDashboard(this.props.count)}>
+                                <button onClick={() => this.props.viewDashboard()}>
                                     <i className="fas fa-arrow-left"></i>
                                 </button>
                                 <h1>Applicant Information</h1>

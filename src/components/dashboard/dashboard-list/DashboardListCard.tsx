@@ -21,9 +21,9 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
                     </div>
                     <div className="level-item">
                         <div className="container">
-                            <a onClick={() => props.viewApplicant(props.count)}>
-                                <p className="dashboard-list-card-name">{props.name}</p>
-                            </a>
+                            <p className="dashboard-list-card-name" onClick={() => props.viewApplicant(props.count)}>
+                                {props.name}
+                            </p>
                             <p className="dashboard-list-card-role">{props.role}</p>
                         </div>
                     </div>

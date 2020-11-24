@@ -6,14 +6,19 @@ import DashboardList from '../components/dashboard/dashboard-list/DashboardList'
 import './Dashboard.scss';
 import ApplicantInfo from '../components/applicant/ApplicantInfo';
 
+interface IApplicantInfoProps {
+    name: string;
+    role: string;
+}
+
 type DashboardState = {
     mode: string;
     count: number;
-    applicantList: any[];
+    applicantList: IApplicantInfoProps[];
 };
 
 class Dashboard extends Component<unknown, DashboardState> {
-    constructor(props: any) {
+    constructor(props: DashboardState) {
         super(props);
         this.state = {
             mode: 'Dashboard',
