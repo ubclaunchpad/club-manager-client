@@ -6,6 +6,7 @@ interface IDashboardListCardProps {
     name: string;
     role: string;
     count: number;
+    viewApplicant: (newCount: number) => void;
 }
 
 const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (props: IDashboardListCardProps) => {
@@ -20,8 +21,9 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
                     </div>
                     <div className="level-item">
                         <div className="container">
-                            <p className="dashboard-list-card-name">{props.count}</p>
-                            <p className="dashboard-list-card-name">{props.name}</p>
+                            <a onClick={() => props.viewApplicant(props.count)}>
+                                <p className="dashboard-list-card-name">{props.name}</p>
+                            </a>
                             <p className="dashboard-list-card-role">{props.role}</p>
                         </div>
                     </div>

@@ -38,8 +38,9 @@ class Dashboard extends Component<unknown, DashboardState> {
                 { name: 'Hip Hop', role: 'Developer Applicant' },
             ],
         };
-
         this.setCount = this.setCount.bind(this);
+        this.openApplicantInfo = this.openApplicantInfo.bind(this);
+        this.openDashboard = this.openDashboard.bind(this);
     }
 
     setCount = (newCount: number): void => {
@@ -48,12 +49,13 @@ class Dashboard extends Component<unknown, DashboardState> {
         }));
     };
 
-    changeMode = (): void => {
-        if (this.state.mode === 'Dashboard') {
-            this.setState({ mode: 'ApplicantInfo' });
-        } else {
-            this.setState({ mode: 'Dashboard' });
-        }
+    openApplicantInfo = (newCount: number): void => {
+        this.setCount(newCount);
+        this.setState({ mode: 'ApplicantInfo' });
+    };
+
+    openDashboard = (): void => {
+        this.setState({ mode: 'Dashboard' });
     };
 
     renderState(): React.ReactNode {
@@ -62,7 +64,7 @@ class Dashboard extends Component<unknown, DashboardState> {
                 <div className="column">
                     <h1>Dashboard</h1>
                     <DashboardHeader />
-                    <DashboardList />
+                    <DashboardList viewApplicant={this.openApplicantInfo} />
                 </div>
             );
         } else {
@@ -73,15 +75,13 @@ class Dashboard extends Component<unknown, DashboardState> {
                         applicant={this.state.applicantList[this.state.count]}
                         count={this.state.count}
                         setCount={this.setCount}
+                        viewDashboard={this.openDashboard}
+                        viewApplicant={this.openApplicantInfo}
                     />
                 </div>
             );
         }
     }
-
-    // sample applicantInfo list to test the prev/next applicant feature
-    // applicantList: IApplicantInfoProps[];
-    //const [count, setCount] = React.useState(0);
 
     render(): React.ReactNode {
         return (

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import DashboardListCard from '../dashboard/dashboard-list/DashboardListCard';
 import ApplicantInfoContent from './ApplicantInfoContent';
 import ApplicantInfoHeader from './ApplicantInfoHeader';
@@ -14,6 +13,8 @@ class ApplicantInfo extends React.Component<{
     applicant: { name: string; role: string };
     count: number;
     setCount: any;
+    viewDashboard: any;
+    viewApplicant: any;
 }> {
     render(): React.ReactNode {
         return (
@@ -22,17 +23,16 @@ class ApplicantInfo extends React.Component<{
                     <div className="column">
                         <div className="container">
                             <div className="applicant-navbar">
-                                <button>
-                                    <Link to="/dashboard">
-                                        <i className="fas fa-arrow-left"></i>
-                                    </Link>
-                                    <b>Applicant Information</b>
+                                <button onClick={() => this.props.viewDashboard(this.props.count)}>
+                                    <i className="fas fa-arrow-left"></i>
                                 </button>
+                                <h1>Applicant Information</h1>
                             </div>
                             <DashboardListCard
                                 name={this.props.applicant.name}
                                 role={this.props.applicant.role}
                                 count={this.props.count}
+                                viewApplicant={this.props.viewApplicant}
                             />
                             <ApplicantInfoHeader
                                 email={'johndoe@gmail.com'}

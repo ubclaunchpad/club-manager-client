@@ -7,11 +7,15 @@ import axios from 'axios';
 
 import './DashboardList.scss';
 
+type DashboardListProps = {
+    viewApplicant: (newCount: number) => void;
+};
+
 type DashboardListState = {
     applicantList: any[];
 };
 
-class DashboardList extends Component<unknown, DashboardListState> {
+class DashboardList extends Component<DashboardListProps, DashboardListState> {
     // To test the UI - delete when values are fetched from the server
     constructor(props: any) {
         super(props);
@@ -64,7 +68,12 @@ class DashboardList extends Component<unknown, DashboardListState> {
                 <div className="section">
                     <Fragment>
                         {this.state.applicantList.map((element, index) => (
-                            <DashboardListCard {...element} key={index} count={index} />
+                            <DashboardListCard
+                                {...element}
+                                key={index}
+                                count={index}
+                                viewApplicant={this.props.viewApplicant}
+                            />
                         ))}
                     </Fragment>
                 </div>
