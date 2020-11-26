@@ -1,5 +1,4 @@
 import React from 'react';
-import DashboardListCard from '../components/dashboard/dashboard-list/DashboardListCard';
 import ApplicantInfoContent from '../components/applicant/ApplicantInfoContent';
 import SideBar from '../components/sidebar/SideBar';
 import ApplicantInfoHeader from '../components/applicant/ApplicantInfoHeader';
@@ -40,7 +39,6 @@ const ApplicantInfo: React.FunctionComponent = () => {
                     </div>
                     <div className="column">
                         <div className="container">
-                            <DashboardListCard name={applicantList[count].name} role={applicantList[count].role} />
                             <ApplicantInfoHeader
                                 email={'johndoe@gmail.com'}
                                 year={2}

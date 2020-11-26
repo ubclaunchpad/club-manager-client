@@ -2,6 +2,7 @@ import React, { Component, Fragment, ReactNode } from 'react';
 
 import DashboardListCard from './DashboardListCard';
 import DashboardListFilter from './DashboardListFilter';
+import ApplicantManagementModal from '../../modals/ApplicantManagementModal';
 
 import axios from 'axios';
 
@@ -9,6 +10,10 @@ import './DashboardList.scss';
 
 type DashboardListState = {
     applicantList: any[];
+    showModal: boolean;
+    name: string;
+    role: string;
+    type: string;
 };
 
 class DashboardList extends Component<unknown, DashboardListState> {
@@ -17,8 +22,20 @@ class DashboardList extends Component<unknown, DashboardListState> {
         super(props);
         this.state = {
             applicantList: [],
+            showModal: false,
+            name: '',
+            role: '',
+            type: '',
         };
     }
+
+    showModal = (name: string, role: string, type: string): void => {
+        this.setState({ showModal: true, name: name, role: role, type: type });
+    };
+
+    closeModal = (): void => {
+        this.setState({ showModal: false });
+    };
 
     render(): ReactNode {
         return (
@@ -46,9 +63,25 @@ class DashboardList extends Component<unknown, DashboardListState> {
                 <div className="section">
                     <Fragment>
                         {this.state.applicantList.map((element, index) => (
-                            <DashboardListCard {...element} key={index} />
+                            <DashboardListCard
+                                {...element}
+                                key={index}
+                                setModalAndType={(type: string) => {
+                                    console.log(element.role);
+                                    this.showModal(element.name, element.role, type);
+                                }}
+                            />
                         ))}
                     </Fragment>
+                </div>
+                <div>
+                    <ApplicantManagementModal
+                        type={this.state.type}
+                        name={this.state.name}
+                        role={this.state.role}
+                        closeModal={() => this.closeModal()}
+                        isActive={this.state.showModal}
+                    />
                 </div>
             </div>
         );
