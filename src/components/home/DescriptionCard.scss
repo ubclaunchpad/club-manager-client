@@ -1,0 +1,25 @@
+.description-card {
+    background-color: #fff;
+    border-radius: 25px;
+    margin: 0 10px;
+    padding: 37px 46px;
+    text-align: left;
+
+    .gear-image img {
+        margin-right: 12px;
+        width: 4.7em;
+    }
+
+    .description-card-content .title {
+        color: #82b8d9;
+        font-size: 0.875em;
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+
+    .description-card-content .text {
+        color: #000;
+        font-size: 1.125em;
+        font-weight: 600;
+    }
+}

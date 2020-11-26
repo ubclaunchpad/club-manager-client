@@ -1,0 +1,35 @@
+.feature-card {
+    background-color: #fff;
+    border-radius: 25px;
+
+    //allow feature-card-content to take 100% of the remaining height
+    flex-direction: column;
+    display: flex;
+
+    height: 100%;
+    padding: 2.4em 3.25em;
+
+    .card-image img {
+        width: 11.7em;
+        height: 11.7em;
+    }
+
+    .feature-card-content {
+        //align text to the bottom of card
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        justify-content: space-between;
+
+        .title {
+            font-size: 1.25em;
+            font-weight: 700;
+            margin: 30px 0;
+        }
+
+        .text {
+            font-size: 1em;
+            font-weight: 500;
+        }
+    }
+}
