@@ -8,20 +8,16 @@ import './Dashboard.scss';
 const Dashboard: React.FunctionComponent = () => {
     return (
         <div className="section view">
-            <h1>Dashboard</h1>
-
-            <React.Fragment>
-                <div className="columns">
-                    <div className="column is-2">
-                        <SideBar />
-                    </div>
-                    <div className="column">
-                        <h1>Dashboard</h1>
-                        <DashboardHeader />
-                        <DashboardList />
-                    </div>
+            <div className="columns">
+                <div className="column column-sidebar is-2">
+                    <SideBar />
                 </div>
-            </React.Fragment>
+                <div className="column">
+                    <h1>Dashboard</h1>
+                    <DashboardHeader />
+                    <DashboardList />
+                </div>
+            </div>
         </div>
     );
 };
