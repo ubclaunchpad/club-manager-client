@@ -1,38 +1,44 @@
-.login-container {
-    font-family: 'Montserrat', sans-serif;
-    margin: 30%;
-
-    h1 {
-        font-size: 2.5em;
-        font-weight: 800;
-    }
-
-    input {
-        width: 100%;
-    }
-
-    label {
-        color: #fff;
-    }
-
-    .button {
-        color: #fff;
+.form {
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    margin: auto;
+    width: 40%;
+    .login-container {
         font-family: 'Montserrat', sans-serif;
-        font-weight: 800;
-        width: 100%;
-    }
 
-    .button:hover {
-        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        cursor: pointer;
-    }
+        h1 {
+            font-size: 2.5em;
+            font-weight: 800;
+        }
 
-    .login-button {
-        background: #ecb8b8;
-    }
+        input {
+            width: 100%;
+        }
 
-    .login-button-google {
-        background: #a6b7ca;
+        label {
+            color: #fff;
+        }
+
+        .button {
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            width: 100%;
+        }
+
+        .button:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            cursor: pointer;
+        }
+
+        .login-button {
+            background: #ecb8b8;
+        }
+
+        .login-button-google {
+            background: #a6b7ca;
+        }
     }
 }
 
