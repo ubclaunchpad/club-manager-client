@@ -3,13 +3,8 @@ import DashboardListCard from '../dashboard/dashboard-list/DashboardListCard';
 import ApplicantInfoContent from './ApplicantInfoContent';
 import ApplicantInfoHeader from './ApplicantInfoHeader';
 
-interface IApplicantInfoProps {
-    name: string;
-    role: string;
-}
-
 class ApplicantInfo extends React.Component<{
-    applicantList: IApplicantInfoProps[];
+    totalApplicants: number;
     applicant: { name: string; role: string };
     count: number;
     setCount: (newCount: number) => void;
@@ -70,7 +65,7 @@ class ApplicantInfo extends React.Component<{
                                         )}
                                     </div>
                                     <div className="column is-3 is-offset-8">
-                                        {this.props.count < this.props.applicantList.length - 1 && (
+                                        {this.props.count < this.props.totalApplicants - 1 && (
                                             <button onClick={() => this.props.setCount(this.props.count + 1)}>
                                                 Next Applicant<i className="fas fa-arrow-right"></i>
                                             </button>

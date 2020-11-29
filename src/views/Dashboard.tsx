@@ -76,7 +76,7 @@ class Dashboard extends Component<unknown, DashboardState> {
             return (
                 <div className="column">
                     <ApplicantInfo
-                        applicantList={this.state.applicantList}
+                        totalApplicants={this.state.applicantList.length}
                         applicant={this.state.applicantList[this.state.count]}
                         count={this.state.count}
                         setCount={this.setCount}
