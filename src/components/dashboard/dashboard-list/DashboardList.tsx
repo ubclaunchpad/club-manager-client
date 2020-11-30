@@ -2,6 +2,7 @@ import React, { Component, Fragment, ReactNode } from 'react';
 
 import DashboardListCard from './DashboardListCard';
 import DashboardListFilter from './DashboardListFilter';
+import ApplicantManagementModal from '../../modals/ApplicantManagementModal';
 
 import axios from 'axios';
 
@@ -13,6 +14,10 @@ type DashboardListProps = {
 
 type DashboardListState = {
     applicantList: any[];
+    showModal: boolean;
+    name: string;
+    role: string;
+    type: string;
 };
 
 class DashboardList extends Component<DashboardListProps, DashboardListState> {
@@ -20,27 +25,21 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
     constructor(props: any) {
         super(props);
         this.state = {
-            applicantList: [
-                { name: 'John Doe', role: 'Developer Applicant' },
-                { name: 'Selene Dion', role: 'Developer Applicant' },
-                { name: 'Happy Holland', role: 'Designer Applicant' },
-                { name: 'Lionel Ronaldo', role: 'Developer Applicant' },
-                { name: 'Tom Downey', role: 'Designer Applicant' },
-                { name: 'Donald Biden', role: 'Developer Applicant' },
-                { name: 'Fizz Buzz', role: 'Developer Applicant' },
-                { name: 'Dude Dude Bar', role: 'Designer Applicant' },
-                { name: 'Yeet Feet', role: 'Developer Applicant' },
-                { name: 'Paul Doll', role: 'Designer Applicant' },
-                { name: 'Shiloh Dynasty', role: 'Developer Applicant' },
-                { name: 'Mozart Beethoven', role: 'Designer Applicant' },
-                { name: 'Harin Wu', role: 'Developer Applicant' },
-                { name: 'Loot Toot', role: 'Designer Applicant' },
-                { name: 'Cringe Fest', role: 'Developer Applicant' },
-                { name: 'Lo Fi', role: 'Designer Applicant' },
-                { name: 'Hip Hop', role: 'Developer Applicant' },
-            ],
+            applicantList: [],
+            showModal: false,
+            name: '',
+            role: '',
+            type: '',
         };
     }
+
+    showModal = (name: string, role: string, type: string): void => {
+        this.setState({ showModal: true, name: name, role: role, type: type });
+    };
+
+    closeModal = (): void => {
+        this.setState({ showModal: false });
+    };
 
     render(): ReactNode {
         return (
@@ -73,9 +72,22 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                                 key={index}
                                 count={index}
                                 viewApplicant={this.props.viewApplicant}
+                                setModalAndType={(type: string) => {
+                                    console.log(element.role);
+                                    this.showModal(element.name, element.role, type);
+                                }}
                             />
                         ))}
                     </Fragment>
+                </div>
+                <div>
+                    <ApplicantManagementModal
+                        type={this.state.type}
+                        name={this.state.name}
+                        role={this.state.role}
+                        closeModal={() => this.closeModal()}
+                        isActive={this.state.showModal}
+                    />
                 </div>
             </div>
         );

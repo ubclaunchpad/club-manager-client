@@ -1,3 +1,52 @@
 #sidebar {
+    background-color: #232946;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.25);
+    height: 100%;
+    padding: 2em;
     text-align: center;
+    width: 100%;
+
+    hr {
+        background-color: rgba(255, 255, 255, 0.25);
+        height: 2px;
+    }
+
+    .media {
+        padding-bottom: 2em;
+        text-align: left;
+
+        img {
+            height: 100%;
+            width: 100%;
+        }
+
+        .title,
+        .subtitle {
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9em;
+        }
+    }
+
+    .menu-list {
+        text-align: left;
+        a {
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1em;
+            font-weight: 600;
+        }
+
+        a:hover {
+            background-color: #394167;
+            border-radius: 10px;
+        }
+
+        .icon {
+            font-size: 1.75em;
+            margin-right: 15px;
+            padding-bottom: 2px;
+            vertical-align: middle;
+        }
+    }
 }
