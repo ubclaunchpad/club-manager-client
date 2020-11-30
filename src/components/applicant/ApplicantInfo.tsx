@@ -11,6 +11,8 @@ class ApplicantInfo extends React.Component<{
     viewDashboard: () => void;
     viewApplicant: (newCount: number) => void;
 }> {
+    showModal = (name: string, role: string, type: string): void => {};
+
     render(): React.ReactNode {
         return (
             <React.Fragment>
@@ -28,6 +30,9 @@ class ApplicantInfo extends React.Component<{
                                 role={this.props.applicant.role}
                                 count={this.props.count}
                                 viewApplicant={this.props.viewApplicant}
+                                setModalAndType={(type: string) => {
+                                    this.showModal(this.props.applicant.name, this.props.applicant.role, type);
+                                }}
                             />
                             <ApplicantInfoHeader
                                 email={'johndoe@gmail.com'}
