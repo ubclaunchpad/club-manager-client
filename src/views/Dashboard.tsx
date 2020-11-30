@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+
 import DashboardHeader from '../components/DashboardHeader';
 import SideBar from '../components/sidebar/SideBar';
 import DashboardList from '../components/dashboard/dashboard-list/DashboardList';
@@ -48,6 +50,24 @@ class Dashboard extends Component<unknown, DashboardState> {
         this.openDashboard = this.openDashboard.bind(this);
     }
 
+    componentDidMount() {
+        const applicants: any[] = [];
+        axios
+            .get('http://localhost:4000/applicant', { timeout: 2000 })
+            .then((result: any) => {
+                result.data.forEach((applicant: any) => {
+                    applicants.push({
+                        name: `${applicant.firstName} ${applicant.lastName}`,
+                        role: applicant.role,
+                    });
+                });
+                this.setState({ applicantList: applicants });
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
     setCount = (newCount: number): void => {
         this.setState(() => ({
             count: newCount,
@@ -69,7 +89,7 @@ class Dashboard extends Component<unknown, DashboardState> {
                 <div className="column">
                     <h1>Dashboard</h1>
                     <DashboardHeader />
-                    <DashboardList viewApplicant={this.openApplicantInfo} />
+                    <DashboardList viewApplicant={this.openApplicantInfo} applicants={this.state.applicantList} />
                 </div>
             );
         } else {
