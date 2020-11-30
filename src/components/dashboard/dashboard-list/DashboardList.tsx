@@ -8,6 +8,10 @@ import axios from 'axios';
 
 import './DashboardList.scss';
 
+type DashboardListProps = {
+    viewApplicant: (newCount: number) => void;
+};
+
 type DashboardListState = {
     applicantList: any[];
     showModal: boolean;
@@ -16,7 +20,7 @@ type DashboardListState = {
     type: string;
 };
 
-class DashboardList extends Component<unknown, DashboardListState> {
+class DashboardList extends Component<DashboardListProps, DashboardListState> {
     // To test the UI - delete when values are fetched from the server
     constructor(props: any) {
         super(props);
@@ -66,6 +70,8 @@ class DashboardList extends Component<unknown, DashboardListState> {
                             <DashboardListCard
                                 {...element}
                                 key={index}
+                                count={index}
+                                viewApplicant={this.props.viewApplicant}
                                 setModalAndType={(type: string) => {
                                     console.log(element.role);
                                     this.showModal(element.name, element.role, type);

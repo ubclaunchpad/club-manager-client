@@ -3,7 +3,6 @@ import './App.scss';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Login from './views/Login';
 import Dashboard from './views/Dashboard';
-import ApplicantInfo from './views/ApplicantInfo';
 import Home from './views/Home';
 
 const App: React.FunctionComponent = () => {
@@ -14,7 +13,6 @@ const App: React.FunctionComponent = () => {
                     <Switch>
                         <Route path="/dashboard" component={Dashboard} />
                         <Route path="/login" component={Login} />
-                        <Route path="/applicantinfo" component={ApplicantInfo} />
                         <Route path="/" component={Home} />
                     </Switch>
                 </div>

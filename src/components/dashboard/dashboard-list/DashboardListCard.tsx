@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 interface IDashboardListCardProps {
     name: string;
     role: string;
+    count: number;
+    viewApplicant: (newCount: number) => void;
     setModalAndType: (type: string) => void;
 }
 
@@ -25,7 +27,9 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
                     </div>
                     <div className="level-item">
                         <div className="container">
-                            <p className="dashboard-list-card-name">{props.name}</p>
+                            <p className="dashboard-list-card-name" onClick={() => props.viewApplicant(props.count)}>
+                                {props.name}
+                            </p>
                             <p className="dashboard-list-card-role">{props.role}</p>
                         </div>
                     </div>
