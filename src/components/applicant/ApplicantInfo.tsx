@@ -11,7 +11,9 @@ class ApplicantInfo extends React.Component<{
     viewDashboard: () => void;
     viewApplicant: (newCount: number) => void;
 }> {
-    showModal = (name: string, role: string, type: string): void => {};
+    showModal = (name: string, role: string, type: string): void => {
+        return;
+    };
 
     render(): React.ReactNode {
         return (
