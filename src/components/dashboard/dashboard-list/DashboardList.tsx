@@ -4,16 +4,14 @@ import DashboardListCard from './DashboardListCard';
 import DashboardListFilter from './DashboardListFilter';
 import ApplicantManagementModal from '../../modals/ApplicantManagementModal';
 
-import axios from 'axios';
-
 import './DashboardList.scss';
 
 type DashboardListProps = {
     viewApplicant: (newCount: number) => void;
+    applicants: any[];
 };
 
 type DashboardListState = {
-    applicantList: any[];
     showModal: boolean;
     name: string;
     role: string;
@@ -25,7 +23,6 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
     constructor(props: any) {
         super(props);
         this.state = {
-            applicantList: [],
             showModal: false,
             name: '',
             role: '',
@@ -66,7 +63,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                 </div>
                 <div className="section">
                     <Fragment>
-                        {this.state.applicantList.map((element, index) => (
+                        {this.props.applicants.map((element, index) => (
                             <DashboardListCard
                                 {...element}
                                 key={index}
@@ -101,31 +98,6 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                 ))}
             </Fragment>
         );
-    }
-
-    getApplicants() {
-        const applicants: any[] = [];
-        axios
-            .get('http://localhost:4000/applicant', { timeout: 2000 })
-            .then((result: any) => {
-                result.data.forEach((applicant: any) => {
-                    applicants.push({
-                        name: `${applicant.firstName} ${applicant.lastName}`,
-                        role: applicant.role,
-                    });
-                });
-                this.setState({
-                    applicantList: applicants,
-                });
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }
-
-    componentDidMount() {
-        this.getApplicants();
-        setInterval(() => this.getApplicants(), 60000);
     }
 }
 
