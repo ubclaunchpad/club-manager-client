@@ -50,7 +50,7 @@ class Dashboard extends Component<unknown, DashboardState> {
         this.openDashboard = this.openDashboard.bind(this);
     }
 
-    componentDidMount() {
+    componentDidMount(): void {
         const applicants: any[] = [];
         axios
             .get('http://localhost:4000/applicant', { timeout: 2000 })
