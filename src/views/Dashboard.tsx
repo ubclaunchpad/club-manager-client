@@ -93,7 +93,7 @@ class Dashboard extends Component<unknown, DashboardState> {
             <div className="section view">
                 <React.Fragment>
                     <div className="columns">
-                        <div className="column is-2">
+                        <div className="column column-sidebar is-2">
                             <SideBar />
                         </div>
                         {this.renderState()}
