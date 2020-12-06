@@ -5,7 +5,7 @@ import ApplicantInfoHeader from './ApplicantInfoHeader';
 
 class ApplicantInfo extends React.Component<{
     totalApplicants: number;
-    applicant: { name: string; role: string };
+    applicant: { name: string; role: string; level: string; status: string };
     count: number;
     setCount: (newCount: number) => void;
     viewDashboard: () => void;
@@ -28,8 +28,10 @@ class ApplicantInfo extends React.Component<{
                                 <h1>Applicant Information</h1>
                             </div>
                             <DashboardListCard
+                                mode="ApplicantInfo"
                                 name={this.props.applicant.name}
                                 role={this.props.applicant.role}
+                                level={this.props.applicant.level}
                                 count={this.props.count}
                                 viewApplicant={this.props.viewApplicant}
                                 setModalAndType={(type: string) => {

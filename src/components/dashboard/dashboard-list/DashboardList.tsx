@@ -7,6 +7,7 @@ import ApplicantManagementModal from '../../modals/ApplicantManagementModal';
 import './DashboardList.scss';
 
 type DashboardListProps = {
+    mode: string;
     viewApplicant: (newCount: number) => void;
     applicants: any[];
 };
@@ -41,7 +42,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
     render(): ReactNode {
         return (
             <div className="section dashboard-list">
-                <h1>Unsorted Applicants</h1>
+                <h1>{this.props.mode}</h1>
                 <div className="buttons">
                     <span>
                         <DashboardListFilter {...{ title: 'All', count: 150, isActive: true }} />{' '}
@@ -63,18 +64,21 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                 </div>
                 <div className="section">
                     <Fragment>
-                        {this.props.applicants.map((element, index) => (
-                            <DashboardListCard
-                                {...element}
-                                key={index}
-                                count={index}
-                                viewApplicant={this.props.viewApplicant}
-                                setModalAndType={(type: string) => {
-                                    console.log(element.role);
-                                    this.showModal(element.name, element.role, type);
-                                }}
-                            />
-                        ))}
+                        {this.props.applicants
+                            .filter((applicant) => applicant.status.includes(this.props.mode))
+                            .map((element, index) => (
+                                <DashboardListCard
+                                    {...element}
+                                    mode={this.props.mode}
+                                    key={index}
+                                    count={index}
+                                    viewApplicant={this.props.viewApplicant}
+                                    setModalAndType={(type: string) => {
+                                        console.log(element.role);
+                                        this.showModal(element.name, element.role, type);
+                                    }}
+                                />
+                            ))}
                     </Fragment>
                 </div>
                 <div>

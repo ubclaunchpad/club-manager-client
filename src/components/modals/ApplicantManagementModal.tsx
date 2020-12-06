@@ -16,6 +16,10 @@ class ApplicantManagementModal extends React.Component<IApplicantManagementModal
 
     setModal = (): void => {
         switch (this.props.type) {
+            case 'Move to Schedule':
+                this.description = 'This will move the applicant to the "Schedule for Interview" Stage:';
+                this.title = 'Move to Schedule for Interview';
+                break;
             case 'Schedule':
                 this.description = 'This will send a Calendly email to the applicant:';
                 this.title = 'Schedule for Interview';
