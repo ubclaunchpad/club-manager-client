@@ -4,6 +4,7 @@ import axios from 'axios';
 import DashboardHeader from '../components/DashboardHeader';
 import SideBar from '../components/sidebar/SideBar';
 import DashboardList from '../components/dashboard/dashboard-list/DashboardList';
+import Scoring from '../components/scoring/Scoring';
 
 import './Dashboard.scss';
 import ApplicantInfo from '../components/applicant/ApplicantInfo';
@@ -79,6 +80,10 @@ class Dashboard extends Component<unknown, DashboardState> {
         this.setState({ mode: 'ApplicantInfo' });
     };
 
+    openApplicantReview = (): void => {
+        this.setState({ mode: 'ApplicantReview' });
+    };
+
     openDashboard = (): void => {
         this.setState({ mode: 'Dashboard' });
     };
@@ -89,10 +94,11 @@ class Dashboard extends Component<unknown, DashboardState> {
                 <div className="column">
                     <h1>Dashboard</h1>
                     <DashboardHeader />
+                    <button onClick={this.openApplicantReview}>Applicant Review</button>
                     <DashboardList viewApplicant={this.openApplicantInfo} applicants={this.state.applicantList} />
                 </div>
             );
-        } else {
+        } else if (this.state.mode === 'ApplicantInfo') {
             return (
                 <div className="column">
                     <ApplicantInfo
@@ -104,6 +110,10 @@ class Dashboard extends Component<unknown, DashboardState> {
                         viewApplicant={this.openApplicantInfo}
                     />
                 </div>
+            );
+        } else {
+            return (
+                <Scoring viewDashboard={this.openDashboard} applicant={this.state.applicantList[this.state.count]} />
             );
         }
     }
