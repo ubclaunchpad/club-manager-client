@@ -11,7 +11,7 @@ class SideBar extends Component {
                 <div className="media">
                     <div className="media-left">
                         <figure className="image is-48x48">
-                            <img src={ClubIcon} alt="UBC Launch Pad Logo"></img>
+                            <img src={ClubIcon} alt="UBC Launch Pad Logo"/>
                         </figure>
                     </div>
                     <div className="media-content">
@@ -25,6 +25,7 @@ class SideBar extends Component {
                         <SideBarLink icon="fas fa-list-ul" linkName="Dashboard" linkURL="/dashboard" />
                         <SideBarLink icon="far fa-calendar-alt" linkName="Calendar" linkURL="/calendar" />
                         <SideBarLink icon="far fa-envelope" linkName="Inbox" linkURL="/inbox" />
+                        <SideBarLink icon="fas fa-tools" linkName="Options" linkURL="/options" />
                     </ul>
                 </div>
                 <hr />
