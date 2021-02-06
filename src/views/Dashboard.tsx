@@ -94,7 +94,6 @@ class Dashboard extends Component<unknown, DashboardState> {
                 <div className="column">
                     <h1>Dashboard</h1>
                     <DashboardHeader />
-                    <button onClick={this.openApplicantReview}>Applicant Review</button>
                     <DashboardList viewApplicant={this.openApplicantInfo} applicants={this.state.applicantList} />
                 </div>
             );
@@ -106,6 +105,7 @@ class Dashboard extends Component<unknown, DashboardState> {
                         applicant={this.state.applicantList[this.state.count]}
                         count={this.state.count}
                         setCount={this.setCount}
+                        viewScoring={this.openApplicantReview}
                         viewDashboard={this.openDashboard}
                         viewApplicant={this.openApplicantInfo}
                     />
@@ -113,7 +113,13 @@ class Dashboard extends Component<unknown, DashboardState> {
             );
         } else {
             return (
-                <Scoring viewDashboard={this.openDashboard} applicant={this.state.applicantList[this.state.count]} />
+                <div className="column">
+                    <Scoring
+                        count={this.state.count}
+                        viewApplicant={this.openApplicantInfo}
+                        applicant={this.state.applicantList[this.state.count]}
+                    />
+                </div>
             );
         }
     }

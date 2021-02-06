@@ -6,15 +6,15 @@ import './Scoring.scss';
 
 class Scoring extends React.Component<{
     applicant: { name: string; role: string };
-
-    viewDashboard: () => void;
+    count: number;
+    viewApplicant: (newCount: number) => void;
 }> {
     render(): React.ReactNode {
         return (
             <div className="section view">
                 <React.Fragment>
                     <div className="applicant-navbar">
-                        <button onClick={() => this.props.viewDashboard()}>
+                        <button onClick={() => this.props.viewApplicant(this.props.count)}>
                             <i className="fas fa-arrow-left"></i>
                         </button>
                         <h1>Applicant Review</h1>

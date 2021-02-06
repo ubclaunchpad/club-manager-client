@@ -9,6 +9,7 @@ class ApplicantInfo extends React.Component<{
     count: number;
     setCount: (newCount: number) => void;
     viewDashboard: () => void;
+    viewScoring: () => void;
     viewApplicant: (newCount: number) => void;
 }> {
     showModal = (name: string, role: string, type: string): void => {
@@ -22,10 +23,13 @@ class ApplicantInfo extends React.Component<{
                     <div className="column">
                         <div className="container">
                             <div className="applicant-navbar">
-                                <button onClick={() => this.props.viewDashboard()}>
+                                <button className="back-button" onClick={() => this.props.viewDashboard()}>
                                     <i className="fas fa-arrow-left"></i>
                                 </button>
                                 <h1>Applicant Information</h1>
+                                <button className="review-button" onClick={this.props.viewScoring}>
+                                    Review Applicant
+                                </button>
                             </div>
                             <DashboardListCard
                                 name={this.props.applicant.name}
