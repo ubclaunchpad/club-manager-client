@@ -4,6 +4,7 @@ import axios from 'axios';
 import DashboardHeader from '../components/DashboardHeader';
 import SideBar from '../components/sidebar/SideBar';
 import DashboardList from '../components/dashboard/dashboard-list/DashboardList';
+import Scoring from '../components/scoring/Scoring';
 
 import './Dashboard.scss';
 import ApplicantInfo from '../components/applicant/ApplicantInfo';
@@ -134,6 +135,10 @@ class Dashboard extends Component<unknown, DashboardState> {
         this.setState({ mode: 'ApplicantInfo' });
     };
 
+    openApplicantReview = (): void => {
+        this.setState({ mode: 'ApplicantReview' });
+    };
+
     openDashboard = (): void => {
         this.setState({ mode: 'Dashboard' });
     };
@@ -173,7 +178,7 @@ class Dashboard extends Component<unknown, DashboardState> {
                     />
                 </div>
             );
-        } else {
+        } else if (this.state.mode === 'ApplicantInfo') {
             return (
                 <div className="column">
                     <ApplicantInfo
@@ -181,8 +186,19 @@ class Dashboard extends Component<unknown, DashboardState> {
                         applicant={this.state.applicantList[this.state.count]}
                         count={this.state.count}
                         setCount={this.setCount}
+                        viewScoring={this.openApplicantReview}
                         viewDashboard={this.openDashboard}
                         viewApplicant={this.openApplicantInfo}
+                    />
+                </div>
+            );
+        } else {
+            return (
+                <div className="column">
+                    <Scoring
+                        count={this.state.count}
+                        viewApplicant={this.openApplicantInfo}
+                        applicant={this.state.applicantList[this.state.count]}
                     />
                 </div>
             );
