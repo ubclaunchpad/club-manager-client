@@ -15,12 +15,18 @@ class ScoringFormOption extends React.Component<IScoringFormOptionProps> {
     }
     render(): React.ReactNode {
         return (
-            <div className="field columns">
-                <div className="column is-10">
-                    <label className="is-size-6 mt-6">{this.props.text}</label>
-                </div>
-                <div className="column is-2 px-5">
-                    <input className="input" type="number" placeholder="#" name={this.props.name} />
+            <div className="field">
+                <label className="is-size-6">{this.props.text}</label>
+                <div className="control">
+                    <label className=" mt-4 mr-3 radio">
+                        <input type="radio" value="0" name={this.props.name} className="mr-2" required />0
+                    </label>
+                    <label className="mt-4 mr-3 radio ">
+                        <input type="radio" value="1" name={this.props.name} className="mr-2" />1
+                    </label>
+                    <label className="mt-4 mr-3 radio ">
+                        <input type="radio" value="2" name={this.props.name} className="mr-2" />2
+                    </label>
                 </div>
             </div>
         );

@@ -12,10 +12,12 @@
         }
     }
 }
-.form-background {
-    background-color: #b8d9ec;
-    border-radius: 15px;
-    margin: auto;
-    padding: 2em 3em;
-    width: 80%;
+
+.form-header {
+    color: white;
+}
+
+.scoring-form {
+    height: 70vh;
+    overflow-y: auto;
 }

@@ -7,7 +7,7 @@ import './ScoringForm.scss';
 const criteriaList = [
     {
         name: 'C1',
-        text: 'C1:Willingness to lern(self-drive/are yout aking time out of class to create projects?)',
+        text: 'C1:Willingness to lern(self-drive/are you taking time out of class to create projects?)',
     },
     {
         name: 'C2',
@@ -27,23 +27,23 @@ const criteriaList = [
 class ScoringForm extends React.Component {
     render(): React.ReactNode {
         return (
-            <form className="scoring-form">
+            <form>
                 {criteriaList.map((criteria) => (
                     <ScoringFormOption name={criteria.name} key={criteria.name} text={criteria.text} />
                 ))}
-                <div className="field p-2">
+                <div className="field">
                     <label>Experience Level:</label>
                     <div className="control">
                         <label className="radio mt-3 mr-3">
-                            <input type="radio" value="biginner" name="experience" className="radio-icon" />
+                            <input type="radio" value="biginner" name="experience" className="mr-2 " required />
                             Beginner
                         </label>
                         <label className="radio mt-3 mr-3">
-                            <input type="radio" value="intermediate" name="experience" />
+                            <input type="radio" value="intermediate" name="experience" className="mr-2" />
                             Intermediate
                         </label>
                         <label className="radio mt-3 mr-3">
-                            <input type="radio" value="advanced" name="experience" />
+                            <input type="radio" value="advanced" name="experience" className="mr-2" />
                             Advanced
                         </label>
                     </div>

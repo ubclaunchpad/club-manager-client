@@ -1,8 +1,20 @@
-.scoring-form {
-    margin: auto;
+form {
+    color: black;
+
+    .field {
+        background-color: white;
+        border-radius: 20px;
+        margin: auto;
+        padding: 20px 24px;
+        width: 80%;
+    }
 
     .submit-button {
+        background-color: #b8d9ec;
         border-radius: 1em;
-        background-color: #ecb8b8;
+        color: honeydew;
+        position: absolute;
+        right: 10%;
+        top: 0;
     }
 }
