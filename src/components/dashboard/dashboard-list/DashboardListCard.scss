@@ -1,31 +1,32 @@
 .dashboard-list-card {
-    margin: 20px 0px;
-    padding: 0px !important;
+    margin: 20px 0;
+    padding: 0 !important;
     .level {
-        color: #ffffff;
+        color: #fff;
 
         button {
-            color: #ffffff;
-            height: 40px;
-            width: 40px;
             border-radius: 20px;
-            margin: 0px 10px;
+            color: #fff;
+            height: 40px;
+            margin: 0 10px;
+            width: 40px;
         }
 
         button.button-schedule {
             background-color: #b8d9ec;
-        } 
+        }
 
         button.button-accept {
             background-color: #b8c1ec;
-        } 
+        }
 
         button.button-reject {
             background-color: #ecb8b8;
-        } 
-        
+        }
+
         .container {
-            padding: 0px 5px;
+            padding: 0 5px;
+
             .dashboard-list-card-name {
                 font-size: 20px;
                 font-weight: 500;
@@ -36,10 +37,10 @@
             }
         }
         .icon {
-            background-color: #ffffff;
+            background-color: #fff;
+            border-radius: 20%;
             height: 50px;
             width: 50px;
-            border-radius: 20%;
         }
     }
 }
