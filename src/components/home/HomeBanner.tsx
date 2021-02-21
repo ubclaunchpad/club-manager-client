@@ -19,7 +19,7 @@ const HomeBanner: FunctionComponent = () => {
                             <Link
                                 to={{
                                     pathname: '/login',
-                                    state: true,
+                                    state: true, //related to isLogin in Login component
                                 }}
                                 className="button level-item login-button mr-3"
                             >
@@ -28,7 +28,7 @@ const HomeBanner: FunctionComponent = () => {
                             <Link
                                 to={{
                                     pathname: '/login',
-                                    state: false,
+                                    state: false, //related to isLogin in Login component
                                 }}
                                 className="button level-item register-button ml-3"
                             >
