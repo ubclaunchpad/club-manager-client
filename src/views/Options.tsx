@@ -4,7 +4,7 @@ import OptionsComponent from '../components/options/Options';
 
 const Dashboard: React.FunctionComponent = () => {
     return (
-        <div className="section view">
+        <div style={{ overflow: 'auto' }} className="section view">
             <div className="columns">
                 <div className="column column-sidebar is-2">
                     <SideBar />

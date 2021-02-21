@@ -1,0 +1,52 @@
+.sheet-list-card {
+    margin: 0;
+    padding: 0 !important;
+
+    .columns {
+        padding: 5px 0;
+    }
+
+    .column {
+        color: #fff;
+        padding: 0;
+
+        .buttons-div {
+            margin: auto;
+        }
+        .buttons {
+            height: 100%;
+            justify-content: center;
+        }
+
+        button {
+            border-radius: 20px;
+            color: #fff;
+            height: 40px;
+            margin: 5px 10px;
+            width: 40px;
+        }
+
+        button.button-update {
+            background-color: #b8c1ec;
+            border-color: #b8c1ec;
+        }
+
+        button.button-delete {
+            background-color: #ecb8b8;
+            border-color: #ecb8b8;
+        }
+
+        .container {
+            padding: 0;
+        }
+
+        .sheet-list-card-name {
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .sheet-list-card-url {
+            font-size: 15px;
+        }
+    }
+}
