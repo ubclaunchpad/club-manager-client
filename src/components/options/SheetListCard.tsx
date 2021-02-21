@@ -20,10 +20,10 @@ const SheetListCard: FunctionComponent<ISheetListCardProps> = (props: ISheetList
                 <div className="column is-2 buttons-div">
                     <div className="buttons">
                         <button className="button button-update" onClick={() => props.setModalAndType('Update')}>
-                            <i className="fas fa-sync-alt"/>
+                            <i className="fas fa-sync-alt" />
                         </button>
                         <button className="button button-delete" onClick={() => props.setModalAndType('Delete')}>
-                            <i className="fas fa-trash-alt"/>
+                            <i className="fas fa-trash-alt" />
                         </button>
                     </div>
                 </div>
