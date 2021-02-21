@@ -1,11 +1,20 @@
 import React from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 import './Login.scss';
 import LaunchPadBanner from '../components/login/LaunchPadBanner';
 import LoginForm from '../components/login/LoginForm';
 import SignUpForm from '../components/login/SignUpForm';
 
-class Login extends React.Component {
-    state = { isLogin: true };
+class Login extends React.Component<RouteComponentProps> {
+    state = {
+        isLogin: true,
+    };
+    componentDidMount() {
+        console.log();
+        this.setState({
+            isLogin: this.props.location.state,
+        });
+    }
 
     changeMode = (): void => {
         const currState = this.state.isLogin;

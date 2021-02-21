@@ -14,7 +14,7 @@ const App: React.FunctionComponent = () => {
                     <Switch>
                         <Route path="/dashboard" component={Dashboard} />
                         <Route path="/options" component={Options} />
-                        <Route path="/login" component={Login} />
+                        <Route path="/login" render={(props) => <Login {...props} />} />
                         <Route path="/" component={Home} />
                     </Switch>
                 </div>
