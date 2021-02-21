@@ -40,7 +40,7 @@ class OptionsComponent extends React.Component<any, any> {
     // Updates state from the text inputs
     handleChange = (event: React.ChangeEvent<HTMLInputElement>, type: string) => {
         event.preventDefault();
-        if (type == 'url') this.setState({ url: event.target.value });
+        if (type === 'url') this.setState({ url: event.target.value });
         else this.setState({ name: event.target.value });
     };
 
@@ -85,9 +85,9 @@ class OptionsComponent extends React.Component<any, any> {
     // Closes the update or delete sheet modal and updates database if needed
     closeModal = (type: string, url: string, name: string): void => {
         this.setState({ showModal: false });
-        if (type == 'Close') return;
+        if (type === 'Close') return;
 
-        if (type == 'Update') {
+        if (type === 'Update') {
             const sheet = {
                 url: url,
                 name: name,
@@ -104,7 +104,7 @@ class OptionsComponent extends React.Component<any, any> {
                 .catch((err) => {
                     console.log(err);
                 });
-        } else if (type == 'Delete') {
+        } else if (type === 'Delete') {
             const sheet = {
                 url: url,
                 name: name,
