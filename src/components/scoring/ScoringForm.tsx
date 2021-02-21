@@ -31,7 +31,7 @@ class ScoringForm extends React.Component {
                 {criteriaList.map((criteria) => (
                     <ScoringFormOption name={criteria.name} key={criteria.name} text={criteria.text} />
                 ))}
-                <div className="field">
+                <div className="field field-box">
                     <label>Experience Level:</label>
                     <div className="control">
                         <label className="radio mt-3 mr-3">

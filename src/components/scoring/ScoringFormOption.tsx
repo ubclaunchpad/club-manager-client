@@ -15,7 +15,7 @@ class ScoringFormOption extends React.Component<IScoringFormOptionProps> {
     }
     render(): React.ReactNode {
         return (
-            <div className="field">
+            <div className="field field-box">
                 <label className="is-size-6">{this.props.text}</label>
                 <div className="control">
                     <label className=" mt-4 mr-3 radio">
