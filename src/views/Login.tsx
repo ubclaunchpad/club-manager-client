@@ -9,7 +9,7 @@ class Login extends React.Component<RouteComponentProps> {
     state = {
         isLogin: true,
     };
-    componentDidMount() {
+    componentDidMount(): void {
         console.log();
         this.setState({
             isLogin: this.props.location.state,
