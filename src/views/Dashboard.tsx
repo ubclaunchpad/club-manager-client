@@ -15,6 +15,8 @@ interface IApplicantInfoProps {
     role: string;
     level: string;
     status: string;
+    applicationScore?: number;
+    interviewScore?: number;
 }
 
 type DashboardState = {
@@ -22,6 +24,11 @@ type DashboardState = {
     count: number;
     stage: string;
     applicantList: IApplicantInfoProps[];
+    reviewedList: IApplicantInfoProps[];
+    scheduledList: IApplicantInfoProps[];
+    interviewedList: IApplicantInfoProps[];
+    acceptedList: IApplicantInfoProps[];
+    rejectedList: IApplicantInfoProps[];
 };
 
 class Dashboard extends Component<unknown, DashboardState> {
@@ -32,73 +39,152 @@ class Dashboard extends Component<unknown, DashboardState> {
             count: 0,
             stage: 'Pending Applications',
             applicantList: [
-                { name: 'John Doe', role: 'Developer Applicant', level: 'Beginner', status: 'Pending Applications' },
                 {
-                    name: 'Selene Dion',
-                    role: 'Developer Applicant',
-                    level: 'Intermediate',
-                    status: 'Application Reviewed',
-                },
-                {
-                    name: 'Happy Holland',
-                    role: 'Designer Applicant',
-                    level: 'Beginner',
-                    status: 'Application Reviewed: Accepted',
-                },
-                {
-                    name: 'Lionel Ronaldo',
-                    role: 'Developer Applicant',
-                    level: 'Advanced',
-                    status: 'Scheduled For Interview',
-                },
-                { name: 'Tom Downey', role: 'Designer Applicant', level: 'Advanced', status: 'Interviewed' },
-                { name: 'Donald Biden', role: 'Developer Applicant', level: 'Intermediate', status: 'Interviewed' },
-                {
-                    name: 'Fizz Buzz',
+                    name: 'John Doe',
                     role: 'Developer Applicant',
                     level: 'Beginner',
-                    status: 'Application Reviewed: Rejected',
+                    status: 'Pending Applications',
+                    applicationScore: undefined,
+                    interviewScore: undefined,
                 },
                 {
                     name: 'Dude Dude Bar',
                     role: 'Designer Applicant',
                     level: 'Beginner',
                     status: 'Pending Applications',
+                    applicationScore: undefined,
+                    interviewScore: undefined,
                 },
                 {
-                    name: 'Yeet Feet',
+                    name: 'Paul Doll',
+                    role: 'Designer Applicant',
+                    level: 'Advanced',
+                    status: 'Pending Applications',
+                    applicationScore: undefined,
+                    interviewScore: undefined,
+                },
+                {
+                    name: 'Loot Toot',
+                    role: 'Designer Applicant',
+                    level: 'Beginner',
+                    status: 'Pending Applications',
+                    applicationScore: undefined,
+                    interviewScore: undefined,
+                },
+            ],
+            reviewedList: [
+                {
+                    name: 'Selene Dion',
+                    role: 'Developer Applicant',
+                    level: 'Intermediate',
+                    status: 'Application Reviewed',
+                    applicationScore: 5,
+                    interviewScore: undefined,
+                },
+                {
+                    name: 'Happy Holland',
+                    role: 'Designer Applicant',
+                    level: 'Beginner',
+                    status: 'Application Reviewed',
+                    applicationScore: 3,
+                    interviewScore: undefined,
+                },
+            ],
+            scheduledList: [
+                {
+                    name: 'Lionel Ronaldo',
                     role: 'Developer Applicant',
                     level: 'Advanced',
-                    status: 'Final Decision: Accepted',
+                    status: 'Scheduled For Interview',
+                    applicationScore: 4,
+                    interviewScore: undefined,
                 },
-                { name: 'Paul Doll', role: 'Designer Applicant', level: 'Advanced', status: 'Pending Applications' },
                 {
                     name: 'Shiloh Dynasty',
                     role: 'Developer Applicant',
                     level: 'Intermediate',
                     status: 'Scheduled For Interview',
+                    applicationScore: 3,
+                    interviewScore: undefined,
+                },
+                {
+                    name: 'Cringe Fest',
+                    role: 'Developer Applicant',
+                    level: 'Intermediate',
+                    status: 'Scheduled For Interview',
+                    applicationScore: 3,
+                    interviewScore: undefined,
+                },
+            ],
+            interviewedList: [
+                {
+                    name: 'Tom Downey',
+                    role: 'Designer Applicant',
+                    level: 'Advanced',
+                    status: 'Interviewed',
+                    applicationScore: 5,
+                    interviewScore: 4,
+                },
+                {
+                    name: 'Donald Biden',
+                    role: 'Developer Applicant',
+                    level: 'Intermediate',
+                    status: 'Interviewed',
+                    applicationScore: 4,
+                    interviewScore: 3,
+                },
+                {
+                    name: 'Lo Fi',
+                    role: 'Designer Applicant',
+                    level: 'Intermediate',
+                    status: 'Interviewed',
+                    applicationScore: 3,
+                    interviewScore: 3,
+                },
+            ],
+            acceptedList: [
+                {
+                    name: 'Yeet Feet',
+                    role: 'Developer Applicant',
+                    level: 'Advanced',
+                    status: 'Final Decision: Accepted',
+                    applicationScore: 5,
+                    interviewScore: 5,
                 },
                 {
                     name: 'Mozart Beethoven',
                     role: 'Designer Applicant',
                     level: 'Intermediate',
                     status: 'Final Decision: Accepted',
+                    applicationScore: 4,
+                    interviewScore: 5,
+                },
+            ],
+            rejectedList: [
+                {
+                    name: 'Fizz Buzz',
+                    role: 'Developer Applicant',
+                    level: 'Beginner',
+                    status: 'Final Decision: Rejected',
+                    applicationScore: 1,
+                    interviewScore: undefined,
                 },
                 {
                     name: 'Harin Wu',
                     role: 'Developer Applicant',
                     level: 'Beginner',
                     status: 'Final Decision: Rejected',
+                    applicationScore: 4,
+                    interviewScore: 2,
                 },
-                { name: 'Loot Toot', role: 'Designer Applicant', level: 'Beginner', status: 'Pending Applications' },
                 {
-                    name: 'Cringe Fest',
+                    name: 'Hip Hop',
                     role: 'Developer Applicant',
-                    level: 'Intermediate',
-                    status: 'Scheduled For Interview',
+                    level: 'Beginner',
+                    status: 'Archived: Rejected',
+                    applicationScore: 3,
+                    interviewScore: 2,
                 },
-                { name: 'Lo Fi', role: 'Designer Applicant', level: 'Intermediate', status: 'Interviewed' },
-                { name: 'Hip Hop', role: 'Developer Applicant', level: 'Beginner', status: 'Archived: Rejected' },
             ],
         };
         this.setCount = this.setCount.bind(this);
@@ -154,6 +240,71 @@ class Dashboard extends Component<unknown, DashboardState> {
         this.setState({ mode: 'Screening' });
     };
 
+    setList = (): React.ReactNode => {
+        switch (this.state.stage) {
+            case 'Pending Applications':
+                return (
+                    <ApplicantInfo
+                        totalApplicants={this.state.applicantList.length}
+                        applicant={this.state.applicantList[this.state.count]}
+                        count={this.state.count}
+                        setCount={this.setCount}
+                        viewDashboard={this.openDashboard}
+                        viewScoring={this.openApplicantReview}
+                        viewApplicant={this.openApplicantInfo}
+                    />
+                );
+            case 'Application Reviewed':
+                return (
+                    <ApplicantInfo
+                        totalApplicants={this.state.reviewedList.length}
+                        applicant={this.state.reviewedList[this.state.count]}
+                        count={this.state.count}
+                        setCount={this.setCount}
+                        viewDashboard={this.openDashboard}
+                        viewScoring={this.openApplicantReview}
+                        viewApplicant={this.openApplicantInfo}
+                    />
+                );
+            case 'Scheduled For Interview':
+                return (
+                    <ApplicantInfo
+                        totalApplicants={this.state.scheduledList.length}
+                        applicant={this.state.scheduledList[this.state.count]}
+                        count={this.state.count}
+                        setCount={this.setCount}
+                        viewDashboard={this.openDashboard}
+                        viewScoring={this.openApplicantReview}
+                        viewApplicant={this.openApplicantInfo}
+                    />
+                );
+            case 'Interviewed':
+                return (
+                    <ApplicantInfo
+                        totalApplicants={this.state.interviewedList.length}
+                        applicant={this.state.interviewedList[this.state.count]}
+                        count={this.state.count}
+                        setCount={this.setCount}
+                        viewDashboard={this.openDashboard}
+                        viewScoring={this.openApplicantReview}
+                        viewApplicant={this.openApplicantInfo}
+                    />
+                );
+            case 'Final Decision':
+                return (
+                    <ApplicantInfo
+                        totalApplicants={this.state.acceptedList.length}
+                        applicant={this.state.acceptedList[this.state.count]}
+                        count={this.state.count}
+                        setCount={this.setCount}
+                        viewDashboard={this.openDashboard}
+                        viewScoring={this.openApplicantReview}
+                        viewApplicant={this.openApplicantInfo}
+                    />
+                );
+        }
+    };
+
     renderState(): React.ReactNode {
         if (this.state.mode === 'Dashboard') {
             return (
@@ -164,6 +315,11 @@ class Dashboard extends Component<unknown, DashboardState> {
                         mode="Pending Applications"
                         viewApplicant={this.openApplicantInfo}
                         applicants={this.state.applicantList}
+                        reviewed={this.state.reviewedList}
+                        scheduled={this.state.scheduledList}
+                        interviewed={this.state.interviewedList}
+                        accepted={this.state.acceptedList}
+                        rejected={this.state.rejectedList}
                     />
                 </div>
             );
@@ -175,23 +331,16 @@ class Dashboard extends Component<unknown, DashboardState> {
                         viewDashboard={this.openDashboard}
                         viewApplicant={this.openApplicantInfo}
                         applicants={this.state.applicantList}
+                        reviewed={this.state.reviewedList}
+                        scheduled={this.state.scheduledList}
+                        interviewed={this.state.interviewedList}
+                        accepted={this.state.acceptedList}
+                        rejected={this.state.rejectedList}
                     />
                 </div>
             );
         } else if (this.state.mode === 'ApplicantInfo') {
-            return (
-                <div className="column">
-                    <ApplicantInfo
-                        totalApplicants={this.state.applicantList.length}
-                        applicant={this.state.applicantList[this.state.count]}
-                        count={this.state.count}
-                        setCount={this.setCount}
-                        viewScoring={this.openApplicantReview}
-                        viewDashboard={this.openDashboard}
-                        viewApplicant={this.openApplicantInfo}
-                    />
-                </div>
-            );
+            return <div className="column">{this.setList()}</div>;
         } else {
             return (
                 <div className="column">

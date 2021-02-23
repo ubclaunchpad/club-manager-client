@@ -1,9 +1,10 @@
 import React from 'react';
 import DashboardCard from './DashboardCard';
 
+import ReviewedCard from '../images/ReviewedCard.png';
 import ScheduledCard from '../images/ScheduledCard.png';
-import AcceptedCard from '../images/AcceptedCard.png';
-import RejectedCard from '../images/RejectedCard.png';
+import InterviewedCard from '../images/InterviewedCard.png';
+import FinalDecisionCard from '../images/FinalDecisionCard.png';
 
 class DashboardHeader extends React.Component<{
     viewScreeningStage: (newStage: string) => void;
@@ -14,7 +15,7 @@ class DashboardHeader extends React.Component<{
                 <div className="columns">
                     <div className="column is-one-fourth">
                         <DashboardCard
-                            cardImage={AcceptedCard}
+                            cardImage={ReviewedCard}
                             cardURL="Application Reviewed"
                             viewScreeningStage={this.props.viewScreeningStage}
                         />
@@ -28,14 +29,14 @@ class DashboardHeader extends React.Component<{
                     </div>
                     <div className="column is-one-fourth">
                         <DashboardCard
-                            cardImage={ScheduledCard}
+                            cardImage={InterviewedCard}
                             cardURL="Interviewed"
                             viewScreeningStage={this.props.viewScreeningStage}
                         />
                     </div>
                     <div className="column is-one-fourth">
                         <DashboardCard
-                            cardImage={RejectedCard}
+                            cardImage={FinalDecisionCard}
                             cardURL="Final Decision"
                             viewScreeningStage={this.props.viewScreeningStage}
                         />

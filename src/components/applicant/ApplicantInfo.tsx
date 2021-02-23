@@ -5,7 +5,14 @@ import ApplicantInfoHeader from './ApplicantInfoHeader';
 
 class ApplicantInfo extends React.Component<{
     totalApplicants: number;
-    applicant: { name: string; role: string; level: string; status: string };
+    applicant: {
+        name: string;
+        role: string;
+        level: string;
+        status: string;
+        applicationScore?: number;
+        interviewScore?: number;
+    };
     count: number;
     setCount: (newCount: number) => void;
     viewDashboard: () => void;

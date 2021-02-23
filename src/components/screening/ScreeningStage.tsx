@@ -6,6 +6,11 @@ class ScreeningStage extends React.Component<{
     viewDashboard: () => void;
     viewApplicant: (newCount: number) => void;
     applicants: any[];
+    reviewed: any[];
+    scheduled: any[];
+    interviewed: any[];
+    accepted: any[];
+    rejected: any[];
 }> {
     render(): React.ReactNode {
         return (
@@ -21,6 +26,11 @@ class ScreeningStage extends React.Component<{
                                 mode={this.props.stage}
                                 viewApplicant={this.props.viewApplicant}
                                 applicants={this.props.applicants}
+                                reviewed={this.props.reviewed}
+                                scheduled={this.props.scheduled}
+                                interviewed={this.props.interviewed}
+                                accepted={this.props.accepted}
+                                rejected={this.props.rejected}
                             />
                         </div>
                     </div>
