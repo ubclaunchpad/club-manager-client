@@ -2,7 +2,6 @@
     "name": "club-manager-client",
     "version": "0.1.0",
     "description": "React-based client for the Club Manager web application",
-    "homepage": "https://github.com/ubclaunchpad/club-manager-client",
     "private": true,
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.1",
@@ -24,6 +23,7 @@
         "prettier-stylelint": "^0.4.2",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
+        "react-google-login": "^5.2.2",
         "react-router-dom": "^5.2.0",
         "react-scripts": "3.4.3",
         "typescript": "~3.7.2",
