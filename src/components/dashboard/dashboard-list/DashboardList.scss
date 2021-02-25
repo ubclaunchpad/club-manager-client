@@ -7,7 +7,7 @@
     }
 
     .section {
-        height: 350px;
+        height: 50vh;
         overflow-y: scroll;
         padding: 10px 0 !important;
     }
@@ -19,5 +19,13 @@
     .buttons {
         display: flex;
         flex-direction: row;
+    }
+}
+
+@media screen and (max-height: 760px) {
+    .dashboard-list {
+        .section {
+            height: 40vh;
+        }
     }
 }
