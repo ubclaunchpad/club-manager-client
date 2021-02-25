@@ -9,34 +9,22 @@
 
 .container {
     .applicant-content {
-        overflow-y: auto;
         height: auto;
         max-height: 500px;
+        overflow-y: auto;
     }
     .applicant-navbar {
-        margin-top: 1rem;
         margin-left: -1.5rem;
-        margin-right: 1rem;
-        button:hover {
-            cursor: pointer;
-        }
-        .back-button {
-            border: 0;
+        margin-right: 5.5rem;
+        margin-top: 1rem;
+        button {
             background-color: transparent;
+            border: 0;
             color: white;
             font-size: 20px;
             i {
                 padding: 1rem;
             }
-        }
-        .review-button {
-            background-color: white;
-            border-radius: 5px;
-            color: #333;
-            float: right;
-            font-size: 1em;
-            margin-top: 1em;
-            padding: 0.2em 0.4em;
         }
     }
 }
