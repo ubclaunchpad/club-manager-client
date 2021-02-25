@@ -15,28 +15,16 @@
     }
     .applicant-navbar {
         margin-left: -1.5rem;
-        margin-right: 1rem;
+        margin-right: 5.5rem;
         margin-top: 1rem;
-        button:hover {
-            cursor: pointer;
-        }
-        .back-button {
+        button {
             background-color: transparent;
             border: 0;
-            color: #fff;
+            color: white;
             font-size: 20px;
             i {
                 padding: 1rem;
             }
-        }
-        .review-button {
-            background-color: #fff;
-            border-radius: 5px;
-            color: #333;
-            float: right;
-            font-size: 1em;
-            margin-top: 1em;
-            padding: 0.2em 0.4em;
         }
     }
 }
