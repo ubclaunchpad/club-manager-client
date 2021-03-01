@@ -16,6 +16,9 @@ type DashboardListState = {
     name: string;
     role: string;
     type: string;
+    status: string;
+    screeningGrade?: number;
+    interviewGrade?: number;
 };
 
 class DashboardList extends Component<DashboardListProps, DashboardListState> {
@@ -27,11 +30,14 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
             name: '',
             role: '',
             type: '',
+            status: 'Pending',
+            screeningGrade: 0,
+            interviewGrade: 0
         };
     }
 
-    showModal = (name: string, role: string, type: string): void => {
-        this.setState({ showModal: true, name: name, role: role, type: type });
+    showModal = (name: string, role: string, type: string, status: string, screeningGrade: number, interviewGrade: number): void => {
+        this.setState({ showModal: true, name: name, role: role, type: type, status: status, screeningGrade: screeningGrade, interviewGrade: interviewGrade });
     };
 
     closeModal = (): void => {
@@ -71,7 +77,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                                 viewApplicant={this.props.viewApplicant}
                                 setModalAndType={(type: string) => {
                                     console.log(element.role);
-                                    this.showModal(element.name, element.role, type);
+                                    this.showModal(element.name, element.role, type, element.status, element.screeningGrade, element.interviewGrade);
                                 }}
                             />
                         ))}
