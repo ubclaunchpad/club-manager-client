@@ -1,5 +1,6 @@
 import React, { Component, Fragment, ReactNode } from 'react';
 
+import DashboardListButtons from './DashboardListButtons';
 import DashboardListCard from './DashboardListCard';
 import DashboardListFilter from './DashboardListFilter';
 import ApplicantManagementModal from '../../modals/ApplicantManagementModal';
@@ -58,135 +59,6 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                     </ul>
                 </div>
             );
-        }
-    };
-
-    setMode = (): React.ReactNode => {
-        switch (this.props.mode) {
-            case 'Application Reviewed':
-                return (
-                    <div className="level">
-                        <div className="level-left">
-                            <div className="level-item">
-                                <p>Application Score </p>
-                                <input
-                                    className="slider has-output-tooltip is-fullwidth is-large"
-                                    step="0.5"
-                                    min="0"
-                                    max="5"
-                                    value="3"
-                                    type="range"
-                                ></input>
-                                <output htmlFor="sliderWithValue">3</output>
-                            </div>
-                        </div>
-                        <div className="level-right">
-                            <button className="button is-light is-rounded is-danger">Bulk Reject</button>
-                            <button className="button is-light is-rounded is-info">Bulk Schedule</button>
-                            <label className="checkbox">
-                                <input type="checkbox" />
-                                Select All
-                            </label>
-                        </div>
-                    </div>
-                );
-            case 'Scheduled For Interview':
-                return (
-                    <div className="level">
-                        <div className="level-left">
-                            <div className="level-item">
-                                <p>Application Score </p>
-                                <input
-                                    className="slider has-output-tooltip is-large"
-                                    step="0.5"
-                                    min="0"
-                                    max="5"
-                                    value="3"
-                                    type="range"
-                                ></input>
-                                <output htmlFor="sliderWithValue">3</output>
-                            </div>
-                        </div>
-                        <div className="level-right">
-                            <div className="level-item">
-                                <button className="button is-light is-rounded is-info">Bulk Email</button>
-                            </div>
-                        </div>
-                    </div>
-                );
-            case 'Interviewed':
-                return (
-                    <div className="level">
-                        <div className="level-left">
-                            <div className="level-item">
-                                <p>Application Score </p>
-                                <input
-                                    className="slider has-output-tooltip is-large"
-                                    step="0.5"
-                                    min="0"
-                                    max="5"
-                                    value="3"
-                                    type="range"
-                                ></input>
-                                <output htmlFor="sliderWithValue">3</output>
-                            </div>
-                            <div className="level-item">
-                                <p>Interview Score </p>
-                                <input
-                                    className="slider has-output-tooltip is-large"
-                                    step="0.5"
-                                    min="0"
-                                    max="5"
-                                    value="3"
-                                    type="range"
-                                ></input>
-                                <output htmlFor="sliderWithValue">3</output>
-                            </div>
-                        </div>
-                        <div className="level-right">
-                            <div className="level-item">
-                                <button className="button is-light is-rounded is-link">Bulk Accept</button>
-                                <button className="button is-light is-rounded is-danger">Bulk Reject</button>
-                            </div>
-                        </div>
-                    </div>
-                );
-            case 'Final Decision':
-                return (
-                    <div className="level">
-                        <div className="level-left">
-                            <div className="level-item">
-                                <p>Application Score </p>
-                                <input
-                                    className="slider has-output-tooltip is-large"
-                                    step="0.5"
-                                    min="0"
-                                    max="5"
-                                    value="3"
-                                    type="range"
-                                ></input>
-                                <output htmlFor="sliderWithValue">3</output>
-                            </div>
-                            <div className="level-item">
-                                <p>Interview Score </p>
-                                <input
-                                    className="slider has-output-tooltip is-large"
-                                    step="0.5"
-                                    min="0"
-                                    max="5"
-                                    value="3"
-                                    type="range"
-                                ></input>
-                                <output htmlFor="sliderWithValue">3</output>
-                            </div>
-                        </div>
-                        <div className="level-right">
-                            <div className="level-item">
-                                <button className="button is-light is-rounded is-info">Bulk Email</button>
-                            </div>
-                        </div>
-                    </div>
-                );
         }
     };
 
@@ -306,7 +178,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                         <DashboardListFilter {...{ title: 'Advanced', count: 4, isActive: false }} />
                     </span>
                 </div>
-                {this.setMode()}
+                <DashboardListButtons mode={this.props.mode} />
                 <div className="field">
                     <p className="control has-icons-left">
                         <input className="input" type="text" placeholder="Search applicants" />
