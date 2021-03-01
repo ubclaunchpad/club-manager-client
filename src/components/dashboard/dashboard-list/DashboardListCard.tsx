@@ -19,7 +19,6 @@ interface IDashboardListCardProps {
 const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (props: IDashboardListCardProps) => {
     const applicantStatus = props.status;
     let decisionComponent, emailComponent, gradeComponent;
-    let applicantCardComponent;
     switch (applicantStatus) {
         case 'Screened':
             decisionComponent = (
@@ -103,7 +102,7 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
         default:
             break;
     }
-    applicantCardComponent = (
+    const applicantCardComponent = (
         <div className="level-right">
             {decisionComponent}
             {emailComponent}
