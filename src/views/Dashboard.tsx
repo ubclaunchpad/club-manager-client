@@ -15,8 +15,8 @@ interface IApplicantInfoProps {
     role: string;
     level: string;
     status: string;
-    applicationScore?: number;
-    interviewScore?: number;
+    screeningGrade?: number;
+    interviewGrade?: number;
 }
 
 type DashboardState = {
@@ -44,32 +44,24 @@ class Dashboard extends Component<unknown, DashboardState> {
                     role: 'Developer Applicant',
                     level: 'Beginner',
                     status: 'Pending Applications',
-                    applicationScore: undefined,
-                    interviewScore: undefined,
                 },
                 {
                     name: 'Dude Dude Bar',
                     role: 'Designer Applicant',
                     level: 'Beginner',
                     status: 'Pending Applications',
-                    applicationScore: undefined,
-                    interviewScore: undefined,
                 },
                 {
                     name: 'Paul Doll',
                     role: 'Designer Applicant',
                     level: 'Advanced',
                     status: 'Pending Applications',
-                    applicationScore: undefined,
-                    interviewScore: undefined,
                 },
                 {
                     name: 'Loot Toot',
                     role: 'Designer Applicant',
                     level: 'Beginner',
                     status: 'Pending Applications',
-                    applicationScore: undefined,
-                    interviewScore: undefined,
                 },
             ],
             reviewedList: [
@@ -78,16 +70,14 @@ class Dashboard extends Component<unknown, DashboardState> {
                     role: 'Developer Applicant',
                     level: 'Intermediate',
                     status: 'Application Reviewed',
-                    applicationScore: 5,
-                    interviewScore: undefined,
+                    screeningGrade: 5,
                 },
                 {
                     name: 'Happy Holland',
                     role: 'Designer Applicant',
                     level: 'Beginner',
                     status: 'Application Reviewed',
-                    applicationScore: 3,
-                    interviewScore: undefined,
+                    screeningGrade: 3,
                 },
             ],
             scheduledList: [
@@ -96,24 +86,21 @@ class Dashboard extends Component<unknown, DashboardState> {
                     role: 'Developer Applicant',
                     level: 'Advanced',
                     status: 'Scheduled For Interview',
-                    applicationScore: 4,
-                    interviewScore: undefined,
+                    screeningGrade: 4,
                 },
                 {
                     name: 'Shiloh Dynasty',
                     role: 'Developer Applicant',
                     level: 'Intermediate',
                     status: 'Scheduled For Interview',
-                    applicationScore: 3,
-                    interviewScore: undefined,
+                    screeningGrade: 3,
                 },
                 {
                     name: 'Cringe Fest',
                     role: 'Developer Applicant',
                     level: 'Intermediate',
                     status: 'Scheduled For Interview',
-                    applicationScore: 3,
-                    interviewScore: undefined,
+                    screeningGrade: 3,
                 },
             ],
             interviewedList: [
@@ -122,24 +109,24 @@ class Dashboard extends Component<unknown, DashboardState> {
                     role: 'Designer Applicant',
                     level: 'Advanced',
                     status: 'Interviewed',
-                    applicationScore: 5,
-                    interviewScore: 4,
+                    screeningGrade: 5,
+                    interviewGrade: 4,
                 },
                 {
                     name: 'Donald Biden',
                     role: 'Developer Applicant',
                     level: 'Intermediate',
                     status: 'Interviewed',
-                    applicationScore: 4,
-                    interviewScore: 3,
+                    screeningGrade: 4,
+                    interviewGrade: 3,
                 },
                 {
                     name: 'Lo Fi',
                     role: 'Designer Applicant',
                     level: 'Intermediate',
                     status: 'Interviewed',
-                    applicationScore: 3,
-                    interviewScore: 3,
+                    screeningGrade: 3,
+                    interviewGrade: 3,
                 },
             ],
             acceptedList: [
@@ -148,16 +135,16 @@ class Dashboard extends Component<unknown, DashboardState> {
                     role: 'Developer Applicant',
                     level: 'Advanced',
                     status: 'Final Decision: Accepted',
-                    applicationScore: 5,
-                    interviewScore: 5,
+                    screeningGrade: 5,
+                    interviewGrade: 5,
                 },
                 {
                     name: 'Mozart Beethoven',
                     role: 'Designer Applicant',
                     level: 'Intermediate',
                     status: 'Final Decision: Accepted',
-                    applicationScore: 4,
-                    interviewScore: 5,
+                    screeningGrade: 4,
+                    interviewGrade: 5,
                 },
             ],
             rejectedList: [
@@ -166,24 +153,23 @@ class Dashboard extends Component<unknown, DashboardState> {
                     role: 'Developer Applicant',
                     level: 'Beginner',
                     status: 'Final Decision: Rejected',
-                    applicationScore: 1,
-                    interviewScore: undefined,
+                    screeningGrade: 1,
                 },
                 {
                     name: 'Harin Wu',
                     role: 'Developer Applicant',
                     level: 'Beginner',
                     status: 'Final Decision: Rejected',
-                    applicationScore: 4,
-                    interviewScore: 2,
+                    screeningGrade: 4,
+                    interviewGrade: 2,
                 },
                 {
                     name: 'Hip Hop',
                     role: 'Developer Applicant',
                     level: 'Beginner',
                     status: 'Archived: Rejected',
-                    applicationScore: 3,
-                    interviewScore: 2,
+                    screeningGrade: 3,
+                    interviewGrade: 2,
                 },
             ],
         };

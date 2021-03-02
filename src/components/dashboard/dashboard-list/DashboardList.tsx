@@ -23,6 +23,9 @@ type DashboardListState = {
     name: string;
     role: string;
     type: string;
+    status: string;
+    screeningGrade?: number;
+    interviewGrade?: number;
 };
 
 class DashboardList extends Component<DashboardListProps, DashboardListState> {
@@ -34,11 +37,27 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
             name: '',
             role: '',
             type: '',
+            status: 'Pending',
         };
     }
 
-    showModal = (name: string, role: string, type: string): void => {
-        this.setState({ showModal: true, name: name, role: role, type: type });
+    showModal = (
+        name: string,
+        role: string,
+        type: string,
+        status: string,
+        screeningGrade: number,
+        interviewGrade: number,
+    ): void => {
+        this.setState({
+            showModal: true,
+            name: name,
+            role: role,
+            type: type,
+            status: status,
+            screeningGrade: screeningGrade,
+            interviewGrade: interviewGrade,
+        });
     };
 
     closeModal = (): void => {
@@ -71,12 +90,19 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                         mode={this.props.mode}
                         key={index}
                         count={index}
-                        applicationScore={this.props.applicants[index].applicationScore}
-                        interviewScore={this.props.applicants[index].interviewScore}
+                        screeningGrade={this.props.applicants[index].screeningGrade}
+                        interviewGrade={this.props.applicants[index].interviewGrade}
                         viewApplicant={this.props.viewApplicant}
                         setModalAndType={(type: string) => {
                             console.log(element.role);
-                            this.showModal(element.name, element.role, type);
+                            this.showModal(
+                                element.name,
+                                element.role,
+                                type,
+                                element.status,
+                                element.screeningGrade,
+                                element.interviewGrade,
+                            );
                         }}
                     />
                 ));
@@ -87,12 +113,19 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                         mode={this.props.mode}
                         key={index}
                         count={index}
-                        applicationScore={this.props.reviewed[index].applicationScore}
-                        interviewScore={this.props.reviewed[index].interviewScore}
+                        screeningGrade={this.props.reviewed[index].screeningGrade}
+                        interviewGrade={this.props.reviewed[index].interviewGrade}
                         viewApplicant={this.props.viewApplicant}
                         setModalAndType={(type: string) => {
                             console.log(element.role);
-                            this.showModal(element.name, element.role, type);
+                            this.showModal(
+                                element.name,
+                                element.role,
+                                type,
+                                element.status,
+                                element.screeningGrade,
+                                element.interviewGrade,
+                            );
                         }}
                     />
                 ));
@@ -103,12 +136,19 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                         mode={this.props.mode}
                         key={index}
                         count={index}
-                        applicationScore={this.props.scheduled[index].applicationScore}
-                        interviewScore={this.props.scheduled[index].interviewScore}
+                        screeningGrade={this.props.scheduled[index].screeningGrade}
+                        interviewGrade={this.props.scheduled[index].interviewGrade}
                         viewApplicant={this.props.viewApplicant}
                         setModalAndType={(type: string) => {
                             console.log(element.role);
-                            this.showModal(element.name, element.role, type);
+                            this.showModal(
+                                element.name,
+                                element.role,
+                                type,
+                                element.status,
+                                element.screeningGrade,
+                                element.interviewGrade,
+                            );
                         }}
                     />
                 ));
@@ -119,12 +159,19 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                         mode={this.props.mode}
                         key={index}
                         count={index}
-                        applicationScore={this.props.interviewed[index].applicationScore}
-                        interviewScore={this.props.interviewed[index].interviewScore}
+                        screeningGrade={this.props.interviewed[index].screeningGrade}
+                        interviewGrade={this.props.interviewed[index].interviewGrade}
                         viewApplicant={this.props.viewApplicant}
                         setModalAndType={(type: string) => {
                             console.log(element.role);
-                            this.showModal(element.name, element.role, type);
+                            this.showModal(
+                                element.name,
+                                element.role,
+                                type,
+                                element.status,
+                                element.screeningGrade,
+                                element.interviewGrade,
+                            );
                         }}
                     />
                 ));
@@ -135,12 +182,19 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                         mode={this.props.mode}
                         key={index}
                         count={index}
-                        applicationScore={this.props.accepted[index].applicationScore}
-                        interviewScore={this.props.accepted[index].interviewScore}
+                        screeningGrade={this.props.accepted[index].screeningGrade}
+                        interviewGrade={this.props.accepted[index].interviewGrade}
                         viewApplicant={this.props.viewApplicant}
                         setModalAndType={(type: string) => {
                             console.log(element.role);
-                            this.showModal(element.name, element.role, type);
+                            this.showModal(
+                                element.name,
+                                element.role,
+                                type,
+                                element.status,
+                                element.screeningGrade,
+                                element.interviewGrade,
+                            );
                         }}
                     />
                 ));

@@ -10,8 +10,8 @@ class ApplicantInfo extends React.Component<{
         role: string;
         level: string;
         status: string;
-        applicationScore?: number;
-        interviewScore?: number;
+        screeningGrade?: number;
+        interviewGrade?: number;
     };
     count: number;
     setCount: (newCount: number) => void;
@@ -43,11 +43,14 @@ class ApplicantInfo extends React.Component<{
                                 name={this.props.applicant.name}
                                 role={this.props.applicant.role}
                                 level={this.props.applicant.level}
+                                status={this.props.applicant.status}
                                 count={this.props.count}
                                 viewApplicant={this.props.viewApplicant}
                                 setModalAndType={(type: string) => {
                                     this.showModal(this.props.applicant.name, this.props.applicant.role, type);
                                 }}
+                                screeningGrade={this.props.applicant.screeningGrade}
+                                interviewGrade={this.props.applicant.interviewGrade}
                             />
                             <ApplicantInfoHeader
                                 email={'johndoe@gmail.com'}

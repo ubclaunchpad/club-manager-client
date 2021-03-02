@@ -5,23 +5,27 @@
         color: #fff;
 
         button {
-            border-radius: 20px;
-            color: #fff;
+            border-radius: 9px;
+            color: #000;
             height: 40px;
             margin: 0 10px;
             width: 40px;
         }
 
         button.button-schedule {
-            background-color: #b8d9ec;
+            background-color: #fff;
         }
 
         button.button-accept {
-            background-color: #b8c1ec;
+            background-color: #fff;
         }
 
         button.button-reject {
-            background-color: #ecb8b8;
+            background-color: #fff;
+        }
+
+        button.button-email {
+            background-color: #fff;
         }
         button.button-email {
             background-color: #b8d9ec;
@@ -43,6 +47,17 @@
             border-radius: 20%;
             height: 50px;
             width: 50px;
+        }
+        .level-right {
+            .container.grade {
+                padding-right: 1.25rem;
+                p {
+                    color: #fff;
+                }
+                .title {
+                    padding-left: 0.75rem;
+                }
+            }
         }
     }
 }
