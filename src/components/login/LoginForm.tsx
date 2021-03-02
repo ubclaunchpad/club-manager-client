@@ -1,5 +1,6 @@
 import React, { Component, ReactNode } from 'react';
 import './LoginForm.scss';
+import GoogleLoginButton from '../auth/GoogleLoginButton';
 
 interface ILoginFormProps {
     onClick: () => void;
@@ -26,6 +27,7 @@ class LoginForm extends Component<ILoginFormProps> {
                         <h1 className="is-size-6 ">OR</h1>
                     </div>
                     <button className="button login-button-google">Login with Google</button>
+                    <GoogleLoginButton />
                     <p className="mt-4 is-size-6 has-text-centered">
                         Don&apos;t have an account?{' '}
                         <span className="link has-text-weight-medium" onClick={this.props.onClick}>
