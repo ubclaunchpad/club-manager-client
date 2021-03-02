@@ -7,96 +7,34 @@ interface IDashboardListButtonsProps {
 class DashboardListButtons extends React.Component<IDashboardListButtonsProps> {
     setSliders = (): React.ReactNode => {
         switch (this.props.mode) {
-            case 'Application Reviewed':
-                return (
-                    <div className="level-left">
-                        <div className="level-item">
-                            <p>Application Score </p>
-                            <input
-                                className="slider has-output-tooltip is-fullwidth is-large"
-                                step="0.5"
-                                min="0"
-                                max="5"
-                                value="3"
-                                type="range"
-                            ></input>
-                            <output htmlFor="sliderWithValue">3</output>
-                        </div>
-                    </div>
-                );
-            case 'Scheduled For Interview':
-                return (
-                    <div className="level-left">
-                        <div className="level-item">
-                            <p>Application Score </p>
-                            <input
-                                className="slider has-output-tooltip is-large"
-                                step="0.5"
-                                min="0"
-                                max="5"
-                                value="3"
-                                type="range"
-                            ></input>
-                            <output htmlFor="sliderWithValue">3</output>
-                        </div>
-                    </div>
-                );
             case 'Interviewed':
                 return (
-                    <div className="level-left">
-                        <div className="level-item">
-                            <p>Application Score </p>
-                            <input
-                                className="slider has-output-tooltip is-large"
-                                step="0.5"
-                                min="0"
-                                max="5"
-                                value="3"
-                                type="range"
-                            ></input>
-                            <output htmlFor="sliderWithValue">3</output>
-                        </div>
-                        <div className="level-item">
-                            <p>Interview Score </p>
-                            <input
-                                className="slider has-output-tooltip is-large"
-                                step="0.5"
-                                min="0"
-                                max="5"
-                                value="3"
-                                type="range"
-                            ></input>
-                            <output htmlFor="sliderWithValue">3</output>
-                        </div>
+                    <div className="level-item">
+                        <p>Interview Score </p>
+                        <input
+                            className="slider has-output-tooltip is-large"
+                            step="0.5"
+                            min="0"
+                            max="5"
+                            value="3"
+                            type="range"
+                        ></input>
+                        <output htmlFor="sliderWithValue">3</output>
                     </div>
                 );
             case 'Final Decision':
                 return (
-                    <div className="level-left">
-                        <div className="level-item">
-                            <p>Application Score </p>
-                            <input
-                                className="slider has-output-tooltip is-large"
-                                step="0.5"
-                                min="0"
-                                max="5"
-                                value="3"
-                                type="range"
-                            ></input>
-                            <output htmlFor="sliderWithValue">3</output>
-                        </div>
-                        <div className="level-item">
-                            <p>Interview Score </p>
-                            <input
-                                className="slider has-output-tooltip is-large"
-                                step="0.5"
-                                min="0"
-                                max="5"
-                                value="3"
-                                type="range"
-                            ></input>
-                            <output htmlFor="sliderWithValue">3</output>
-                        </div>
+                    <div className="level-item">
+                        <p>Interview Score </p>
+                        <input
+                            className="slider has-output-tooltip is-large"
+                            step="0.5"
+                            min="0"
+                            max="5"
+                            value="3"
+                            type="range"
+                        ></input>
+                        <output htmlFor="sliderWithValue">3</output>
                     </div>
                 );
         }
@@ -158,7 +96,21 @@ class DashboardListButtons extends React.Component<IDashboardListButtonsProps> {
     render(): React.ReactNode {
         return (
             <div className="level">
-                {this.setSliders()}
+                <div className="level-left">
+                    <div className="level-item">
+                        <p>Application Score </p>
+                        <input
+                            className="slider has-output-tooltip is-large"
+                            step="0.5"
+                            min="0"
+                            max="5"
+                            value="3"
+                            type="range"
+                        ></input>
+                        <output htmlFor="sliderWithValue">3</output>
+                    </div>
+                    {this.setSliders()}
+                </div>
                 {this.setButtons()}
             </div>
         );
