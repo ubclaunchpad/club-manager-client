@@ -12,6 +12,9 @@ import ApplicantInfo from '../components/applicant/ApplicantInfo';
 interface IApplicantInfoProps {
     name: string;
     role: string;
+    status: string;
+    screeningGrade?: number;
+    interviewGrade?: number;
 }
 
 type DashboardState = {
@@ -27,23 +30,88 @@ class Dashboard extends Component<unknown, DashboardState> {
             mode: 'Dashboard',
             count: 0,
             applicantList: [
-                { name: 'John Doe', role: 'Developer Applicant' },
-                { name: 'Selene Dion', role: 'Developer Applicant' },
-                { name: 'Happy Holland', role: 'Designer Applicant' },
-                { name: 'Lionel Ronaldo', role: 'Developer Applicant' },
-                { name: 'Tom Downey', role: 'Designer Applicant' },
-                { name: 'Donald Biden', role: 'Developer Applicant' },
-                { name: 'Fizz Buzz', role: 'Developer Applicant' },
-                { name: 'Dude Dude Bar', role: 'Designer Applicant' },
-                { name: 'Yeet Feet', role: 'Developer Applicant' },
-                { name: 'Paul Doll', role: 'Designer Applicant' },
-                { name: 'Shiloh Dynasty', role: 'Developer Applicant' },
-                { name: 'Mozart Beethoven', role: 'Designer Applicant' },
-                { name: 'Harin Wu', role: 'Developer Applicant' },
-                { name: 'Loot Toot', role: 'Designer Applicant' },
-                { name: 'Cringe Fest', role: 'Developer Applicant' },
-                { name: 'Lo Fi', role: 'Designer Applicant' },
-                { name: 'Hip Hop', role: 'Developer Applicant' },
+                { name: 'John Doe', role: 'Developer Applicant', status: 'Screened: Accepted', screeningGrade: 2 },
+                {
+                    name: 'Selene Dion',
+                    role: 'Developer Applicant',
+                    status: 'Scheduled for Interview',
+                    screeningGrade: 5,
+                },
+                { name: 'Happy Holland', role: 'Designer Applicant', status: 'Screened: Rejected', screeningGrade: 5 },
+                {
+                    name: 'Lionel Ronaldo',
+                    role: 'Developer Applicant',
+                    status: 'Interviewed',
+                    screeningGrade: 8,
+                    interviewGrade: 12,
+                },
+                {
+                    name: 'Tom Downey',
+                    role: 'Designer Applicant',
+                    status: 'Interviewed',
+                    screeningGrade: 2,
+                    interviewGrade: 10,
+                },
+                {
+                    name: 'Donald Biden',
+                    role: 'Developer Applicant',
+                    status: 'Final Decision: Rejected',
+                    screeningGrade: 4,
+                    interviewGrade: 15,
+                },
+                {
+                    name: 'Fizz Buzz',
+                    role: 'Developer Applicant',
+                    status: 'Interviewed',
+                    screeningGrade: 2,
+                    interviewGrade: 9,
+                },
+                {
+                    name: 'Dude Dude Bar',
+                    role: 'Designer Applicant',
+                    status: 'Interviewed',
+                    screeningGrade: 5,
+                    interviewGrade: 13,
+                },
+                {
+                    name: 'Yeet Feet',
+                    role: 'Developer Applicant',
+                    status: 'Final Decision: Accepted',
+                    screeningGrade: 6,
+                    interviewGrade: 16,
+                },
+                {
+                    name: 'Paul Doll',
+                    role: 'Designer Applicant',
+                    status: 'Final Decision: Rejected',
+                    screeningGrade: 2,
+                    interviewGrade: 5,
+                },
+                {
+                    name: 'Shiloh Dynasty',
+                    role: 'Developer Applicant',
+                    status: 'Final Decision: Rejected',
+                    screeningGrade: 3,
+                    interviewGrade: 7,
+                },
+                {
+                    name: 'Mozart Beethoven',
+                    role: 'Designer Applicant',
+                    status: 'Final Decision: Accepted',
+                    screeningGrade: 6,
+                    interviewGrade: 15,
+                },
+                { name: 'Harin Wu', role: 'Developer Applicant', status: 'Screened', screeningGrade: 4 },
+                {
+                    name: 'Loot Toot',
+                    role: 'Designer Applicant',
+                    status: 'Final Decision: Accepted',
+                    screeningGrade: 8,
+                    interviewGrade: 15,
+                },
+                { name: 'Cringe Fest', role: 'Developer Applicant', status: 'Screened: Rejected', screeningGrade: 4 },
+                { name: 'Lo Fi', role: 'Designer Applicant', status: 'Archived: Rejected', screeningGrade: 5 },
+                { name: 'Hip Hop', role: 'Developer Applicant', status: 'Archived: Rejected', screeningGrade: 5 },
             ],
         };
         this.setCount = this.setCount.bind(this);
