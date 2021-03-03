@@ -332,6 +332,19 @@ class Dashboard extends Component<unknown, DashboardState> {
                 <div className="column">
                     <Scoring
                         count={this.state.count}
+                        setCount={this.setCount}
+                        viewScoring={this.openApplicantReview}
+                        viewDashboard={this.openDashboard}
+                        viewApplicant={this.openApplicantInfo}
+                        applicant={this.state.applicantList[this.state.count]}
+                    />
+                </div>
+            );
+        } else {
+            return (
+                <div className="column">
+                    <Scoring
+                        count={this.state.count}
                         viewApplicant={this.openApplicantInfo}
                         applicant={this.state.applicantList[this.state.count]}
                     />
