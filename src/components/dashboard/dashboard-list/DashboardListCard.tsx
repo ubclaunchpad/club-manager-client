@@ -22,7 +22,7 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
     const applicantStatus = props.status;
     let decisionComponent, emailComponent, gradeComponent;
     switch (applicantStatus) {
-        case 'Pending Applications':
+        case 'Application Reviewed':
             decisionComponent = (
                 <div className="level-item">
                     <button className="button button-reject" onClick={() => props.setModalAndType('Reject')}>
@@ -42,7 +42,7 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
             break;
         case 'Screened: Accepted':
             break;
-        case 'Scheduled for Interview':
+        case 'Scheduled For Interview':
             gradeComponent = (
                 <div className="container grade">
                     <p className="title is-4">{props.screeningGrade}</p>
