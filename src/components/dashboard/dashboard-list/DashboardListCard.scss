@@ -1,6 +1,8 @@
 .dashboard-list-card {
+    background-color: #000000;
     margin: 20px 0;
-    padding: 0 !important;
+    padding: 1rem;
+    border-radius: 20px;
     .level {
         color: #fff;
 
@@ -41,7 +43,7 @@
         }
         .icon {
             background-color: #fff;
-            border-radius: 20%;
+            border-radius: 50%;
             height: 50px;
             width: 50px;
         }

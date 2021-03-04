@@ -1,5 +1,5 @@
 .view {
-    background-color: #232946;
+    background-color: #e9edf5;
     height: 100vh;
     min-height: 100%;
     width: 100vw;
@@ -10,9 +10,12 @@
         color: white;
     }
     h1 {
-        color: white;
+        color: #232946;
         display: inline;
         font-size: 24px;
         font-weight: bold;
+    }
+    .level.less-padding {
+        margin-bottom: 0.6rem;
     }
 }

@@ -295,8 +295,10 @@ class Dashboard extends Component<unknown, DashboardState> {
         if (this.state.mode === 'Dashboard') {
             return (
                 <div className="column">
-                    <h1>Stages</h1>
-                    <DashboardHeader viewScreeningStage={this.openScreeningStage} />
+                    <div className="section screening-stages">
+                        <h1>Stages</h1>
+                        <DashboardHeader viewScreeningStage={this.openScreeningStage} />
+                    </div>
                     <DashboardList
                         mode="Pending Applications"
                         viewApplicant={this.openApplicantInfo}

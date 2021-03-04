@@ -2,7 +2,6 @@ import React, { Component, Fragment, ReactNode } from 'react';
 
 import DashboardListButtons from './DashboardListButtons';
 import DashboardListCard from './DashboardListCard';
-import DashboardListFilter from './DashboardListFilter';
 import ApplicantManagementModal from '../../modals/ApplicantManagementModal';
 
 import './DashboardList.scss';
@@ -70,7 +69,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                 <div className="tabs is-fullwidth">
                     <ul>
                         <li className="is-active">
-                            <button>Accepted</button>
+                            <button className="is-primary">Accepted</button>
                         </li>
                         <li>
                             <button>Rejected</button>
@@ -205,42 +204,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
         return (
             <div className="section dashboard-list">
                 {this.setTabs()}
-                <div className="level">
-                    <div className="buttons">
-                        <span>
-                            <DashboardListFilter {...{ title: 'All', count: 150, isActive: true }} />{' '}
-                        </span>
-                        <span>
-                            <DashboardListFilter {...{ title: 'Developers', count: 127, isActive: false }} />
-                        </span>
-                        <span>
-                            <DashboardListFilter {...{ title: 'Designers', count: 23, isActive: false }} />
-                        </span>
-                    </div>
-                </div>
-                <div className="buttons">
-                    <span>
-                        <DashboardListFilter {...{ title: 'All Levels', count: 150, isActive: true }} />{' '}
-                    </span>
-                    <span>
-                        <DashboardListFilter {...{ title: 'Beginner', count: 7, isActive: false }} />{' '}
-                    </span>
-                    <span>
-                        <DashboardListFilter {...{ title: 'Intermediate', count: 6, isActive: false }} />
-                    </span>
-                    <span>
-                        <DashboardListFilter {...{ title: 'Advanced', count: 4, isActive: false }} />
-                    </span>
-                </div>
                 <DashboardListButtons mode={this.props.mode} />
-                <div className="field">
-                    <p className="control has-icons-left">
-                        <input className="input" type="text" placeholder="Search applicants" />
-                        <span className="icon is-small is-left">
-                            <i className="fas fa-search"></i>
-                        </span>
-                    </p>
-                </div>
                 <div className="section">
                     <Fragment>{this.setList()}</Fragment>
                 </div>

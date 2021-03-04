@@ -121,7 +121,7 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
                     <div className="level-item">
                         <span className="icon">
                             <FontAwesomeIcon
-                                icon={props.role === 'Designer' ? faPaintBrush : faCode}
+                                icon={props.role === 'Designer Applicant' ? faPaintBrush : faCode}
                                 color={'#444444'}
                             />
                         </span>
@@ -130,9 +130,6 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
                         <div className="container">
                             <p className="dashboard-list-card-name" onClick={() => props.viewApplicant(props.count)}>
                                 {props.name}
-                            </p>
-                            <p className="dashboard-list-card-role">
-                                {props.role} ({props.level})
                             </p>
                         </div>
                     </div>

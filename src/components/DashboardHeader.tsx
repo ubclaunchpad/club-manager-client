@@ -12,7 +12,7 @@ class DashboardHeader extends React.Component<{
     render(): React.ReactNode {
         return (
             <div>
-                <div className="columns stages-list">
+                <div className="columns">
                     <div className="column is-one-fourth">
                         <DashboardCard
                             cardImage={ReviewedCard}
