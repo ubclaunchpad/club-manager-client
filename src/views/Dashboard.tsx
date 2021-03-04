@@ -8,10 +8,12 @@ import Scoring from '../components/scoring/Scoring';
 
 import './Dashboard.scss';
 import ApplicantInfo from '../components/applicant/ApplicantInfo';
+import ScreeningStage from '../components/screening/ScreeningStage';
 
 interface IApplicantInfoProps {
     name: string;
     role: string;
+    level: string;
     status: string;
     screeningGrade?: number;
     interviewGrade?: number;
@@ -20,7 +22,13 @@ interface IApplicantInfoProps {
 type DashboardState = {
     mode: string;
     count: number;
+    stage: string;
     applicantList: IApplicantInfoProps[];
+    reviewedList: IApplicantInfoProps[];
+    scheduledList: IApplicantInfoProps[];
+    interviewedList: IApplicantInfoProps[];
+    acceptedList: IApplicantInfoProps[];
+    rejectedList: IApplicantInfoProps[];
 };
 
 class Dashboard extends Component<unknown, DashboardState> {
@@ -29,89 +37,140 @@ class Dashboard extends Component<unknown, DashboardState> {
         this.state = {
             mode: 'Dashboard',
             count: 0,
+            stage: 'Pending Applications',
             applicantList: [
-                { name: 'John Doe', role: 'Developer Applicant', status: 'Screened: Accepted', screeningGrade: 2 },
                 {
-                    name: 'Selene Dion',
+                    name: 'John Doe',
                     role: 'Developer Applicant',
-                    status: 'Scheduled for Interview',
-                    screeningGrade: 5,
-                },
-                { name: 'Happy Holland', role: 'Designer Applicant', status: 'Screened: Rejected', screeningGrade: 5 },
-                {
-                    name: 'Lionel Ronaldo',
-                    role: 'Developer Applicant',
-                    status: 'Interviewed',
-                    screeningGrade: 8,
-                    interviewGrade: 12,
-                },
-                {
-                    name: 'Tom Downey',
-                    role: 'Designer Applicant',
-                    status: 'Interviewed',
-                    screeningGrade: 2,
-                    interviewGrade: 10,
-                },
-                {
-                    name: 'Donald Biden',
-                    role: 'Developer Applicant',
-                    status: 'Final Decision: Rejected',
-                    screeningGrade: 4,
-                    interviewGrade: 15,
-                },
-                {
-                    name: 'Fizz Buzz',
-                    role: 'Developer Applicant',
-                    status: 'Interviewed',
-                    screeningGrade: 2,
-                    interviewGrade: 9,
+                    level: 'Beginner',
+                    status: 'Pending Applications',
                 },
                 {
                     name: 'Dude Dude Bar',
                     role: 'Designer Applicant',
-                    status: 'Interviewed',
-                    screeningGrade: 5,
-                    interviewGrade: 13,
-                },
-                {
-                    name: 'Yeet Feet',
-                    role: 'Developer Applicant',
-                    status: 'Final Decision: Accepted',
-                    screeningGrade: 6,
-                    interviewGrade: 16,
+                    level: 'Beginner',
+                    status: 'Pending Applications',
                 },
                 {
                     name: 'Paul Doll',
                     role: 'Designer Applicant',
-                    status: 'Final Decision: Rejected',
-                    screeningGrade: 2,
-                    interviewGrade: 5,
+                    level: 'Advanced',
+                    status: 'Pending Applications',
+                },
+                {
+                    name: 'Loot Toot',
+                    role: 'Designer Applicant',
+                    level: 'Beginner',
+                    status: 'Pending Applications',
+                },
+            ],
+            reviewedList: [
+                {
+                    name: 'Selene Dion',
+                    role: 'Developer Applicant',
+                    level: 'Intermediate',
+                    status: 'Application Reviewed',
+                    screeningGrade: 5,
+                },
+                {
+                    name: 'Happy Holland',
+                    role: 'Designer Applicant',
+                    level: 'Beginner',
+                    status: 'Application Reviewed',
+                    screeningGrade: 3,
+                },
+            ],
+            scheduledList: [
+                {
+                    name: 'Lionel Ronaldo',
+                    role: 'Developer Applicant',
+                    level: 'Advanced',
+                    status: 'Scheduled For Interview',
+                    screeningGrade: 4,
                 },
                 {
                     name: 'Shiloh Dynasty',
                     role: 'Developer Applicant',
-                    status: 'Final Decision: Rejected',
+                    level: 'Intermediate',
+                    status: 'Scheduled For Interview',
                     screeningGrade: 3,
-                    interviewGrade: 7,
+                },
+                {
+                    name: 'Cringe Fest',
+                    role: 'Developer Applicant',
+                    level: 'Intermediate',
+                    status: 'Scheduled For Interview',
+                    screeningGrade: 3,
+                },
+            ],
+            interviewedList: [
+                {
+                    name: 'Tom Downey',
+                    role: 'Designer Applicant',
+                    level: 'Advanced',
+                    status: 'Interviewed',
+                    screeningGrade: 5,
+                    interviewGrade: 4,
+                },
+                {
+                    name: 'Donald Biden',
+                    role: 'Developer Applicant',
+                    level: 'Intermediate',
+                    status: 'Interviewed',
+                    screeningGrade: 4,
+                    interviewGrade: 3,
+                },
+                {
+                    name: 'Lo Fi',
+                    role: 'Designer Applicant',
+                    level: 'Intermediate',
+                    status: 'Interviewed',
+                    screeningGrade: 3,
+                    interviewGrade: 3,
+                },
+            ],
+            acceptedList: [
+                {
+                    name: 'Yeet Feet',
+                    role: 'Developer Applicant',
+                    level: 'Advanced',
+                    status: 'Final Decision: Accepted',
+                    screeningGrade: 5,
+                    interviewGrade: 5,
                 },
                 {
                     name: 'Mozart Beethoven',
                     role: 'Designer Applicant',
+                    level: 'Intermediate',
                     status: 'Final Decision: Accepted',
-                    screeningGrade: 6,
-                    interviewGrade: 15,
+                    screeningGrade: 4,
+                    interviewGrade: 5,
                 },
-                { name: 'Harin Wu', role: 'Developer Applicant', status: 'Screened', screeningGrade: 4 },
+            ],
+            rejectedList: [
                 {
-                    name: 'Loot Toot',
-                    role: 'Designer Applicant',
-                    status: 'Final Decision: Accepted',
-                    screeningGrade: 8,
-                    interviewGrade: 15,
+                    name: 'Fizz Buzz',
+                    role: 'Developer Applicant',
+                    level: 'Beginner',
+                    status: 'Final Decision: Rejected',
+                    screeningGrade: 1,
                 },
-                { name: 'Cringe Fest', role: 'Developer Applicant', status: 'Screened: Rejected', screeningGrade: 4 },
-                { name: 'Lo Fi', role: 'Designer Applicant', status: 'Archived: Rejected', screeningGrade: 5 },
-                { name: 'Hip Hop', role: 'Developer Applicant', status: 'Archived: Rejected', screeningGrade: 5 },
+                {
+                    name: 'Harin Wu',
+                    role: 'Developer Applicant',
+                    level: 'Beginner',
+                    status: 'Final Decision: Rejected',
+                    screeningGrade: 4,
+                    interviewGrade: 2,
+                },
+                {
+                    name: 'Hip Hop',
+                    role: 'Developer Applicant',
+                    level: 'Beginner',
+                    status: 'Archived: Rejected',
+                    screeningGrade: 3,
+                    interviewGrade: 2,
+                },
             ],
         };
         this.setCount = this.setCount.bind(this);
@@ -156,29 +215,118 @@ class Dashboard extends Component<unknown, DashboardState> {
         this.setState({ mode: 'Dashboard' });
     };
 
-    renderState(): React.ReactNode {
-        if (this.state.mode === 'Dashboard') {
-            return (
-                <div className="column">
-                    <h1>Dashboard</h1>
-                    <DashboardHeader />
-                    <DashboardList viewApplicant={this.openApplicantInfo} applicants={this.state.applicantList} />
-                </div>
-            );
-        } else if (this.state.mode === 'ApplicantInfo') {
-            return (
-                <div className="column">
+    setScreeningStage = (newStage: string): void => {
+        this.setState(() => ({
+            stage: newStage,
+        }));
+    };
+
+    openScreeningStage = (newStage: string): void => {
+        this.setScreeningStage(newStage);
+        this.setState({ mode: 'Screening' });
+    };
+
+    setList = (): React.ReactNode => {
+        switch (this.state.stage) {
+            case 'Pending Applications':
+                return (
                     <ApplicantInfo
                         totalApplicants={this.state.applicantList.length}
                         applicant={this.state.applicantList[this.state.count]}
                         count={this.state.count}
                         setCount={this.setCount}
-                        viewScoring={this.openApplicantReview}
                         viewDashboard={this.openDashboard}
+                        viewScoring={this.openApplicantReview}
                         viewApplicant={this.openApplicantInfo}
+                    />
+                );
+            case 'Application Reviewed':
+                return (
+                    <ApplicantInfo
+                        totalApplicants={this.state.reviewedList.length}
+                        applicant={this.state.reviewedList[this.state.count]}
+                        count={this.state.count}
+                        setCount={this.setCount}
+                        viewDashboard={this.openDashboard}
+                        viewScoring={this.openApplicantReview}
+                        viewApplicant={this.openApplicantInfo}
+                    />
+                );
+            case 'Scheduled For Interview':
+                return (
+                    <ApplicantInfo
+                        totalApplicants={this.state.scheduledList.length}
+                        applicant={this.state.scheduledList[this.state.count]}
+                        count={this.state.count}
+                        setCount={this.setCount}
+                        viewDashboard={this.openDashboard}
+                        viewScoring={this.openApplicantReview}
+                        viewApplicant={this.openApplicantInfo}
+                    />
+                );
+            case 'Interviewed':
+                return (
+                    <ApplicantInfo
+                        totalApplicants={this.state.interviewedList.length}
+                        applicant={this.state.interviewedList[this.state.count]}
+                        count={this.state.count}
+                        setCount={this.setCount}
+                        viewDashboard={this.openDashboard}
+                        viewScoring={this.openApplicantReview}
+                        viewApplicant={this.openApplicantInfo}
+                    />
+                );
+            case 'Final Decision':
+                return (
+                    <ApplicantInfo
+                        totalApplicants={this.state.acceptedList.length}
+                        applicant={this.state.acceptedList[this.state.count]}
+                        count={this.state.count}
+                        setCount={this.setCount}
+                        viewDashboard={this.openDashboard}
+                        viewScoring={this.openApplicantReview}
+                        viewApplicant={this.openApplicantInfo}
+                    />
+                );
+        }
+    };
+
+    renderState(): React.ReactNode {
+        if (this.state.mode === 'Dashboard') {
+            return (
+                <div className="column">
+                    <h1>Dashboard</h1>
+                    <DashboardHeader viewScreeningStage={this.openScreeningStage} />
+                    <DashboardList
+                        mode="Pending Applications"
+                        viewApplicant={this.openApplicantInfo}
+                        applicants={this.state.applicantList}
+                        reviewed={this.state.reviewedList}
+                        scheduled={this.state.scheduledList}
+                        interviewed={this.state.interviewedList}
+                        accepted={this.state.acceptedList}
+                        rejected={this.state.rejectedList}
                     />
                 </div>
             );
+        } else if (this.state.mode === 'Screening') {
+            return (
+                <div className="column">
+                    <ScreeningStage
+                        stage={this.state.stage}
+                        viewDashboard={this.openDashboard}
+                        viewApplicant={this.openApplicantInfo}
+                        applicants={this.state.applicantList}
+                        reviewed={this.state.reviewedList}
+                        scheduled={this.state.scheduledList}
+                        interviewed={this.state.interviewedList}
+                        accepted={this.state.acceptedList}
+                        rejected={this.state.rejectedList}
+                    />
+                </div>
+            );
+        } else if (this.state.mode === 'ApplicantInfo') {
+            return <div className="column">{this.setList()}</div>;
         } else {
             return (
                 <div className="column">

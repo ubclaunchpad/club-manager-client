@@ -6,8 +6,10 @@ import { faEnvelope, faCalendarAlt } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface IDashboardListCardProps {
+    mode: string;
     name: string;
     role: string;
+    level: string;
     status: string;
     count: number;
     viewApplicant: (newCount: number) => void;
@@ -20,7 +22,7 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
     const applicantStatus = props.status;
     let decisionComponent, emailComponent, gradeComponent;
     switch (applicantStatus) {
-        case 'Screened':
+        case 'Application Reviewed':
             decisionComponent = (
                 <div className="level-item">
                     <button className="button button-reject" onClick={() => props.setModalAndType('Reject')}>
@@ -40,7 +42,7 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
             break;
         case 'Screened: Accepted':
             break;
-        case 'Scheduled for Interview':
+        case 'Scheduled For Interview':
             gradeComponent = (
                 <div className="container grade">
                     <p className="title is-4">{props.screeningGrade}</p>
@@ -129,7 +131,9 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
                             <p className="dashboard-list-card-name" onClick={() => props.viewApplicant(props.count)}>
                                 {props.name}
                             </p>
-                            <p className="dashboard-list-card-role">{props.role}</p>
+                            <p className="dashboard-list-card-role">
+                                {props.role} ({props.level})
+                            </p>
                         </div>
                     </div>
                 </div>
