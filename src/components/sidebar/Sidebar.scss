@@ -1,8 +1,9 @@
 #sidebar {
-    background-color: #232946;
+    background-color: #fbfbfb;
     box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.25);
     height: 100%;
     padding: 2em;
+    position: relative;
     text-align: center;
     width: 100%;
 
@@ -11,42 +12,62 @@
         height: 2px;
     }
 
-    .media {
-        padding-bottom: 2em;
-        text-align: left;
-
-        img {
-            height: 100%;
-            width: 100%;
-        }
-
-        .title,
-        .subtitle {
-            color: #fff;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.9em;
-        }
+    .hireflow-icon {
+        width: 100%;
     }
 
     .menu-list {
         text-align: left;
-        a {
+        li {
+            margin: 1.5em 0;
+            a {
+                color: #828282;
+                font-family: 'Montserrat', sans-serif;
+                font-size: 1em;
+                font-weight: 500;
+            }
+
+            a:hover {
+                background-color: #dadada;
+                border-radius: 10px;
+            }
+
+            .icon {
+                color: black;
+                font-size: 1.4em;
+                margin-right: 15px;
+            }
+        }
+    }
+
+    .logo-box {
+        position: absolute;
+        bottom: 2em;
+        left: 2em;
+        right: 2em;
+
+        .launchpad-logo {
+            background-color: #232946;
+            border-radius: 25px;
             color: #fff;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1em;
-            font-weight: 600;
-        }
+            padding: 15px 11px;
+            position: relative;
+            text-align: left;
 
-        a:hover {
-            background-color: #394167;
-            border-radius: 10px;
-        }
+            .club-name {
+                size: 1em;
+                font-weight: 600;
+            }
+            .description {
+                size: 0.8em;
+                font-weight: 300;
+            }
 
-        .icon {
-            font-size: 1.75em;
-            margin-right: 15px;
-            padding-bottom: 2px;
-            vertical-align: middle;
+            .icon {
+                position: absolute;
+                right: 11px;
+                top: 15px;
+            }
         }
     }
 }
