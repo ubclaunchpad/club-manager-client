@@ -1,5 +1,7 @@
 import React from 'react';
 import DashboardList from '../../components/dashboard/dashboard-list/DashboardList';
+import ScreeningStageHeader from './ScreeningStageHeader';
+import './ScreeningStage.scss';
 
 class ScreeningStage extends React.Component<{
     stage: string;
@@ -15,13 +17,21 @@ class ScreeningStage extends React.Component<{
     render(): React.ReactNode {
         return (
             <React.Fragment>
+                <section className="hero is-small screening-stage-header">
+                    <ScreeningStageHeader
+                        stage={this.props.stage}
+                        viewDashboard={this.props.viewDashboard}
+                        applicants={this.props.applicants}
+                        reviewed={this.props.reviewed}
+                        scheduled={this.props.scheduled}
+                        interviewed={this.props.interviewed}
+                        accepted={this.props.accepted}
+                        rejected={this.props.rejected}
+                    />
+                </section>
                 <div className="columns">
                     <div className="column">
                         <div className="container">
-                            <button onClick={() => this.props.viewDashboard()}>
-                                <i className="fas fa-arrow-left"></i>
-                            </button>
-                            <h1>{this.props.stage}</h1>
                             <DashboardList
                                 mode={this.props.stage}
                                 viewApplicant={this.props.viewApplicant}

@@ -295,7 +295,7 @@ class Dashboard extends Component<unknown, DashboardState> {
         if (this.state.mode === 'Dashboard') {
             return (
                 <div className="column">
-                    <h1>Dashboard</h1>
+                    <h1>Stages</h1>
                     <DashboardHeader viewScreeningStage={this.openScreeningStage} />
                     <DashboardList
                         mode="Pending Applications"
@@ -311,7 +311,7 @@ class Dashboard extends Component<unknown, DashboardState> {
             );
         } else if (this.state.mode === 'Screening') {
             return (
-                <div className="column">
+                <div className="column screening-stage">
                     <ScreeningStage
                         stage={this.state.stage}
                         viewDashboard={this.openDashboard}
