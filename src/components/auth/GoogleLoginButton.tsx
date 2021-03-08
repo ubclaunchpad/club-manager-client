@@ -1,21 +1,31 @@
 import React from 'react';
+import Cookies from 'js-cookie';
 import GoogleLogin, { GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login';
+import { Redirect } from 'react-router-dom';
 
 const clientId = '215320798103-7kvftlie6bbu31nb9tgvqqq7sd7p50e6.apps.googleusercontent.com';
 
 class GoogleLoginButton extends React.Component {
+    state = {
+        loggedIn: false,
+    };
+
     onLoginSuccess = (response: GoogleLoginResponse | GoogleLoginResponseOffline): void => {
         if ('tokenId' in response) {
             const { tokenId, accessToken } = response;
 
             // TODO: remove this at the end of auth development
             console.log(`[Success] ${tokenId}, ${accessToken}`);
+            console.log(response.profileObj);
+            console.log(response.tokenObj);
 
             // TODO: perform an API call to log into the server
 
             // TODO: save the token ID to an httponly cookie
+            Cookies.set('accessToken', accessToken);
 
             // TODO: redirect to dashboard
+            this.setState({ loggedIn: true });
         } else {
             console.log("[Failure] Authentication servers must be can't be reached right now");
         }
@@ -28,16 +38,25 @@ class GoogleLoginButton extends React.Component {
         // TODO: invoke callback to render failure message
     };
 
+    renderLogin(): React.ReactNode {
+        if (this.state.loggedIn) {
+            return <Redirect to="/dashboard" />;
+        } else {
+            return (
+                <GoogleLogin
+                    clientId={clientId}
+                    scope={'email https://www.googleapis.com/auth/spreadsheets'}
+                    buttonText="Log in with Google"
+                    onSuccess={this.onLoginSuccess}
+                    onFailure={this.onLoginFailure}
+                    cookiePolicy={'single_host_origin'}
+                />
+            );
+        }
+    }
+
     render(): React.ReactNode {
-        return (
-            <GoogleLogin
-                clientId={clientId}
-                buttonText="Log in with Google"
-                onSuccess={this.onLoginSuccess}
-                onFailure={this.onLoginFailure}
-                cookiePolicy={'single_host_origin'}
-            />
-        );
+        return <div>{this.renderLogin()}</div>;
     }
 }
 export default GoogleLoginButton;

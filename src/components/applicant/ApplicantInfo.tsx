@@ -5,10 +5,18 @@ import ApplicantInfoHeader from './ApplicantInfoHeader';
 
 class ApplicantInfo extends React.Component<{
     totalApplicants: number;
-    applicant: { name: string; role: string };
+    applicant: {
+        name: string;
+        role: string;
+        level: string;
+        status: string;
+        screeningGrade?: number;
+        interviewGrade?: number;
+    };
     count: number;
     setCount: (newCount: number) => void;
     viewDashboard: () => void;
+    viewScoring: () => void;
     viewApplicant: (newCount: number) => void;
 }> {
     showModal = (name: string, role: string, type: string): void => {
@@ -22,19 +30,27 @@ class ApplicantInfo extends React.Component<{
                     <div className="column">
                         <div className="container">
                             <div className="applicant-navbar">
-                                <button onClick={() => this.props.viewDashboard()}>
+                                <button className="back-button" onClick={() => this.props.viewDashboard()}>
                                     <i className="fas fa-arrow-left"></i>
                                 </button>
                                 <h1>Applicant Information</h1>
+                                <button className="review-button" onClick={this.props.viewScoring}>
+                                    Review Applicant
+                                </button>
                             </div>
                             <DashboardListCard
+                                mode="ApplicantInfo"
                                 name={this.props.applicant.name}
                                 role={this.props.applicant.role}
+                                level={this.props.applicant.level}
+                                status={this.props.applicant.status}
                                 count={this.props.count}
                                 viewApplicant={this.props.viewApplicant}
                                 setModalAndType={(type: string) => {
                                     this.showModal(this.props.applicant.name, this.props.applicant.role, type);
                                 }}
+                                screeningGrade={this.props.applicant.screeningGrade}
+                                interviewGrade={this.props.applicant.interviewGrade}
                             />
                             <ApplicantInfoHeader
                                 email={'johndoe@gmail.com'}

@@ -1,5 +1,5 @@
 .dashboard-list {
-    color: #ffffff;
+    color: #fff;
 
     h1 {
         font-size: 24px;
@@ -7,13 +7,25 @@
     }
 
     .section {
-        padding: 10px 0px !important;
+        height: 50vh;
         overflow-y: scroll;
-        height: 350px;
+        padding: 10px 0 !important;
+    }
+
+    .tabs {
+        padding-bottom: 10px;
     }
 
     .buttons {
         display: flex;
         flex-direction: row;
+    }
+}
+
+@media screen and (max-height: 760px) {
+    .dashboard-list {
+        .section {
+            height: 40vh;
+        }
     }
 }

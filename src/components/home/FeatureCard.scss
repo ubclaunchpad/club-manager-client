@@ -1,17 +1,16 @@
 .feature-card {
     background-color: #fff;
     border-radius: 25px;
+    display: flex;
 
     //allow feature-card-content to take 100% of the remaining height
     flex-direction: column;
-    display: flex;
-
     height: 100%;
     padding: 2.4em 3.25em;
 
     .card-image img {
-        width: 11.7em;
         height: 11.7em;
+        width: 11.7em;
     }
 
     .feature-card-content {

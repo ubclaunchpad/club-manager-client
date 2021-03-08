@@ -16,18 +16,25 @@ class ApplicantManagementModal extends React.Component<IApplicantManagementModal
 
     setModal = (): void => {
         switch (this.props.type) {
+            case 'Move to Schedule':
+                this.description = 'This will move the applicant to the "Schedule for Interview" Stage:';
+                this.title = 'Move to Schedule for Interview';
+                break;
             case 'Schedule':
                 this.description = 'This will send a Calendly email to the applicant:';
                 this.title = 'Schedule for Interview';
                 break;
             case 'Reject':
                 this.title = 'Reject Applicant:';
-                this.description = 'This will send a rejection email to the applicant:';
+                this.description = 'This will move the applicant to Final Decision - Rejected:';
                 break;
             case 'Accept':
-                this.description = 'This will send an offer to the applicant:';
+                this.description = 'This will move the applicant to Final Decision - Accepted:';
                 this.title = 'Accept Applicant';
                 break;
+            case 'Email':
+                this.description = 'This will send a Calendly email to the applicant:';
+                this.title = 'Send Final Decision';
         }
     };
 
