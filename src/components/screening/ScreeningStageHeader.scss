@@ -1,0 +1,47 @@
+.screening-stage-header {
+    background-color: #000000;
+    padding: 1rem;
+    .applicant-count {
+        padding-top: 6rem;
+    }
+    h1,
+    h3 {
+        color: #ffffff;
+        font-weight: 400;
+    }
+    .hero-title {
+        font-size: 56px;
+        font-weight: 400;
+    }
+
+    .hero-subtitle {
+        font-size: 26px;
+        font-weight: 500;
+        margin-top: 0.6rem;
+    }
+
+    .hero-body {
+        padding-bottom: 0rem !important;
+        bottom: 20;
+    }
+
+    .total {
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    img {
+        max-width: 300px;
+        margin-right: 6rem;
+    }
+
+    button {
+        background-color: transparent;
+        border: 0;
+        color: white;
+        font-size: 20px;
+        i {
+            padding: 1rem;
+        }
+    }
+}
