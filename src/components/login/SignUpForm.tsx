@@ -60,9 +60,11 @@ class SignUpForm extends Component<ISignUpFormProps> {
             });
 
             /* Store Google access token in auth header and set timeout */
-            console.log(`Using token: ${Cookies.get('tokenId')}`);
             const config = {
-                headers: { Authorization: `Bearer ${Cookies.get('tokenId')}` },
+                headers: { 
+                    'Authorization': `Bearer ${Cookies.get('tokenId')}`,
+                    'Content-Type': 'application/json',
+                },
                 timeout: 2000
             };
 
@@ -70,15 +72,15 @@ class SignUpForm extends Component<ISignUpFormProps> {
             .post('http://localhost:4000/user', jsonBody, config)
             .then((result: any) => {
                 console.log(result.data.data)
+                this.setState({ isPendingResponse: false });
+                
+                /* Redirect to Dashboard */
+                this.setState({ isDoneSignup: true });
             })
             .catch((err) => {
                 console.log(err);
+                this.setState({ isPendingResponse: false });
             });
-
-            this.setState({ isPendingResponse: false });
-
-            /* Redirect to Dashboard */
-            // this.setState({ isDoneSignup: true });
         }
     };
 
@@ -126,6 +128,7 @@ class SignUpForm extends Component<ISignUpFormProps> {
                     <hr></hr>
                     <GoogleSignupButton
                         setCredentials={(credentials: ICredentials) => this.setState({ userCredentials: credentials })}
+                        skipSignup={() => this.setState({ isDoneSignup: true })}
                     />
                 </div>
             );
