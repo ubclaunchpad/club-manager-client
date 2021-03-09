@@ -22,7 +22,10 @@ class GoogleLoginButton extends React.Component {
             // TODO: perform an API call to log into the server
 
             // TODO: save the token ID to an httponly cookie
-            Cookies.set('accessToken', accessToken);
+            Cookies.set('accessToken', accessToken, {
+                expires: 1/24,
+                path: '/options',
+            });
 
             // TODO: redirect to dashboard
             this.setState({ loggedIn: true });
