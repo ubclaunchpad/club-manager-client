@@ -35,10 +35,10 @@ class GoogleSignupButton extends React.Component<ISignUpButtonProps> {
             axios
                 .get('http://localhost:4000/user', config)
                 .then((result: any) => {
-                    const doesExist = result.data.data;
-                    console.log(doesExist);
-
-                    if (doesExist) {
+                    const doesExist = result.data.exists;
+                    
+                    // Set their credentials if they are new
+                    if (!doesExist) {
                         const userCredentials = {
                             googleId: response.profileObj.googleId,
                             firstName: response.profileObj.givenName,
@@ -46,9 +46,8 @@ class GoogleSignupButton extends React.Component<ISignUpButtonProps> {
                             email: response.profileObj.email,
                         };
                         this.props.setCredentials(userCredentials);
-                    } else {
-                        console.log('User already exists');
-                        
+                    } 
+                    else {
                         // Redirect to dashboard
                         this.props.skipSignup();
                     }
