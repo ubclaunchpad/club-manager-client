@@ -1,7 +1,7 @@
 import React from 'react';
-import Cookies from 'js-cookie';
 import GoogleLogin, { GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login';
 import { Redirect } from 'react-router-dom';
+import axios from 'axios';
 
 const clientId = '215320798103-7kvftlie6bbu31nb9tgvqqq7sd7p50e6.apps.googleusercontent.com';
 
@@ -22,7 +22,15 @@ class GoogleLoginButton extends React.Component {
             // TODO: perform an API call to log into the server
 
             // TODO: save the token ID to an httponly cookie
-            Cookies.set('accessToken', accessToken);
+            axios.defaults.headers.common.Authorization = accessToken;
+            axios
+                .get(`http://localhost:4000/user/token`, { withCredentials: true })
+                .then((res) => {
+                    console.log(res.data);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
 
             // TODO: redirect to dashboard
             this.setState({ loggedIn: true });
