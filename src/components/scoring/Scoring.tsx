@@ -35,7 +35,7 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
         this.confirmSubmit = this.confirmSubmit.bind(this);
     }
 
-    handleCriteriaChange(e: any) {
+    handleCriteriaChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         switch (e.currentTarget.name) {
             case 'C1':
                 this.setState({ C1: e.currentTarget.value });
@@ -50,13 +50,13 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
                 this.setState({ experience: e.currentTarget.value });
                 break;
         }
-    }
+    };
 
     //function to manage what happens when submition is confirmed
-    confirmSubmit() {
+    confirmSubmit = (): void => {
         alert('Submited');
         this.props.viewDashboard();
-    }
+    };
 
     toggleIsModalActive = (): void => {
         this.setState({ isModalActive: !this.state.isModalActive });

@@ -16,23 +16,27 @@ const criteriaList = [
     },
     {
         name: 'C3',
-        text: "Rate the best of the provided items from the OR/AND' from the relevant skill bucket they fall in",
+        text: "Rate the best of the provided items from the OR/AND's from the relevant skill bucket they fall in",
     },
 ];
 
-class ScoringForm extends React.Component<{
-    handleCriteriaChange: (e: any) => void;
+interface IScoringFormProps {
+    handleCriteriaChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     openScoringModal: () => void;
-}> {
-    constructor(props: any) {
-        super(props);
+}
 
+class ScoringForm extends React.Component<IScoringFormProps> {
+    constructor(props: IScoringFormProps) {
+        super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    handleSubmit(e: any) {
+
+    handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
         this.props.openScoringModal();
-    }
+        return;
+    };
+
     render(): React.ReactNode {
         return (
             <form onSubmit={this.handleSubmit}>
