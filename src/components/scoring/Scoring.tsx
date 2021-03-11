@@ -6,11 +6,46 @@ import './Scoring.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCode, faPaintBrush } from '@fortawesome/free-solid-svg-icons';
 
-class Scoring extends React.Component<{
+interface ScoringState {
+    C1: String;
+    C2: String;
+    C3: String;
+    experience: String;
+}
+interface ScoringProps {
     applicant: { name: string; role: string };
     count: number;
     viewApplicant: (newCount: number) => void;
-}> {
+}
+
+class Scoring extends React.Component<ScoringProps, ScoringState> {
+    constructor(props: ScoringProps) {
+        super(props);
+        this.state = {
+            C1: '0',
+            C2: '0',
+            C3: '0',
+            experience: '',
+        };
+        this.handleCriteriaChange = this.handleCriteriaChange.bind(this);
+    }
+
+    handleCriteriaChange(e: any) {
+        switch (e.currentTarget.name) {
+            case 'C1':
+                this.setState({ C1: e.currentTarget.value });
+                break;
+            case 'C2':
+                this.setState({ C2: e.currentTarget.value });
+                break;
+            case 'C3':
+                this.setState({ C3: e.currentTarget.value });
+                break;
+            case 'experience':
+                this.setState({ experience: e.currentTarget.value });
+                break;
+        }
+    }
     render(): React.ReactNode {
         return (
             <React.Fragment>
@@ -66,7 +101,10 @@ class Scoring extends React.Component<{
                                     <span>2=Exceptional</span>
                                 </p>
                                 <div className="scoring-form">
-                                    <ScoringForm />
+                                    <ScoringForm handleCriteriaChange={this.handleCriteriaChange} />
+                                    <div className="current-score">
+                                        <p>Current score {+this.state.C1 + +this.state.C2 + +this.state.C3}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

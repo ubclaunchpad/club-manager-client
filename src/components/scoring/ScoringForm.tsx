@@ -20,27 +20,53 @@ const criteriaList = [
     },
 ];
 
-class ScoringForm extends React.Component {
+class ScoringForm extends React.Component<{
+    handleCriteriaChange: (e: any) => void;
+}> {
     render(): React.ReactNode {
         return (
             <form>
                 {criteriaList.map((criteria) => (
-                    <ScoringFormOption name={criteria.name} key={criteria.name} text={criteria.text} />
+                    <ScoringFormOption
+                        name={criteria.name}
+                        key={criteria.name}
+                        text={criteria.text}
+                        handleCriteriaChange={this.props.handleCriteriaChange}
+                    />
                 ))}
                 <div className="field scoring-field">
                     <label>Experience Level:</label>
                     <div className="control">
                         <div className="columns">
                             <label className=" column radio mt-3 ">
-                                <input type="radio" value="biginner" name="experience" className="mr-2 " required />
+                                <input
+                                    type="radio"
+                                    value="beginner"
+                                    name="experience"
+                                    className="mr-2 "
+                                    onChange={this.props.handleCriteriaChange}
+                                    required
+                                />
                                 Beginner
                             </label>
                             <label className=" column radio mt-3 ">
-                                <input type="radio" value="intermediate" name="experience" className="mr-2" />
+                                <input
+                                    type="radio"
+                                    value="intermediate"
+                                    name="experience"
+                                    className="mr-2"
+                                    onChange={this.props.handleCriteriaChange}
+                                />
                                 Intermediate
                             </label>
                             <label className=" column radio mt-3 ">
-                                <input type="radio" value="advanced" name="experience" className="mr-2" />
+                                <input
+                                    type="radio"
+                                    value="advanced"
+                                    name="experience"
+                                    className="mr-2"
+                                    onChange={this.props.handleCriteriaChange}
+                                />
                                 Advanced
                             </label>
                         </div>
