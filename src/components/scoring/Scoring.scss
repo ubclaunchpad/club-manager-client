@@ -1,23 +1,35 @@
 .applicant-navbar {
-    margin-top: 1rem;
+    margin-top: 1em;
     margin-left: -1.5rem;
     margin-right: 5.5rem;
-    button {
-        border: 0;
-        background-color: transparent;
+    .dropdown {
+        margin-left: 35%;
+    }
+}
+.form-header {
+    padding: 2em 2em;
+
+    .applicant-card {
+        background-color: black;
+        border-radius: 20px;
         color: white;
-        font-size: 20px;
-        i {
-            padding: 1rem;
+        font-size: 17px;
+        padding: 25px 21px;
+
+        .icon {
+            background-color: white;
+            border-radius: 50%;
+            color: black;
+            padding: 20px;
         }
+    }
+    .score-values {
+        text-align: right;
     }
 }
 
-.form-header {
-    color: white;
-}
-
 .scoring-form {
+    margin-top: 2em;
     height: 70vh;
     overflow-y: auto;
 }
