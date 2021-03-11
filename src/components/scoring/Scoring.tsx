@@ -1,21 +1,24 @@
 import React from 'react';
 
 import ScoringForm from './ScoringForm';
+import ScoringModal from './ScoringModal';
 
 import './Scoring.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCode, faPaintBrush } from '@fortawesome/free-solid-svg-icons';
 
 interface ScoringState {
-    C1: String;
-    C2: String;
-    C3: String;
-    experience: String;
+    C1: string;
+    C2: string;
+    C3: string;
+    experience: string;
+    isModalActive: boolean;
 }
 interface ScoringProps {
     applicant: { name: string; role: string };
     count: number;
     viewApplicant: (newCount: number) => void;
+    viewDashboard: () => void;
 }
 
 class Scoring extends React.Component<ScoringProps, ScoringState> {
@@ -26,8 +29,10 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
             C2: '0',
             C3: '0',
             experience: '',
+            isModalActive: false,
         };
         this.handleCriteriaChange = this.handleCriteriaChange.bind(this);
+        this.confirmSubmit = this.confirmSubmit.bind(this);
     }
 
     handleCriteriaChange(e: any) {
@@ -46,6 +51,17 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
                 break;
         }
     }
+
+    //function to manage what happens when submition is confirmed
+    confirmSubmit() {
+        alert('Submited');
+        this.props.viewDashboard();
+    }
+
+    toggleIsModalActive = (): void => {
+        this.setState({ isModalActive: !this.state.isModalActive });
+    };
+
     render(): React.ReactNode {
         return (
             <React.Fragment>
@@ -101,12 +117,21 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
                                     <span>2=Exceptional</span>
                                 </p>
                                 <div className="scoring-form">
-                                    <ScoringForm handleCriteriaChange={this.handleCriteriaChange} />
+                                    <ScoringForm
+                                        handleCriteriaChange={this.handleCriteriaChange}
+                                        openScoringModal={this.toggleIsModalActive}
+                                    />
                                     <div className="current-score">
                                         <p>Current score {+this.state.C1 + +this.state.C2 + +this.state.C3}</p>
                                     </div>
                                 </div>
                             </div>
+                            <ScoringModal
+                                closeModal={this.toggleIsModalActive}
+                                isActive={this.state.isModalActive}
+                                applicantName={this.props.applicant.name}
+                                confirmSubmit={this.confirmSubmit}
+                            />
                         </div>
                     </div>
                 </div>

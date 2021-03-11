@@ -335,6 +335,7 @@ class Dashboard extends Component<unknown, DashboardState> {
                     <Scoring
                         count={this.state.count}
                         viewApplicant={this.openApplicantInfo}
+                        viewDashboard={this.openDashboard}
                         applicant={this.state.applicantList[this.state.count]}
                     />
                 </div>

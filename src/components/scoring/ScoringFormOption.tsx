@@ -3,7 +3,7 @@ import React from 'react';
 interface IScoringFormOptionProps {
     name: string;
     text: string;
-    handleCriteriaChange: (e: any) => void;
+    handleCriteriaChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 class ScoringFormOption extends React.Component<IScoringFormOptionProps> {

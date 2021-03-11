@@ -22,10 +22,20 @@ const criteriaList = [
 
 class ScoringForm extends React.Component<{
     handleCriteriaChange: (e: any) => void;
+    openScoringModal: () => void;
 }> {
+    constructor(props: any) {
+        super(props);
+
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    handleSubmit(e: any) {
+        e.preventDefault();
+        this.props.openScoringModal();
+    }
     render(): React.ReactNode {
         return (
-            <form>
+            <form onSubmit={this.handleSubmit}>
                 {criteriaList.map((criteria) => (
                     <ScoringFormOption
                         name={criteria.name}
