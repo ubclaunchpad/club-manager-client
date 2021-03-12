@@ -8,10 +8,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCode, faPaintBrush } from '@fortawesome/free-solid-svg-icons';
 
 interface ScoringState {
-    C1: string;
-    C2: string;
-    C3: string;
-    experience: string;
+    criteria: {
+        C1: string;
+        C2: string;
+        C3: string;
+        experience: string;
+    };
     isModalActive: boolean;
 }
 interface ScoringProps {
@@ -25,10 +27,12 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
     constructor(props: ScoringProps) {
         super(props);
         this.state = {
-            C1: '0',
-            C2: '0',
-            C3: '0',
-            experience: '',
+            criteria: {
+                C1: '0',
+                C2: '0',
+                C3: '0',
+                experience: '',
+            },
             isModalActive: false,
         };
         this.handleCriteriaChange = this.handleCriteriaChange.bind(this);
@@ -38,16 +42,36 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
     handleCriteriaChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         switch (e.currentTarget.name) {
             case 'C1':
-                this.setState({ C1: e.currentTarget.value });
+                this.setState({
+                    criteria: {
+                        ...this.state.criteria,
+                        C1: e.currentTarget.value,
+                    },
+                });
                 break;
             case 'C2':
-                this.setState({ C2: e.currentTarget.value });
+                this.setState({
+                    criteria: {
+                        ...this.state.criteria,
+                        C2: e.currentTarget.value,
+                    },
+                });
                 break;
             case 'C3':
-                this.setState({ C3: e.currentTarget.value });
+                this.setState({
+                    criteria: {
+                        ...this.state.criteria,
+                        C3: e.currentTarget.value,
+                    },
+                });
                 break;
             case 'experience':
-                this.setState({ experience: e.currentTarget.value });
+                this.setState({
+                    criteria: {
+                        ...this.state.criteria,
+                        experience: e.currentTarget.value,
+                    },
+                });
                 break;
         }
     };
@@ -122,7 +146,12 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
                                         openScoringModal={this.toggleIsModalActive}
                                     />
                                     <div className="current-score">
-                                        <p>Current score {+this.state.C1 + +this.state.C2 + +this.state.C3}</p>
+                                        <p>
+                                            Current score{' '}
+                                            {+this.state.criteria.C1 +
+                                                +this.state.criteria.C2 +
+                                                +this.state.criteria.C3}
+                                        </p>
                                     </div>
                                 </div>
                             </div>
