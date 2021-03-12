@@ -1,23 +1,43 @@
-.applicant-navbar {
-    margin-top: 1rem;
-    margin-left: -1.5rem;
-    margin-right: 5.5rem;
-    button {
-        border: 0;
-        background-color: transparent;
+.form-header {
+    padding: 2em 2em;
+    overflow: hidden;
+
+    .applicant-card {
+        background-color: black;
+        border-radius: 20px;
         color: white;
-        font-size: 20px;
-        i {
-            padding: 1rem;
+        font-size: 1.5em;
+        padding: 25px 21px;
+
+        .icon {
+            background-color: white;
+            border-radius: 50%;
+            color: black;
+            padding: 1em;
         }
+    }
+    .score-values {
+        text-align: right;
+    }
+
+    .scoring-form {
+        height: 70vh;
+        overflow-y: auto;
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none;
+    }
+    .scoring-form::-webkit-scrollbar {
+        display: none;
     }
 }
 
-.form-header {
+.current-score {
+    position: fixed;
+    bottom: 2em;
+    right: 2em;
+    background-color: black;
+    border-radius: 25px;
     color: white;
-}
-
-.scoring-form {
-    height: 70vh;
-    overflow-y: auto;
+    font-size: 1em;
+    padding: 0.6em 1em;
 }

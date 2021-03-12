@@ -4,17 +4,21 @@ form {
     .scoring-field {
         background-color: white;
         border-radius: 20px;
-        margin: auto;
+        margin: 2em auto;
         padding: 20px 24px;
-        width: 80%;
+        text-align: left;
+        label {
+            text-align: center;
+        }
     }
 
     .submit-button {
-        background-color: #b8d9ec;
-        border-radius: 1em;
-        color: honeydew;
-        position: absolute;
-        right: 10%;
-        top: 0;
+        color: white;
+        background-color: black;
+        border-radius: 5px;
+        padding: 5px 10px;
+        position: fixed;
+        top: 2.5em;
+        right: 1.5rem;
     }
 }
