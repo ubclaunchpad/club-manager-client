@@ -2,6 +2,7 @@ import React from 'react';
 
 import ScoringForm from './ScoringForm';
 import ScoringModal from './ScoringModal';
+import ScoringNavbar from './ScoringNavbar';
 
 import './Scoring.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -92,33 +93,7 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
                 <div className="columns">
                     <div className="column">
                         <div className="container">
-                            <div className="applicant-navbar">
-                                <button onClick={() => this.props.viewApplicant(this.props.count)}>
-                                    <i className="fas fa-arrow-left"></i>
-                                </button>
-                                <div className="dropdown is-hoverable ">
-                                    <div className="dropdown-trigger">
-                                        <button className="button" aria-haspopup="true" aria-controls="dropdown-menu4">
-                                            <span className="is-size-6">Applicant Review</span>
-                                            <span className="icon is-small">
-                                                <i className="fas fa-angle-down" aria-hidden="true"></i>
-                                            </span>
-                                        </button>
-                                    </div>
-                                    <div className="dropdown-menu" id="dropdown-menu4" role="menu">
-                                        <div className="dropdown-content">
-                                            <div className="dropdown-item is-size-6">
-                                                <button
-                                                    onClick={() => this.props.viewApplicant(this.props.count)}
-                                                    className=" is-size-6"
-                                                >
-                                                    Applicant Info
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <ScoringNavbar count={this.props.count} viewApplicant={this.props.viewApplicant} />
                             <div className="container form-header">
                                 <p className="px-4">
                                     <span className="applicant-card">
