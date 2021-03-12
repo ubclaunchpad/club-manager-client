@@ -1,5 +1,6 @@
 .form-header {
     padding: 2em 2em;
+    overflow: hidden;
 
     .applicant-card {
         background-color: black;
@@ -18,12 +19,18 @@
     .score-values {
         text-align: right;
     }
+
+    .scoring-form {
+        height: 70vh;
+        overflow-y: auto;
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none;
+    }
+    .scoring-form::-webkit-scrollbar {
+        display: none;
+    }
 }
 
-.scoring-form {
-    height: 70vh;
-    overflow-y: auto;
-}
 .current-score {
     position: fixed;
     bottom: 2em;
