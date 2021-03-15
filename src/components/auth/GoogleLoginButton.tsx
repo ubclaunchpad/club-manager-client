@@ -2,30 +2,59 @@ import React from 'react';
 import Cookies from 'js-cookie';
 import GoogleLogin, { GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login';
 import { Redirect } from 'react-router-dom';
+import axios from 'axios';
 
 const clientId = '215320798103-7kvftlie6bbu31nb9tgvqqq7sd7p50e6.apps.googleusercontent.com';
 
-class GoogleLoginButton extends React.Component {
+interface IGoogleLoginButtonProps {
+    /* Toggle login vs. signup mode */
+    switchMode: () => void;
+}
+
+class GoogleLoginButton extends React.Component<IGoogleLoginButtonProps> {
     state = {
         loggedIn: false,
     };
 
     onLoginSuccess = (response: GoogleLoginResponse | GoogleLoginResponseOffline): void => {
         if ('tokenId' in response) {
-            const { tokenId, accessToken } = response;
+            const { tokenObj } = response;
 
-            // TODO: remove this at the end of auth development
-            console.log(`[Success] ${tokenId}, ${accessToken}`);
-            console.log(response.profileObj);
-            console.log(response.tokenObj);
+            /* Store token in cookie */
+            const authCookie = {
+                id: tokenObj.id_token,
+                expiration: tokenObj.expires_at,
+            }
 
-            // TODO: perform an API call to log into the server
+            Cookies.set('tokenObj', authCookie);
+            const config = {
+                headers: { 
+                    'Authorization': `Bearer ${authCookie.id}`,
+                },
+                timeout: 2000
+            };
 
-            // TODO: save the token ID to an httponly cookie
-            Cookies.set('accessToken', accessToken);
+            axios
+                .get('http://localhost:4000/user', config)
+                .then((result: any) => {
+                    const doesExist = result.data.exists;
+                    
+                    /* If their account doesn't exist yet */
+                    if (!doesExist) {
+                        /* Switch to signup */
+                        Cookies.remove('tokenObj');
+                        this.props.switchMode();
+                    } 
+                    else {
+                        /* Redirect to dashboard */
+                        this.setState({ loggedIn: true });
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
 
-            // TODO: redirect to dashboard
-            this.setState({ loggedIn: true });
+            
         } else {
             console.log("[Failure] Authentication servers must be can't be reached right now");
         }

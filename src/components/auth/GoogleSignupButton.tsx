@@ -6,29 +6,31 @@ import axios from 'axios';
 const clientId = '215320798103-7kvftlie6bbu31nb9tgvqqq7sd7p50e6.apps.googleusercontent.com';
 
 interface ICredentials {
-    googleId: string;
-    firstName: string;
-    lastName: string;
     email: string;
 }
-interface ISignUpButtonProps {
+interface IGoogleSignUpButtonProps {
+    /* Autofill email attached to google account */
     setCredentials: (credentials: ICredentials) => void;
-    skipSignup: () => void;
+    /* Toggle login vs. signup mode */
+    switchMode: () => void;
 }
-class GoogleSignupButton extends React.Component<ISignUpButtonProps> {
+class GoogleSignupButton extends React.Component<IGoogleSignUpButtonProps> {
     onSignupSuccess = (response: GoogleLoginResponse | GoogleLoginResponseOffline): void => {
         if ('tokenId' in response) {
-            const { tokenId, accessToken } = response;
-            // TODO: remove this at the end of auth development
-            console.log(`[Success] ${tokenId}, ${accessToken}`);
+            const { tokenObj } = response;
             
-            // Store token in cookie
-            Cookies.set('tokenId', tokenId);
+            /* Store token in cookie */
+            const authCookie = {
+                id: tokenObj.id_token,
+                expiration: tokenObj.expires_at,
+            }
+
+            Cookies.set('tokenObj', authCookie);
             
-            // Check if User exists
+            /* Check if User exists */
             const config = {
                 headers: { 
-                    'Authorization': `Bearer ${tokenId}`,
+                    'Authorization': `Bearer ${authCookie.id}`,
                 },
                 timeout: 2000
             };
@@ -37,19 +39,17 @@ class GoogleSignupButton extends React.Component<ISignUpButtonProps> {
                 .then((result: any) => {
                     const doesExist = result.data.exists;
                     
-                    // Set their credentials if they are new
+                    /* Set their credentials if they are new */
                     if (!doesExist) {
                         const userCredentials = {
-                            googleId: response.profileObj.googleId,
-                            firstName: response.profileObj.givenName,
-                            lastName: response.profileObj.familyName,
                             email: response.profileObj.email,
                         };
                         this.props.setCredentials(userCredentials);
                     } 
                     else {
-                        // Redirect to dashboard
-                        this.props.skipSignup();
+                        /* Switch to login */
+                        Cookies.remove('tokenObj');
+                        this.props.switchMode();
                     }
                 })
                 .catch((err) => {

@@ -6,9 +6,7 @@ import HomeBanner from '../components/home/HomeBanner';
 import DescriptionSection from '../components/home/DescriptionSection';
 import FeaturesSection from '../components/home/FeaturesSection';
 import HomeFooter from '../components/home/HomeFooter';
-import GoogleLoginButton from '../components/auth/GoogleLoginButton';
 import GoogleLogoutButton from '../components/auth/GoogleLogoutButton';
-// import GoogleSignupButton from '../components/auth/GoogleSignupButton';
 
 const Home: React.FunctionComponent = () => {
     return (
@@ -21,9 +19,7 @@ const Home: React.FunctionComponent = () => {
                 <Link to="/applicantinfo">ApplicantInfo</Link>
                 <DescriptionSection />
                 <FeaturesSection />
-                <GoogleLoginButton />
                 <GoogleLogoutButton />
-                {/* <GoogleSignupButton /> */}
             </div>
             <HomeFooter />
         </div>

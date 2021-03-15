@@ -1,18 +1,15 @@
 import React, { Component, ReactNode } from 'react';
 import './LoginForm.scss';
-// import GoogleSignupButton from '../components/auth/GoogleSignupButton';
-import GoogleSignupButton from '../../components/auth/GoogleSignupButton';
 import axios from 'axios';
 import { Redirect } from 'react-router';
 import Cookies from 'js-cookie';
+
+import GoogleSignupButton from '../../components/auth/GoogleSignupButton';
 
 interface ISignUpFormProps {
     onClick: () => void;
 }
 interface ICredentials {
-    googleId: string;
-    firstName: string;
-    lastName: string;
     email: string;
 }
 class SignUpForm extends Component<ISignUpFormProps> {
@@ -41,12 +38,11 @@ class SignUpForm extends Component<ISignUpFormProps> {
     };
 
     createAccount = (): void => {
-        // console.log(`accessToken Cookie: ${Cookies.get('accessToken')}`);
         /* Do nothing if form is incomplete */
         if (this.state.userOrg === '' || this.state.userSchool === '') {
             console.log('Form Incomplete!');
         } else if (this.state.isPendingResponse) {
-        /* Prevent spam clicking of the 'create account' button */
+            /* Prevent spam clicking of the 'create account' button */
             console.log('Please wait for your previous request to finish.');
         } else {
             console.log('Creating Acount!');
@@ -59,28 +55,33 @@ class SignUpForm extends Component<ISignUpFormProps> {
                 schoolName: this.state.userSchool,
             });
 
+            /* Get bearer token from cookie */
+            const authCookieString = Cookies.get('tokenObj');
+            const authCookie = JSON.parse(authCookieString || '{ "id": \'\'}');
+
             /* Store Google access token in auth header and set timeout */
             const config = {
-                headers: { 
-                    'Authorization': `Bearer ${Cookies.get('tokenId')}`,
+                headers: {
+                    Authorization: `Bearer ${authCookie.id}`,
                     'Content-Type': 'application/json',
                 },
-                timeout: 2000
+                timeout: 2000,
             };
 
+            /* POST request to create the user */
             axios
-            .post('http://localhost:4000/user', jsonBody, config)
-            .then((result: any) => {
-                console.log(result.data.data)
-                this.setState({ isPendingResponse: false });
-                
-                /* Redirect to Dashboard */
-                this.setState({ isDoneSignup: true });
-            })
-            .catch((err) => {
-                console.log(err);
-                this.setState({ isPendingResponse: false });
-            });
+                .post('http://localhost:4000/user', jsonBody, config)
+                .then((result: any) => {
+                    /* Redirect to Dashboard */
+                    this.setState({
+                        isDoneSignup: true,
+                        isPendingResponse: false,
+                    });
+                })
+                .catch((err) => {
+                    console.log(err);
+                    this.setState({ isPendingResponse: false });
+                });
         }
     };
 
@@ -88,7 +89,6 @@ class SignUpForm extends Component<ISignUpFormProps> {
         if (this.state.userCredentials.email !== '') {
             return (
                 <div>
-                    {/* <form> */}
                     <div className="field py-3">
                         <label className="label">Email</label>
                         <input
@@ -109,17 +109,9 @@ class SignUpForm extends Component<ISignUpFormProps> {
                         <input className="input" type="text" name="school" onChange={this.setSchool} />
                         <h3>{this.state.userSchool}</h3>
                     </div>
-                    {/* <div className="field">
-                            <label className="label">Password</label>
-                            <input className="input" type="password" name="password" />
-                        </div> */}
                     <button className="mt-4 button login-button" onClick={this.createAccount}>
                         Create Account
                     </button>
-                    {/* </form> */}
-                    {/* <div className="or-line py-4">
-                        <h1 className="is-size-6 ">OR</h1>
-                    </div> */}
                 </div>
             );
         } else {
@@ -128,8 +120,14 @@ class SignUpForm extends Component<ISignUpFormProps> {
                     <hr></hr>
                     <GoogleSignupButton
                         setCredentials={(credentials: ICredentials) => this.setState({ userCredentials: credentials })}
-                        skipSignup={() => this.setState({ isDoneSignup: true })}
+                        switchMode={this.props.onClick}
                     />
+                    <p className="mt-4 is-size-6 has-text-centered">
+                        Already have an account?&nbsp;
+                        <span className="link" onClick={this.props.onClick}>
+                            <b>Sign In.</b>
+                        </span>
+                    </p>
                 </div>
             );
         }
@@ -140,12 +138,6 @@ class SignUpForm extends Component<ISignUpFormProps> {
             return (
                 <div className="form">
                     <div className="container login-container">
-                        <p className="mt-4 is-size-6 has-text-centered position-link-registration">
-                            Already have an account?&nbsp;
-                            <span className="link" onClick={this.props.onClick}>
-                                <b>Sign In.</b>
-                            </span>
-                        </p>
                         <h1 className="is-size-2 py-3">Create Your Account</h1>
                         {this.renderFormFields()}
                     </div>

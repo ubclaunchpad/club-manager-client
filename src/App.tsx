@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.scss';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import Login from './views/Login';
 import Dashboard from './views/Dashboard';
 import Home from './views/Home';
 import Options from './views/Options';
+import AuthUtil from './components/auth/AuthUtil';
 
 const App: React.FunctionComponent = () => {
     return (
@@ -12,8 +13,8 @@ const App: React.FunctionComponent = () => {
             <Router>
                 <div>
                     <Switch>
-                        <Route path="/dashboard" component={Dashboard} />
-                        <Route path="/options" component={Options} />
+                        <PrivateRoute path="/dashboard" component={Dashboard} />
+                        <PrivateRoute path="/options" component={Options} />
                         <Route path="/login" render={(props) => <Login {...props} />} />
                         <Route path="/" component={Home} />
                     </Switch>
@@ -22,5 +23,17 @@ const App: React.FunctionComponent = () => {
         </div>
     );
 };
+
+/* Wrapper for route authentication */
+const PrivateRoute = ({ component: Component, ...rest }: any) => (
+    <Route {...rest} render={
+        (props) => (AuthUtil.checkAuth()) ? (
+                <Component {...props} />
+            ) : (
+                <Redirect to={{ pathname: '/login', }}/>
+            )
+        }
+    />
+);
 
 export default App;
