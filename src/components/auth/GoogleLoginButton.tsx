@@ -12,17 +12,13 @@ class GoogleLoginButton extends React.Component {
 
     onLoginSuccess = (response: GoogleLoginResponse | GoogleLoginResponseOffline): void => {
         if ('tokenId' in response) {
-            const { tokenId, accessToken } = response;
-
-            // TODO: remove this at the end of auth development
-            console.log(`[Success] ${tokenId}, ${accessToken}`);
-            console.log(response.profileObj);
-            console.log(response.tokenObj);
+            const { accessToken } = response;
 
             // TODO: perform an API call to log into the server
 
             // TODO: save the token ID to an httponly cookie
             axios.defaults.headers.common.Authorization = accessToken;
+            axios.defaults.headers.common.Authorization_Id = response.googleId;
             axios
                 .get(`http://localhost:4000/user/token`, { withCredentials: true })
                 .then((res) => {

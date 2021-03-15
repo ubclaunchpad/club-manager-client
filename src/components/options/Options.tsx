@@ -27,7 +27,7 @@ class OptionsComponent extends React.Component<any, any> {
     // Gets all the sheets from the database to display
     getSheets = () => {
         axios
-            .get(`http://localhost:4000/sheets`)
+            .get(`http://localhost:4000/sheets`, { withCredentials: true })
             .then((res) => {
                 this.setState({ sheets: res.data });
             })
@@ -105,7 +105,7 @@ class OptionsComponent extends React.Component<any, any> {
             };
 
             axios
-                .delete(`http://localhost:4000/sheets`, { data: sheet })
+                .delete(`http://localhost:4000/sheets`, { data: sheet, withCredentials: true })
                 .then(() => {
                     this.getSheets();
                 })
