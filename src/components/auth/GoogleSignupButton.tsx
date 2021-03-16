@@ -34,6 +34,7 @@ class GoogleSignupButton extends React.Component {
     render(): React.ReactNode {
         return (
             <GoogleLogin
+                className="button login-button-google"
                 clientId={clientId}
                 buttonText="Sign up with Google"
                 onSuccess={this.onSignupSuccess}

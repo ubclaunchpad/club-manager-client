@@ -1,7 +1,7 @@
 import React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import './Login.scss';
-import LaunchPadBanner from '../components/login/LaunchPadBanner';
+
 import LoginForm from '../components/login/LoginForm';
 import SignUpForm from '../components/login/SignUpForm';
 
@@ -36,11 +36,8 @@ class Login extends React.Component<RouteComponentProps> {
         return (
             <div className="view login-view">
                 <div className="columns is-desktop">
-                    <div className="column is-5 left-section is-hidden-touch login-image"></div>
-                    <div className="column is-7 right-section flex">
-                        <LaunchPadBanner />
-                        {this.renderForm()}
-                    </div>
+                    <div className="column is-6 left-section is-hidden-touch login-image "></div>
+                    <div className="column is-6 right-section flex">{this.renderForm()}</div>
                 </div>
             </div>
         );

@@ -48,6 +48,7 @@ class GoogleLoginButton extends React.Component {
         } else {
             return (
                 <GoogleLogin
+                    className="button login-button-google "
                     clientId={clientId}
                     scope={'email https://www.googleapis.com/auth/spreadsheets'}
                     buttonText="Log in with Google"
