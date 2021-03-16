@@ -2,8 +2,6 @@
     white-space: pre;
 }
 .options {
-    color: #fff;
-
     h1 {
         font-size: 24px;
         font-weight: 500;
@@ -25,12 +23,10 @@
     .import-button {
         background-color: #b8c1ec;
         border-color: #b8c1ec;
-        color: #fff;
     }
     .cancel-button {
         background-color: #ecb8b8;
         border-color: #ecb8b8;
-        color: #fff;
     }
 
     .column {
@@ -43,20 +39,19 @@
     padding-bottom: 4rem;
 }
 .table {
-    background-color: #232946;
+    background-color: inherit;
     border-radius: 5px;
-    border-top-color: #fff;
-    color: #fff;
 }
 .date-header {
-    width: 20%;
+    width: 15%;
+}
+@media (max-width: 1080px) {
+    .date-header {
+        width: 20%;
+    }
 }
 thead tr {
     line-height: 2rem;
-}
-
-.table thead th {
-    color: #fff;
 }
 .date-row {
     line-height: 3.75rem;
