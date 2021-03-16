@@ -1,5 +1,6 @@
 import React, { Component, Fragment, ReactNode } from 'react';
-
+import axios from 'axios';
+import Cookies from 'js-cookie';
 import DashboardListButtons from './DashboardListButtons';
 import DashboardListCard from './DashboardListCard';
 import ApplicantManagementModal from '../../modals/ApplicantManagementModal';
@@ -23,6 +24,7 @@ type DashboardListState = {
     role: string;
     type: string;
     status: string;
+    email: string;
     screeningGrade?: number;
     interviewGrade?: number;
 };
@@ -37,7 +39,10 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
             role: '',
             type: '',
             status: 'Pending',
+            email: ''
         };
+        // Sets the auth header from the access token cookie for calls to server
+        axios.defaults.headers.common.Authorization = Cookies.get('accessToken');
     }
 
     showModal = (
@@ -59,7 +64,24 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
         });
     };
 
-    closeModal = (): void => {
+    closeModal = (type: string, email: string): void => {
+        switch (type) {
+            case 'Accept':
+                axios({
+                    method: 'post',
+                    url: `http://localhost:4000/api/email/send`,
+                    data: {
+                        raw: 'from: me \n to: username@gmail.com \n subject: Test \n This is a test message!'
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+            case 'Reject':
+                break;
+            default:
+                break;
+        }
         this.setState({ showModal: false });
     };
 
@@ -213,7 +235,8 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                         type={this.state.type}
                         name={this.state.name}
                         role={this.state.role}
-                        closeModal={() => this.closeModal()}
+                        email={this.state.email}
+                        closeModal={(type: string, email: string) => this.closeModal(type, email)}
                         isActive={this.state.showModal}
                     />
                 </div>
