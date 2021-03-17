@@ -39,7 +39,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
             role: '',
             type: '',
             status: 'Pending',
-            email: ''
+            email: '',
         };
         // Sets the auth header from the access token cookie for calls to server
         axios.defaults.headers.common.Authorization = Cookies.get('accessToken');
@@ -71,10 +71,9 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                     method: 'post',
                     url: `http://localhost:4000/api/email/send`,
                     data: {
-                        raw: 'from: me \n to: username@gmail.com \n subject: Test \n This is a test message!'
-                    }
-                })
-                .catch((err) => {
+                        raw: 'from: me \n to: username@gmail.com \n subject: Test \n This is a test message!',
+                    },
+                }).catch((err) => {
                     console.log(err);
                 });
             case 'Reject':
