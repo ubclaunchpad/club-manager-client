@@ -1,6 +1,5 @@
 import React, { Component, Fragment, ReactNode } from 'react';
 import axios from 'axios';
-import Cookies from 'js-cookie';
 import DashboardListButtons from './DashboardListButtons';
 import DashboardListCard from './DashboardListCard';
 import ApplicantManagementModal from '../../modals/ApplicantManagementModal';
@@ -41,8 +40,6 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
             status: 'Pending',
             email: '',
         };
-        // Sets the auth header from the access token cookie for calls to server
-        axios.defaults.headers.common.Authorization = Cookies.get('accessToken');
     }
 
     showModal = (
@@ -67,6 +64,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
     closeModal = (type: string, email: string): void => {
         switch (type) {
             case 'Accept':
+                // TODO: Need further work on auth for the sending request to get through
                 axios({
                     method: 'post',
                     url: `http://localhost:4000/api/email/send`,
