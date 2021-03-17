@@ -74,6 +74,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                 }).catch((err) => {
                     console.log(err);
                 });
+                break;
             case 'Reject':
                 break;
             default:
