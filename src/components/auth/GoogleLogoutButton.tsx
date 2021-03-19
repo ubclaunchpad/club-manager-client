@@ -13,26 +13,24 @@ interface GoogleLogoutButtonState {
 class GoogleLogoutButton extends React.Component<{}, GoogleLogoutButtonState> {
     /* Link logout button's visibility to auth state */
     constructor(props: any) {
-        super(props)
+        super(props);
         this.state = {
-            isVisible: AuthUtil.checkAuth(), 
-        }
+            isVisible: AuthUtil.checkAuth(),
+        };
         this.onSuccess = this.onSuccess.bind(this);
     }
 
     onSuccess(): void {
         /* To log the user out, we clear their auth cookie */
-        Cookies.remove('tokenObj')
+        Cookies.remove('tokenObj');
         this.setState({ isVisible: false });
     }
 
     render(): React.ReactNode {
         /* Only render logout button if we are logged in */
-        return (this.state.isVisible) ? (
+        return this.state.isVisible ? (
             <GoogleLogout clientId={clientId} buttonText="Logout" onLogoutSuccess={this.onSuccess} />
-        ) : (
-            null
-        )
+        ) : null;
     }
 }
 

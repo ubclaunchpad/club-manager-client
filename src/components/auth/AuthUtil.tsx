@@ -9,7 +9,7 @@ const AuthUtil = {
         const tokenExpiration = authCookie.expiration;
 
         /* Auth status linked to token expiration */
-        return (tokenExpiration > Date.now())
+        return tokenExpiration > Date.now();
     },
 };
 

@@ -18,35 +18,34 @@ class GoogleSignupButton extends React.Component<IGoogleSignUpButtonProps> {
     onSignupSuccess = (response: GoogleLoginResponse | GoogleLoginResponseOffline): void => {
         if ('tokenId' in response) {
             const { tokenObj } = response;
-            
+
             /* Store token in cookie */
             const authCookie = {
                 id: tokenObj.id_token,
                 expiration: tokenObj.expires_at,
-            }
+            };
 
             Cookies.set('tokenObj', authCookie);
-            
+
             /* Check if User exists */
             const config = {
-                headers: { 
-                    'Authorization': `Bearer ${authCookie.id}`,
+                headers: {
+                    Authorization: `Bearer ${authCookie.id}`,
                 },
-                timeout: 2000
+                timeout: 2000,
             };
             axios
                 .get('http://localhost:4000/user', config)
                 .then((result: any) => {
                     const doesExist = result.data.exists;
-                    
+
                     /* Set their credentials if they are new */
                     if (!doesExist) {
                         const userCredentials = {
                             email: response.profileObj.email,
                         };
                         this.props.setCredentials(userCredentials);
-                    } 
-                    else {
+                    } else {
                         /* Switch to login */
                         Cookies.remove('tokenObj');
                         this.props.switchMode();

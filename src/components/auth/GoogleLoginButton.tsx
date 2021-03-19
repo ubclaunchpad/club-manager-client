@@ -42,9 +42,7 @@ class GoogleLoginButton extends React.Component<IGoogleLoginButtonProps> {
                     /* Switch to signup */
                     Cookies.remove('tokenObj');
                     this.props.switchMode();
-                    
                 } else {
-                    
                     /* Save the token ID to an httponly cookie */
                     axios.defaults.headers.common.Authorization = tokenObj.access_token;
                     axios.defaults.headers.common.Authorization_Id = response.googleId;

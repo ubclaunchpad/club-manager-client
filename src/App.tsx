@@ -26,13 +26,9 @@ const App: React.FunctionComponent = () => {
 
 /* Wrapper for route authentication */
 const PrivateRoute = ({ component: Component, ...rest }: any) => (
-    <Route {...rest} render={
-        (props) => (AuthUtil.checkAuth()) ? (
-                <Component {...props} />
-            ) : (
-                <Redirect to={{ pathname: '/login', }}/>
-            )
-        }
+    <Route
+        {...rest}
+        render={(props) => (AuthUtil.checkAuth() ? <Component {...props} /> : <Redirect to={{ pathname: '/login' }} />)}
     />
 );
 
