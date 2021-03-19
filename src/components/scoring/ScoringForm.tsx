@@ -7,48 +7,86 @@ import './ScoringForm.scss';
 const criteriaList = [
     {
         name: 'C1',
-        text: 'C1:Willingness to lern(self-drive/are you taking time out of class to create projects?)',
+        text: 'Willingness to lern(self-drive/are you taking time out of class to create projects?)',
     },
     {
         name: 'C2',
         text:
-            'C2: Passion and interest(eg. comprehensiveness of answer to "tell us about a project", even if not technically competent)',
+            'Passion and interest(eg. comprehensiveness of answer to "tell us about a project", even if not technically competent)',
     },
     {
         name: 'C3',
-        text: 'C3: Rate how many useful softwares they know how to use',
-    },
-    {
-        name: 'C4',
-        text: ' C4:Rate how comprehensive their portifolio is (do they have personal projects or cases?)',
+        text: "Rate the best of the provided items from the OR/AND's from the relevant skill bucket they fall in",
     },
 ];
 
-class ScoringForm extends React.Component {
+interface IScoringFormProps {
+    handleCriteriaChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    openScoringModal: () => void;
+}
+
+class ScoringForm extends React.Component<IScoringFormProps> {
+    constructor(props: IScoringFormProps) {
+        super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+        e.preventDefault();
+        this.props.openScoringModal();
+        return;
+    };
+
     render(): React.ReactNode {
         return (
-            <form>
+            <form onSubmit={this.handleSubmit}>
                 {criteriaList.map((criteria) => (
-                    <ScoringFormOption name={criteria.name} key={criteria.name} text={criteria.text} />
+                    <ScoringFormOption
+                        name={criteria.name}
+                        key={criteria.name}
+                        text={criteria.text}
+                        handleCriteriaChange={this.props.handleCriteriaChange}
+                    />
                 ))}
                 <div className="field scoring-field">
                     <label>Experience Level:</label>
                     <div className="control">
-                        <label className="radio mt-3 mr-3">
-                            <input type="radio" value="biginner" name="experience" className="mr-2 " required />
-                            Beginner
-                        </label>
-                        <label className="radio mt-3 mr-3">
-                            <input type="radio" value="intermediate" name="experience" className="mr-2" />
-                            Intermediate
-                        </label>
-                        <label className="radio mt-3 mr-3">
-                            <input type="radio" value="advanced" name="experience" className="mr-2" />
-                            Advanced
-                        </label>
+                        <div className="columns">
+                            <label className=" column radio mt-3 ">
+                                <input
+                                    type="radio"
+                                    value="beginner"
+                                    name="experience"
+                                    className="mr-2 "
+                                    onChange={this.props.handleCriteriaChange}
+                                    required
+                                />
+                                Beginner
+                            </label>
+                            <label className=" column radio mt-3 ">
+                                <input
+                                    type="radio"
+                                    value="intermediate"
+                                    name="experience"
+                                    className="mr-2"
+                                    onChange={this.props.handleCriteriaChange}
+                                />
+                                Intermediate
+                            </label>
+                            <label className=" column radio mt-3 ">
+                                <input
+                                    type="radio"
+                                    value="advanced"
+                                    name="experience"
+                                    className="mr-2"
+                                    onChange={this.props.handleCriteriaChange}
+                                />
+                                Advanced
+                            </label>
+                        </div>
                     </div>
                 </div>
-                <input type="submit" className="button submit-button" value="Submit Review" />
+                <input type="submit" className="button submit-button" value="Submit >" />
             </form>
         );
     }

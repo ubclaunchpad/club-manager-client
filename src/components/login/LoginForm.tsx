@@ -17,7 +17,7 @@ class LoginForm extends Component<ILoginFormProps> {
                     <p className="mt-4 is-size-6 has-text-centered">
                         Don&apos;t have an account?{' '}
                         <span className="link has-text-weight-medium" onClick={this.props.onClick}>
-                            <b>Create Your Account.</b>
+                            <b>Register</b>
                         </span>
                     </p>
                 </div>

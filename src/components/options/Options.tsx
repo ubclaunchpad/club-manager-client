@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react';
 import axios from 'axios';
-import Cookies from 'js-cookie';
 import './Options.scss';
 import SheetListCard from './SheetListCard';
 import SheetModal from '../modals/SheetModal';
@@ -23,15 +22,12 @@ class OptionsComponent extends React.Component<any, any> {
         this.handleCancel = this.handleCancel.bind(this);
 
         this.getSheets();
-
-        // Sets the auth header from the access token cookie for calls to server
-        axios.defaults.headers.common.Authorization = Cookies.get('accessToken');
     }
 
     // Gets all the sheets from the database to display
     getSheets = () => {
         axios
-            .get(`http://localhost:4000/sheets`)
+            .get(`http://localhost:4000/sheets`, { withCredentials: true })
             .then((res) => {
                 this.setState({ sheets: res.data });
             })
@@ -58,7 +54,7 @@ class OptionsComponent extends React.Component<any, any> {
         };
 
         axios
-            .post(`http://localhost:4000/sheets`, sheet)
+            .post(`http://localhost:4000/sheets`, sheet, { withCredentials: true })
             .then(() => {
                 this.getSheets();
             })
@@ -95,7 +91,7 @@ class OptionsComponent extends React.Component<any, any> {
             };
 
             axios
-                .patch(`http://localhost:4000/sheets`, sheet)
+                .patch(`http://localhost:4000/sheets`, sheet, { withCredentials: true })
                 .then(() => {
                     this.getSheets();
                 })
@@ -109,7 +105,7 @@ class OptionsComponent extends React.Component<any, any> {
             };
 
             axios
-                .delete(`http://localhost:4000/sheets`, { data: sheet })
+                .delete(`http://localhost:4000/sheets`, { data: sheet, withCredentials: true })
                 .then(() => {
                     this.getSheets();
                 })

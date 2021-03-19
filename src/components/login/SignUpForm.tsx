@@ -1,10 +1,17 @@
 import React, { Component, ReactNode } from 'react';
-import './LoginForm.scss';
 import axios from 'axios';
 import { Redirect } from 'react-router';
 import Cookies from 'js-cookie';
 
+import './LoginForm.scss';
 import GoogleSignupButton from '../../components/auth/GoogleSignupButton';
+
+const clubTypeOptions = [
+    { name: 'Design Team', value: 'design-team' },
+    { name: 'Sport', value: 'sport' },
+    { name: 'Greek Life', value: 'greek-life' },
+    { name: 'Religious', value: 'religious' },
+];
 
 interface ISignUpFormProps {
     onClick: () => void;

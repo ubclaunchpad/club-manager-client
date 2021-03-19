@@ -19,7 +19,7 @@ class SideBar extends Component {
                             linkURL="/dashboard"
                         />
                         <SideBarLink icon="fas fa-archive" linkName="Archive" linkURL="/archive" />
-                        <SideBarLink icon="fas fa-exchange-alt fa-rotate-90" linkName="Import" linkURL="/import" />
+                        <SideBarLink icon="fas fa-exchange-alt fa-rotate-90" linkName="Import" linkURL="/options" />
                     </ul>
                 </div>
                 <div className="logo-box">

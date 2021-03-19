@@ -35,7 +35,7 @@ class ApplicantInfo extends React.Component<{
                                 </button>
                                 <h1>Applicant Information</h1>
                                 <button className="review-button" onClick={this.props.viewScoring}>
-                                    Review Applicant
+                                    Review {'>'}
                                 </button>
                             </div>
                             <DashboardListCard

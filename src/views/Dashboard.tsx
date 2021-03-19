@@ -38,140 +38,12 @@ class Dashboard extends Component<unknown, DashboardState> {
             mode: 'Dashboard',
             count: 0,
             stage: 'Pending Applications',
-            applicantList: [
-                {
-                    name: 'John Doe',
-                    role: 'Developer Applicant',
-                    level: 'Beginner',
-                    status: 'Pending Applications',
-                },
-                {
-                    name: 'Dude Dude Bar',
-                    role: 'Designer Applicant',
-                    level: 'Beginner',
-                    status: 'Pending Applications',
-                },
-                {
-                    name: 'Paul Doll',
-                    role: 'Designer Applicant',
-                    level: 'Advanced',
-                    status: 'Pending Applications',
-                },
-                {
-                    name: 'Loot Toot',
-                    role: 'Designer Applicant',
-                    level: 'Beginner',
-                    status: 'Pending Applications',
-                },
-            ],
-            reviewedList: [
-                {
-                    name: 'Selene Dion',
-                    role: 'Developer Applicant',
-                    level: 'Intermediate',
-                    status: 'Application Reviewed',
-                    screeningGrade: 5,
-                },
-                {
-                    name: 'Happy Holland',
-                    role: 'Designer Applicant',
-                    level: 'Beginner',
-                    status: 'Application Reviewed',
-                    screeningGrade: 3,
-                },
-            ],
-            scheduledList: [
-                {
-                    name: 'Lionel Ronaldo',
-                    role: 'Developer Applicant',
-                    level: 'Advanced',
-                    status: 'Scheduled For Interview',
-                    screeningGrade: 4,
-                },
-                {
-                    name: 'Shiloh Dynasty',
-                    role: 'Developer Applicant',
-                    level: 'Intermediate',
-                    status: 'Scheduled For Interview',
-                    screeningGrade: 3,
-                },
-                {
-                    name: 'Cringe Fest',
-                    role: 'Developer Applicant',
-                    level: 'Intermediate',
-                    status: 'Scheduled For Interview',
-                    screeningGrade: 3,
-                },
-            ],
-            interviewedList: [
-                {
-                    name: 'Tom Downey',
-                    role: 'Designer Applicant',
-                    level: 'Advanced',
-                    status: 'Interviewed',
-                    screeningGrade: 5,
-                    interviewGrade: 4,
-                },
-                {
-                    name: 'Donald Biden',
-                    role: 'Developer Applicant',
-                    level: 'Intermediate',
-                    status: 'Interviewed',
-                    screeningGrade: 4,
-                    interviewGrade: 3,
-                },
-                {
-                    name: 'Lo Fi',
-                    role: 'Designer Applicant',
-                    level: 'Intermediate',
-                    status: 'Interviewed',
-                    screeningGrade: 3,
-                    interviewGrade: 3,
-                },
-            ],
-            acceptedList: [
-                {
-                    name: 'Yeet Feet',
-                    role: 'Developer Applicant',
-                    level: 'Advanced',
-                    status: 'Final Decision: Accepted',
-                    screeningGrade: 5,
-                    interviewGrade: 5,
-                },
-                {
-                    name: 'Mozart Beethoven',
-                    role: 'Designer Applicant',
-                    level: 'Intermediate',
-                    status: 'Final Decision: Accepted',
-                    screeningGrade: 4,
-                    interviewGrade: 5,
-                },
-            ],
-            rejectedList: [
-                {
-                    name: 'Fizz Buzz',
-                    role: 'Developer Applicant',
-                    level: 'Beginner',
-                    status: 'Final Decision: Rejected',
-                    screeningGrade: 1,
-                },
-                {
-                    name: 'Harin Wu',
-                    role: 'Developer Applicant',
-                    level: 'Beginner',
-                    status: 'Final Decision: Rejected',
-                    screeningGrade: 4,
-                    interviewGrade: 2,
-                },
-                {
-                    name: 'Hip Hop',
-                    role: 'Developer Applicant',
-                    level: 'Beginner',
-                    status: 'Archived: Rejected',
-                    screeningGrade: 3,
-                    interviewGrade: 2,
-                },
-            ],
+            applicantList: [],
+            reviewedList: [],
+            scheduledList: [],
+            interviewedList: [],
+            acceptedList: [],
+            rejectedList: [],
         };
         this.setCount = this.setCount.bind(this);
         this.openApplicantInfo = this.openApplicantInfo.bind(this);
@@ -179,17 +51,59 @@ class Dashboard extends Component<unknown, DashboardState> {
     }
 
     componentDidMount(): void {
-        const applicants: any[] = [];
         axios
-            .get('http://localhost:4000/applicant', { timeout: 2000 })
+            .get('http://localhost:4000/applicant', { withCredentials: true, timeout: 2000 })
             .then((result: any) => {
+                const allApplicants: any[] = [];
+                const pending: any[] = [];
+                const reviewed: any[] = [];
+                const scheduled: any[] = [];
+                const interviewed: any[] = [];
+                const accepted: any[] = [];
+                const rejected: any[] = [];
+
                 result.data.forEach((applicant: any) => {
-                    applicants.push({
+                    allApplicants.push({
                         name: `${applicant.firstName} ${applicant.lastName}`,
                         role: applicant.role,
+                        level: applicant.level,
+                        status: applicant.status,
+                        screeningGrade: applicant.screeningGrade,
+                        interviewGrade: applicant.interviewGrade,
                     });
                 });
-                this.setState({ applicantList: applicants });
+
+                // Puts the applicants in the correct list according to their status
+                allApplicants.forEach((applicant: any) => {
+                    const status = applicant.status;
+
+                    if (status === 'Application Reviewed' || status === 'Screened: Accepted') {
+                        reviewed.push(applicant);
+                    } else if (status === 'Scheduled For Interview') {
+                        scheduled.push(applicant);
+                    } else if (status === 'Interviewed') {
+                        interviewed.push(applicant);
+                    } else if (status === 'Final Decision: Accepted') {
+                        accepted.push(applicant);
+                    } else if (
+                        status === 'Final Decision: Rejected' ||
+                        status === 'Screened: Rejected' ||
+                        status === 'Archived: Rejected'
+                    ) {
+                        rejected.push(applicant);
+                    } else {
+                        pending.push(applicant);
+                    }
+                });
+
+                this.setState({
+                    applicantList: pending,
+                    reviewedList: reviewed,
+                    scheduledList: scheduled,
+                    interviewedList: interviewed,
+                    acceptedList: accepted,
+                    rejectedList: rejected,
+                });
             })
             .catch((err) => {
                 console.log(err);
@@ -335,6 +249,7 @@ class Dashboard extends Component<unknown, DashboardState> {
                     <Scoring
                         count={this.state.count}
                         viewApplicant={this.openApplicantInfo}
+                        viewDashboard={this.openDashboard}
                         applicant={this.state.applicantList[this.state.count]}
                     />
                 </div>
