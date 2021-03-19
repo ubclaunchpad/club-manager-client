@@ -21,9 +21,6 @@ const Home: React.FunctionComponent = () => {
                 <Link to="/applicantinfo">ApplicantInfo</Link>
                 <DescriptionSection />
                 <FeaturesSection />
-                <GoogleLoginButton />
-                <GoogleLogoutButton />
-                <GoogleSignupButton />
             </div>
             <HomeFooter />
         </div>
