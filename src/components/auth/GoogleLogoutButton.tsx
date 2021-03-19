@@ -7,7 +7,7 @@ import AuthUtil from '../auth/AuthUtil';
 const clientId = '215320798103-7kvftlie6bbu31nb9tgvqqq7sd7p50e6.apps.googleusercontent.com';
 
 interface GoogleLogoutButtonState {
-    isVisible: Boolean;
+    isVisible: boolean;
 }
 
 class GoogleLogoutButton extends React.Component<{}, GoogleLogoutButtonState> {
