@@ -10,7 +10,7 @@ interface GoogleLogoutButtonState {
     isVisible: boolean;
 }
 
-class GoogleLogoutButton extends React.Component<{}, GoogleLogoutButtonState> {
+class GoogleLogoutButton extends React.Component<unknown, GoogleLogoutButtonState> {
     /* Link logout button's visibility to auth state */
     constructor(props: any) {
         super(props);
