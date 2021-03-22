@@ -1,16 +1,27 @@
 .description-section {
-    font-family: 'Montserrat', sans-serif;
-    margin: 20px auto;
-    text-align: center;
+    background-color: white;
+    color: black;
+    padding: 3% 3%;
 
-    .slogan {
-        color: #82b8d9;
-        font-size: 1.5em;
-        font-weight: 600;
+    .warning {
+        text-align: center;
     }
-    .title {
-        color: #000;
-        font-size: 3em;
-        font-weight: 700;
+    .description {
+        align-items: center;
+        display: flex;
+        height: 100%;
+        font-weight: 400;
+        margin: auto;
+        padding: 2em 2em;
+        text-align: justify;
+
+        .description-header {
+            font-size: 2em;
+        }
+        .description-text {
+            color: #4c4b4b;
+            font-size: 1em;
+            padding-top: 2em;
+        }
     }
 }
