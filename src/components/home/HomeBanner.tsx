@@ -1,44 +1,35 @@
 import React, { FunctionComponent } from 'react';
 import './HomeBanner.scss';
 import { Link } from 'react-router-dom';
+import HireflowIcon from '../../images/HireflowIcon.svg';
+import HomeMainBannerImg from '../../images/HomeMainBannerImg.svg';
 
 const HomeBanner: FunctionComponent = () => {
     return (
-        <section className="hero is-medium home-banner-section">
-            <div className="hero-body">
-                <div className="container home-banner-container">
-                    <h1 className="title">
-                        Recruiting,
-                        <br />
-                        Made Simple.
-                    </h1>
-                    <h2 className="subtitle">Just like it should&apos;ve been.</h2>
-                    <br />
-                    <div className="level">
-                        <div className="level-left">
-                            <Link
-                                to={{
-                                    pathname: '/login',
-                                    state: true, //related to isLogin in Login component
-                                }}
-                                className="button level-item login-button mr-3"
-                            >
-                                Login
-                            </Link>
-                            <Link
-                                to={{
-                                    pathname: '/login',
-                                    state: false, //related to isLogin in Login component
-                                }}
-                                className="button level-item register-button ml-3"
-                            >
-                                Register
-                            </Link>
-                        </div>
-                    </div>
+        <div className="home-main-banner">
+            <div className="columns">
+                <div className="column is-2">
+                    <img src={HireflowIcon} alt="Hireflow Icon" />
+                </div>
+                <div className="column is-8"></div>
+                <div className="column has-text-right">
+                    <Link
+                        to={{
+                            pathname: '/login',
+                            state: true, //related to isLogin in Login component
+                        }}
+                        className="link"
+                    >
+                        Get Started
+                    </Link>
                 </div>
             </div>
-        </section>
+            <h1 className="title">
+                Recruiting.
+                <br /> Made kinder.
+            </h1>
+            <img src={HomeMainBannerImg} className="main-banner-img" alt="" />
+        </div>
     );
 };
 
