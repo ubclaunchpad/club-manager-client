@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import './HomeBanner.scss';
 import { Link } from 'react-router-dom';
 import HireflowIcon from '../../images/HireflowIcon.svg';
-import HomeMainBannerImg from '../../images/HomeMainBannerImg.svg';
+import HomeMainBannerImg from '../../images/home/HomeMainBannerImg.svg';
 
 const HomeBanner: FunctionComponent = () => {
     return (

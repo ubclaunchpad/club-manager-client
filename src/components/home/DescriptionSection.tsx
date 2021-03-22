@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import './DescriptionSection.scss';
-import './DescriptionCard';
-import HomeDescription1 from '../../images/HomeDescription1.svg';
-import HomeDescription2 from '../../images/HomeDescription2.svg';
-import HomeDescription3 from '../../images/HomeDescription3.svg';
+
+import HomeDescription1 from '../../images/home/description/HomeDescription1.svg';
+import HomeDescription2 from '../../images/home/description/HomeDescription2.svg';
+import HomeDescription3 from '../../images/home/description/HomeDescription3.svg';
 
 const DescriptionList = [
     {
