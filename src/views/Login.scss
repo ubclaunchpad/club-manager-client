@@ -5,7 +5,7 @@
 
 .left-section {
     align-items: center;
-    background-color: white;
+    background-color: #fff;
     display: flex;
     height: 100vh;
     padding: 3em;
@@ -20,13 +20,13 @@
     color: #000;
     height: 100vh;
     position: relative;
+    .link {
+        color: #000;
+    }
     .position-link-registration {
         position: fixed;
         right: 10px;
         top: 10px;
-    }
-    .link {
-        color: #000;
     }
 
     .link:hover {
