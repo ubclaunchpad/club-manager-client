@@ -1,5 +1,5 @@
 import React, { Component, Fragment, ReactNode } from 'react';
-
+import axios from 'axios';
 import DashboardListButtons from './DashboardListButtons';
 import DashboardListCard from './DashboardListCard';
 import ApplicantManagementModal from '../../modals/ApplicantManagementModal';
@@ -23,6 +23,7 @@ type DashboardListState = {
     role: string;
     type: string;
     status: string;
+    email: string;
     screeningGrade?: number;
     interviewGrade?: number;
 };
@@ -37,6 +38,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
             role: '',
             type: '',
             status: 'Pending',
+            email: '',
         };
     }
 
@@ -45,6 +47,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
         role: string,
         type: string,
         status: string,
+        email: string,
         screeningGrade: number,
         interviewGrade: number,
     ): void => {
@@ -54,12 +57,55 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
             role: role,
             type: type,
             status: status,
+            email: email,
             screeningGrade: screeningGrade,
             interviewGrade: interviewGrade,
         });
     };
 
-    closeModal = (): void => {
+    closeModal = (type: string, email: string): void => {
+        switch (type) {
+            case 'Accept':
+                axios({
+                    method: 'post',
+                    url: `http://localhost:4000/email`,
+                    data: {
+                        recipient: email,
+                        from: 'ubc.launchpad.clubmanager@gmail.com',
+                        subject: 'UBC LaunchPad Interview Invitation',
+                        text: "Congratulations! You're invited for an interview with us.",
+                        html: "<h5>Congratulations! You're invited for an interview with us.</h5>",
+                    },
+                })
+                    .then(() => {
+                        console.log('Mail sent successfully!');
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
+                break;
+            case 'Reject':
+                axios({
+                    method: 'post',
+                    url: `http://localhost:4000/email`,
+                    data: {
+                        recipient: email,
+                        from: 'ubc.launchpad.clubmanager@gmail.com',
+                        subject: 'UBC LaunchPad Application',
+                        text:
+                            "Thank you for your interest in joining us and taking time to complete the application! \n We're sorry to inform you that we are not able to move forward with you this time.",
+                        html:
+                            "<h5>Thank you for your interest in joining us and taking time to complete the application! /n We're sorry to inform you that we are not able to move forward with you this time.</h5>",
+                    },
+                })
+                    .then(() => {
+                        console.log('Mail sent successfully!');
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
+                break;
+        }
         this.setState({ showModal: false });
     };
 
@@ -99,6 +145,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                                 element.role,
                                 type,
                                 element.status,
+                                element.email,
                                 element.screeningGrade,
                                 element.interviewGrade,
                             );
@@ -122,6 +169,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                                 element.role,
                                 type,
                                 element.status,
+                                element.email,
                                 element.screeningGrade,
                                 element.interviewGrade,
                             );
@@ -145,6 +193,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                                 element.role,
                                 type,
                                 element.status,
+                                element.email,
                                 element.screeningGrade,
                                 element.interviewGrade,
                             );
@@ -168,6 +217,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                                 element.role,
                                 type,
                                 element.status,
+                                element.email,
                                 element.screeningGrade,
                                 element.interviewGrade,
                             );
@@ -191,6 +241,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                                 element.role,
                                 type,
                                 element.status,
+                                element.email,
                                 element.screeningGrade,
                                 element.interviewGrade,
                             );
@@ -213,7 +264,8 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                         type={this.state.type}
                         name={this.state.name}
                         role={this.state.role}
-                        closeModal={() => this.closeModal()}
+                        email={this.state.email}
+                        closeModal={(type: string, email: string) => this.closeModal(type, email)}
                         isActive={this.state.showModal}
                     />
                 </div>

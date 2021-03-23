@@ -4,10 +4,11 @@ import ModalApplicantCard from './ApplicantManagementModalCard';
 
 interface IApplicantManagementModalProps {
     isActive: boolean;
-    closeModal: () => void;
+    closeModal: (type: string, email: string) => void;
     name: string;
     role: string;
     type: string;
+    email: string;
 }
 
 class ApplicantManagementModal extends React.Component<IApplicantManagementModalProps> {
@@ -49,7 +50,7 @@ class ApplicantManagementModal extends React.Component<IApplicantManagementModal
                             <button
                                 className="delete close-button"
                                 aria-label="close"
-                                onClick={this.props.closeModal}
+                                onClick={() => this.props.closeModal('Close', this.props.email)}
                             />
                             <header>
                                 <h1 className="is-size-3 has-text-weight-bold">{this.title}</h1>
@@ -59,10 +60,18 @@ class ApplicantManagementModal extends React.Component<IApplicantManagementModal
                             <section className="pb-1">
                                 <p className="is-size-5">This action cannot be undone. Are you sure?</p>
 
-                                <button className="decision-button reject" onClick={this.props.closeModal}>
+                                <button
+                                    className="decision-button reject"
+                                    onClick={() => this.props.closeModal('Reject', this.props.email)}
+                                >
                                     Actually, no...
                                 </button>
-                                <button className="decision-button accept">Yes, I´m sure.</button>
+                                <button
+                                    className="decision-button accept"
+                                    onClick={() => this.props.closeModal('Accept', this.props.email)}
+                                >
+                                    Yes, I´m sure.
+                                </button>
                             </section>
                         </section>
                     </div>

@@ -15,6 +15,7 @@ interface IApplicantInfoProps {
     role: string;
     level: string;
     status: string;
+    email: string;
     screeningGrade?: number;
     interviewGrade?: number;
 }
@@ -68,6 +69,7 @@ class Dashboard extends Component<unknown, DashboardState> {
                         role: applicant.role,
                         level: applicant.level,
                         status: applicant.status,
+                        email: applicant.email,
                         screeningGrade: applicant.screeningGrade,
                         interviewGrade: applicant.interviewGrade,
                     });

@@ -10,6 +10,7 @@ class ApplicantInfo extends React.Component<{
         role: string;
         level: string;
         status: string;
+        email: string;
         screeningGrade?: number;
         interviewGrade?: number;
     };
@@ -44,6 +45,7 @@ class ApplicantInfo extends React.Component<{
                                 role={this.props.applicant.role}
                                 level={this.props.applicant.level}
                                 status={this.props.applicant.status}
+                                email={this.props.applicant.email}
                                 count={this.props.count}
                                 viewApplicant={this.props.viewApplicant}
                                 setModalAndType={(type: string) => {
