@@ -11,6 +11,7 @@ import ApplicantInfo from '../components/applicant/ApplicantInfo';
 import ScreeningStage from '../components/screening/ScreeningStage';
 
 interface IApplicantInfoProps {
+    id: string;
     name: string;
     role: string;
     level: string;
@@ -65,6 +66,7 @@ class Dashboard extends Component<unknown, DashboardState> {
 
                 result.data.forEach((applicant: any) => {
                     allApplicants.push({
+                        id: applicant.userId,
                         name: `${applicant.firstName} ${applicant.lastName}`,
                         role: applicant.role,
                         level: applicant.level,
@@ -249,6 +251,8 @@ class Dashboard extends Component<unknown, DashboardState> {
                         viewApplicant={this.openApplicantInfo}
                         viewDashboard={this.openDashboard}
                         applicant={this.state.applicantList[this.state.count]}
+                        applicants={this.state.applicantList}
+                        reviewed={this.state.reviewedList}
                     />
                 </div>
             );

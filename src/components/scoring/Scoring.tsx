@@ -7,6 +7,7 @@ import ScoringNavbar from './ScoringNavbar';
 import './Scoring.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCode, faPaintBrush } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
 
 interface ScoringState {
     criteria: {
@@ -18,10 +19,20 @@ interface ScoringState {
     isModalActive: boolean;
 }
 interface ScoringProps {
-    applicant: { name: string; role: string };
+    applicant: {
+        id: string;
+        name: string;
+        role: string;
+        level: string;
+        status: string;
+        screeningGrade?: number;
+        interviewGrade?: number;
+    };
     count: number;
     viewApplicant: (newCount: number) => void;
     viewDashboard: () => void;
+    applicants: any[];
+    reviewed: any[];
 }
 
 class Scoring extends React.Component<ScoringProps, ScoringState> {
@@ -80,6 +91,24 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
     //function to manage what happens when submition is confirmed
     confirmSubmit = (): void => {
         alert('Submited');
+
+        const applicantGrade = {
+            applicant: this.props.applicant,
+            c1: this.state.criteria.C1,
+            c2: this.state.criteria.C2,
+            c3: this.state.criteria.C3,
+        };
+
+        console.log(applicantGrade);
+
+        axios.post(`http://localhost:4000/screening/${this.props.applicant.id}`, { applicantGrade }).then((res) => {
+            console.log(res);
+            console.log(res.data);
+        });
+
+        // move applicant to correct array
+        this.props.reviewed.push(this.props.applicant);
+
         this.props.viewDashboard();
     };
 
