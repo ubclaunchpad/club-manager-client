@@ -68,7 +68,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
             case 'Accept':
                 axios({
                     method: 'post',
-                    url: `http://localhost:4000/api/email/send-grid`,
+                    url: `http://localhost:4000/email`,
                     data: {
                         recipient: email,
                         from: 'ubc.launchpad.clubmanager@gmail.com',
@@ -87,11 +87,11 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
             case 'Reject':
                 axios({
                     method: 'post',
-                    url: `http://localhost:4000/api/email/send-grid`,
+                    url: `http://localhost:4000/email`,
                     data: {
                         recipient: email,
                         from: 'ubc.launchpad.clubmanager@gmail.com',
-                        subject: 'UBC LaunchPad',
+                        subject: 'UBC LaunchPad Application',
                         text:
                             "Thank you for your interest in joining us and taking time to complete the application! \n We're sorry to inform you that we are not able to move forward with you this time.",
                         html:
