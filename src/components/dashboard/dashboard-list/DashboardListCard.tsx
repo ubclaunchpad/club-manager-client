@@ -11,6 +11,7 @@ interface IDashboardListCardProps {
     role: string;
     level: string;
     status: string;
+    email: string;
     count: number;
     viewApplicant: (newCount: number) => void;
     setModalAndType: (type: string) => void;

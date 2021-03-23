@@ -47,6 +47,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
         role: string,
         type: string,
         status: string,
+        email: string,
         screeningGrade: number,
         interviewGrade: number,
     ): void => {
@@ -56,6 +57,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
             role: role,
             type: type,
             status: status,
+            email: email,
             screeningGrade: screeningGrade,
             interviewGrade: interviewGrade,
         });
@@ -64,20 +66,44 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
     closeModal = (type: string, email: string): void => {
         switch (type) {
             case 'Accept':
-                // TODO: Need further work on auth for the sending request to get through
                 axios({
                     method: 'post',
-                    url: `http://localhost:4000/api/email/send`,
+                    url: `http://localhost:4000/api/email/send-grid`,
                     data: {
-                        raw: 'from: me \n to: username@gmail.com \n subject: Test \n This is a test message!',
+                        recipient: email,
+                        from: 'ubc.launchpad.clubmanager@gmail.com',
+                        subject: 'UBC LaunchPad Interview Invitation',
+                        text: "Congratulations! You're invited for an interview with us.",
+                        html: "<h5>Congratulations! You're invited for an interview with us.</h5>",
                     },
-                }).catch((err) => {
-                    console.log(err);
-                });
+                })
+                    .then(() => {
+                        console.log('Mail sent successfully!');
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
                 break;
             case 'Reject':
-                break;
-            default:
+                axios({
+                    method: 'post',
+                    url: `http://localhost:4000/api/email/send-grid`,
+                    data: {
+                        recipient: email,
+                        from: 'ubc.launchpad.clubmanager@gmail.com',
+                        subject: 'UBC LaunchPad',
+                        text:
+                            "Thank you for your interest in joining us and taking time to complete the application! \n We're sorry to inform you that we are not able to move forward with you this time.",
+                        html:
+                            "<h5>Thank you for your interest in joining us and taking time to complete the application! /n We're sorry to inform you that we are not able to move forward with you this time.</h5>",
+                    },
+                })
+                    .then(() => {
+                        console.log('Mail sent successfully!');
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
                 break;
         }
         this.setState({ showModal: false });
@@ -119,6 +145,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                                 element.role,
                                 type,
                                 element.status,
+                                element.email,
                                 element.screeningGrade,
                                 element.interviewGrade,
                             );
@@ -142,6 +169,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                                 element.role,
                                 type,
                                 element.status,
+                                element.email,
                                 element.screeningGrade,
                                 element.interviewGrade,
                             );
@@ -165,6 +193,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                                 element.role,
                                 type,
                                 element.status,
+                                element.email,
                                 element.screeningGrade,
                                 element.interviewGrade,
                             );
@@ -188,6 +217,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                                 element.role,
                                 type,
                                 element.status,
+                                element.email,
                                 element.screeningGrade,
                                 element.interviewGrade,
                             );
@@ -211,6 +241,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                                 element.role,
                                 type,
                                 element.status,
+                                element.email,
                                 element.screeningGrade,
                                 element.interviewGrade,
                             );

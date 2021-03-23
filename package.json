@@ -21,6 +21,7 @@
         "@types/webfontloader": "^1.6.32",
         "axios": "^0.21.0",
         "bulma": "^0.9.1",
+        "js-cookie": "^2.2.1",
         "node-sass": "^4.14.1",
         "prettier-stylelint": "^0.4.2",
         "react": "^16.13.1",
