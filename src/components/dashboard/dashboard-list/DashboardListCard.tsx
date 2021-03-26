@@ -29,7 +29,7 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
                     <button className="button button-reject" onClick={() => props.setModalAndType('Reject-Screen')}>
                         <FontAwesomeIcon icon={faTimes} />
                     </button>
-                    <button className="button button-schedule" onClick={() => props.setModalAndType('Schedule')}>
+                    <button className="button button-schedule" onClick={() => props.setModalAndType('Email-Schedule')}>
                         <FontAwesomeIcon icon={faCalendarAlt} />
                     </button>
                 </div>
