@@ -25,17 +25,18 @@ class ApplicantManagementModal extends React.Component<IApplicantManagementModal
                 this.description = 'This will send a Calendly email to the applicant:';
                 this.title = 'Schedule for Interview';
                 break;
-            case 'Reject':
+            case 'Reject-Screen':
+                this.title = 'Reject Applicant:';
+                this.description = 'This will move the applicant to Rejected:';
+                break;
+            case 'Reject-Final':
                 this.title = 'Reject Applicant:';
                 this.description = 'This will move the applicant to Final Decision - Rejected:';
                 break;
-            case 'Accept':
+            case 'Accept-Final':
                 this.description = 'This will move the applicant to Final Decision - Accepted:';
                 this.title = 'Accept Applicant';
                 break;
-            case 'Email':
-                this.description = 'This will send a Calendly email to the applicant:';
-                this.title = 'Send Final Decision';
         }
     };
 
@@ -62,13 +63,13 @@ class ApplicantManagementModal extends React.Component<IApplicantManagementModal
 
                                 <button
                                     className="decision-button reject"
-                                    onClick={() => this.props.closeModal('Reject', this.props.email)}
+                                    onClick={() => this.props.closeModal(this.props.type, this.props.email)}
                                 >
                                     Actually, no...
                                 </button>
                                 <button
                                     className="decision-button accept"
-                                    onClick={() => this.props.closeModal('Accept', this.props.email)}
+                                    onClick={() => this.props.closeModal(this.props.type, this.props.email)}
                                 >
                                     Yes, I´m sure.
                                 </button>

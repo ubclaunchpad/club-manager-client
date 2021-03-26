@@ -64,48 +64,20 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
     };
 
     closeModal = (type: string, email: string): void => {
-        switch (type) {
-            case 'Accept':
-                axios({
-                    method: 'post',
-                    url: `http://localhost:4000/email`,
-                    data: {
-                        recipient: email,
-                        from: 'ubc.launchpad.clubmanager@gmail.com',
-                        subject: 'UBC LaunchPad Interview Invitation',
-                        text: "Congratulations! You're invited for an interview with us.",
-                        html: "<h5>Congratulations! You're invited for an interview with us.</h5>",
-                    },
-                })
-                    .then(() => {
-                        console.log('Mail sent successfully!');
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                    });
-                break;
-            case 'Reject':
-                axios({
-                    method: 'post',
-                    url: `http://localhost:4000/email`,
-                    data: {
-                        recipient: email,
-                        from: 'ubc.launchpad.clubmanager@gmail.com',
-                        subject: 'UBC LaunchPad Application',
-                        text:
-                            "Thank you for your interest in joining us and taking time to complete the application! \n We're sorry to inform you that we are not able to move forward with you this time.",
-                        html:
-                            "<h5>Thank you for your interest in joining us and taking time to complete the application! /n We're sorry to inform you that we are not able to move forward with you this time.</h5>",
-                    },
-                })
-                    .then(() => {
-                        console.log('Mail sent successfully!');
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                    });
-                break;
-        }
+        axios({
+            method: 'post',
+            url: `http://localhost:4000/email`,
+            data: {
+                recipient: email,
+                action: type,
+            },
+        })
+            .then(() => {
+                console.log('Mail sent successfully!');
+            })
+            .catch((err) => {
+                console.log(err);
+            });
         this.setState({ showModal: false });
     };
 

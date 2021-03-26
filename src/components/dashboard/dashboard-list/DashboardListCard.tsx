@@ -26,7 +26,7 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
         case 'Application Reviewed':
             decisionComponent = (
                 <div className="level-item">
-                    <button className="button button-reject" onClick={() => props.setModalAndType('Reject')}>
+                    <button className="button button-reject" onClick={() => props.setModalAndType('Reject-Screen')}>
                         <FontAwesomeIcon icon={faTimes} />
                     </button>
                     <button className="button button-schedule" onClick={() => props.setModalAndType('Schedule')}>
@@ -42,7 +42,7 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
             );
             break;
         case 'Screened: Accepted':
-            break;
+        case 'Screened: Rejected':
         case 'Scheduled For Interview':
             gradeComponent = (
                 <div className="container grade">
@@ -54,10 +54,10 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
         case 'Interviewed':
             decisionComponent = (
                 <div className="level-item">
-                    <button className="button button-reject" onClick={() => props.setModalAndType('Reject')}>
+                    <button className="button button-reject" onClick={() => props.setModalAndType('Reject-Final')}>
                         <FontAwesomeIcon icon={faTimes} />
                     </button>
-                    <button className="button button-accept" onClick={() => props.setModalAndType('Accept')}>
+                    <button className="button button-accept" onClick={() => props.setModalAndType('Accept-Final')}>
                         <FontAwesomeIcon icon={faCheck} />
                     </button>
                 </div>
@@ -76,15 +76,8 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
                 </div>
             );
             break;
-        case 'Final Decision: Accepted':
         case 'Final Decision: Rejected':
-            emailComponent = (
-                <div className="level-right">
-                    <button className="button button-email" onClick={() => props.setModalAndType('Email')}>
-                        <FontAwesomeIcon icon={faEnvelope} />
-                    </button>
-                </div>
-            );
+        case 'Final Decision: Accepted':
             gradeComponent = (
                 <div className="columns">
                     <div className="container grade">
@@ -99,7 +92,6 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
                 </div>
             );
             break;
-        case 'Screened: Rejected':
         case 'Archived: Rejected':
             return <div />;
         default:
