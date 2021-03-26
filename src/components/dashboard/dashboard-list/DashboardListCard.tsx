@@ -2,7 +2,7 @@ import React from 'react';
 
 import './DashboardListCard.scss';
 import { faCode, faPaintBrush, faTimes, faCheck, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { faEnvelope, faCalendarAlt } from '@fortawesome/free-regular-svg-icons'; // eslint-disable-line
+import { faEnvelope, faCalendarAlt } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface IDashboardListCardProps {
@@ -41,8 +41,25 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
                 </div>
             );
             break;
-        case 'Screened: Accepted':
         case 'Screened: Rejected':
+            emailComponent = (
+                <div className="level-right">
+                    <button
+                        className="button button-email"
+                        onClick={() => props.setModalAndType('Email-Reject-Screen')}
+                    >
+                        <FontAwesomeIcon icon={faEnvelope} />
+                    </button>
+                </div>
+            );
+            gradeComponent = (
+                <div className="container grade">
+                    <p className="title is-4">{props.screeningGrade}</p>
+                    <p className="subtitle is-7">Review</p>
+                </div>
+            );
+            break;
+        case 'Screened: Accepted':
         case 'Scheduled For Interview':
             gradeComponent = (
                 <div className="container grade">
@@ -57,7 +74,7 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
                     <button className="button button-reject" onClick={() => props.setModalAndType('Reject-Final')}>
                         <FontAwesomeIcon icon={faTimes} />
                     </button>
-                    <button className="button button-accept" onClick={() => props.setModalAndType('Accept-Final')}>
+                    <button className="button button-accept" onClick={() => props.setModalAndType('Accept')}>
                         <FontAwesomeIcon icon={faCheck} />
                     </button>
                 </div>
@@ -77,15 +94,13 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
             );
             break;
         case 'Final Decision: Rejected':
-        case 'Final Decision: Accepted':
-            // TODO: Need clarifications on whether to move applicant and send an email in one click
-            // emailComponent = (
-            //     <div className="level-right">
-            //         <button className="button button-email" onClick={() => props.setModalAndType('Email')}>
-            //             <FontAwesomeIcon icon={faEnvelope} />
-            //         </button>
-            //     </div>
-            // );
+            emailComponent = (
+                <div className="level-right">
+                    <button className="button button-email" onClick={() => props.setModalAndType('Email-Reject-Final')}>
+                        <FontAwesomeIcon icon={faEnvelope} />
+                    </button>
+                </div>
+            );
             gradeComponent = (
                 <div className="columns">
                     <div className="container grade">
@@ -100,6 +115,29 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
                 </div>
             );
             break;
+        case 'Final Decision: Accepted':
+            emailComponent = (
+                <div className="level-right">
+                    <button className="button button-email" onClick={() => props.setModalAndType('Email-Accept')}>
+                        <FontAwesomeIcon icon={faEnvelope} />
+                    </button>
+                </div>
+            );
+            gradeComponent = (
+                <div className="columns">
+                    <div className="container grade">
+                        <p className="title is-4">{props.screeningGrade}</p>
+                        <p className="subtitle is-7">Review</p>
+                    </div>
+
+                    <div className="container grade">
+                        <p className="title is-4">{props.interviewGrade}</p>
+                        <p className="subtitle is-7">Interview</p>
+                    </div>
+                </div>
+            );
+            break;
+        case 'Archived: Accepted':
         case 'Archived: Rejected':
             return <div />;
         default:

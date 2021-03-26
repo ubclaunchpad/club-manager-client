@@ -29,13 +29,25 @@ class ApplicantManagementModal extends React.Component<IApplicantManagementModal
                 this.title = 'Reject Applicant:';
                 this.description = 'This will move the applicant to Rejected:';
                 break;
+            case 'Email-Reject-Screen':
+                this.title = 'Send Rejection Decision';
+                this.description = 'This will move the applicant to Archived - Rejected:';
+                break;
             case 'Reject-Final':
                 this.title = 'Reject Applicant:';
                 this.description = 'This will move the applicant to Final Decision - Rejected:';
                 break;
-            case 'Accept-Final':
+            case 'Email-Reject-Final':
+                this.description = 'This will move the applicant to Archived - Rejected:';
+                this.title = 'Send Final Decision';
+                break;
+            case 'Accept':
                 this.description = 'This will move the applicant to Final Decision - Accepted:';
                 this.title = 'Accept Applicant';
+                break;
+            case 'Email-Accept':
+                this.description = 'This will move the applicant to Archived - Accepted:';
+                this.title = 'Send Final Decision';
                 break;
         }
     };

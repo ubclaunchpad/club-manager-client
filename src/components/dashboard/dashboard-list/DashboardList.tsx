@@ -64,20 +64,22 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
     };
 
     closeModal = (type: string, email: string): void => {
-        axios({
-            method: 'post',
-            url: `http://localhost:4000/email`,
-            data: {
-                recipient: email,
-                action: type,
-            },
-        })
-            .then(() => {
-                console.log('Mail sent successfully!');
+        if (type.includes('Email')) {
+            axios({
+                method: 'post',
+                url: `http://localhost:4000/email`,
+                data: {
+                    recipient: email,
+                    action: type,
+                },
             })
-            .catch((err) => {
-                console.log(err);
-            });
+                .then(() => {
+                    console.log('Mail sent successfully!');
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        }
         this.setState({ showModal: false });
     };
 
