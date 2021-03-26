@@ -21,21 +21,34 @@ class ApplicantManagementModal extends React.Component<IApplicantManagementModal
                 this.description = 'This will move the applicant to the "Schedule for Interview" Stage:';
                 this.title = 'Move to Schedule for Interview';
                 break;
-            case 'Schedule':
+            case 'Email-Schedule':
                 this.description = 'This will send a Calendly email to the applicant:';
                 this.title = 'Schedule for Interview';
                 break;
-            case 'Reject':
+            case 'Reject-Screen':
+                this.title = 'Reject Applicant:';
+                this.description = 'This will move the applicant to Rejected:';
+                break;
+            case 'Email-Reject-Screen':
+                this.title = 'Send Rejection Decision';
+                this.description = 'This will move the applicant to Archived - Rejected:';
+                break;
+            case 'Reject-Final':
                 this.title = 'Reject Applicant:';
                 this.description = 'This will move the applicant to Final Decision - Rejected:';
+                break;
+            case 'Email-Reject-Final':
+                this.description = 'This will move the applicant to Archived - Rejected:';
+                this.title = 'Send Final Decision';
                 break;
             case 'Accept':
                 this.description = 'This will move the applicant to Final Decision - Accepted:';
                 this.title = 'Accept Applicant';
                 break;
-            case 'Email':
-                this.description = 'This will send a Calendly email to the applicant:';
+            case 'Email-Accept':
+                this.description = 'This will move the applicant to Archived - Accepted:';
                 this.title = 'Send Final Decision';
+                break;
         }
     };
 
@@ -62,13 +75,13 @@ class ApplicantManagementModal extends React.Component<IApplicantManagementModal
 
                                 <button
                                     className="decision-button reject"
-                                    onClick={() => this.props.closeModal('Reject', this.props.email)}
+                                    onClick={() => this.props.closeModal(this.props.type, this.props.email)}
                                 >
                                     Actually, no...
                                 </button>
                                 <button
                                     className="decision-button accept"
-                                    onClick={() => this.props.closeModal('Accept', this.props.email)}
+                                    onClick={() => this.props.closeModal(this.props.type, this.props.email)}
                                 >
                                     Yes, I´m sure.
                                 </button>

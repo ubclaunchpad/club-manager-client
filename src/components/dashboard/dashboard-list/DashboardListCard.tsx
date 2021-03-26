@@ -26,10 +26,10 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
         case 'Application Reviewed':
             decisionComponent = (
                 <div className="level-item">
-                    <button className="button button-reject" onClick={() => props.setModalAndType('Reject')}>
+                    <button className="button button-reject" onClick={() => props.setModalAndType('Reject-Screen')}>
                         <FontAwesomeIcon icon={faTimes} />
                     </button>
-                    <button className="button button-schedule" onClick={() => props.setModalAndType('Schedule')}>
+                    <button className="button button-schedule" onClick={() => props.setModalAndType('Email-Schedule')}>
                         <FontAwesomeIcon icon={faCalendarAlt} />
                     </button>
                 </div>
@@ -41,8 +41,25 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
                 </div>
             );
             break;
-        case 'Screened: Accepted':
+        case 'Screened: Rejected':
+            emailComponent = (
+                <div className="level-right">
+                    <button
+                        className="button button-email"
+                        onClick={() => props.setModalAndType('Email-Reject-Screen')}
+                    >
+                        <FontAwesomeIcon icon={faEnvelope} />
+                    </button>
+                </div>
+            );
+            gradeComponent = (
+                <div className="container grade">
+                    <p className="title is-4">{props.screeningGrade}</p>
+                    <p className="subtitle is-7">Review</p>
+                </div>
+            );
             break;
+        case 'Screened: Accepted':
         case 'Scheduled For Interview':
             gradeComponent = (
                 <div className="container grade">
@@ -54,7 +71,7 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
         case 'Interviewed':
             decisionComponent = (
                 <div className="level-item">
-                    <button className="button button-reject" onClick={() => props.setModalAndType('Reject')}>
+                    <button className="button button-reject" onClick={() => props.setModalAndType('Reject-Final')}>
                         <FontAwesomeIcon icon={faTimes} />
                     </button>
                     <button className="button button-accept" onClick={() => props.setModalAndType('Accept')}>
@@ -76,11 +93,10 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
                 </div>
             );
             break;
-        case 'Final Decision: Accepted':
         case 'Final Decision: Rejected':
             emailComponent = (
                 <div className="level-right">
-                    <button className="button button-email" onClick={() => props.setModalAndType('Email')}>
+                    <button className="button button-email" onClick={() => props.setModalAndType('Email-Reject-Final')}>
                         <FontAwesomeIcon icon={faEnvelope} />
                     </button>
                 </div>
@@ -99,7 +115,29 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
                 </div>
             );
             break;
-        case 'Screened: Rejected':
+        case 'Final Decision: Accepted':
+            emailComponent = (
+                <div className="level-right">
+                    <button className="button button-email" onClick={() => props.setModalAndType('Email-Accept')}>
+                        <FontAwesomeIcon icon={faEnvelope} />
+                    </button>
+                </div>
+            );
+            gradeComponent = (
+                <div className="columns">
+                    <div className="container grade">
+                        <p className="title is-4">{props.screeningGrade}</p>
+                        <p className="subtitle is-7">Review</p>
+                    </div>
+
+                    <div className="container grade">
+                        <p className="title is-4">{props.interviewGrade}</p>
+                        <p className="subtitle is-7">Interview</p>
+                    </div>
+                </div>
+            );
+            break;
+        case 'Archived: Accepted':
         case 'Archived: Rejected':
             return <div />;
         default:
