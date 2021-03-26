@@ -2,7 +2,7 @@ import React from 'react';
 
 import './DashboardListCard.scss';
 import { faCode, faPaintBrush, faTimes, faCheck, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { faEnvelope, faCalendarAlt } from '@fortawesome/free-regular-svg-icons';
+import { faEnvelope, faCalendarAlt } from '@fortawesome/free-regular-svg-icons'; // eslint-disable-line
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface IDashboardListCardProps {
@@ -78,6 +78,14 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
             break;
         case 'Final Decision: Rejected':
         case 'Final Decision: Accepted':
+            // TODO: Need clarifications on whether to move applicant and send an email in one click
+            // emailComponent = (
+            //     <div className="level-right">
+            //         <button className="button button-email" onClick={() => props.setModalAndType('Email')}>
+            //             <FontAwesomeIcon icon={faEnvelope} />
+            //         </button>
+            //     </div>
+            // );
             gradeComponent = (
                 <div className="columns">
                     <div className="container grade">
