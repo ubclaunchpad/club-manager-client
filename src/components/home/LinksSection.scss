@@ -11,8 +11,8 @@
         .link-card-text {
             align-items: center;
             display: flex;
-            font-size: 1em;
             justify-content: center;
+            font-weight: 600;
             padding: 2.5em 1em;
             .link {
                 color: black;
@@ -28,11 +28,10 @@
         }
     }
     .login-section {
-        margin-top: 2em !important;
+        margin: 4em auto !important;
         .login-section-title {
             color: #000;
             font-size: 2.5em;
-            font-weight: 400;
         }
         .login-section-subtitle {
             color: #4c4b4b;

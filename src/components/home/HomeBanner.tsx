@@ -11,7 +11,7 @@ const HomeBanner: FunctionComponent = () => {
                 <div className="column is-2">
                     <img src={HireflowIcon} alt="Hireflow Icon" />
                 </div>
-                <div className="column is-8"></div>
+
                 <div className="column has-text-right">
                     <Link
                         to={{

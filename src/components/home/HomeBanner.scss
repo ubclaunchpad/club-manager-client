@@ -1,21 +1,18 @@
 .home-main-banner {
-    padding: 2% 3%;
     background-color: #e9edf5;
-    font-size: 1em;
+    padding: 2% 3%;
+    text-align: center;
     .link {
         color: black;
+        font-size: 1.1em;
     }
     .link:hover {
         text-decoration: underline;
     }
     .title {
-        display: inline-block;
         color: #282828;
         font-size: 5em;
-        margin: auto;
         padding-top: 20px;
-        text-align: center;
-        width: 100%;
     }
     .main-banner-img {
         display: block;
