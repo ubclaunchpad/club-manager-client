@@ -1,10 +1,21 @@
 .home-footer {
-    display: flex;
-    justify-content: center;
-
-    p {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 1.2em;
-        font-weight: 400;
+    background-color: #282828;
+    color: #fff;
+    line-height: 2.5em;
+    padding: 2em 0 0.8em 2em;
+    text-align: left;
+    .column {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    .footer-icon {
+        text-align: left;
+    }
+    .list-header {
+        font-weight: 600;
+        margin: 1em 0;
+    }
+    .link:hover {
+        text-decoration: underline;
     }
 }
