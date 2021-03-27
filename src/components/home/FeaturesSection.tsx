@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import './FeaturesSection.scss';
-import './FeatureCard';
-import FeatureCard from './FeatureCard';
+
+import FeaturesGrid from './FeaturesGrid';
 
 const FeaturesSection: FunctionComponent = () => {
     return (
@@ -11,12 +11,8 @@ const FeaturesSection: FunctionComponent = () => {
                 So, what makes us special?
                 <br /> We’re glad you asked.
             </p>
-            <div className="columns is-multiline">
-                <FeatureCard />
-                <FeatureCard />
-                <FeatureCard />
-                <FeatureCard />
-            </div>
+
+            <FeaturesGrid />
         </section>
     );
 };
