@@ -13,10 +13,13 @@ class FeatureCard extends React.Component<IFeatureCardProps> {
         return (
             <div className="column is-one-third">
                 <div className="feature-card">
-                    <img src={this.props.icon} alt="icon" />
-                    <p>{this.props.isDeployed ? '' : 'COMING SOON'}</p>
-                    <h1>{this.props.title}</h1>
-                    <p>{this.props.description}</p>
+                    <img className="feature-icon" src={this.props.icon} alt="icon" />
+                    <br />
+                    <p className="feature-title">
+                        {this.props.title}
+                        <span className="is-deployed">{this.props.isDeployed ? '' : 'COMING SOON'}</span>
+                    </p>
+                    <p className="feature-description">{this.props.description}</p>
                 </div>
             </div>
         );

@@ -1,34 +1,21 @@
 .feature-card {
-    background-color: #fff;
-    border-radius: 25px;
-    display: flex;
-
-    //allow feature-card-content to take 100% of the remaining height
-    flex-direction: column;
-    height: 100%;
-    padding: 2.4em 3.25em;
-
-    .card-image img {
-        height: 11.7em;
-        width: 11.7em;
+    text-align: justify;
+    margin: 3% 8%;
+    color: #000;
+    .feature-icon {
+        height: auto;
+        width: 12%;
     }
-
-    .feature-card-content {
-        //align text to the bottom of card
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-        justify-content: space-between;
-
-        .title {
-            font-size: 1.25em;
-            font-weight: 700;
-            margin: 30px 0;
+    .feature-title {
+        font-size: 1.2em;
+        .is-deployed {
+            color: #a8a8a8;
+            font-size: 0.7em;
+            float: right;
         }
-
-        .text {
-            font-size: 1em;
-            font-weight: 500;
-        }
+    }
+    .feature-description {
+        color: #4c4b4b;
+        font-size: 1em;
     }
 }
