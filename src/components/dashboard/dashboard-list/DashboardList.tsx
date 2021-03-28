@@ -1,4 +1,4 @@
-import React, { Component, Fragment, ReactNode } from 'react';
+import React, { Component, ReactNode } from 'react';
 import axios from 'axios';
 import DashboardListButtons from './DashboardListButtons';
 import DashboardListCard from './DashboardListCard';
@@ -104,27 +104,29 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
         switch (this.props.mode) {
             case 'Pending Applications':
                 return this.props.applicants.map((element, index) => (
-                    <DashboardListCard
-                        {...element}
-                        mode={this.props.mode}
-                        key={index}
-                        count={index}
-                        screeningGrade={this.props.applicants[index].screeningGrade}
-                        interviewGrade={this.props.applicants[index].interviewGrade}
-                        viewApplicant={this.props.viewApplicant}
-                        setModalAndType={(type: string) => {
-                            console.log(element.role);
-                            this.showModal(
-                                element.name,
-                                element.role,
-                                type,
-                                element.status,
-                                element.email,
-                                element.screeningGrade,
-                                element.interviewGrade,
-                            );
-                        }}
-                    />
+                    <div className="column is-half" key={index}>
+                        <DashboardListCard
+                            {...element}
+                            mode={this.props.mode}
+                            key={index}
+                            count={index}
+                            screeningGrade={this.props.applicants[index].screeningGrade}
+                            interviewGrade={this.props.applicants[index].interviewGrade}
+                            viewApplicant={this.props.viewApplicant}
+                            setModalAndType={(type: string) => {
+                                console.log(element.role);
+                                this.showModal(
+                                    element.name,
+                                    element.role,
+                                    type,
+                                    element.status,
+                                    element.email,
+                                    element.screeningGrade,
+                                    element.interviewGrade,
+                                );
+                            }}
+                        />
+                    </div>
                 ));
             case 'Application Reviewed':
                 return this.props.reviewed.map((element, index) => (
@@ -231,7 +233,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                 {this.setTabs()}
                 <DashboardListButtons mode={this.props.mode} />
                 <div className="section">
-                    <Fragment>{this.setList()}</Fragment>
+                    <div className="columns is-multiline">{this.setList()}</div>
                 </div>
                 <div>
                     <ApplicantManagementModal
@@ -244,16 +246,6 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                     />
                 </div>
             </div>
-        );
-    }
-
-    renderDashboardListCards(list: any[]): ReactNode {
-        return (
-            <Fragment>
-                {list.map((element, index) => (
-                    <DashboardListCard {...element} key={index} />
-                ))}
-            </Fragment>
         );
     }
 }

@@ -154,7 +154,7 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
         </div>
     );
     return (
-        <div className="container is-fluid dashboard-list-card">
+        <div className="is-fluid dashboard-list-card">
             <div className="level">
                 <div className="level-left">
                     <div className="level-item">
