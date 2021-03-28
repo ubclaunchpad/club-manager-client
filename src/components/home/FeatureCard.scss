@@ -1,7 +1,7 @@
 .feature-card {
-    text-align: justify;
-    margin: 3% 8%;
     color: #000;
+    margin: 3% 8%;
+    text-align: left;
     .feature-icon {
         height: auto;
         width: 12%;
@@ -9,11 +9,11 @@
     .feature-title {
         font-size: 1.2em;
         font-weight: 500;
-        .is-deployed {
-            color: #a8a8a8;
-            font-size: 0.7em;
-            float: right;
-        }
+    }
+    .is-deployed {
+        color: #a8a8a8;
+        font-size: 0.7em;
+        float: right;
     }
     .feature-description {
         color: #4c4b4b;
