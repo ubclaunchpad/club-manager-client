@@ -66,7 +66,7 @@ class Dashboard extends Component<unknown, DashboardState> {
 
                 result.data.forEach((applicant: any) => {
                     allApplicants.push({
-                        id: applicant.userId,
+                        id: applicant._id,
                         name: `${applicant.firstName} ${applicant.lastName}`,
                         role: applicant.role,
                         level: applicant.level,
@@ -253,6 +253,8 @@ class Dashboard extends Component<unknown, DashboardState> {
                         applicant={this.state.applicantList[this.state.count]}
                         applicants={this.state.applicantList}
                         reviewed={this.state.reviewedList}
+                        scheduled={this.state.scheduledList}
+                        interviewed={this.state.interviewedList}
                     />
                 </div>
             );

@@ -33,6 +33,8 @@ interface ScoringProps {
     viewDashboard: () => void;
     applicants: any[];
     reviewed: any[];
+    scheduled: any[];
+    interviewed: any[];
 }
 
 class Scoring extends React.Component<ScoringProps, ScoringState> {
@@ -101,15 +103,34 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
 
         console.log(applicantGrade);
 
-        axios.post(`http://localhost:4000/screening/${this.props.applicant.id}`, { applicantGrade }).then((res) => {
-            console.log(res);
-            console.log(res.data);
-        });
+        axios
+            .post(`http://localhost:4000/grade/screening/${this.props.applicant.id}`, { applicantGrade })
+            .then((res) => {
+                console.log(res);
+                console.log(res.data);
+            });
 
         // move applicant to correct array
-        this.props.reviewed.push(this.props.applicant);
+        this.moveApplicant();
 
         this.props.viewDashboard();
+    };
+
+    moveApplicant = (): void => {
+        const currentArray = this.props.applicant.status;
+        const index: number = currentArray.indexOf(this.props.applicant.id, 0);
+        switch (this.props.applicant.status) {
+            case 'Pending Applications':
+                // move to Application Reviewed stage
+                this.props.applicants.splice(index, 1);
+                this.props.reviewed.push(this.props.applicant);
+                break;
+            case 'Scheduled For Interview':
+                // move to Interviewed stage
+                this.props.scheduled.splice(index, 1);
+                this.props.interviewed.push(this.props.applicant);
+                break;
+        }
     };
 
     toggleIsModalActive = (): void => {
