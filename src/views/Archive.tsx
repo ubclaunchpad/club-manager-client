@@ -175,7 +175,7 @@ class Archive extends Component<unknown, ArchiveState> {
                                             placeholder="Search applicants"
                                         />
                                         <span className="icon is-small is-left">
-                                            <i className="fas fa-search"/>
+                                            <i className="fas fa-search" />
                                         </span>
                                     </p>
                                 </div>
