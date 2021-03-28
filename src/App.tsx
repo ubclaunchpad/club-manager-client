@@ -6,10 +6,12 @@ import Dashboard from './views/Dashboard';
 import Home from './views/Home';
 import Options from './views/Options';
 import AuthUtil from './components/auth/AuthUtil';
+import MobileUIWarning from './views/MobileUIWarning';
 
 const App: React.FunctionComponent = () => {
     return (
         <div className="App">
+            <MobileUIWarning />
             <Router>
                 <div>
                     <Switch>
