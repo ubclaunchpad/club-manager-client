@@ -25,7 +25,7 @@ const HomeFooter: FunctionComponent = () => {
                         <Link
                             to={{
                                 pathname: '/login',
-                                state: true, //related to isLogin in Login component
+                                state: false, //related to isLogin in Login component
                             }}
                             className="link"
                         >

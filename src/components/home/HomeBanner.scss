@@ -1,13 +1,21 @@
 .home-main-banner {
     background-color: #e9edf5;
+
     padding: 2% 3%;
     text-align: center;
     .link {
         color: black;
-        font-size: 1.1em;
     }
+
     .link:hover {
         text-decoration: underline;
+    }
+    .get-started-link {
+        background-color: black;
+        border-radius: 26em;
+        color: white;
+        margin-right: 1.5em;
+        padding: 0.3em 0.6em;
     }
     .title {
         color: #282828;

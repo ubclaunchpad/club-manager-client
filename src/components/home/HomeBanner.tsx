@@ -16,11 +16,20 @@ const HomeBanner: FunctionComponent = () => {
                     <Link
                         to={{
                             pathname: '/login',
+                            state: false, //related to isLogin in Login component
+                        }}
+                        className="link get-started-link"
+                    >
+                        Get Started
+                    </Link>
+                    <Link
+                        to={{
+                            pathname: '/login',
                             state: true, //related to isLogin in Login component
                         }}
                         className="link"
                     >
-                        Get Started
+                        Log In
                     </Link>
                 </div>
             </div>
