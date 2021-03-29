@@ -130,99 +130,107 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                 ));
             case 'Application Reviewed':
                 return this.props.reviewed.map((element, index) => (
-                    <DashboardListCard
-                        {...element}
-                        mode={this.props.mode}
-                        key={index}
-                        count={index}
-                        screeningGrade={this.props.reviewed[index].screeningGrade}
-                        interviewGrade={this.props.reviewed[index].interviewGrade}
-                        viewApplicant={this.props.viewApplicant}
-                        setModalAndType={(type: string) => {
-                            console.log(element.role);
-                            this.showModal(
-                                element.name,
-                                element.role,
-                                type,
-                                element.status,
-                                element.email,
-                                element.screeningGrade,
-                                element.interviewGrade,
-                            );
-                        }}
-                    />
+                    <div className="column is-half" key={index}>
+                        <DashboardListCard
+                            {...element}
+                            mode={this.props.mode}
+                            key={index}
+                            count={index}
+                            screeningGrade={this.props.reviewed[index].screeningGrade}
+                            interviewGrade={this.props.reviewed[index].interviewGrade}
+                            viewApplicant={this.props.viewApplicant}
+                            setModalAndType={(type: string) => {
+                                console.log(element.role);
+                                this.showModal(
+                                    element.name,
+                                    element.role,
+                                    type,
+                                    element.status,
+                                    element.email,
+                                    element.screeningGrade,
+                                    element.interviewGrade,
+                                );
+                            }}
+                        />
+                    </div>
                 ));
             case 'Scheduled For Interview':
                 return this.props.scheduled.map((element, index) => (
-                    <DashboardListCard
-                        {...element}
-                        mode={this.props.mode}
-                        key={index}
-                        count={index}
-                        screeningGrade={this.props.scheduled[index].screeningGrade}
-                        interviewGrade={this.props.scheduled[index].interviewGrade}
-                        viewApplicant={this.props.viewApplicant}
-                        setModalAndType={(type: string) => {
-                            console.log(element.role);
-                            this.showModal(
-                                element.name,
-                                element.role,
-                                type,
-                                element.status,
-                                element.email,
-                                element.screeningGrade,
-                                element.interviewGrade,
-                            );
-                        }}
-                    />
+                    <div className="column is-half" key={index}>
+                        <DashboardListCard
+                            {...element}
+                            mode={this.props.mode}
+                            key={index}
+                            count={index}
+                            screeningGrade={this.props.scheduled[index].screeningGrade}
+                            interviewGrade={this.props.scheduled[index].interviewGrade}
+                            viewApplicant={this.props.viewApplicant}
+                            setModalAndType={(type: string) => {
+                                console.log(element.role);
+                                this.showModal(
+                                    element.name,
+                                    element.role,
+                                    type,
+                                    element.status,
+                                    element.email,
+                                    element.screeningGrade,
+                                    element.interviewGrade,
+                                );
+                            }}
+                        />
+                    </div>
                 ));
             case 'Interviewed':
                 return this.props.interviewed.map((element, index) => (
-                    <DashboardListCard
-                        {...element}
-                        mode={this.props.mode}
-                        key={index}
-                        count={index}
-                        screeningGrade={this.props.interviewed[index].screeningGrade}
-                        interviewGrade={this.props.interviewed[index].interviewGrade}
-                        viewApplicant={this.props.viewApplicant}
-                        setModalAndType={(type: string) => {
-                            console.log(element.role);
-                            this.showModal(
-                                element.name,
-                                element.role,
-                                type,
-                                element.status,
-                                element.email,
-                                element.screeningGrade,
-                                element.interviewGrade,
-                            );
-                        }}
-                    />
+                    <div className="column is-half" key={index}>
+                        <DashboardListCard
+                            {...element}
+                            mode={this.props.mode}
+                            key={index}
+                            count={index}
+                            screeningGrade={this.props.interviewed[index].screeningGrade}
+                            interviewGrade={this.props.interviewed[index].interviewGrade}
+                            viewApplicant={this.props.viewApplicant}
+                            setModalAndType={(type: string) => {
+                                console.log(element.role);
+                                this.showModal(
+                                    element.name,
+                                    element.role,
+                                    type,
+                                    element.status,
+                                    element.email,
+                                    element.screeningGrade,
+                                    element.interviewGrade,
+                                );
+                            }}
+                        />
+                    </div>
                 ));
             case 'Final Decision':
                 return this.props.accepted.map((element, index) => (
-                    <DashboardListCard
-                        {...element}
-                        mode={this.props.mode}
-                        key={index}
-                        count={index}
-                        screeningGrade={this.props.accepted[index].screeningGrade}
-                        interviewGrade={this.props.accepted[index].interviewGrade}
-                        viewApplicant={this.props.viewApplicant}
-                        setModalAndType={(type: string) => {
-                            console.log(element.role);
-                            this.showModal(
-                                element.name,
-                                element.role,
-                                type,
-                                element.status,
-                                element.email,
-                                element.screeningGrade,
-                                element.interviewGrade,
-                            );
-                        }}
-                    />
+                    <div className="column is-half" key={index}>
+                        <DashboardListCard
+                            {...element}
+                            mode={this.props.mode}
+                            key={index}
+                            count={index}
+                            screeningGrade={this.props.accepted[index].screeningGrade}
+                            interviewGrade={this.props.accepted[index].interviewGrade}
+                            viewApplicant={this.props.viewApplicant}
+                            setModalAndType={(type: string) => {
+                                console.log(element.role);
+                                this.showModal(
+                                    element.name,
+                                    element.role,
+                                    type,
+                                    element.status,
+                                    element.email,
+                                    element.screeningGrade,
+                                    element.interviewGrade,
+                                );
+                            }}
+                        />
+                    </div>
                 ));
         }
     };
