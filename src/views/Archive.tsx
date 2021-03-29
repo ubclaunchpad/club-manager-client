@@ -10,6 +10,7 @@ import ArchiveList from '../components/archive/ArchiveList';
 import Scoring from '../components/scoring/Scoring';
 
 interface IApplicantInfoProps {
+    id: string;
     name: string;
     role: string;
     level: string;
@@ -102,6 +103,10 @@ class Archive extends Component<unknown, ArchiveState> {
         this.setState({ mode: 'Archive' });
     };
 
+    moveApplicant = (): void => {
+        //TODO
+    };
+
     viewAccepted = (): void => {
         this.setState({ stage: 'Accepted' });
     };
@@ -154,6 +159,7 @@ class Archive extends Component<unknown, ArchiveState> {
                         count={this.state.count}
                         viewApplicant={this.openApplicantInfo}
                         viewDashboard={this.openArchive}
+                        moveApplicant={this.moveApplicant}
                         applicant={this.getApplicant()}
                     />
                 </div>

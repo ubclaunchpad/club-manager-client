@@ -9,6 +9,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCode, faPaintBrush } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 
+interface IApplicantInfoProps {
+    id: string;
+    name: string;
+    role: string;
+    level: string;
+    status: string;
+    email: string;
+    screeningGrade?: number;
+    interviewGrade?: number;
+}
 interface ScoringState {
     criteria: {
         C1: string;
@@ -25,16 +35,14 @@ interface ScoringProps {
         role: string;
         level: string;
         status: string;
+        email: string;
         screeningGrade?: number;
         interviewGrade?: number;
     };
     count: number;
     viewApplicant: (newCount: number) => void;
     viewDashboard: () => void;
-    applicants: any[];
-    reviewed: any[];
-    scheduled: any[];
-    interviewed: any[];
+    moveApplicant: (applicant: IApplicantInfoProps) => void;
 }
 
 class Scoring extends React.Component<ScoringProps, ScoringState> {
@@ -95,7 +103,6 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
         alert('Submited');
 
         const applicantGrade = {
-            applicant: this.props.applicant,
             c1: this.state.criteria.C1,
             c2: this.state.criteria.C2,
             c3: this.state.criteria.C3,
@@ -123,46 +130,9 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
         }
 
         // move applicant to correct array and update status
-        this.moveApplicant();
+        this.props.moveApplicant(this.props.applicant);
 
         this.props.viewDashboard();
-    };
-
-    moveApplicant = (): void => {
-        const currentArray = this.props.applicant.status;
-        const index: number = currentArray.indexOf(this.props.applicant.id, 0);
-        switch (this.props.applicant.status) {
-            case 'Pending Applications':
-                // Pending Applications -> Application Reviewed stage
-                this.props.applicants.splice(index, 1);
-                this.props.reviewed.push(this.props.applicant);
-                console.log(
-                    'moving ' + this.props.applicant.name + ' out of ' + currentArray + ' and into ApplicationReviewed',
-                );
-                axios
-                    .patch(`http://localhost:4000/applicant/${this.props.applicant.id}`, {
-                        status: 'Application Reviewed',
-                    })
-                    .then((res) => {
-                        console.log(res);
-                        console.log(res.data);
-                    });
-                break;
-            case 'Scheduled For Interview':
-                // Scheduled For Interview -> Interviewed stage
-                this.props.scheduled.splice(index, 1);
-                this.props.interviewed.push(this.props.applicant);
-                console.log('moving ' + this.props.applicant.name + ' out of ' + currentArray);
-                axios
-                    .patch(`http://localhost:4000/applicant/${this.props.applicant.id}`, {
-                        status: 'Interviewed',
-                    })
-                    .then((res) => {
-                        console.log(res);
-                        console.log(res.data);
-                    });
-                break;
-        }
     };
 
     toggleIsModalActive = (): void => {
