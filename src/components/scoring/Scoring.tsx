@@ -102,17 +102,24 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
     confirmSubmit = (): void => {
         alert('Submited');
 
-        const applicantGrade = {
-            c1: this.state.criteria.C1,
-            c2: this.state.criteria.C2,
-            c3: this.state.criteria.C3,
-        };
-
         switch (this.props.applicant.status) {
             case 'Pending Applications':
                 // update screeningGrade
+                this.props.applicant.screeningGrade =
+                    parseInt(this.state.criteria.C1) +
+                    parseInt(this.state.criteria.C2) +
+                    parseInt(this.state.criteria.C3);
+                console.log('new grade: ' + this.props.applicant.screeningGrade);
+
                 axios
-                    .post(`http://localhost:4000/grade/screening/${this.props.applicant.id}`, { applicantGrade })
+                    .post(`http://localhost:4000/grade/screening/${this.props.applicant.id}`, {
+                        c1: this.state.criteria.C1,
+                        c2: this.state.criteria.C2,
+                        c3: this.state.criteria.C3,
+                        c4: '0',
+                        c5: '0',
+                        c6: '0',
+                    })
                     .then((res) => {
                         console.log(res);
                         console.log(res.data);
@@ -121,7 +128,14 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
             case 'Scheduled For Interview':
                 // update interviewGrade
                 axios
-                    .post(`http://localhost:4000/grade/interview/${this.props.applicant.id}`, { applicantGrade })
+                    .post(`http://localhost:4000/grade/interview/${this.props.applicant.id}`, {
+                        c1: this.state.criteria.C1,
+                        c2: this.state.criteria.C2,
+                        c3: this.state.criteria.C3,
+                        c4: '0',
+                        c5: '0',
+                        c6: '0',
+                    })
                     .then((res) => {
                         console.log(res);
                         console.log(res.data);
