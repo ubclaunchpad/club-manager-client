@@ -1,43 +1,30 @@
-.home-banner-section {
-    background-color: #82b8d9;
-    background-image: url('../../images/HomeBannerImage.svg');
-    background-position: bottom right;
-    background-repeat: no-repeat;
+.home-main-banner {
+    background-color: #e9edf5;
 
-    .home-banner-container {
-        margin: 0 10%;
+    padding: 2% 3%;
+    text-align: center;
+    .link {
+        color: black;
     }
 
-    .title,
-    .subtitle {
-        color: #fff;
-        font-family: 'Montserrat', sans-serif;
+    .link:hover {
+        text-decoration: underline;
     }
-
+    .get-started-link {
+        background-color: black;
+        border-radius: 26em;
+        color: white;
+        margin-right: 1.5em;
+        padding: 0.3em 0.6em;
+    }
     .title {
-        font-size: 4em;
-        font-weight: 800;
+        color: #282828;
+        font-size: 5em;
+        font-weight: 700;
+        padding-top: 20px;
     }
-
-    .subtitle {
-        font-size: 1.5em;
-        font-weight: 500;
-    }
-
-    .button {
-        border-radius: 5px;
-        font-family: 'Montserrat', sans-serif;
-        font-size: 1.25em;
-        font-weight: 600;
-    }
-
-    .login-button {
-        background-color: #b8d9ec;
-        color: #fff;
-    }
-
-    .register-button {
-        background-color: #fff;
-        color: #b8d9ec;
+    .main-banner-img {
+        display: block;
+        margin: auto;
     }
 }

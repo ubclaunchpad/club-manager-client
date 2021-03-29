@@ -1,0 +1,64 @@
+.links-section {
+    background-color: #fbfbff;
+    padding: 5em 0;
+    .link-card {
+        background-color: #fff;
+        box-shadow: 0px -12px 22px 0px #bcc1d3;
+        box-shadow: 0px 12px 22px 0px #bcc1d3;
+        .link-card-img {
+            padding: 0.5em;
+        }
+        .link-card-text {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            font-weight: 600;
+            padding: 2.5em 1em;
+
+            .link {
+                color: black;
+            }
+            .link:hover {
+                text-decoration: underline;
+            }
+            .link-card-description {
+                color: #82879e;
+                font-weight: 300;
+                line-height: 2em;
+            }
+        }
+    }
+    .login-section {
+        margin: 4em auto !important;
+        .login-section-title {
+            color: #000;
+            font-size: 2em;
+        }
+        .login-section-subtitle {
+            color: #4c4b4b;
+            font-size: 1.5em;
+            font-weight: 200;
+        }
+        .login-links {
+            padding-top: 3em;
+            text-align: right;
+            .login-link {
+                background-color: black;
+                display: inline-block;
+                font-size: 0.8em;
+                margin-left: 1em;
+                padding: 0.5em 1em;
+                text-align: center;
+                width: 45%;
+            }
+            .login-link:hover {
+                text-decoration: underline;
+            }
+            .sign-in {
+                background-color: white;
+                border: black 1px solid;
+                color: black;
+            }
+        }
+    }
+}

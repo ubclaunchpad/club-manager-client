@@ -1,15 +1,13 @@
 .features-section {
-    font-family: 'Montserrat', sans-serif;
-    margin: 50px auto;
+    background-color: #fbfbff;
     text-align: center;
-    .slogan {
-        color: #82b8d9;
-        font-size: 1.5em;
+    .feature-slogan {
+        color: #4c4b4b;
         font-weight: 600;
     }
-    .title {
+    .feature-section-header {
         color: #000;
-        font-size: 3em;
-        font-weight: 700;
+        font-size: 2em;
+        padding: 0.5em 0;
     }
 }

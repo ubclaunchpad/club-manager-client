@@ -1,25 +1,26 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 import './FeatureCard.scss';
 
 interface IFeatureCardProps {
+    icon: string;
     title: string;
-    text: string;
-    imgSrc: string;
+    description: string;
+    isDeployed: boolean;
 }
 
-const FeatureCard: FunctionComponent<IFeatureCardProps> = (props: IFeatureCardProps) => {
-    return (
-        <div className="column is-one-third">
-            <div className="feature-card">
-                <figure className="card-image">
-                    <img src={props.imgSrc} alt={props.imgSrc} />
-                </figure>
-                <div className="feature-card-content">
-                    <p className="title">{props.title}</p>
-                    <p className="text">{props.text}</p>
+class FeatureCard extends React.Component<IFeatureCardProps> {
+    render(): React.ReactNode {
+        return (
+            <div className="column is-one-third">
+                <div className="feature-card">
+                    <img className="feature-icon" src={this.props.icon} alt="icon" />
+                    <span className="is-deployed">{this.props.isDeployed ? '' : 'COMING SOON'}</span>
+                    <br />
+                    <p className="feature-title">{this.props.title}</p>
+                    <p className="feature-description">{this.props.description}</p>
                 </div>
             </div>
-        </div>
-    );
-};
+        );
+    }
+}
 export default FeatureCard;

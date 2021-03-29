@@ -8,7 +8,7 @@ import App from './App';
 
 WebFont.load({
     google: {
-        families: ['Montserrat'],
+        families: ['Montserrat', 'Poppins'],
     },
 });
 
