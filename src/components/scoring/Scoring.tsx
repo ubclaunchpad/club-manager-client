@@ -101,16 +101,28 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
             c3: this.state.criteria.C3,
         };
 
-        console.log(applicantGrade);
+        switch (this.props.applicant.status) {
+            case 'Pending Applications':
+                // update screeningGrade
+                axios
+                    .post(`http://localhost:4000/grade/screening/${this.props.applicant.id}`, { applicantGrade })
+                    .then((res) => {
+                        console.log(res);
+                        console.log(res.data);
+                    });
+                break;
+            case 'Scheduled For Interview':
+                // update interviewGrade
+                axios
+                    .post(`http://localhost:4000/grade/interview/${this.props.applicant.id}`, { applicantGrade })
+                    .then((res) => {
+                        console.log(res);
+                        console.log(res.data);
+                    });
+                break;
+        }
 
-        axios
-            .post(`http://localhost:4000/grade/screening/${this.props.applicant.id}`, { applicantGrade })
-            .then((res) => {
-                console.log(res);
-                console.log(res.data);
-            });
-
-        // move applicant to correct array
+        // move applicant to correct array and update status
         this.moveApplicant();
 
         this.props.viewDashboard();
@@ -121,14 +133,34 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
         const index: number = currentArray.indexOf(this.props.applicant.id, 0);
         switch (this.props.applicant.status) {
             case 'Pending Applications':
-                // move to Application Reviewed stage
+                // Pending Applications -> Application Reviewed stage
                 this.props.applicants.splice(index, 1);
                 this.props.reviewed.push(this.props.applicant);
+                console.log(
+                    'moving ' + this.props.applicant.name + ' out of ' + currentArray + ' and into ApplicationReviewed',
+                );
+                axios
+                    .patch(`http://localhost:4000/applicant/${this.props.applicant.id}`, {
+                        status: 'Application Reviewed',
+                    })
+                    .then((res) => {
+                        console.log(res);
+                        console.log(res.data);
+                    });
                 break;
             case 'Scheduled For Interview':
-                // move to Interviewed stage
+                // Scheduled For Interview -> Interviewed stage
                 this.props.scheduled.splice(index, 1);
                 this.props.interviewed.push(this.props.applicant);
+                console.log('moving ' + this.props.applicant.name + ' out of ' + currentArray);
+                axios
+                    .patch(`http://localhost:4000/applicant/${this.props.applicant.id}`, {
+                        status: 'Interviewed',
+                    })
+                    .then((res) => {
+                        console.log(res);
+                        console.log(res.data);
+                    });
                 break;
         }
     };
