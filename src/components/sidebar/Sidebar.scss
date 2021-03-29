@@ -38,35 +38,4 @@
             }
         }
     }
-
-    .logo-box {
-        position: absolute;
-        bottom: 2em;
-        left: 2em;
-        right: 2em;
-
-        .launchpad-logo {
-            background-color: #232946;
-            border-radius: 25px;
-            color: #fff;
-            padding: 15px 11px;
-            position: relative;
-            text-align: left;
-
-            .club-name {
-                size: 1em;
-                font-weight: 600;
-            }
-            .description {
-                size: 0.8em;
-                font-weight: 300;
-            }
-
-            .icon {
-                position: absolute;
-                right: 11px;
-                top: 15px;
-            }
-        }
-    }
 }
