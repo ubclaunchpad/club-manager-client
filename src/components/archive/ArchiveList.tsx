@@ -1,5 +1,4 @@
 import React, { Component, ReactNode } from 'react';
-import axios from 'axios';
 import DashboardListCard from '../dashboard/dashboard-list/DashboardListCard';
 import ApplicantManagementModal from '../modals/ApplicantManagementModal';
 import './ArchiveList.scss';
@@ -57,6 +56,9 @@ class ArchiveList extends Component<ArchiveListProps, ArchiveListState> {
     };
 
     closeModal = (type: string, email: string): void => {
+        if (type.includes('Email')) {
+            console.log(`Cannot send email to ${email}`);
+        }
         this.setState({ showModal: false });
     };
 
