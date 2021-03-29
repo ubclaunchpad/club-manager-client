@@ -37,10 +37,7 @@ const PrivateRoute = ({ component: Component, ...rest }: any) => (
 );
 
 const LoginRoute = ({ component: Component, ...rest }: any) => (
-    <Route
-        {...rest}
-        render={(props) => (AuthUtil.checkAuth() ? <Component {...props} /> : <Login {...props} />)}
-    />
+    <Route {...rest} render={(props) => (AuthUtil.checkAuth() ? <Component {...props} /> : <Login {...props} />)} />
 );
 
 export default App;
