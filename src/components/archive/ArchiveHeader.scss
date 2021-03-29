@@ -1,0 +1,9 @@
+.dark-button {
+    background-color: black;
+    color: white;
+}
+
+.dark-button:hover,
+.dark-button:focus {
+    color: white !important;
+}

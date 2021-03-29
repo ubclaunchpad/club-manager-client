@@ -87,13 +87,9 @@ class Dashboard extends Component<unknown, DashboardState> {
                         interviewed.push(applicant);
                     } else if (status === 'Final Decision: Accepted') {
                         accepted.push(applicant);
-                    } else if (
-                        status === 'Final Decision: Rejected' ||
-                        status === 'Screened: Rejected' ||
-                        status === 'Archived: Rejected'
-                    ) {
+                    } else if (status === 'Final Decision: Rejected' || status === 'Screened: Rejected') {
                         rejected.push(applicant);
-                    } else {
+                    } else if (status !== 'Archived: Accepted' && status !== 'Archived: Rejected') {
                         pending.push(applicant);
                     }
                 });

@@ -139,7 +139,20 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
             break;
         case 'Archived: Accepted':
         case 'Archived: Rejected':
-            return <div />;
+            gradeComponent = (
+                <div className="columns">
+                    <div className="container grade">
+                        <p className="title is-4">{props.screeningGrade}</p>
+                        <p className="subtitle is-7">Review</p>
+                    </div>
+
+                    <div className="container grade">
+                        <p className="title is-4">{props.interviewGrade}</p>
+                        <p className="subtitle is-7">Interview</p>
+                    </div>
+                </div>
+            );
+            break;
         default:
             break;
     }

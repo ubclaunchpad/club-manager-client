@@ -5,6 +5,7 @@ import Login from './views/Login';
 import Dashboard from './views/Dashboard';
 import Home from './views/Home';
 import Options from './views/Options';
+import Archive from './views/Archive';
 import AuthUtil from './components/auth/AuthUtil';
 import MobileUIWarning from './views/MobileUIWarning';
 
@@ -16,6 +17,7 @@ const App: React.FunctionComponent = () => {
                 <div>
                     <Switch>
                         <PrivateRoute path="/dashboard" component={Dashboard} />
+                        <PrivateRoute path="/archive" component={Archive} />
                         <PrivateRoute path="/options" component={Options} />
                         <Route path="/login" render={(props) => <Login {...props} />} />
                         <Route path="/" component={Home} />
