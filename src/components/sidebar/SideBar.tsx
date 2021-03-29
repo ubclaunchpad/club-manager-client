@@ -8,7 +8,9 @@ class SideBar extends Component {
     render(): React.ReactNode {
         return (
             <div id="sidebar">
-                <img src={HireflowIcon} className="hireflow-icon" alt="Hireflow Logo" />
+                <a href="/">
+                    <img src={HireflowIcon} className="hireflow-icon" alt="Hireflow Logo" />
+                </a>
                 <div id="sidebar-links" className="menu">
                     <ul className="menu-list">
                         <SideBarLink
