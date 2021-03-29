@@ -19,7 +19,7 @@ const App: React.FunctionComponent = () => {
                         <PrivateRoute path="/dashboard" component={Dashboard} />
                         <PrivateRoute path="/archive" component={Archive} />
                         <PrivateRoute path="/options" component={Options} />
-                        <Route path="/login" render={(props) => <Login {...props} />} />
+                        <LoginRoute path="/login" component={Dashboard} />
                         <Route path="/" component={Home} />
                     </Switch>
                 </div>
@@ -33,6 +33,13 @@ const PrivateRoute = ({ component: Component, ...rest }: any) => (
     <Route
         {...rest}
         render={(props) => (AuthUtil.checkAuth() ? <Component {...props} /> : <Redirect to={{ pathname: '/login' }} />)}
+    />
+);
+
+const LoginRoute = ({ component: Component, ...rest }: any) => (
+    <Route
+        {...rest}
+        render={(props) => (AuthUtil.checkAuth() ? <Component {...props} /> : <Login {...props} />)}
     />
 );
 
