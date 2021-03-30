@@ -109,7 +109,6 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
                     parseInt(this.state.criteria.C1) +
                     parseInt(this.state.criteria.C2) +
                     parseInt(this.state.criteria.C3);
-                console.log('new grade: ' + this.props.applicant.screeningGrade);
 
                 axios
                     .post(`http://localhost:4000/grade/screening/${this.props.applicant.id}`, {
@@ -127,6 +126,11 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
                 break;
             case 'Scheduled For Interview':
                 // update interviewGrade
+                this.props.applicant.interviewGrade =
+                    parseInt(this.state.criteria.C1) +
+                    parseInt(this.state.criteria.C2) +
+                    parseInt(this.state.criteria.C3);
+
                 axios
                     .post(`http://localhost:4000/grade/interview/${this.props.applicant.id}`, {
                         c1: this.state.criteria.C1,

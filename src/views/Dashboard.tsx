@@ -214,7 +214,6 @@ class Dashboard extends Component<unknown, DashboardState> {
                 // Pending Applications -> Application Reviewed stage
                 this.state.applicantList.splice(index, 1);
                 this.state.reviewedList.push(applicant);
-                console.log('moving ' + applicant.name + ' out of ' + currentArray + ' and into ApplicationReviewed');
                 axios
                     .patch(`http://localhost:4000/applicant/${applicant.id}`, {
                         status: 'Application Reviewed',
@@ -228,7 +227,6 @@ class Dashboard extends Component<unknown, DashboardState> {
                 // Scheduled For Interview -> Interviewed stage
                 this.state.scheduledList.splice(index, 1);
                 this.state.interviewedList.push(applicant);
-                console.log('moving ' + applicant.name + ' out of ' + currentArray);
                 axios
                     .patch(`http://localhost:4000/applicant/${applicant.id}`, {
                         status: 'Interviewed',
