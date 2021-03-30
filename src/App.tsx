@@ -53,7 +53,7 @@ const LogoutRoute = ({ ...rest }: any) => {
         />
     );
 };
-      
+
 const LoginRoute = ({ component: Component, ...rest }: any) => (
     <Route
         {...rest}
