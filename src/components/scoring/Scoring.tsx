@@ -7,7 +7,18 @@ import ScoringNavbar from './ScoringNavbar';
 import './Scoring.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCode, faPaintBrush } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
 
+interface IApplicantInfoProps {
+    id: string;
+    name: string;
+    role: string;
+    level: string;
+    status: string;
+    email: string;
+    screeningGrade?: number;
+    interviewGrade?: number;
+}
 interface ScoringState {
     criteria: {
         C1: string;
@@ -18,10 +29,20 @@ interface ScoringState {
     isModalActive: boolean;
 }
 interface ScoringProps {
-    applicant: { name: string; role: string };
+    applicant: {
+        id: string;
+        name: string;
+        role: string;
+        level: string;
+        status: string;
+        email: string;
+        screeningGrade?: number;
+        interviewGrade?: number;
+    };
     count: number;
     viewApplicant: (newCount: number) => void;
     viewDashboard: () => void;
+    moveApplicant: (applicant: IApplicantInfoProps) => void;
 }
 
 class Scoring extends React.Component<ScoringProps, ScoringState> {
@@ -80,6 +101,55 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
     //function to manage what happens when submition is confirmed
     confirmSubmit = (): void => {
         alert('Submited');
+
+        switch (this.props.applicant.status) {
+            case 'Pending Applications':
+                // update screeningGrade
+                this.props.applicant.screeningGrade =
+                    parseInt(this.state.criteria.C1) +
+                    parseInt(this.state.criteria.C2) +
+                    parseInt(this.state.criteria.C3);
+
+                axios
+                    .post(`http://localhost:4000/grade/screening/${this.props.applicant.id}`, {
+                        c1: this.state.criteria.C1,
+                        c2: this.state.criteria.C2,
+                        c3: this.state.criteria.C3,
+                        c4: '0',
+                        c5: '0',
+                        c6: '0',
+                    })
+                    .then((res) => {
+                        console.log(res);
+                        console.log(res.data);
+                    });
+                break;
+            case 'Scheduled For Interview':
+                // update interviewGrade
+                this.props.applicant.interviewGrade =
+                    parseInt(this.state.criteria.C1) +
+                    parseInt(this.state.criteria.C2) +
+                    parseInt(this.state.criteria.C3);
+
+                axios
+                    .post(`http://localhost:4000/grade/interview/${this.props.applicant.id}`, {
+                        c1: this.state.criteria.C1,
+                        c2: this.state.criteria.C2,
+                        c3: this.state.criteria.C3,
+                        c4: '0',
+                        c5: '0',
+                        c6: '0',
+                    })
+                    .then((res) => {
+                        console.log(res);
+                        console.log(res.data);
+                    });
+                break;
+        }
+
+        // move applicant to correct array and update status
+        this.props.moveApplicant(this.props.applicant);
+
         this.props.viewDashboard();
     };
 

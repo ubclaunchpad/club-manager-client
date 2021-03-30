@@ -11,6 +11,7 @@ import ApplicantInfo from '../components/applicant/ApplicantInfo';
 import ScreeningStage from '../components/screening/ScreeningStage';
 
 interface IApplicantInfoProps {
+    id: string;
     name: string;
     role: string;
     level: string;
@@ -49,6 +50,7 @@ class Dashboard extends Component<unknown, DashboardState> {
         this.setCount = this.setCount.bind(this);
         this.openApplicantInfo = this.openApplicantInfo.bind(this);
         this.openDashboard = this.openDashboard.bind(this);
+        this.moveApplicant = this.moveApplicant.bind(this);
     }
 
     componentDidMount(): void {
@@ -65,6 +67,7 @@ class Dashboard extends Component<unknown, DashboardState> {
 
                 result.data.forEach((applicant: any) => {
                     allApplicants.push({
+                        id: applicant._id,
                         name: `${applicant.firstName} ${applicant.lastName}`,
                         role: applicant.role,
                         level: applicant.level,
@@ -203,6 +206,39 @@ class Dashboard extends Component<unknown, DashboardState> {
         }
     };
 
+    moveApplicant = (applicant: IApplicantInfoProps): void => {
+        const currentArray = applicant.status;
+        const index: number = currentArray.indexOf(applicant.id, 0);
+        switch (applicant.status) {
+            case 'Pending Applications':
+                // Pending Applications -> Application Reviewed stage
+                this.state.applicantList.splice(index, 1);
+                this.state.reviewedList.push(applicant);
+                axios
+                    .patch(`http://localhost:4000/applicant/${applicant.id}`, {
+                        status: 'Application Reviewed',
+                    })
+                    .then((res) => {
+                        console.log(res);
+                        console.log(res.data);
+                    });
+                break;
+            case 'Scheduled For Interview':
+                // Scheduled For Interview -> Interviewed stage
+                this.state.scheduledList.splice(index, 1);
+                this.state.interviewedList.push(applicant);
+                axios
+                    .patch(`http://localhost:4000/applicant/${applicant.id}`, {
+                        status: 'Interviewed',
+                    })
+                    .then((res) => {
+                        console.log(res);
+                        console.log(res.data);
+                    });
+                break;
+        }
+    };
+
     renderState(): React.ReactNode {
         if (this.state.mode === 'Dashboard') {
             return (
@@ -248,6 +284,7 @@ class Dashboard extends Component<unknown, DashboardState> {
                         count={this.state.count}
                         viewApplicant={this.openApplicantInfo}
                         viewDashboard={this.openDashboard}
+                        moveApplicant={this.moveApplicant}
                         applicant={this.state.applicantList[this.state.count]}
                     />
                 </div>
