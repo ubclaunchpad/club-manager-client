@@ -13,7 +13,6 @@ const AuthUtil = {
         return tokenExpiration > Date.now();
     },
     logout() {
-        console.log('logout call');
         Cookies.remove('tokenObj');
 
         axios
