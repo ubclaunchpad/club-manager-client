@@ -20,6 +20,7 @@ class SideBar extends Component {
                         />
                         <SideBarLink icon="fas fa-archive" linkName="Archive" linkURL="/archive" />
                         <SideBarLink icon="fas fa-exchange-alt fa-rotate-90" linkName="Import" linkURL="/options" />
+                        <SideBarLink icon="fas fa-sign-out-alt" linkName="Logout" linkURL="logout/" />
                     </ul>
                 </div>
             </div>

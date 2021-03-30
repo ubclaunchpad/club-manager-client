@@ -20,6 +20,7 @@ const App: React.FunctionComponent = () => {
                         <PrivateRoute path="/archive" component={Archive} />
                         <PrivateRoute path="/options" component={Options} />
                         <LoginRoute path="/login" component={Dashboard} />
+                        <LogoutRoute path="/logout" />
                         <Route path="/" component={Home} />
                     </Switch>
                 </div>
@@ -42,5 +43,21 @@ const LoginRoute = ({ component: Component, ...rest }: any) => (
         render={(props) => (AuthUtil.checkAuth() ? <Redirect to={{ pathname: '/dashboard' }} /> : <Login {...props} />)}
     />
 );
+
+const LogoutRoute = ({ ...rest }: any) => {
+    AuthUtil.logout();
+    return (
+        <Route
+            {...rest}
+            render={() =>
+                AuthUtil.checkAuth() ? (
+                    <Redirect to={{ pathname: '/dashboard' }} />
+                ) : (
+                    <Redirect to={{ pathname: '/' }} />
+                )
+            }
+        />
+    );
+};
 
 export default App;
