@@ -8,6 +8,7 @@ import Options from './views/Options';
 import Archive from './views/Archive';
 import AuthUtil from './components/auth/AuthUtil';
 import MobileUIWarning from './views/MobileUIWarning';
+import Team from './views/Team';
 
 const App: React.FunctionComponent = () => {
     return (
@@ -20,6 +21,7 @@ const App: React.FunctionComponent = () => {
                         <PrivateRoute path="/archive" component={Archive} />
                         <PrivateRoute path="/options" component={Options} />
                         <Route path="/login" render={(props) => <Login {...props} />} />
+                        <Route path="/team" component={Team} />
                         <LogoutRoute path="/logout" />
                         <LoginRoute path="/login" component={Dashboard} />
                         <Route path="/" component={Home} />
