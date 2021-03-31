@@ -19,7 +19,6 @@ const App: React.FunctionComponent = () => {
                         <PrivateRoute path="/dashboard" component={Dashboard} />
                         <PrivateRoute path="/archive" component={Archive} />
                         <PrivateRoute path="/options" component={Options} />
-                        <Route path="/login" render={(props) => <Login {...props} />} />
                         <LogoutRoute path="/logout" />
                         <LoginRoute path="/login" component={Dashboard} />
                         <Route path="/" component={Home} />
