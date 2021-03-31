@@ -1,16 +1,17 @@
 .team-view {
-    font-family: Poppins;
+    font-family: Poppins, sans-serif;
     font-size: 1.25em;
     margin: 2em 4em;
     text-align: center;
 
     .link {
-        color: black;
+        color: #000;
     }
 
     .page-title {
         font-size: 1em;
-        margin: 2em 0 1.5em 0;
+        font-weight: 600;
+        margin: 2em 0 1.5em;
     }
     .slogan {
         font-size: 2.2em;

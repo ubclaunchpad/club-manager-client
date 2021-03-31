@@ -29,8 +29,14 @@ const Team: React.FunctionComponent = () => {
                 <br /> students at UBC Launch Pad.
             </p>
             <div className="columns is-multiline is-centered is-vcentered">
-                {TeamList.map((member) => (
-                    <MemberCard name={member.name} image={member.photo} role={member.role} linkedin={member.linkedin} />
+                {TeamList.map((member, index) => (
+                    <MemberCard
+                        name={member.name}
+                        image={member.photo}
+                        role={member.role}
+                        linkedin={member.linkedin}
+                        key={index}
+                    />
                 ))}
             </div>
         </div>
