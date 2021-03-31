@@ -93,7 +93,6 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
             },
             isModalActive: false,
         };
-        console.log(this.props.applicant);
         this.handleCriteriaChange = this.handleCriteriaChange.bind(this);
         this.confirmSubmit = this.confirmSubmit.bind(this);
     }
@@ -224,6 +223,7 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
                                 <ScoringModal
                                     closeModal={this.toggleIsModalActive}
                                     isActive={this.state.isModalActive}
+                                    status={this.props.applicant.status}
                                     applicantName={this.props.applicant.name}
                                     confirmSubmit={this.confirmSubmit}
                                 />
@@ -278,6 +278,7 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
                                 <ScoringModal
                                     closeModal={this.toggleIsModalActive}
                                     isActive={this.state.isModalActive}
+                                    status={this.props.applicant.status}
                                     applicantName={this.props.applicant.name}
                                     confirmSubmit={this.confirmSubmit}
                                 />
