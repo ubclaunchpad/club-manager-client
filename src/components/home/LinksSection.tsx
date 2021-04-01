@@ -18,8 +18,7 @@ class LinksSection extends React.Component {
                                 <p>
                                     <Link
                                         to={{
-                                            pathname: '/login',
-                                            state: true, //related to isLogin in Login component
+                                            pathname: '/team',
                                         }}
                                         className="link"
                                     >

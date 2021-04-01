@@ -35,7 +35,7 @@ const HomeFooter: FunctionComponent = () => {
                     <p>
                         <Link
                             to={{
-                                pathname: '/',
+                                pathname: '/team',
                             }}
                             className="link"
                         >
