@@ -98,9 +98,9 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
         }
     };
 
-    //function to manage what happens when submition is confirmed
+    //function to manage what happens when submission is confirmed
     confirmSubmit = (): void => {
-        alert('Submited');
+        alert('Submitted');
 
         switch (this.props.applicant.status) {
             case 'Pending Applications':
@@ -115,9 +115,7 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
                         c1: this.state.criteria.C1,
                         c2: this.state.criteria.C2,
                         c3: this.state.criteria.C3,
-                        c4: '0',
-                        c5: '0',
-                        c6: '0',
+                        level: this.state.criteria.experience,
                     })
                     .then((res) => {
                         console.log(res);
