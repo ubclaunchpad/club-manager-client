@@ -23,7 +23,7 @@ class ScoringModal extends React.Component<IModalProps> {
                                 This action <b>cannot</b> be undone. Are you sure?
                             </p>
                             <button className=" button reject-button" onClick={this.props.closeModal}>
-                                Actualy No...
+                                Actually No...
                             </button>
                             <button className="button confirmation-button" onClick={this.props.confirmSubmit}>
                                 Yes, I&apos;m sure;

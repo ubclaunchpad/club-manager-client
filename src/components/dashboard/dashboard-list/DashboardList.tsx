@@ -26,6 +26,17 @@ type DashboardListState = {
     email: string;
     screeningGrade?: number;
     interviewGrade?: number;
+    filter: DashboardListFilter;
+};
+
+type DashboardListFilter = {
+    beginner: boolean;
+    intermediate: boolean;
+    advanced: boolean;
+    developer: boolean;
+    designer: boolean;
+    minScreen: number;
+    minInterview: number;
 };
 
 class DashboardList extends Component<DashboardListProps, DashboardListState> {
@@ -39,6 +50,15 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
             type: '',
             status: 'Pending',
             email: '',
+            filter: {
+                beginner: false,
+                intermediate: false,
+                advanced: false,
+                developer: false,
+                designer: false,
+                minScreen: 0,
+                minInterview: 0,
+            }
         };
     }
 
@@ -61,6 +81,45 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
             screeningGrade: screeningGrade,
             interviewGrade: interviewGrade,
         });
+    };
+
+    updateFilter = (filter: DashboardListFilter) => this.setState({ filter: filter});
+
+    applyFilter = (applicant: any): Boolean => {
+        const beginner = this.state.filter.beginner;
+        const intermediate = this.state.filter.intermediate;
+        const advanced = this.state.filter.advanced;
+        const developer = this.state.filter.developer;
+        const designer = this.state.filter.designer;
+        const minScreen = this.state.filter.minScreen;
+        const minInterview = this.state.filter.minInterview;
+        
+        // Filter by the applicant's experience
+        if (beginner || intermediate || advanced) {
+            let applicantMatchesLevel = false;
+            if (beginner && applicant.level.toLowerCase() === "beginner") applicantMatchesLevel = true;
+            if (intermediate && applicant.level.toLowerCase() === "intermediate") applicantMatchesLevel = true;
+            if (advanced && applicant.level.toLowerCase() === "advanced") applicantMatchesLevel = true;
+
+            if (!applicantMatchesLevel) return false;
+        }
+
+        // Filter by the applicant's role
+        if (developer || designer) {
+            let applicantMatchesRole = false;
+            if (developer && applicant.role.toLowerCase() === "developer") applicantMatchesRole = true;
+            if (designer && applicant.role.toLowerCase() === "designer") applicantMatchesRole = true;
+
+            if (!applicantMatchesRole) return false;
+        }
+
+        // Filter by the applicant's screening grade
+        if (applicant.screeningGradeActual < minScreen) return false;
+        // Filter by the applicant's interview grade
+        // TODO: if (applicant.<InterviewGradeGoesHere> < minInterview) return false;
+
+        // At this point, the applicant matched all filters, so return true
+        return true;
     };
 
     closeModal = (type: string, email: string): void => {
@@ -103,7 +162,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
     setList = (): React.ReactNode => {
         switch (this.props.mode) {
             case 'Pending Applications':
-                return this.props.applicants.map((element, index) => (
+                return this.props.applicants.filter((a) => this.applyFilter(a)).map((element, index) => (
                     <div className="column is-half" key={index}>
                         <DashboardListCard
                             {...element}
@@ -129,7 +188,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                     </div>
                 ));
             case 'Application Reviewed':
-                return this.props.reviewed.map((element, index) => (
+                return this.props.reviewed.filter((a) => this.applyFilter(a)).map((element, index) => (
                     <div className="column is-half" key={index}>
                         <DashboardListCard
                             {...element}
@@ -155,7 +214,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                     </div>
                 ));
             case 'Scheduled For Interview':
-                return this.props.scheduled.map((element, index) => (
+                return this.props.scheduled.filter((a) => this.applyFilter(a)).map((element, index) => (
                     <div className="column is-half" key={index}>
                         <DashboardListCard
                             {...element}
@@ -181,7 +240,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                     </div>
                 ));
             case 'Interviewed':
-                return this.props.interviewed.map((element, index) => (
+                return this.props.interviewed.filter((a) => this.applyFilter(a)).map((element, index) => (
                     <div className="column is-half" key={index}>
                         <DashboardListCard
                             {...element}
@@ -207,7 +266,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                     </div>
                 ));
             case 'Final Decision':
-                return this.props.accepted.map((element, index) => (
+                return this.props.accepted.filter((a) => this.applyFilter(a)).map((element, index) => (
                     <div className="column is-half" key={index}>
                         <DashboardListCard
                             {...element}
@@ -239,7 +298,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
         return (
             <div className="section dashboard-list">
                 {this.setTabs()}
-                <DashboardListButtons mode={this.props.mode} />
+                <DashboardListButtons mode={this.props.mode} onChange={this.updateFilter} />
                 <div className="section">
                     <div className="columns is-multiline">{this.setList()}</div>
                 </div>
