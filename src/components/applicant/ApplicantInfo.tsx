@@ -6,6 +6,7 @@ import ApplicantInfoHeader from './ApplicantInfoHeader';
 class ApplicantInfo extends React.Component<{
     totalApplicants: number;
     applicant: {
+        id: string;
         name: string;
         role: string;
         level: string;
@@ -41,6 +42,7 @@ class ApplicantInfo extends React.Component<{
                             </div>
                             <DashboardListCard
                                 mode="ApplicantInfo"
+                                id={this.props.applicant.id}
                                 name={this.props.applicant.name}
                                 role={this.props.applicant.role}
                                 level={this.props.applicant.level}
