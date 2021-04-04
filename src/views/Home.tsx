@@ -10,7 +10,7 @@ import HomeFooter from '../components/home/HomeFooter';
 
 const Home: React.FunctionComponent = () => {
     return (
-        <div className="view home-view">
+        <div className="home-view">
             <HomeBanner />
             <DescriptionSection />
             <FeaturesSection />
