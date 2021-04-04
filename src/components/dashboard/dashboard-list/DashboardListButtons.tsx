@@ -31,7 +31,7 @@ class DashboardListButtons extends React.Component<IDashboardListButtonsProps> {
                             max="6"
                             value="3"
                             type="range"
-                        ></input>
+                        />
                         <output htmlFor="sliderWithValue">3</output>
                     </div>
                 );
@@ -46,7 +46,7 @@ class DashboardListButtons extends React.Component<IDashboardListButtonsProps> {
                             max="5"
                             value="3"
                             type="range"
-                        ></input>
+                        />
                         <output htmlFor="sliderWithValue">3</output>
                     </div>
                 );
@@ -120,14 +120,14 @@ class DashboardListButtons extends React.Component<IDashboardListButtonsProps> {
                                 <button className="button" aria-haspopup="true" aria-controls="dropdown-menu3">
                                     <span>Most Recent</span>
                                     <span className="icon is-small">
-                                        <i className="fas fa-angle-down" aria-hidden="true"></i>
+                                        <i className="fas fa-angle-down" aria-hidden="true" />
                                     </span>
                                 </button>
                             </div>
                         </div>
                         <div className="level-left">
                             <button className="dashboard-button" onClick={() => this.closeDropdown()}>
-                                <i className="fa fa-chevron-up"></i>
+                                <i className="fa fa-chevron-up" />
                             </button>
                         </div>
                     </div>
@@ -152,7 +152,7 @@ class DashboardListButtons extends React.Component<IDashboardListButtonsProps> {
                                         max="6"
                                         value="3"
                                         type="range"
-                                    ></input>
+                                    />
                                     <output htmlFor="sliderWithValue">3</output>
                                 </div>
                             </div>
@@ -164,8 +164,8 @@ class DashboardListButtons extends React.Component<IDashboardListButtonsProps> {
                             <div className="level">
                                 <div className="level-left">
                                     <DashboardListFilter {...{ title: 'Beginner' }} />{' '}
-                                    <DashboardListFilter {...{ title: 'Intermediate' }} />{' '}
-                                    <DashboardListFilter {...{ title: 'Advanced' }} />{' '}
+                                    <DashboardListFilter {...{ title: 'Independent' }} />{' '}
+                                    <DashboardListFilter {...{ title: 'Experienced' }} />{' '}
                                 </div>
                             </div>
                             <div className="level">

@@ -10,17 +10,16 @@ interface IModalProps {
 }
 
 class ScoringModal extends React.Component<IModalProps> {
-
     getText = () => {
-        if (this.props.status === 'Pending Applicants') return "Interviewed";
-        else return "Applicant Reviewed";
-    }
+        if (this.props.status === 'Pending Applications') return 'Application Reviewed';
+        else return 'Interviewed';
+    };
 
     render(): React.ReactNode {
         return (
             <div>
                 <div className={`modal ${this.props.isActive ? 'is-active' : ''}`}>
-                    <div className="modal-background"/>
+                    <div className="modal-background" />
                     <div className="modal-card">
                         <section className="modal-card-body">
                             <p className="header">
@@ -33,7 +32,7 @@ class ScoringModal extends React.Component<IModalProps> {
                                 Actually No...
                             </button>
                             <button className="button confirmation-button" onClick={this.props.confirmSubmit}>
-                                Yes, I&apos;m sure;
+                                Yes, I&apos;m sure
                             </button>
                         </section>
                     </div>

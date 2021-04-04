@@ -8,6 +8,7 @@ import './Scoring.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCode, faPaintBrush } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
+import InterviewForm from './InterviewForm';
 
 interface IApplicantInfoProps {
     id: string;
@@ -20,6 +21,7 @@ interface IApplicantInfoProps {
     interviewGrade?: number;
 }
 interface ScoringState {
+    status: string;
     criteria: {
         C1: string;
         C2: string;
@@ -43,7 +45,7 @@ interface ScoringState {
         conclusionTimeCommitment: string;
         conclusionQuestions: string;
         debrief: number;
-    }
+    };
     isModalActive: boolean;
 }
 interface ScoringProps {
@@ -67,6 +69,7 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
     constructor(props: ScoringProps) {
         super(props);
         this.state = {
+            status: this.props.applicant.status,
             criteria: {
                 C1: '0',
                 C2: '0',
@@ -94,6 +97,7 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
             isModalActive: false,
         };
         this.handleCriteriaChange = this.handleCriteriaChange.bind(this);
+        this.handleInterviewFormChange = this.handleInterviewFormChange.bind(this);
         this.confirmSubmit = this.confirmSubmit.bind(this);
     }
 
@@ -134,9 +138,144 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
         }
     };
 
+    handleInterviewFormChange = (
+        e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>,
+    ): void => {
+        switch (e.currentTarget.name) {
+            case 'level':
+                this.setState({
+                    interview: {
+                        ...this.state.interview,
+                        level: e.currentTarget.value,
+                    },
+                });
+                break;
+            case 'interviewer1':
+                this.setState({
+                    interview: {
+                        ...this.state.interview,
+                        interviewer1: e.currentTarget.value,
+                    },
+                });
+                break;
+            case 'interviewer2':
+                this.setState({
+                    interview: {
+                        ...this.state.interview,
+                        interviewer2: e.currentTarget.value,
+                    },
+                });
+                break;
+            case 'intro':
+                this.setState({
+                    interview: {
+                        ...this.state.interview,
+                        intro: e.currentTarget.value,
+                    },
+                });
+                break;
+            case 'experienceTechnical':
+                this.setState({
+                    interview: {
+                        ...this.state.interview,
+                        experienceTechnical: Number.parseInt(e.currentTarget.value),
+                    },
+                });
+                break;
+            case 'experienceTeamwork':
+                this.setState({
+                    interview: {
+                        ...this.state.interview,
+                        experienceTeamwork: Number.parseInt(e.currentTarget.value),
+                    },
+                });
+                break;
+            case 'experienceComments':
+                this.setState({
+                    interview: {
+                        ...this.state.interview,
+                        experienceComments: e.currentTarget.value,
+                    },
+                });
+                break;
+            case 'depthTopic':
+                this.setState({
+                    interview: {
+                        ...this.state.interview,
+                        depthTopic: e.currentTarget.value,
+                    },
+                });
+                break;
+            case 'depthScore':
+                this.setState({
+                    interview: {
+                        ...this.state.interview,
+                        depthScore: Number.parseInt(e.currentTarget.value),
+                    },
+                });
+                break;
+            case 'depthComments':
+                this.setState({
+                    interview: {
+                        ...this.state.interview,
+                        depthComments: e.currentTarget.value,
+                    },
+                });
+                break;
+            case 'whiteboardQuestion':
+                this.setState({
+                    interview: {
+                        ...this.state.interview,
+                        whiteboardQuestion: e.currentTarget.value,
+                    },
+                });
+                break;
+            case 'whiteboardScore':
+                this.setState({
+                    interview: {
+                        ...this.state.interview,
+                        whiteboardScore: Number.parseInt(e.currentTarget.value),
+                    },
+                });
+                break;
+            case 'whiteboardComments':
+                this.setState({
+                    interview: {
+                        ...this.state.interview,
+                        whiteboardComments: e.currentTarget.value,
+                    },
+                });
+                break;
+            case 'conclusionTimeCommitment':
+                this.setState({
+                    interview: {
+                        ...this.state.interview,
+                        conclusionTimeCommitment: e.currentTarget.value,
+                    },
+                });
+                break;
+            case 'conclusionQuestions':
+                this.setState({
+                    interview: {
+                        ...this.state.interview,
+                        conclusionQuestions: e.currentTarget.value,
+                    },
+                });
+                break;
+            case 'debrief':
+                this.setState({
+                    interview: {
+                        ...this.state.interview,
+                        debrief: Number.parseInt(e.currentTarget.value),
+                    },
+                });
+                break;
+        }
+    };
+
     // function to manage what happens when submission is confirmed
     confirmSubmit = (): void => {
-        switch (this.props.applicant.status) {
+        switch (this.state.status) {
             case 'Pending Applications':
                 // update screeningGrade
                 this.props.applicant.screeningGrade =
@@ -176,29 +315,38 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
         this.setState({ isModalActive: !this.state.isModalActive });
     };
 
+    changeStatus = (status: string): void => {
+        this.setState({ status: status });
+    };
+
     render(): React.ReactNode {
-        if (this.props.applicant.status === 'Scheduled For Interview') {
+        if (this.state.status === 'Scheduled For Interview') {
             return (
                 <React.Fragment>
                     <div className="columns">
                         <div className="column">
                             <div className="container">
-                                <ScoringNavbar count={this.props.count} type="Interview" viewApplicant={this.props.viewApplicant} />
+                                <ScoringNavbar
+                                    count={this.props.count}
+                                    type="Interview"
+                                    viewApplicant={this.props.viewApplicant}
+                                    changeStatus={this.changeStatus}
+                                />
                                 <div className="container form-header">
                                     <p className="px-4">
-                                    <span className="applicant-card">
-                                        <span className="icon">
-                                            <FontAwesomeIcon
-                                                icon={
-                                                    this.props.applicant.role === 'Designer Applicant'
-                                                        ? faPaintBrush
-                                                        : faCode
-                                                }
-                                                color={'#444444'}
-                                            />
+                                        <span className="applicant-card">
+                                            <span className="icon">
+                                                <FontAwesomeIcon
+                                                    icon={
+                                                        this.props.applicant.role === 'Designer Applicant'
+                                                            ? faPaintBrush
+                                                            : faCode
+                                                    }
+                                                    color={'#444444'}
+                                                />
+                                            </span>
+                                            <span className="px-5">{this.props.applicant.name}</span>
                                         </span>
-                                        <span className="px-5">{this.props.applicant.name}</span>
-                                    </span>
                                     </p>
                                     <p className="score-values">
                                         0 = Unsatisfactory
@@ -206,16 +354,18 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
                                         <span>2 = Exceptional</span>
                                     </p>
                                     <div className="scoring-form">
-                                        <ScoringForm
-                                            handleCriteriaChange={this.handleCriteriaChange}
+                                        <InterviewForm
+                                            handleInterviewFormChange={this.handleInterviewFormChange}
                                             openScoringModal={this.toggleIsModalActive}
                                         />
                                         <div className="current-score">
                                             <p>
-                                                Current score{' '}
-                                                {+this.state.criteria.C1 +
-                                                +this.state.criteria.C2 +
-                                                +this.state.criteria.C3}
+                                                Current score:{' '}
+                                                {+this.state.interview.experienceTechnical +
+                                                    +this.state.interview.experienceTeamwork +
+                                                    +this.state.interview.depthScore +
+                                                    +this.state.interview.whiteboardScore +
+                                                    +this.state.interview.debrief}
                                             </p>
                                         </div>
                                     </div>
@@ -238,22 +388,27 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
                     <div className="columns">
                         <div className="column">
                             <div className="container">
-                                <ScoringNavbar count={this.props.count} type="Review" viewApplicant={this.props.viewApplicant} />
+                                <ScoringNavbar
+                                    count={this.props.count}
+                                    type="Review"
+                                    viewApplicant={this.props.viewApplicant}
+                                    changeStatus={this.changeStatus}
+                                />
                                 <div className="container form-header">
                                     <p className="px-4">
-                                    <span className="applicant-card">
-                                        <span className="icon">
-                                            <FontAwesomeIcon
-                                                icon={
-                                                    this.props.applicant.role === 'Designer Applicant'
-                                                        ? faPaintBrush
-                                                        : faCode
-                                                }
-                                                color={'#444444'}
-                                            />
+                                        <span className="applicant-card">
+                                            <span className="icon">
+                                                <FontAwesomeIcon
+                                                    icon={
+                                                        this.props.applicant.role === 'Designer Applicant'
+                                                            ? faPaintBrush
+                                                            : faCode
+                                                    }
+                                                    color={'#444444'}
+                                                />
+                                            </span>
+                                            <span className="px-5">{this.props.applicant.name}</span>
                                         </span>
-                                        <span className="px-5">{this.props.applicant.name}</span>
-                                    </span>
                                     </p>
                                     <p className="score-values">
                                         0 = Unsatisfactory
@@ -267,10 +422,10 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
                                         />
                                         <div className="current-score">
                                             <p>
-                                                Current score{' '}
+                                                Current score:{' '}
                                                 {+this.state.criteria.C1 +
-                                                +this.state.criteria.C2 +
-                                                +this.state.criteria.C3}
+                                                    +this.state.criteria.C2 +
+                                                    +this.state.criteria.C3}
                                             </p>
                                         </div>
                                     </div>

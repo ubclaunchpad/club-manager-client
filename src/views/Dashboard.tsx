@@ -66,6 +66,9 @@ class Dashboard extends Component<unknown, DashboardState> {
                 const rejected: any[] = [];
 
                 result.data.forEach((applicant: any) => {
+                    const screeningGrade = applicant.screeningGradeActual
+                        ? applicant.screeningGradeActual.total
+                        : undefined;
                     allApplicants.push({
                         id: applicant._id,
                         name: `${applicant.firstName} ${applicant.lastName}`,
@@ -73,7 +76,7 @@ class Dashboard extends Component<unknown, DashboardState> {
                         level: applicant.level,
                         status: applicant.status,
                         email: applicant.email,
-                        screeningGrade: applicant.screeningGrade,
+                        screeningGrade: screeningGrade,
                         interviewGrade: applicant.interviewGrade,
                     });
                 });
@@ -127,7 +130,10 @@ class Dashboard extends Component<unknown, DashboardState> {
     };
 
     openDashboard = (): void => {
-        this.setState({ mode: 'Dashboard' });
+        this.setState({
+            mode: 'Dashboard',
+            stage: 'Pending Applications',
+        });
     };
 
     setScreeningStage = (newStage: string): void => {
@@ -221,6 +227,7 @@ class Dashboard extends Component<unknown, DashboardState> {
                     .then((res) => {
                         console.log(res);
                         console.log(res.data);
+                        this.componentDidMount();
                     });
                 break;
             case 'Scheduled For Interview':
@@ -234,6 +241,7 @@ class Dashboard extends Component<unknown, DashboardState> {
                     .then((res) => {
                         console.log(res);
                         console.log(res.data);
+                        this.componentDidMount();
                     });
                 break;
         }
@@ -278,6 +286,26 @@ class Dashboard extends Component<unknown, DashboardState> {
         } else if (this.state.mode === 'ApplicantInfo') {
             return <div className="column">{this.setList()}</div>;
         } else {
+            // Gets the correct applicant based on the current state and the count
+            let applicant: IApplicantInfoProps;
+            switch (this.state.stage) {
+                case 'Application Reviewed':
+                    applicant = this.state.reviewedList[this.state.count];
+                    break;
+                case 'Scheduled For Interview':
+                    applicant = this.state.scheduledList[this.state.count];
+                    break;
+                case 'Interviewed':
+                    applicant = this.state.interviewedList[this.state.count];
+                    break;
+                case 'Final Decision':
+                    applicant = this.state.acceptedList[this.state.count];
+                    break;
+                default:
+                    applicant = this.state.applicantList[this.state.count];
+                    break;
+            }
+
             return (
                 <div className="column">
                     <Scoring
@@ -285,7 +313,7 @@ class Dashboard extends Component<unknown, DashboardState> {
                         viewApplicant={this.openApplicantInfo}
                         viewDashboard={this.openDashboard}
                         moveApplicant={this.moveApplicant}
-                        applicant={this.state.applicantList[this.state.count]}
+                        applicant={applicant}
                     />
                 </div>
             );

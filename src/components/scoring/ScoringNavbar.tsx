@@ -5,10 +5,10 @@ interface ScoringNavbarProps {
     count: number;
     type: string;
     viewApplicant: (newCount: number) => void;
+    changeStatus: (status: string) => void;
 }
 
 class ScoringNavbar extends React.Component<ScoringNavbarProps> {
-
     dropdown = () => {
         if (this.props.type === 'Interview') {
             return (
@@ -21,7 +21,7 @@ class ScoringNavbar extends React.Component<ScoringNavbarProps> {
                         >
                             <span className="is-size-6">Applicant Interview</span>
                             <span className="icon is-small">
-                                <i className="fas fa-angle-down" aria-hidden="true"/>
+                                <i className="fas fa-angle-down" aria-hidden="true" />
                             </span>
                         </button>
                     </div>
@@ -39,7 +39,7 @@ class ScoringNavbar extends React.Component<ScoringNavbarProps> {
                         <div className="dropdown-content">
                             <div className="dropdown-item is-size-6">
                                 <button
-                                    onClick={() => this.props.viewApplicant(this.props.count)}
+                                    onClick={() => this.props.changeStatus('Pending Applicants')}
                                     className=" dropdown-item-button is-size-6"
                                 >
                                     Applicant Review
@@ -60,7 +60,7 @@ class ScoringNavbar extends React.Component<ScoringNavbarProps> {
                         >
                             <span className="is-size-6">Applicant Review</span>
                             <span className="icon is-small">
-                                <i className="fas fa-angle-down" aria-hidden="true"/>
+                                <i className="fas fa-angle-down" aria-hidden="true" />
                             </span>
                         </button>
                     </div>
@@ -75,9 +75,8 @@ class ScoringNavbar extends React.Component<ScoringNavbarProps> {
                                 </button>
                             </div>
                             <div className="dropdown-item is-size-6">
-                                {/*TODO: change callback function*/}
                                 <button
-                                    onClick={() => this.props.viewApplicant(this.props.count)}
+                                    onClick={() => this.props.changeStatus('Scheduled For Interview')}
                                     className=" dropdown-item-button is-size-6"
                                 >
                                     Applicant Interview
@@ -88,13 +87,13 @@ class ScoringNavbar extends React.Component<ScoringNavbarProps> {
                 </div>
             );
         }
-    }
+    };
 
     render(): React.ReactNode {
         return (
             <div className="applicant-navbar">
                 <button onClick={() => this.props.viewApplicant(this.props.count)} className="back-button is-size-6">
-                    <i className="fas fa-arrow-left"></i>
+                    <i className="fas fa-arrow-left" />
                     Back
                 </button>
                 {this.dropdown()}
