@@ -164,8 +164,8 @@ class DashboardListButtons extends React.Component<IDashboardListButtonsProps> {
                             <div className="level">
                                 <div className="level-left">
                                     <DashboardListFilter {...{ title: 'Beginner' }} />{' '}
-                                    <DashboardListFilter {...{ title: 'Intermediate' }} />{' '}
-                                    <DashboardListFilter {...{ title: 'Advanced' }} />{' '}
+                                    <DashboardListFilter {...{ title: 'Independent' }} />{' '}
+                                    <DashboardListFilter {...{ title: 'Experienced' }} />{' '}
                                 </div>
                             </div>
                             <div className="level">
