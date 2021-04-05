@@ -138,6 +138,7 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
         }
     };
 
+    //function to manage what happens when submission is confirmed
     handleInterviewFormChange = (
         e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>,
     ): void => {
