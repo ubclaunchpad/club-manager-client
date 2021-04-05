@@ -45,6 +45,7 @@ class ScoringForm extends React.Component<IScoringFormProps> {
                         name={criteria.name}
                         key={criteria.name}
                         text={criteria.text}
+                        numOptions={3}
                         handleCriteriaChange={this.props.handleCriteriaChange}
                     />
                 ))}
