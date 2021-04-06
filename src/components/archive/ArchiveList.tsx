@@ -55,10 +55,7 @@ class ArchiveList extends Component<ArchiveListProps, ArchiveListState> {
         });
     };
 
-    closeModal = (type: string, email: string): void => {
-        if (type.includes('Email')) {
-            console.log(`Cannot send email to ${email}`);
-        }
+    closeModal = (type: string): void => {
         this.setState({ showModal: false });
     };
 
@@ -130,8 +127,7 @@ class ArchiveList extends Component<ArchiveListProps, ArchiveListState> {
                         type={this.state.type}
                         name={this.state.name}
                         role={this.state.role}
-                        email={this.state.email}
-                        closeModal={(type: string, email: string) => this.closeModal(type, email)}
+                        closeModal={(type: string) => this.closeModal(type)}
                         isActive={this.state.showModal}
                     />
                 </div>

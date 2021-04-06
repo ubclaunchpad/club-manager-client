@@ -6,6 +6,7 @@ import ApplicantInfoHeader from './ApplicantInfoHeader';
 class ApplicantInfo extends React.Component<{
     totalApplicants: number;
     applicant: {
+        id: string;
         name: string;
         role: string;
         level: string;
@@ -32,7 +33,7 @@ class ApplicantInfo extends React.Component<{
                         <div className="container">
                             <div className="applicant-navbar">
                                 <button className="back-button" onClick={() => this.props.viewDashboard()}>
-                                    <i className="fas fa-arrow-left"></i>
+                                    <i className="fas fa-arrow-left" />
                                 </button>
                                 <h1>Applicant Information</h1>
                                 <button className="review-button" onClick={this.props.viewScoring}>
@@ -41,6 +42,7 @@ class ApplicantInfo extends React.Component<{
                             </div>
                             <DashboardListCard
                                 mode="ApplicantInfo"
+                                id={this.props.applicant.id}
                                 name={this.props.applicant.name}
                                 role={this.props.applicant.role}
                                 level={this.props.applicant.level}
@@ -80,19 +82,28 @@ class ApplicantInfo extends React.Component<{
                                     'www.devpost.com/exampleproject',
                                 ]}
                             />
-                            <div className="applicant-navbar">
+                            <div className="applicant-footer">
                                 <div className="columns">
-                                    <div className="column is-3">
+                                    <div className="column is-3 left-column">
                                         {this.props.count > 0 && (
-                                            <button onClick={() => this.props.setCount(this.props.count - 1)}>
-                                                <i className="fas fa-arrow-left"></i>Previous Applicant
+                                            <button
+                                                className="footer-button"
+                                                onClick={() => this.props.setCount(this.props.count - 1)}
+                                            >
+                                                <i className="fas fa-arrow-left" />
+                                                Previous Applicant
                                             </button>
                                         )}
                                     </div>
-                                    <div className="column is-3 is-offset-8">
+                                    <div className="column is-half" />
+                                    <div className="column is-3 right-column">
                                         {this.props.count < this.props.totalApplicants - 1 && (
-                                            <button onClick={() => this.props.setCount(this.props.count + 1)}>
-                                                Next Applicant<i className="fas fa-arrow-right"></i>
+                                            <button
+                                                className="footer-button"
+                                                onClick={() => this.props.setCount(this.props.count + 1)}
+                                            >
+                                                Next Applicant
+                                                <i className="fas fa-arrow-right" />
                                             </button>
                                         )}
                                     </div>

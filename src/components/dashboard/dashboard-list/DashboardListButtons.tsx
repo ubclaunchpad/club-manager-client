@@ -167,14 +167,14 @@ class DashboardListButtons extends React.Component<IDashboardListButtonsProps, I
                                 <button className="button" aria-haspopup="true" aria-controls="dropdown-menu3">
                                     <span>Most Recent</span>
                                     <span className="icon is-small">
-                                        <i className="fas fa-angle-down" aria-hidden="true"></i>
+                                        <i className="fas fa-angle-down" aria-hidden="true" />
                                     </span>
                                 </button>
                             </div>
                         </div>
                         <div className="level-left">
                             <button className="dashboard-button" onClick={() => this.closeDropdown()}>
-                                <i className="fa fa-chevron-up"></i>
+                                <i className="fa fa-chevron-up" />
                             </button>
                         </div>
                     </div> */}

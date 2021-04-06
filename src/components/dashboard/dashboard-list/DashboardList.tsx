@@ -19,6 +19,7 @@ type DashboardListProps = {
 
 type DashboardListState = {
     showModal: boolean;
+    id: string;
     name: string;
     role: string;
     type: string;
@@ -45,6 +46,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
         super(props);
         this.state = {
             showModal: false,
+            id: '',
             name: '',
             role: '',
             type: '',
@@ -60,9 +62,22 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                 minInterview: 0,
             }
         };
+        this.moveApplicant = this.moveApplicant.bind(this);
     }
 
+    moveApplicant = (id: string, newStatus: string) => {
+        axios
+            .patch(`http://localhost:4000/applicant/${id}`, {
+                status: newStatus,
+            })
+            .then((res) => {
+                console.log(res);
+                console.log(res.data);
+            });
+    };
+
     showModal = (
+        id: string,
         name: string,
         role: string,
         type: string,
@@ -73,6 +88,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
     ): void => {
         this.setState({
             showModal: true,
+            id: id,
             name: name,
             role: role,
             type: type,
@@ -125,22 +141,64 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
         return true;
     };
 
-    closeModal = (type: string, email: string): void => {
-        if (type.includes('Email')) {
-            axios({
-                method: 'post',
-                url: `http://localhost:4000/email`,
-                data: {
-                    recipient: email,
-                    action: type,
-                },
-            })
-                .then(() => {
-                    console.log('Mail sent successfully!');
+    closeModal = (type: string): void => {
+        if (type !== 'Close') {
+            if (type.includes('Email')) {
+                axios({
+                    method: 'post',
+                    url: `http://localhost:4000/email`,
+                    data: {
+                        recipient: this.state.email,
+                        action: type,
+                    },
                 })
-                .catch((err) => {
-                    console.log(err);
-                });
+                    .then((resp) => {
+                        console.log(resp);
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
+            }
+            let applicant;
+            switch (type) {
+                case 'Reject-Screen':
+                    this.setState({ status: 'Final Decision: Rejected' });
+                    this.moveApplicant(this.state.id, 'Final Decision: Rejected');
+                    applicant = this.props.applicants.find((applicant) => applicant.id === this.state.id);
+                    this.props.applicants.splice(this.props.applicants.indexOf(applicant), 1);
+                    this.props.rejected.push(applicant);
+                    break;
+                case 'Reject-Final':
+                    this.setState({ status: 'Final Decision: Rejected' });
+                    this.moveApplicant(this.state.id, 'Final Decision: Rejected');
+                    applicant = this.props.interviewed.find((applicant) => applicant.id === this.state.id);
+                    this.props.applicants.splice(this.props.interviewed.indexOf(applicant), 1);
+                    this.props.rejected.push(applicant);
+                    break;
+                case 'Accept':
+                    this.setState({ status: 'Final Decision: Accepted' });
+                    this.moveApplicant(this.state.id, 'Final Decision: Accepted');
+                    applicant = this.props.interviewed.find((applicant) => applicant.id === this.state.id);
+                    this.props.applicants.splice(this.props.interviewed.indexOf(applicant), 1);
+                    this.props.accepted.push(applicant);
+                    break;
+                case 'Email-Schedule':
+                    this.setState({ status: 'Scheduled For Interview' });
+                    this.moveApplicant(this.state.id, 'Scheduled For Interview');
+                    applicant = this.props.reviewed.find((applicant) => applicant.id === this.state.id);
+                    this.props.applicants.splice(this.props.reviewed.indexOf(applicant), 1);
+                    this.props.scheduled.push(applicant);
+                    break;
+                case 'Email-Accept':
+                    this.setState({ status: 'Archived: Accepted' });
+                    this.moveApplicant(this.state.id, 'Archived: Accepted');
+                    break;
+                case 'Email-Reject-Screen':
+                case 'Email-Reject-Final':
+                    this.setState({ status: 'Archived: Rejected' });
+                    this.moveApplicant(this.state.id, 'Archived: Rejected');
+                    break;
+            }
         }
         this.setState({ showModal: false });
     };
@@ -178,6 +236,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                             setModalAndType={(type: string) => {
                                 console.log(element.role);
                                 this.showModal(
+                                    element.id,
                                     element.name,
                                     element.role,
                                     type,
@@ -204,6 +263,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                             setModalAndType={(type: string) => {
                                 console.log(element.role);
                                 this.showModal(
+                                    element.id,
                                     element.name,
                                     element.role,
                                     type,
@@ -230,6 +290,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                             setModalAndType={(type: string) => {
                                 console.log(element.role);
                                 this.showModal(
+                                    element.id,
                                     element.name,
                                     element.role,
                                     type,
@@ -256,6 +317,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                             setModalAndType={(type: string) => {
                                 console.log(element.role);
                                 this.showModal(
+                                    element.id,
                                     element.name,
                                     element.role,
                                     type,
@@ -282,6 +344,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                             setModalAndType={(type: string) => {
                                 console.log(element.role);
                                 this.showModal(
+                                    element.id,
                                     element.name,
                                     element.role,
                                     type,
@@ -310,8 +373,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                         type={this.state.type}
                         name={this.state.name}
                         role={this.state.role}
-                        email={this.state.email}
-                        closeModal={(type: string, email: string) => this.closeModal(type, email)}
+                        closeModal={(type: string) => this.closeModal(type)}
                         isActive={this.state.showModal}
                     />
                 </div>

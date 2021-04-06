@@ -4,11 +4,10 @@ import ModalApplicantCard from './ApplicantManagementModalCard';
 
 interface IApplicantManagementModalProps {
     isActive: boolean;
-    closeModal: (type: string, email: string) => void;
+    closeModal: (type: string) => void;
     name: string;
     role: string;
     type: string;
-    email: string;
 }
 
 class ApplicantManagementModal extends React.Component<IApplicantManagementModalProps> {
@@ -63,7 +62,7 @@ class ApplicantManagementModal extends React.Component<IApplicantManagementModal
                             <button
                                 className="delete close-button"
                                 aria-label="close"
-                                onClick={() => this.props.closeModal('Close', this.props.email)}
+                                onClick={() => this.props.closeModal('Close')}
                             />
                             <header>
                                 <h1 className="is-size-3 has-text-weight-bold">{this.title}</h1>
@@ -75,13 +74,13 @@ class ApplicantManagementModal extends React.Component<IApplicantManagementModal
 
                                 <button
                                     className="decision-button reject"
-                                    onClick={() => this.props.closeModal(this.props.type, this.props.email)}
+                                    onClick={() => this.props.closeModal(this.props.type)}
                                 >
                                     Actually, no...
                                 </button>
                                 <button
                                     className="decision-button accept"
-                                    onClick={() => this.props.closeModal(this.props.type, this.props.email)}
+                                    onClick={() => this.props.closeModal(this.props.type)}
                                 >
                                     Yes, I´m sure.
                                 </button>

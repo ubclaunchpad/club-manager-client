@@ -45,6 +45,7 @@ class ScoringForm extends React.Component<IScoringFormProps> {
                         name={criteria.name}
                         key={criteria.name}
                         text={criteria.text}
+                        numOptions={3}
                         handleCriteriaChange={this.props.handleCriteriaChange}
                     />
                 ))}
@@ -55,7 +56,7 @@ class ScoringForm extends React.Component<IScoringFormProps> {
                             <label className=" column radio mt-3 ">
                                 <input
                                     type="radio"
-                                    value="beginner"
+                                    value="Beginner"
                                     name="experience"
                                     className="mr-2 "
                                     onChange={this.props.handleCriteriaChange}
@@ -66,22 +67,22 @@ class ScoringForm extends React.Component<IScoringFormProps> {
                             <label className=" column radio mt-3 ">
                                 <input
                                     type="radio"
-                                    value="intermediate"
+                                    value="Independent"
                                     name="experience"
                                     className="mr-2"
                                     onChange={this.props.handleCriteriaChange}
                                 />
-                                Intermediate
+                                Independent
                             </label>
                             <label className=" column radio mt-3 ">
                                 <input
                                     type="radio"
-                                    value="advanced"
+                                    value="Experienced"
                                     name="experience"
                                     className="mr-2"
                                     onChange={this.props.handleCriteriaChange}
                                 />
-                                Advanced
+                                Experienced
                             </label>
                         </div>
                     </div>
