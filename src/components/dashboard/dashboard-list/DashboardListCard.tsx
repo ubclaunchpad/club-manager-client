@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface IDashboardListCardProps {
     mode: string;
+    id: string;
     name: string;
     role: string;
     level: string;
