@@ -133,7 +133,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
         }
 
         // Filter by the applicant's screening grade
-        if (applicant.screeningGradeActual.total < minScreen) return false;
+        if (applicant.screeningGradeActual && applicant.screeningGradeActual.total < minScreen) return false;
         // Filter by the applicant's interview grade
         // if (applicant.interviewGradeActual < minInterview) return false;
 
