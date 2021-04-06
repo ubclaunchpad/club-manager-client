@@ -45,7 +45,7 @@ class DashboardListButtons extends React.Component<IDashboardListButtonsProps, I
         document.querySelectorAll('input[type=range]').forEach((el: any) => {
             el.value = 0;
         });
-        this.setState({
+        const defaultState = {
             beginner: false,
             intermediate: false,
             advanced: false,
@@ -53,8 +53,9 @@ class DashboardListButtons extends React.Component<IDashboardListButtonsProps, I
             designer: false,
             minScreen: 0,
             minInterview: 0,
-        });
-        this.props.onChange(this.state);
+        }
+        this.setState(defaultState);
+        this.props.onChange(defaultState);
     };
 
     setSliders = (): React.ReactNode => {

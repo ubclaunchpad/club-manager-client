@@ -83,7 +83,10 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
         });
     };
 
-    updateFilter = (filter: DashboardListFilter) => this.setState({ filter: filter});
+    updateFilter = (filter: DashboardListFilter) => {
+        console.log(filter);
+        this.setState({ filter: filter})
+    };
 
     applyFilter = (applicant: any): Boolean => {
         const beginner = this.state.filter.beginner;
@@ -98,8 +101,8 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
         if (beginner || intermediate || advanced) {
             let applicantMatchesLevel = false;
             if (beginner && applicant.level.toLowerCase() === "beginner") applicantMatchesLevel = true;
-            if (intermediate && applicant.level.toLowerCase() === "intermediate") applicantMatchesLevel = true;
-            if (advanced && applicant.level.toLowerCase() === "advanced") applicantMatchesLevel = true;
+            if (intermediate && applicant.level.toLowerCase() === "independent") applicantMatchesLevel = true;
+            if (advanced && applicant.level.toLowerCase() === "experienced") applicantMatchesLevel = true;
 
             if (!applicantMatchesLevel) return false;
         }
@@ -116,7 +119,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
         // Filter by the applicant's screening grade
         if (applicant.screeningGradeActual < minScreen) return false;
         // Filter by the applicant's interview grade
-        // TODO: if (applicant.<InterviewGradeGoesHere> < minInterview) return false;
+        // if (applicant.interviewGradeActual < minInterview) return false;
 
         // At this point, the applicant matched all filters, so return true
         return true;
