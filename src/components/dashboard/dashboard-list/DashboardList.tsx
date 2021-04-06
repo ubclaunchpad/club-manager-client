@@ -90,8 +90,8 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                         action: type,
                     },
                 })
-                    .then(() => {
-                        console.log('Mail sent successfully!');
+                    .then((resp) => {
+                        console.log(resp);
                     })
                     .catch((err) => {
                         console.log(err);
