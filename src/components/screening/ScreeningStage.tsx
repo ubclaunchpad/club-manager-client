@@ -1,6 +1,7 @@
 import React from 'react';
 import DashboardList from '../../components/dashboard/dashboard-list/DashboardList';
 import ScreeningStageHeader from './ScreeningStageHeader';
+import './ScreeningStage.scss';
 
 class ScreeningStage extends React.Component<{
     stage: string;
