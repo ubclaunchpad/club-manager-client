@@ -6,6 +6,7 @@ class ScreeningStage extends React.Component<{
     stage: string;
     viewDashboard: () => void;
     viewApplicant: (newCount: number) => void;
+    fetchApplicants: () => void;
     applicants: any[];
     reviewed: any[];
     scheduled: any[];
@@ -34,6 +35,7 @@ class ScreeningStage extends React.Component<{
                             <DashboardList
                                 mode={this.props.stage}
                                 viewApplicant={this.props.viewApplicant}
+                                fetchApplicants={this.props.fetchApplicants}
                                 applicants={this.props.applicants}
                                 reviewed={this.props.reviewed}
                                 scheduled={this.props.scheduled}
