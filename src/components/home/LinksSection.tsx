@@ -37,7 +37,7 @@ class LinksSection extends React.Component {
                     </div>
                     <div className="column  is-5">
                         <div className="link-card columns">
-                            <img src={ReadCaseImg} className="column  link-card-img is-4" alt="" />
+                            <img src={ReadCaseImg} className="column  link-card-img cat-img is-4" alt="" />
                             <div className="link-card-text column">
                                 <p>
                                     <Link
