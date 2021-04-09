@@ -133,9 +133,10 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
 
             if (!applicantMatchesRole) return false;
         }
-
+        console.log(applicant.name);
+        console.log(typeof applicant.screeningGrade);
         // Filter by the applicant's screening grade
-        if (applicant.screeningGradeActual && applicant.screeningGradeActual.total < minScreen) return false;
+        if (typeof applicant.screeningGrade === 'number' && applicant.screeningGrade < minScreen) return false;
         // Filter by the applicant's interview grade
         // if (applicant.interviewGradeActual < minInterview) return false;
 
