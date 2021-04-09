@@ -1,10 +1,10 @@
 import React from 'react';
 import DashboardCard from './DashboardCard';
 
-import ReviewedCard from '../images/ReviewedCard.png';
-import ScheduledCard from '../images/ScheduledCard.png';
-import InterviewedCard from '../images/InterviewedCard.png';
-import FinalDecisionCard from '../images/FinalDecisionCard.png';
+import ReviewedCard from '../images/ReviewedCard.svg';
+import ScheduledCard from '../images/ScheduledCard.svg';
+import InterviewedCard from '../images/InterviewedCard.svg';
+import FinalDecisionCard from '../images/FinalDecisionCard.svg';
 
 class DashboardHeader extends React.Component<{
     viewScreeningStage: (newStage: string) => void;
