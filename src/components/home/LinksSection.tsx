@@ -62,7 +62,7 @@ class LinksSection extends React.Component {
                 </div>
                 <div className="columns is-8 is-variable login-section">
                     <div className="column is-offset-1 is-5">
-                        <p className="login-section-title">What Are you waiting for?</p>
+                        <p className="login-section-title">What are you waiting for?</p>
                         <p className="login-section-subtitle">Register your account now!</p>
                     </div>
                     <div className="column is-5 login-links">

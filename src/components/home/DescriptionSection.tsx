@@ -31,7 +31,7 @@ const DescriptionSection: FunctionComponent = () => {
         <section className="description-section">
             <p className="warning">
                 *Product is currently in limited <b>BETA</b> and is only available <br />
-                for use within UBC Launchpad
+                for use within UBC Launch Pad
             </p>
 
             <div className="columns is-multiline">
