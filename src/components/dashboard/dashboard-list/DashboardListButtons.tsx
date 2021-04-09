@@ -53,7 +53,7 @@ class DashboardListButtons extends React.Component<IDashboardListButtonsProps, I
             designer: false,
             minScreen: 0,
             minInterview: 0,
-        }
+        };
         this.setState(defaultState);
         this.props.onChange(defaultState);
     };
@@ -68,7 +68,7 @@ class DashboardListButtons extends React.Component<IDashboardListButtonsProps, I
                             className="slider has-output is-fullwidth is-small is-circle"
                             step="1"
                             min="0"
-                            max="6"
+                            max="18"
                             type="range"
                             defaultValue="0"
                             onChange={(event) => {
@@ -83,10 +83,10 @@ class DashboardListButtons extends React.Component<IDashboardListButtonsProps, I
                     <div className="level-item">
                         <p>Minimum Interview Score </p>
                         <input
-                            className="slider has-output-tooltip is-large"
+                            className="slider has-output is-fullwidth is-small is-circle"
                             step="1"
                             min="0"
-                            max="6"
+                            max="18"
                             type="range"
                             defaultValue="0"
                             onChange={(event) => {

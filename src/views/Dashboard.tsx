@@ -70,6 +70,9 @@ class Dashboard extends Component<unknown, DashboardState> {
                     const screeningGrade = applicant.screeningGradeActual
                         ? applicant.screeningGradeActual.total
                         : undefined;
+                    const interviewGrade = applicant.interviewGradeActual
+                        ? applicant.interviewGradeActual.total
+                        : undefined;
                     allApplicants.push({
                         id: applicant._id,
                         name: `${applicant.firstName} ${applicant.lastName}`,
@@ -78,7 +81,7 @@ class Dashboard extends Component<unknown, DashboardState> {
                         status: applicant.status,
                         email: applicant.email,
                         screeningGrade: screeningGrade,
-                        interviewGrade: applicant.interviewGrade,
+                        interviewGrade: interviewGrade,
                     });
                 });
 
