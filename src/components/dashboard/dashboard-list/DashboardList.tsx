@@ -106,7 +106,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
         this.setState({ filter: filter });
     };
 
-    applyFilter = (applicant: any): Boolean => {
+    applyFilter = (applicant: any): boolean => {
         const beginner = this.state.filter.beginner;
         const intermediate = this.state.filter.intermediate;
         const advanced = this.state.filter.advanced;
@@ -136,7 +136,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
 
         // Filter by the applicant's screening grade
         if (typeof applicant.screeningGrade === 'number' && applicant.screeningGrade < minScreen) return false;
-        
+
         // Filter by the applicant's interview grade (where relevant)
         if (
             (this.props.mode === 'Interviewed' || this.props.mode === 'Final Decision') &&

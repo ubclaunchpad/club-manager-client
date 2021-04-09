@@ -103,7 +103,7 @@ class Dashboard extends Component<unknown, DashboardState> {
                         pending.push(applicant);
                     }
                 });
-                
+
                 this.setState({
                     applicantList: pending,
                     reviewedList: reviewed,
