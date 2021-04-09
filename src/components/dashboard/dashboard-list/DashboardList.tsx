@@ -9,6 +9,7 @@ import './DashboardList.scss';
 type DashboardListProps = {
     mode: string;
     viewApplicant: (newCount: number) => void;
+    fetchApplicants: () => void;
     applicants: any[];
     reviewed: any[];
     scheduled: any[];
@@ -73,6 +74,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
             .then((res) => {
                 console.log(res);
                 console.log(res.data);
+                this.props.fetchApplicants();
             });
     };
 

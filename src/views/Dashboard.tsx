@@ -47,6 +47,7 @@ class Dashboard extends Component<unknown, DashboardState> {
             acceptedList: [],
             rejectedList: [],
         };
+        this.componentDidMount = this.componentDidMount.bind(this);
         this.setCount = this.setCount.bind(this);
         this.openApplicantInfo = this.openApplicantInfo.bind(this);
         this.openDashboard = this.openDashboard.bind(this);
@@ -258,6 +259,7 @@ class Dashboard extends Component<unknown, DashboardState> {
                     <DashboardList
                         mode="Pending Applications"
                         viewApplicant={this.openApplicantInfo}
+                        fetchApplicants={this.componentDidMount}
                         applicants={this.state.applicantList}
                         reviewed={this.state.reviewedList}
                         scheduled={this.state.scheduledList}
@@ -274,6 +276,7 @@ class Dashboard extends Component<unknown, DashboardState> {
                         stage={this.state.stage}
                         viewDashboard={this.openDashboard}
                         viewApplicant={this.openApplicantInfo}
+                        fetchApplicants={this.componentDidMount}
                         applicants={this.state.applicantList}
                         reviewed={this.state.reviewedList}
                         scheduled={this.state.scheduledList}
