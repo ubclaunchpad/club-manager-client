@@ -246,7 +246,7 @@ class InterviewForm extends React.Component<IScoringFormProps> {
                     name="debrief"
                     key="debrief"
                     text="Debrief"
-                    numOptions={5}
+                    numOptions={4}
                     handleCriteriaChange={this.props.handleInterviewFormChange}
                 />
 

@@ -54,14 +54,21 @@ class Archive extends Component<unknown, ArchiveState> {
                 const rejected: any[] = [];
 
                 result.data.forEach((applicant: any) => {
+                    const screeningGrade = applicant.screeningGradeActual
+                        ? applicant.screeningGradeActual.total
+                        : undefined;
+                    const interviewGrade = applicant.interviewGradeActual
+                        ? applicant.interviewGradeActual.total
+                        : undefined;
+
                     allApplicants.push({
                         name: `${applicant.firstName} ${applicant.lastName}`,
                         role: applicant.role,
                         level: applicant.level,
                         status: applicant.status,
                         email: applicant.email,
-                        screeningGrade: applicant.screeningGrade,
-                        interviewGrade: applicant.interviewGrade,
+                        screeningGrade: screeningGrade,
+                        interviewGrade: interviewGrade,
                     });
                 });
 
