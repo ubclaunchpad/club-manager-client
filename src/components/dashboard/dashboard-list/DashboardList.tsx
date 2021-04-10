@@ -3,8 +3,9 @@ import axios from 'axios';
 import DashboardListButtons from './DashboardListButtons';
 import DashboardListCard from './DashboardListCard';
 import ApplicantManagementModal from '../../modals/ApplicantManagementModal';
-
 import './DashboardList.scss';
+
+const apiEndpoint = process.env.API_ENDPOINT || 'http://localhost:4000';
 
 type DashboardListProps = {
     mode: string;
@@ -68,7 +69,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
 
     moveApplicant = (id: string, newStatus: string) => {
         axios
-            .patch(`http://localhost:4000/applicant/${id}`, {
+            .patch(`${apiEndpoint}/applicant/${id}`, {
                 status: newStatus,
             })
             .then((res) => {
@@ -153,7 +154,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
             if (type.includes('Email')) {
                 axios({
                     method: 'post',
-                    url: `http://localhost:4000/email`,
+                    url: `${apiEndpoint}/email`,
                     data: {
                         recipient: this.state.email,
                         action: type,
@@ -170,10 +171,9 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
             switch (type) {
                 case 'Reject-Screen':
                     this.setState({ status: 'Final Decision: Rejected' });
-                    this.moveApplicant(this.state.id, 'Final Decision: Rejected');
+                    this.moveApplicant(this.state.id, 'Archived: Rejected');
                     applicant = this.props.applicants.find((applicant) => applicant.id === this.state.id);
                     this.props.applicants.splice(this.props.applicants.indexOf(applicant), 1);
-                    this.props.rejected.push(applicant);
                     break;
                 case 'Reject-Final':
                     this.setState({ status: 'Final Decision: Rejected' });

@@ -2,9 +2,10 @@ import React, { Component, ReactNode } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router';
 import Cookies from 'js-cookie';
-
 import './LoginForm.scss';
 import GoogleSignupButton from '../../components/auth/GoogleSignupButton';
+
+const apiEndpoint = process.env.API_ENDPOINT || 'http://localhost:4000';
 
 interface ISignUpFormProps {
     onClick: () => void;
@@ -70,7 +71,7 @@ class SignUpForm extends Component<ISignUpFormProps> {
 
             /* POST request to create the user */
             axios
-                .post('http://localhost:4000/user', jsonBody, config)
+                .post(`${apiEndpoint}/user`, jsonBody, config)
                 .then((result: any) => {
                     /* Redirect to Dashboard */
                     this.setState({

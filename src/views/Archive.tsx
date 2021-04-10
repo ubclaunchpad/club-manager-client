@@ -9,6 +9,8 @@ import ArchiveHeader from '../components/archive/ArchiveHeader';
 import ArchiveList from '../components/archive/ArchiveList';
 import Scoring from '../components/scoring/Scoring';
 
+const apiEndpoint = process.env.API_ENDPOINT || 'http://localhost:4000';
+
 interface IApplicantInfoProps {
     id: string;
     name: string;
@@ -47,7 +49,7 @@ class Archive extends Component<unknown, ArchiveState> {
 
     componentDidMount(): void {
         axios
-            .get('http://localhost:4000/applicant', { withCredentials: true, timeout: 2000 })
+            .get(`${apiEndpoint}/applicant`, { withCredentials: true, timeout: 2000 })
             .then((result: any) => {
                 const allApplicants: any[] = [];
                 const accepted: any[] = [];
