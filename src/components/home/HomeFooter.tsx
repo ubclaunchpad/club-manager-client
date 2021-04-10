@@ -75,10 +75,10 @@ const HomeFooter: FunctionComponent = () => {
                     <p>Bulma</p>
                 </div>
                 <div className="column is-4 has-text-right">
-                    <img src={FooterImg} alt="" />
+                    <img src={FooterImg} className="footer-img" alt="" />
                 </div>
             </div>
-            <p className="has-text-centered">Copyright © 2021 Hireflow</p>
+            <p className="has-text-centered copyright">Copyright © 2021 Hireflow</p>
         </footer>
     );
 };
