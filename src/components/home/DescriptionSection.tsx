@@ -8,7 +8,7 @@ import HomeDescription3 from '../../images/home/description/HomeDescription3.svg
 const DescriptionList = [
     {
         image: HomeDescription1,
-        header: 'Say Goodbye to exhausting recruiting process.',
+        header: 'Say goodbye to exhausting recruiting process.',
         text:
             'Recruiting is an intricate process that takes so much time and effort. Hireflow is here to make it less exhaustive, while still retaining the virtue that we hold the most: humanity.',
     },
