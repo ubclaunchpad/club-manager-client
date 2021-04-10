@@ -1,6 +1,8 @@
 import Cookies from 'js-cookie';
 import axios from 'axios';
 
+const apiEndpoint = process.env.API_ENDPOINT || 'http://localhost:4000';
+
 /* Check if the token is still valid */
 const AuthUtil = {
     checkAuth() {
@@ -16,7 +18,7 @@ const AuthUtil = {
         Cookies.remove('tokenObj');
 
         axios
-            .delete(`http://localhost:4000/user/token`, { withCredentials: true })
+            .delete(`${apiEndpoint}/user/token`, { withCredentials: true })
             .then((res) => {
                 console.log(res.data);
             })

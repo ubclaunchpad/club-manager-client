@@ -10,6 +10,8 @@ import { faCode, faPaintBrush } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import InterviewForm from './InterviewForm';
 
+const apiEndpoint = process.env.API_ENDPOINT || 'http://localhost:4000';
+
 interface IApplicantInfoProps {
     id: string;
     name: string;
@@ -285,7 +287,7 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
                     parseInt(this.state.criteria.C3);
 
                 axios
-                    .post(`http://localhost:4000/grade/screening/${this.props.applicant.id}`, {
+                    .post(`${apiEndpoint}/grade/screening/${this.props.applicant.id}`, {
                         level: this.state.criteria.experience,
                         c1: this.state.criteria.C1,
                         c2: this.state.criteria.C2,
@@ -298,7 +300,7 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
                 break;
             case 'Scheduled For Interview':
                 axios
-                    .post(`http://localhost:4000/grade/interview/${this.props.applicant.id}`, this.state.interview)
+                    .post(`${apiEndpoint}/grade/interview/${this.props.applicant.id}`, this.state.interview)
                     .then((res) => {
                         console.log(res);
                         console.log(res.data);

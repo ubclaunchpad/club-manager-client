@@ -5,6 +5,7 @@ import Cookies from 'js-cookie';
 import axios from 'axios';
 
 const clientId = '215320798103-7kvftlie6bbu31nb9tgvqqq7sd7p50e6.apps.googleusercontent.com';
+const apiEndpoint = process.env.API_ENDPOINT || 'http://localhost:4000';
 
 interface IGoogleLoginButtonProps {
     /* Toggle login vs. signup mode */
@@ -34,7 +35,7 @@ class GoogleLoginButton extends React.Component<IGoogleLoginButtonProps> {
                 timeout: 2000,
             };
 
-            axios.get('http://localhost:4000/user', config).then((result: any) => {
+            axios.get(`${apiEndpoint}/user`, config).then((result: any) => {
                 const doesExist = result.data.exists;
 
                 /* If their account doesn't exist yet */
@@ -47,7 +48,7 @@ class GoogleLoginButton extends React.Component<IGoogleLoginButtonProps> {
                     axios.defaults.headers.common.Authorization = tokenObj.access_token;
                     axios.defaults.headers.common.Authorization_Id = response.googleId;
                     axios
-                        .get(`http://localhost:4000/user/token`, { withCredentials: true })
+                        .get(`${apiEndpoint}/user/token`, { withCredentials: true })
                         .then((res) => {
                             console.log(res.data);
                         })
