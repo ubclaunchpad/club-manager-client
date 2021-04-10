@@ -341,9 +341,7 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
                                             <span className="icon">
                                                 <FontAwesomeIcon
                                                     icon={
-                                                        this.props.applicant.role === 'Designer Applicant'
-                                                            ? faPaintBrush
-                                                            : faCode
+                                                        this.props.applicant.role === 'Designer' ? faPaintBrush : faCode
                                                     }
                                                     color={'#444444'}
                                                 />
@@ -403,9 +401,7 @@ class Scoring extends React.Component<ScoringProps, ScoringState> {
                                             <span className="icon">
                                                 <FontAwesomeIcon
                                                     icon={
-                                                        this.props.applicant.role === 'Designer Applicant'
-                                                            ? faPaintBrush
-                                                            : faCode
+                                                        this.props.applicant.role === 'Designer' ? faPaintBrush : faCode
                                                     }
                                                     color={'#444444'}
                                                 />

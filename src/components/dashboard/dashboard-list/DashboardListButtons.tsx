@@ -78,7 +78,8 @@ class DashboardListButtons extends React.Component<IDashboardListButtonsProps, I
                         <output htmlFor="sliderWithValue">{this.state.minInterview}</output>
                     </div>
                 );
-            case 'Final Decision':
+            case 'Final Decision: Accepted':
+            case 'Final Decision: Rejected':
                 return (
                     <div className="level-item">
                         <p>Minimum Interview Score </p>
@@ -139,7 +140,7 @@ class DashboardListButtons extends React.Component<IDashboardListButtonsProps, I
                         </div>
                     </div>
                 );
-            case 'Final Decision':
+            case 'Final Decision: Accepted':
                 return (
                     <div className="level-right">
                         <div className="level-item">
@@ -148,6 +149,20 @@ class DashboardListButtons extends React.Component<IDashboardListButtonsProps, I
                                     <FontAwesomeIcon icon={faEnvelope} />
                                 </span>
                                 Send Acceptance Email
+                            </button>
+                            <DashboardListFilter {...{ title: 'Bulk Select' }} />{' '}
+                        </div>
+                    </div>
+                );
+            case 'Final Decision: Rejected':
+                return (
+                    <div className="level-right">
+                        <div className="level-item">
+                            <button className="button">
+                                <span className="icon">
+                                    <FontAwesomeIcon icon={faEnvelope} />
+                                </span>
+                                Send Rejection Email
                             </button>
                             <DashboardListFilter {...{ title: 'Bulk Select' }} />{' '}
                         </div>

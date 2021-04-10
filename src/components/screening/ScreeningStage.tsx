@@ -7,6 +7,7 @@ class ScreeningStage extends React.Component<{
     stage: string;
     viewDashboard: () => void;
     viewApplicant: (newCount: number) => void;
+    setScreeningStage: (newStage: string) => void;
     fetchApplicants: () => void;
     applicants: any[];
     reviewed: any[];
@@ -43,6 +44,7 @@ class ScreeningStage extends React.Component<{
                                 interviewed={this.props.interviewed}
                                 accepted={this.props.accepted}
                                 rejected={this.props.rejected}
+                                setScreeningStage={this.props.setScreeningStage}
                             />
                         </div>
                     </div>

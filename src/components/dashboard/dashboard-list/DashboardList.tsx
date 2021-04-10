@@ -17,6 +17,7 @@ type DashboardListProps = {
     interviewed: any[];
     accepted: any[];
     rejected: any[];
+    setScreeningStage?: (newStage: string) => void;
 };
 
 type DashboardListState = {
@@ -65,6 +66,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
             },
         };
         this.moveApplicant = this.moveApplicant.bind(this);
+        this.changeMode = this.changeMode.bind(this);
     }
 
     moveApplicant = (id: string, newStatus: string) => {
@@ -140,7 +142,9 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
 
         // Filter by the applicant's interview grade (where relevant)
         if (
-            (this.props.mode === 'Interviewed' || this.props.mode === 'Final Decision') &&
+            (this.props.mode === 'Interviewed' ||
+                this.props.mode === 'Final Decision: Accepted' ||
+                this.props.mode === 'Final Decision: Rejected') &&
             applicant.interviewGrade < minInterview
         )
             return false;
@@ -211,19 +215,37 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
     };
 
     setTabs = (): React.ReactNode => {
-        if (this.props.mode === 'Final Decision') {
+        if (this.props.mode === 'Final Decision: Accepted' || this.props.mode === 'Final Decision: Rejected') {
             return (
                 <div className="tabs is-fullwidth">
                     <ul>
-                        <li className="is-active">
-                            <button className="is-primary">Accepted</button>
+                        <li className={this.props.mode === 'Final Decision: Accepted' ? 'is-active' : ''}>
+                            <button
+                                className={this.props.mode === 'Final Decision: Accepted' ? 'is-primary' : ''}
+                                onClick={this.changeMode}
+                            >
+                                Accepted
+                            </button>
                         </li>
-                        <li>
-                            <button>Rejected</button>
+                        <li className={this.props.mode === 'Final Decision: Rejected' ? 'is-active' : ''}>
+                            <button
+                                className={this.props.mode === 'Final Decision: Rejected' ? 'is-primary' : ''}
+                                onClick={this.changeMode}
+                            >
+                                Rejected
+                            </button>
                         </li>
                     </ul>
                 </div>
             );
+        }
+    };
+
+    changeMode = () => {
+        if (this.props.mode === 'Final Decision: Accepted') {
+            if (this.props.setScreeningStage) this.props.setScreeningStage('Final Decision: Rejected');
+        } else if (this.props.mode === 'Final Decision: Rejected') {
+            if (this.props.setScreeningStage) this.props.setScreeningStage('Final Decision: Accepted');
         }
     };
 
@@ -362,7 +384,7 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                             />
                         </div>
                     ));
-            case 'Final Decision':
+            case 'Final Decision: Accepted':
                 return this.props.accepted
                     .filter((a) => this.applyFilter(a))
                     .map((element, index) => (
@@ -377,6 +399,39 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
                                 }
                                 interviewGrade={
                                     this.props.accepted.filter((a) => this.applyFilter(a))[index].interviewGrade
+                                }
+                                viewApplicant={this.props.viewApplicant}
+                                setModalAndType={(type: string) => {
+                                    console.log(element.role);
+                                    this.showModal(
+                                        element.id,
+                                        element.name,
+                                        element.role,
+                                        type,
+                                        element.status,
+                                        element.email,
+                                        element.screeningGrade,
+                                        element.interviewGrade,
+                                    );
+                                }}
+                            />
+                        </div>
+                    ));
+            case 'Final Decision: Rejected':
+                return this.props.rejected
+                    .filter((a) => this.applyFilter(a))
+                    .map((element, index) => (
+                        <div className="column is-half" key={index}>
+                            <DashboardListCard
+                                {...element}
+                                mode={this.props.mode}
+                                key={index}
+                                count={index}
+                                screeningGrade={
+                                    this.props.rejected.filter((a) => this.applyFilter(a))[index].screeningGrade
+                                }
+                                interviewGrade={
+                                    this.props.rejected.filter((a) => this.applyFilter(a))[index].interviewGrade
                                 }
                                 viewApplicant={this.props.viewApplicant}
                                 setModalAndType={(type: string) => {
