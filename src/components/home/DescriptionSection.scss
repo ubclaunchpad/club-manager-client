@@ -1,8 +1,10 @@
 .description-section {
     background-color: #fff;
     color: black;
-    padding: 3% 3%;
-
+    padding: 5% 5%;
+    .column {
+        padding: 0;
+    }
     .warning {
         text-align: center;
     }
