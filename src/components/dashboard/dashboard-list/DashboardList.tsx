@@ -142,7 +142,9 @@ class DashboardList extends Component<DashboardListProps, DashboardListState> {
 
         // Filter by the applicant's interview grade (where relevant)
         if (
-            (this.props.mode === 'Interviewed' || this.props.mode === 'Final Decision: Accepted' || this.props.mode === 'Final Decision: Rejected') &&
+            (this.props.mode === 'Interviewed' ||
+                this.props.mode === 'Final Decision: Accepted' ||
+                this.props.mode === 'Final Decision: Rejected') &&
             applicant.interviewGrade < minInterview
         )
             return false;
