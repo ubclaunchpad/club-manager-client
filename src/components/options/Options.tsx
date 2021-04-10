@@ -5,6 +5,8 @@ import SheetListCard from './SheetListCard';
 import SheetModal from '../modals/SheetModal';
 import ErrorModal from '../modals/ErrorModal';
 
+const apiEndpoint = process.env.API_ENDPOINT || 'http://localhost:4000';
+
 class OptionsComponent extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
@@ -27,7 +29,7 @@ class OptionsComponent extends React.Component<any, any> {
     // Gets all the sheets from the database to display
     getSheets = () => {
         axios
-            .get(`http://localhost:4000/sheets`, { withCredentials: true })
+            .get(`${apiEndpoint}/sheets`, { withCredentials: true })
             .then((res) => {
                 this.setState({ sheets: res.data });
             })
@@ -54,7 +56,7 @@ class OptionsComponent extends React.Component<any, any> {
         };
 
         axios
-            .post(`http://localhost:4000/sheets`, sheet, { withCredentials: true })
+            .post(`${apiEndpoint}/sheets`, sheet, { withCredentials: true })
             .then(() => {
                 this.getSheets();
             })
@@ -91,7 +93,7 @@ class OptionsComponent extends React.Component<any, any> {
             };
 
             axios
-                .patch(`http://localhost:4000/sheets`, sheet, { withCredentials: true })
+                .patch(`${apiEndpoint}/sheets`, sheet, { withCredentials: true })
                 .then(() => {
                     this.getSheets();
                 })
@@ -105,7 +107,7 @@ class OptionsComponent extends React.Component<any, any> {
             };
 
             axios
-                .delete(`http://localhost:4000/sheets`, { data: sheet, withCredentials: true })
+                .delete(`${apiEndpoint}/sheets`, { data: sheet, withCredentials: true })
                 .then(() => {
                     this.getSheets();
                 })

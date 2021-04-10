@@ -10,6 +10,8 @@ import './Dashboard.scss';
 import ApplicantInfo from '../components/applicant/ApplicantInfo';
 import ScreeningStage from '../components/screening/ScreeningStage';
 
+const apiEndpoint = process.env.API_ENDPOINT || 'http://localhost:4000';
+
 interface IApplicantInfoProps {
     id: string;
     name: string;
@@ -56,7 +58,7 @@ class Dashboard extends Component<unknown, DashboardState> {
 
     componentDidMount(): void {
         axios
-            .get('http://localhost:4000/applicant', { withCredentials: true, timeout: 2000 })
+            .get(`${apiEndpoint}/applicant`, { withCredentials: true, timeout: 2000 })
             .then((result: any) => {
                 const allApplicants: any[] = [];
                 const pending: any[] = [];
@@ -225,7 +227,7 @@ class Dashboard extends Component<unknown, DashboardState> {
                 this.state.applicantList.splice(index, 1);
                 this.state.reviewedList.push(applicant);
                 axios
-                    .patch(`http://localhost:4000/applicant/${applicant.id}`, {
+                    .patch(`${apiEndpoint}/applicant/${applicant.id}`, {
                         status: 'Application Reviewed',
                     })
                     .then((res) => {
@@ -239,7 +241,7 @@ class Dashboard extends Component<unknown, DashboardState> {
                 this.state.scheduledList.splice(index, 1);
                 this.state.interviewedList.push(applicant);
                 axios
-                    .patch(`http://localhost:4000/applicant/${applicant.id}`, {
+                    .patch(`${apiEndpoint}/applicant/${applicant.id}`, {
                         status: 'Interviewed',
                     })
                     .then((res) => {
