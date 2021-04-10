@@ -37,7 +37,7 @@ class DashboardHeader extends React.Component<{
                     <div className="column is-one-fourth">
                         <DashboardCard
                             cardImage={FinalDecisionCard}
-                            cardURL="Final Decision"
+                            cardURL="Final Decision: Accepted"
                             viewScreeningStage={this.props.viewScreeningStage}
                         />
                     </div>

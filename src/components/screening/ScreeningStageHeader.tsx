@@ -113,7 +113,7 @@ class ScreeningStageHeader extends React.Component<{
                         </div>
                     </div>
                 );
-            case 'Final Decision':
+            case 'Final Decision: Accepted':
                 return (
                     <div className="columns">
                         <div className="column is-two-thirds applicant-count">
@@ -144,6 +144,37 @@ class ScreeningStageHeader extends React.Component<{
                         </div>
                     </div>
                 );
+            case 'Final Decision: Rejected':
+                return (
+                    <div className="columns">
+                        <div className="column is-two-thirds applicant-count">
+                            <h1 className="hero-title">
+                                You have <span className="total">{this.props.rejected.length}</span> applicants <br />
+                                waiting to be rejected.
+                            </h1>
+                            <h3 className="hero-subtitle">
+                                {' '}
+                                <span className="total">
+                                    {
+                                        this.props.rejected.filter((applicant) => applicant.role.includes('Developer'))
+                                            .length
+                                    }
+                                </span>{' '}
+                                Developers ·{' '}
+                                <span className="total">
+                                    {
+                                        this.props.rejected.filter((applicant) => applicant.role.includes('Designer'))
+                                            .length
+                                    }
+                                </span>{' '}
+                                Designers
+                            </h3>
+                        </div>
+                        <div className="column is-one-third">
+                            <img src={FinalDecisionImage} alt="" />
+                        </div>
+                    </div>
+                );
         }
     };
 
@@ -153,7 +184,7 @@ class ScreeningStageHeader extends React.Component<{
                 <div className="level less-padding">
                     <div className="level-left">
                         <button className="back-button" onClick={() => this.props.viewDashboard()}>
-                            <i className="fas fa-arrow-left"></i>
+                            <i className="fas fa-arrow-left" />
                         </button>
                         <h1>{this.props.stage}</h1>
                     </div>
@@ -162,7 +193,7 @@ class ScreeningStageHeader extends React.Component<{
                             <p className="control has-icons-left">
                                 <input className="input is-rounded" type="search" placeholder="Search applicants" />
                                 <span className="icon is-small is-left">
-                                    <i className="fas fa-search"></i>
+                                    <i className="fas fa-search" />
                                 </span>
                             </p>
                         </div>

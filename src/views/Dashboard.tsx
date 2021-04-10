@@ -201,11 +201,23 @@ class Dashboard extends Component<unknown, DashboardState> {
                         viewApplicant={this.openApplicantInfo}
                     />
                 );
-            case 'Final Decision':
+            case 'Final Decision: Accepted':
                 return (
                     <ApplicantInfo
                         totalApplicants={this.state.acceptedList.length}
                         applicant={this.state.acceptedList[this.state.count]}
+                        count={this.state.count}
+                        setCount={this.setCount}
+                        viewDashboard={this.openDashboard}
+                        viewScoring={this.openApplicantReview}
+                        viewApplicant={this.openApplicantInfo}
+                    />
+                );
+            case 'Final Decision: Rejected':
+                return (
+                    <ApplicantInfo
+                        totalApplicants={this.state.rejectedList.length}
+                        applicant={this.state.rejectedList[this.state.count]}
                         count={this.state.count}
                         setCount={this.setCount}
                         viewDashboard={this.openDashboard}
@@ -279,6 +291,7 @@ class Dashboard extends Component<unknown, DashboardState> {
                         stage={this.state.stage}
                         viewDashboard={this.openDashboard}
                         viewApplicant={this.openApplicantInfo}
+                        setScreeningStage={this.setScreeningStage}
                         fetchApplicants={this.componentDidMount}
                         applicants={this.state.applicantList}
                         reviewed={this.state.reviewedList}
@@ -304,8 +317,11 @@ class Dashboard extends Component<unknown, DashboardState> {
                 case 'Interviewed':
                     applicant = this.state.interviewedList[this.state.count];
                     break;
-                case 'Final Decision':
+                case 'Final Decision: Accepted':
                     applicant = this.state.acceptedList[this.state.count];
+                    break;
+                case 'Final Decision: Rejected':
+                    applicant = this.state.rejectedList[this.state.count];
                     break;
                 default:
                     applicant = this.state.applicantList[this.state.count];

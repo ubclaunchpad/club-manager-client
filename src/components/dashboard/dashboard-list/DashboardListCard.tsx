@@ -110,7 +110,7 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
                     </div>
 
                     <div className="container grade">
-                        <p className="title is-4">{props.interviewGrade}</p>
+                        <p className="title is-4">{props.interviewGrade || 0}</p>
                         <p className="subtitle is-7">Interview</p>
                     </div>
                 </div>

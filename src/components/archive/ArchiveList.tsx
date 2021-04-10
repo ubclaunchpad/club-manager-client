@@ -96,7 +96,7 @@ class ArchiveList extends Component<ArchiveListProps, ArchiveListState> {
                             key={index}
                             count={index}
                             screeningGrade={this.props.rejected[index].screeningGrade}
-                            interviewGrade={this.props.rejected[index].interviewGrade}
+                            interviewGrade={this.props.rejected[index].interviewGrade || 0}
                             viewApplicant={this.props.viewApplicant}
                             setModalAndType={(type: string) => {
                                 console.log(element.role);
