@@ -174,7 +174,7 @@ const DashboardListCard: React.FunctionComponent<IDashboardListCardProps> = (pro
                     <div className="level-item">
                         <span className="icon">
                             <FontAwesomeIcon
-                                icon={props.role === 'Designer Applicant' ? faPaintBrush : faCode}
+                                icon={props.role === 'Designer' ? faPaintBrush : faCode}
                                 color={'#444444'}
                             />
                         </span>
