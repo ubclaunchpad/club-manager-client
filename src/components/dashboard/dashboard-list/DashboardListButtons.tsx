@@ -5,17 +5,57 @@ import { faTimes, faCheck, faSlidersH } from '@fortawesome/free-solid-svg-icons'
 import { faEnvelope, faCalendarAlt } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-interface IDashboardListButtonsProps {
+type IDashboardListButtonsProps = {
     mode: string;
-}
+    onChange: (data: any) => void;
+};
 
-class DashboardListButtons extends React.Component<IDashboardListButtonsProps> {
+type IDashboardListButtonsState = {
+    beginner: boolean;
+    intermediate: boolean;
+    advanced: boolean;
+    developer: boolean;
+    designer: boolean;
+    minScreen: number;
+    minInterview: number;
+};
+
+class DashboardListButtons extends React.Component<IDashboardListButtonsProps, IDashboardListButtonsState> {
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            beginner: false,
+            intermediate: false,
+            advanced: false,
+            developer: false,
+            designer: false,
+            minScreen: 0,
+            minInterview: 0,
+        };
+    }
+
     closeDropdown = (): void => {
         console.log('Close dropdown');
     };
 
     clearCheckboxes = (): void => {
-        console.log('Clear checkboxes');
+        document.querySelectorAll('input[type=checkbox]').forEach((el: any) => {
+            if (el.checked) el.checked = false;
+        });
+        document.querySelectorAll('input[type=range]').forEach((el: any) => {
+            el.value = 0;
+        });
+        const defaultState = {
+            beginner: false,
+            intermediate: false,
+            advanced: false,
+            developer: false,
+            designer: false,
+            minScreen: 0,
+            minInterview: 0,
+        };
+        this.setState(defaultState);
+        this.props.onChange(defaultState);
     };
 
     setSliders = (): React.ReactNode => {
@@ -23,31 +63,37 @@ class DashboardListButtons extends React.Component<IDashboardListButtonsProps> {
             case 'Interviewed':
                 return (
                     <div className="level-item">
-                        <p>Interview Score </p>
+                        <p>Minimum Interview Score </p>
                         <input
                             className="slider has-output is-fullwidth is-small is-circle"
-                            step="0.5"
+                            step="1"
                             min="0"
-                            max="6"
-                            value="3"
+                            max="18"
                             type="range"
-                        />
-                        <output htmlFor="sliderWithValue">3</output>
+                            defaultValue="0"
+                            onChange={(event) => {
+                                this.setState({ minInterview: parseInt(event.target.value) });
+                            }}
+                        ></input>
+                        <output htmlFor="sliderWithValue">{this.state.minInterview}</output>
                     </div>
                 );
             case 'Final Decision':
                 return (
                     <div className="level-item">
-                        <p>Interview Score </p>
+                        <p>Minimum Interview Score </p>
                         <input
-                            className="slider has-output-tooltip is-large"
-                            step="0.5"
+                            className="slider has-output is-fullwidth is-small is-circle"
+                            step="1"
                             min="0"
-                            max="5"
-                            value="3"
+                            max="18"
                             type="range"
-                        />
-                        <output htmlFor="sliderWithValue">3</output>
+                            defaultValue="0"
+                            onChange={(event) => {
+                                this.setState({ minInterview: parseInt(event.target.value) });
+                            }}
+                        ></input>
+                        <output htmlFor="sliderWithValue">{this.state.minInterview}</output>
                     </div>
                 );
         }
@@ -114,7 +160,8 @@ class DashboardListButtons extends React.Component<IDashboardListButtonsProps> {
         return (
             <div className="dashboard-list-buttons">
                 <div className="container">
-                    <div className="level dropdown less-padding">
+                    {/* TODO Reintroduce dropdown */}
+                    {/* <div className="level dropdown less-padding">
                         <div className="level-left">
                             <div className="dropdown-trigger">
                                 <button className="button" aria-haspopup="true" aria-controls="dropdown-menu3">
@@ -130,7 +177,7 @@ class DashboardListButtons extends React.Component<IDashboardListButtonsProps> {
                                 <i className="fa fa-chevron-up" />
                             </button>
                         </div>
-                    </div>
+                    </div> */}
                     <div className="columns">
                         <div className="column is-two-fifths">
                             <div className="level less-padding">
@@ -138,22 +185,43 @@ class DashboardListButtons extends React.Component<IDashboardListButtonsProps> {
                             </div>
                             <div className="level">
                                 <div className="level-left">
-                                    <DashboardListFilter {...{ title: 'Developer' }} />{' '}
-                                    <DashboardListFilter {...{ title: 'Designer' }} />{' '}
+                                    <label className="checkbox-container">
+                                        <input
+                                            type="checkbox"
+                                            onClick={() => {
+                                                this.setState({ developer: !this.state.developer });
+                                            }}
+                                        />
+                                        <span className="checkmark"></span>
+                                        Developer
+                                    </label>
+                                    <label className="checkbox-container">
+                                        <input
+                                            type="checkbox"
+                                            onClick={() => {
+                                                this.setState({ designer: !this.state.designer });
+                                            }}
+                                        />
+                                        <span className="checkmark"></span>
+                                        Designer
+                                    </label>
                                 </div>
                             </div>
                             <div className="level">
                                 <div className="level-left">
-                                    <p>Review Score </p>
+                                    <p>Minimum Review Score </p>
                                     <input
                                         className="slider has-output is-fullwidth is-small is-circle"
-                                        step="0.5"
+                                        step="1"
                                         min="0"
                                         max="6"
-                                        value="3"
                                         type="range"
-                                    />
-                                    <output htmlFor="sliderWithValue">3</output>
+                                        defaultValue="0"
+                                        onChange={(event) => {
+                                            this.setState({ minScreen: parseInt(event.target.value) });
+                                        }}
+                                    ></input>
+                                    <output htmlFor="sliderWithValue">{this.state.minScreen}</output>
                                 </div>
                             </div>
                         </div>
@@ -163,9 +231,36 @@ class DashboardListButtons extends React.Component<IDashboardListButtonsProps> {
                             </div>
                             <div className="level">
                                 <div className="level-left">
-                                    <DashboardListFilter {...{ title: 'Beginner' }} />{' '}
-                                    <DashboardListFilter {...{ title: 'Independent' }} />{' '}
-                                    <DashboardListFilter {...{ title: 'Experienced' }} />{' '}
+                                    <label className="checkbox-container">
+                                        <input
+                                            type="checkbox"
+                                            onClick={() => {
+                                                this.setState({ beginner: !this.state.beginner });
+                                            }}
+                                        />
+                                        <span className="checkmark"></span>
+                                        Beginner
+                                    </label>
+                                    <label className="checkbox-container">
+                                        <input
+                                            type="checkbox"
+                                            onClick={() => {
+                                                this.setState({ intermediate: !this.state.intermediate });
+                                            }}
+                                        />
+                                        <span className="checkmark"></span>
+                                        Intermediate
+                                    </label>
+                                    <label className="checkbox-container">
+                                        <input
+                                            type="checkbox"
+                                            onClick={() => {
+                                                this.setState({ advanced: !this.state.advanced });
+                                            }}
+                                        />
+                                        <span className="checkmark"></span>
+                                        Advanced
+                                    </label>
                                 </div>
                             </div>
                             <div className="level">
@@ -181,7 +276,12 @@ class DashboardListButtons extends React.Component<IDashboardListButtonsProps> {
                 </div>
                 <div className="level">
                     <div className="level-left">
-                        <button className="button">
+                        <button
+                            className="button"
+                            onClick={() => {
+                                this.props.onChange(this.state);
+                            }}
+                        >
                             <FontAwesomeIcon icon={faSlidersH} />
                         </button>
                         Filter
