@@ -5,7 +5,7 @@ import SheetListCard from './SheetListCard';
 import SheetModal from '../modals/SheetModal';
 import ErrorModal from '../modals/ErrorModal';
 
-const apiEndpoint = process.env.API_ENDPOINT || 'http://localhost:4000';
+const apiEndpoint = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:4000';
 
 class OptionsComponent extends React.Component<any, any> {
     constructor(props: any) {

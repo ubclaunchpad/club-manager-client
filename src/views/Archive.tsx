@@ -9,7 +9,7 @@ import ArchiveHeader from '../components/archive/ArchiveHeader';
 import ArchiveList from '../components/archive/ArchiveList';
 import Scoring from '../components/scoring/Scoring';
 
-const apiEndpoint = process.env.API_ENDPOINT || 'http://localhost:4000';
+const apiEndpoint = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:4000';
 
 interface IApplicantInfoProps {
     id: string;

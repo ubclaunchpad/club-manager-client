@@ -10,7 +10,7 @@ import './Dashboard.scss';
 import ApplicantInfo from '../components/applicant/ApplicantInfo';
 import ScreeningStage from '../components/screening/ScreeningStage';
 
-const apiEndpoint = process.env.API_ENDPOINT || 'http://localhost:4000';
+const apiEndpoint = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:4000';
 
 interface IApplicantInfoProps {
     id: string;

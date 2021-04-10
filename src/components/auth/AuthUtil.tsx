@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie';
 import axios from 'axios';
 
-const apiEndpoint = process.env.API_ENDPOINT || 'http://localhost:4000';
+const apiEndpoint = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:4000';
 
 /* Check if the token is still valid */
 const AuthUtil = {

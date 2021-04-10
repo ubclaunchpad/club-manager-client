@@ -4,6 +4,7 @@ import Cookies from 'js-cookie';
 import axios from 'axios';
 
 const clientId = '215320798103-7kvftlie6bbu31nb9tgvqqq7sd7p50e6.apps.googleusercontent.com';
+const apiEndpoint = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:4000';
 
 interface ICredentials {
     email: string;
@@ -35,7 +36,7 @@ class GoogleSignupButton extends React.Component<IGoogleSignUpButtonProps> {
                 timeout: 2000,
             };
             axios
-                .get('http://localhost:4000/user', config)
+                .get(`${apiEndpoint}/user`, config)
                 .then((result: any) => {
                     const doesExist = result.data.exists;
 

@@ -5,7 +5,7 @@ import DashboardListCard from './DashboardListCard';
 import ApplicantManagementModal from '../../modals/ApplicantManagementModal';
 import './DashboardList.scss';
 
-const apiEndpoint = process.env.API_ENDPOINT || 'http://localhost:4000';
+const apiEndpoint = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:4000';
 
 type DashboardListProps = {
     mode: string;

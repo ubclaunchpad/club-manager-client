@@ -10,7 +10,7 @@ import { faCode, faPaintBrush } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import InterviewForm from './InterviewForm';
 
-const apiEndpoint = process.env.API_ENDPOINT || 'http://localhost:4000';
+const apiEndpoint = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:4000';
 
 interface IApplicantInfoProps {
     id: string;

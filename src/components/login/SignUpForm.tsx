@@ -5,7 +5,7 @@ import Cookies from 'js-cookie';
 import './LoginForm.scss';
 import GoogleSignupButton from '../../components/auth/GoogleSignupButton';
 
-const apiEndpoint = process.env.API_ENDPOINT || 'http://localhost:4000';
+const apiEndpoint = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:4000';
 
 interface ISignUpFormProps {
     onClick: () => void;
